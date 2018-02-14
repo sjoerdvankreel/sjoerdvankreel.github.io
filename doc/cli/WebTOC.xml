@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HelpTOC>
+
+  <HelpTOCNode Id="4662d3f0-db0a-4636-bf55-fbee49fdfd51" Title="Xt" Url="html/e964d1f7-3256-f12a-1bef-f69729672a6b.htm">
+    <HelpTOCNode Id="913c74d3-f406-416d-95dc-c4ce3a293b32" Title="XtAttributes Class" Url="html/0c6b0065-4010-899a-6ae0-962d918c197e.htm">
+      <HelpTOCNode Title="XtAttributes Constructor " Url="html/c20678b2-b6b5-f02d-4d68-fc83f5b40522.htm" />
+      <HelpTOCNode Id="cb4f8032-f9b4-4799-9edb-37ff33661be8" Title="XtAttributes Methods" Url="html/8831e66d-b66d-53b7-6254-945f2260cbe5.htm">
+        <HelpTOCNode Title="ToString Method " Url="html/d957c709-a8b3-42a6-8c87-562cfa73f6bf.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="dc6be149-5533-4089-842d-7c65b0ea2d7c" Title="XtAttributes Fields" Url="html/6e72e519-b114-b239-ac4a-a4927676a267.htm">
+        <HelpTOCNode Title="isFloat Field" Url="html/068b16b9-d69b-2366-ba3f-bc8c1c95247f.htm" />
+        <HelpTOCNode Title="isSigned Field" Url="html/0937314e-26c6-eaa2-6f7f-d31f957ccd8b.htm" />
+        <HelpTOCNode Title="size Field" Url="html/e670caf0-eda3-bf2a-7561-84bf41f653d5.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="9e64f53e-ae92-4950-bab7-b8db3f362e49" Title="XtAudio Class" Url="html/08dcc60f-95d9-f198-0c92-8a1df068f432.htm">
+      <HelpTOCNode Title="XtAudio Constructor " Url="html/c4bde558-2bc8-043c-cc7a-02059a687ac7.htm" />
+      <HelpTOCNode Id="3fcf1471-5923-4544-a143-5aed3578a29a" Title="XtAudio Methods" Url="html/27eeaa6b-5ff8-95f9-b6de-14df7b74b628.htm">
+        <HelpTOCNode Title="Dispose Method " Url="html/eb71e57f-790c-887b-6cba-bff8b206a38f.htm" />
+        <HelpTOCNode Title="GetSampleAttributes Method " Url="html/3bad07e9-0ef8-5992-2087-dcacc54fc174.htm" />
+        <HelpTOCNode Title="GetServiceByIndex Method " Url="html/a71459c5-40c3-de0f-c4b9-e7e7469c48b9.htm" />
+        <HelpTOCNode Title="GetServiceBySetup Method " Url="html/700a33cd-bc68-7744-30ec-3f8c55053a58.htm" />
+        <HelpTOCNode Title="GetServiceBySystem Method " Url="html/26bf36db-32c6-91ef-68d6-a29cd5b93e98.htm" />
+        <HelpTOCNode Title="GetServiceCount Method " Url="html/b18de395-e4aa-0135-5a6a-368cc47f27a3.htm" />
+        <HelpTOCNode Title="GetVersion Method " Url="html/a7ec1b62-f505-3fe1-e9fe-ba8bc4c47a67.htm" />
+        <HelpTOCNode Title="IsWin32 Method " Url="html/1b802733-91aa-c8b4-6a43-4f007137ff6b.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="65b37551-93ab-41eb-a7e6-52fcd1a74a44" Title="XtBuffer Class" Url="html/2639342d-2732-57da-da90-2eb2b2636014.htm">
+      <HelpTOCNode Title="XtBuffer Constructor " Url="html/1dd4e592-e4a6-bb62-e897-0996cc0247de.htm" />
+      <HelpTOCNode Id="e46ff2e6-a77b-4c33-b3f2-b6445b18c447" Title="XtBuffer Methods" Url="html/2e6eb819-65ec-d517-630f-879c817a6f13.htm">
+        <HelpTOCNode Title="ToString Method " Url="html/77307c4a-641f-ba7a-b2c1-9563b416956b.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="03a0e429-f2ab-4cb7-986e-6ad4614d0660" Title="XtBuffer Fields" Url="html/7585d21a-1234-230c-96f5-aa6d31c2a6a1.htm">
+        <HelpTOCNode Title="current Field" Url="html/40eb612d-88f7-b084-6588-e768d6bf2807.htm" />
+        <HelpTOCNode Title="max Field" Url="html/dac57727-1db9-eb37-25e1-ce1e4a105f01.htm" />
+        <HelpTOCNode Title="min Field" Url="html/72291163-d436-00e7-6fab-566e171e1737.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Title="XtCapabilities Enumeration" Url="html/5bdcd905-5193-77cb-327f-7b4a3611316c.htm" />
+    <HelpTOCNode Title="XtCause Enumeration" Url="html/69a4c029-2064-d290-0703-6b89de6e2dc2.htm" />
+    <HelpTOCNode Id="9f0874ba-19b5-4596-9783-031ece9ec07d" Title="XtChannels Class" Url="html/d72d5195-9913-702d-2c6f-2dd95f2ec41c.htm">
+      <HelpTOCNode Id="5f6f58c7-44bc-4957-b24a-7cbf9c39e572" Title="XtChannels Constructor " Url="html/ef567881-b773-63c0-636f-3d4c9aa4f8a7.htm">
+        <HelpTOCNode Title="XtChannels Constructor " Url="html/915268bf-5b6d-4ed2-699c-e8060294835a.htm" />
+        <HelpTOCNode Title="XtChannels Constructor (Int32, UInt64, Int32, UInt64)" Url="html/2b22d52a-a96c-3cab-33cb-e2e72673327c.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="6480e665-4cd6-4157-8994-1d10e72bac98" Title="XtChannels Methods" Url="html/aeefd0e8-c5ed-81ea-04f7-5fa83b3bbf8e.htm">
+        <HelpTOCNode Title="ToString Method " Url="html/00542ed4-d368-39ba-7197-0e168dc82012.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="2bee1cf8-c66c-45d6-8909-308cd3b3888c" Title="XtChannels Fields" Url="html/4fd51623-608b-bf17-f16f-0fbbaf302810.htm">
+        <HelpTOCNode Title="inMask Field" Url="html/1cf2611c-2ff6-9146-8930-587ab532c170.htm" />
+        <HelpTOCNode Title="inputs Field" Url="html/4bf71c9b-d8b9-aed9-75a3-769988798ddc.htm" />
+        <HelpTOCNode Title="outMask Field" Url="html/b4e9669d-4e24-7b56-7cab-8191485c62a8.htm" />
+        <HelpTOCNode Title="outputs Field" Url="html/dbd8fe39-199c-e264-9166-1eef36939fcb.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="a24d1860-6f98-4146-9493-a860d740fa2e" Title="XtDevice Class" Url="html/59118034-d4f0-642b-f34f-08235851415c.htm">
+      <HelpTOCNode Id="1e150146-ef4c-4b1d-9818-55af08af036c" Title="XtDevice Methods" Url="html/7bbc0d4c-354b-8354-2a4f-7e9cc21faae2.htm">
+        <HelpTOCNode Title="Dispose Method " Url="html/21490f0e-138b-0adf-e88e-205f193cc389.htm" />
+        <HelpTOCNode Title="GetBuffer Method " Url="html/ad2905f6-e8cb-bddf-ec40-d907f88378d2.htm" />
+        <HelpTOCNode Title="GetChannelCount Method " Url="html/8d5c1382-28ea-1c48-0000-0b043340fb3d.htm" />
+        <HelpTOCNode Title="GetChannelName Method " Url="html/8008c530-b7f6-21ab-68b5-d56d9fafbacb.htm" />
+        <HelpTOCNode Title="GetMix Method " Url="html/29341ee6-b536-95e7-1ee9-dd56b8e4d16f.htm" />
+        <HelpTOCNode Title="GetName Method " Url="html/5ab3aab6-424e-5b74-2558-eceb8d7a7ca2.htm" />
+        <HelpTOCNode Title="GetSystem Method " Url="html/d95dd0d7-8fe0-61a9-9cda-84b295de33c9.htm" />
+        <HelpTOCNode Title="OpenStream Method " Url="html/209e9d73-db1a-6853-d19c-78ef92f60f9c.htm" />
+        <HelpTOCNode Title="ShowControlPanel Method " Url="html/724b2ad6-672b-35d3-969d-95ae43294537.htm" />
+        <HelpTOCNode Title="SupportsAccess Method " Url="html/009c2a0f-c388-c4c4-4a66-9f0561967da6.htm" />
+        <HelpTOCNode Title="SupportsFormat Method " Url="html/0a3b56e6-f1a6-60c5-812b-573d4bdf47a7.htm" />
+        <HelpTOCNode Title="ToString Method " Url="html/8dbf7246-fd3e-4a77-84bc-9200e0592151.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="015a0166-6c5b-4834-8d48-632aeb19bf9d" Title="XtException Class" Url="html/6d9715c8-4e0b-b4a2-b981-bdf246d8fb2c.htm">
+      <HelpTOCNode Title="XtException Properties" Url="html/b6c5509a-1d55-e032-0610-d7be23e1122f.htm" />
+      <HelpTOCNode Id="e4d3de41-b017-4229-af51-a3067ef881ce" Title="XtException Methods" Url="html/e2b72714-0fe8-681b-b0f8-c9ab6d0b9999.htm">
+        <HelpTOCNode Title="GetCause Method " Url="html/c4605c66-bac4-9c87-3dce-58fb1171aaf0.htm" />
+        <HelpTOCNode Title="GetError Method " Url="html/00bc8b37-58fc-12da-34a1-2b782d54c33f.htm" />
+        <HelpTOCNode Title="GetFault Method " Url="html/ac38fcae-ac81-8147-9ef8-d6b556c63f5f.htm" />
+        <HelpTOCNode Title="GetSystem Method " Url="html/a2324080-905d-7fed-9819-3208cf0b7d40.htm" />
+        <HelpTOCNode Title="GetText Method " Url="html/1becf6cf-fcfc-1c2a-eaf9-f578a2878dd7.htm" />
+        <HelpTOCNode Title="ToString Method " Url="html/033e403f-6b10-c7a5-60d2-78feb55fe301.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Title="XtFatalCallback Delegate" Url="html/7514cbcb-542e-9b3d-2a9e-41c35ce4f5b5.htm" />
+    <HelpTOCNode Id="61e1c8da-8d53-4776-a928-46aa49f35065" Title="XtFormat Class" Url="html/0158f0b6-8cf6-0dae-54cd-8dce14a6a5b6.htm">
+      <HelpTOCNode Id="5627a4e6-1895-4f5b-85c9-4f3e66cecf01" Title="XtFormat Constructor " Url="html/42dc2174-fe89-4e81-6946-49ea9339ed46.htm">
+        <HelpTOCNode Title="XtFormat Constructor " Url="html/a8e3804f-8c59-9961-5dbd-f152d88d9e19.htm" />
+        <HelpTOCNode Title="XtFormat Constructor (XtMix, Int32, UInt64, Int32, UInt64)" Url="html/1f2d288a-b3a9-1f64-dea8-c5fd55b7f30d.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="2dd14a68-4923-4d37-90f3-076c51310ff9" Title="XtFormat Methods" Url="html/1432d6b8-fe75-fa66-07a4-b6f57491d871.htm">
+        <HelpTOCNode Title="ToString Method " Url="html/b1fb4642-a281-9d3e-0748-82177405279a.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="7b990897-85dd-412f-b809-df3d2be693d0" Title="XtFormat Fields" Url="html/32946967-a953-9c78-8a56-4364a260e2c8.htm">
+        <HelpTOCNode Title="inMask Field" Url="html/eb49ca5d-14cf-db90-51c4-9a60cead39f4.htm" />
+        <HelpTOCNode Title="inputs Field" Url="html/d51baa28-1ecb-5305-fdec-f3f4ce43f004.htm" />
+        <HelpTOCNode Title="mix Field" Url="html/12708f72-6dce-31b2-09d1-cee6854c19d8.htm" />
+        <HelpTOCNode Title="outMask Field" Url="html/359aaf13-ac67-efa7-5d3c-0a6e13b893fd.htm" />
+        <HelpTOCNode Title="outputs Field" Url="html/33a606f1-9bd3-7032-b414-d8a076111f40.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="bcd2b618-f42c-4c3f-af7a-9cccbfefd69a" Title="XtLatency Class" Url="html/0b71bee2-e9d3-f6e2-084f-72e1db2d9a2d.htm">
+      <HelpTOCNode Title="XtLatency Constructor " Url="html/0ea3d043-d9ed-11ec-7778-09281be077b5.htm" />
+      <HelpTOCNode Id="001d31ca-1bcc-457c-bdef-2f51042f01f6" Title="XtLatency Methods" Url="html/ed1b01dd-3765-0c69-8ed7-5cf3a9fd7ec7.htm">
+        <HelpTOCNode Title="ToString Method " Url="html/25ebb0c8-5d75-8eb4-e4aa-3ebb45b5a142.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="4fd0b70b-b949-4094-92dd-060eaf404b9d" Title="XtLatency Fields" Url="html/f2b2624f-7b87-6363-8de2-cec42d47c18c.htm">
+        <HelpTOCNode Title="input Field" Url="html/9a2ee3a2-5aa8-ac28-f78a-3203123f06f1.htm" />
+        <HelpTOCNode Title="output Field" Url="html/d8896ebb-d3b6-1a9e-f5df-521bd2b80a03.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Title="XtLevel Enumeration" Url="html/dcf430a2-dd32-fad3-1d04-88bb67639f91.htm" />
+    <HelpTOCNode Id="9d5dd402-44c3-44bc-8b34-037429f5eb38" Title="XtMix Class" Url="html/97a9295e-c270-98af-fd99-557e82a78e2e.htm">
+      <HelpTOCNode Id="878a7159-ef85-437c-89a2-305a84c2cc64" Title="XtMix Constructor " Url="html/92630c21-f076-040c-55bb-e18d9a81123c.htm">
+        <HelpTOCNode Title="XtMix Constructor " Url="html/ae89733b-7c00-59f9-9bd9-c4c8397e59f3.htm" />
+        <HelpTOCNode Title="XtMix Constructor (Int32, XtSample)" Url="html/342ce579-8c71-2088-fff0-b469c3285830.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="5d6c4276-3298-451b-a6e0-18df44c3cc93" Title="XtMix Methods" Url="html/bcb146ad-287b-79ba-b70f-e67d78f70444.htm">
+        <HelpTOCNode Title="ToString Method " Url="html/5d892177-0a1f-b973-2209-7b186598aee3.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="c31b0f15-2148-4322-bbaa-948170296664" Title="XtMix Fields" Url="html/7c5022b2-283c-6884-dbde-463dd9063e7f.htm">
+        <HelpTOCNode Title="rate Field" Url="html/7e463073-4264-a520-2c2a-f46446d068ce.htm" />
+        <HelpTOCNode Title="sample Field" Url="html/8e181e4b-8dbd-dce2-19c0-9c4d3bf7fb97.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="4f0fb23b-64ad-492b-9dbf-aa188d54b32f" Title="XtPrint Class" Url="html/559e397a-21c5-f3a4-c49c-bb939a5a66df.htm">
+      <HelpTOCNode Id="1e9c2ada-1ac5-481b-ab1c-94e11e579e75" Title="XtPrint Methods" Url="html/11d2e4ea-341e-2610-d78d-71eda214dfdb.htm">
+        <HelpTOCNode Title="AttributesToString Method " Url="html/58c15742-4ef5-7efe-27d3-a552d88c3a89.htm" />
+        <HelpTOCNode Title="BufferToString Method " Url="html/f5f55a5e-a315-e36a-27e6-a0aa48426e67.htm" />
+        <HelpTOCNode Title="CapabilitiesToString Method " Url="html/86fa6349-46da-7f11-8011-56731993bbee.htm" />
+        <HelpTOCNode Title="CauseToString Method " Url="html/ae9c026a-f7e0-7748-be66-de0d047f8b8a.htm" />
+        <HelpTOCNode Title="ChannelsToString Method " Url="html/a6de0f82-e06c-e922-21ed-a4851970f52a.htm" />
+        <HelpTOCNode Title="ErrorToString Method " Url="html/b96bf53a-e0ef-7e93-d27d-5ca651159687.htm" />
+        <HelpTOCNode Title="FormatToString Method " Url="html/02769e17-dce3-613e-6e31-ce4566a6f5d9.htm" />
+        <HelpTOCNode Title="LatencyToString Method " Url="html/62caec44-9def-22da-2251-4aa2d0e4e980.htm" />
+        <HelpTOCNode Title="LevelToString Method " Url="html/13b4bc2b-5f6d-dc9e-e6bd-268224567663.htm" />
+        <HelpTOCNode Title="MixToString Method " Url="html/1800e456-ea4d-ebe5-e69f-56d3a1314eee.htm" />
+        <HelpTOCNode Title="SampleToString Method " Url="html/07c3011f-7da6-b625-2d66-045247a9f20c.htm" />
+        <HelpTOCNode Title="SetupToString Method " Url="html/fad5081f-f918-3a83-e5d4-c513a126d34d.htm" />
+        <HelpTOCNode Title="SystemToString Method " Url="html/afc0e030-1773-4860-4459-5ee9f93b5e38.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Title="XtSample Enumeration" Url="html/eb8b401f-1f73-ef09-1841-991b5ed54282.htm" />
+    <HelpTOCNode Id="59054c1d-dbed-4b6d-a23b-92c11ef823a7" Title="XtService Class" Url="html/007ab092-40f1-1cf0-f1d5-81075faf43f1.htm">
+      <HelpTOCNode Id="617085b8-8f3a-4f6e-8442-926e56a1382a" Title="XtService Methods" Url="html/18f35cb7-6a66-bd9a-bf9a-da94ffcae9c0.htm">
+        <HelpTOCNode Title="AggregateStream Method " Url="html/c95ed7ba-9062-d9c6-baf9-d4667ee2bea2.htm" />
+        <HelpTOCNode Title="GetCapabilities Method " Url="html/d8522183-6302-3995-fbe0-436018164d00.htm" />
+        <HelpTOCNode Title="GetDeviceCount Method " Url="html/8f34616c-c416-9a20-1b19-e792085a4a08.htm" />
+        <HelpTOCNode Title="GetName Method " Url="html/9deba804-a407-2b2e-2fde-9c8507ff5528.htm" />
+        <HelpTOCNode Title="GetSystem Method " Url="html/ff345d86-919e-ae2c-7d2b-7fdf0d593bc0.htm" />
+        <HelpTOCNode Title="OpenDefaultDevice Method " Url="html/1e9929cb-9b31-f40a-af0a-e8da6b12823b.htm" />
+        <HelpTOCNode Title="OpenDevice Method " Url="html/fc131827-3eb6-0db7-16d8-2edf35bfa1cc.htm" />
+        <HelpTOCNode Title="ToString Method " Url="html/6a4b0b05-c76e-c9b7-6445-38d847736cbf.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Title="XtSetup Enumeration" Url="html/cc4a6dfc-3b77-3c50-483a-9ebcaee134c7.htm" />
+    <HelpTOCNode Id="92a99719-3b9d-4f42-b9fe-156f775f0c62" Title="XtStream Class" Url="html/a96c08ba-c8bc-e573-34fe-4d448c282d16.htm">
+      <HelpTOCNode Id="bcbff365-c6c4-42f7-a09d-4a2751765939" Title="XtStream Methods" Url="html/62d2e4b5-2468-6ffa-a93d-67e7d3356fae.htm">
+        <HelpTOCNode Title="Dispose Method " Url="html/468995de-b798-13c2-e8cc-055a5b594a2e.htm" />
+        <HelpTOCNode Title="GetFormat Method " Url="html/aa349ee5-52ad-e19e-d73b-2a11ad738033.htm" />
+        <HelpTOCNode Title="GetFrames Method " Url="html/7df7ad8f-cd17-c563-3de8-4302810b5e18.htm" />
+        <HelpTOCNode Title="GetLatency Method " Url="html/73dd3872-0a83-f08f-5882-50b4edfadfdc.htm" />
+        <HelpTOCNode Title="GetSystem Method " Url="html/d85138e9-484b-6c76-4437-d560b06a53c4.htm" />
+        <HelpTOCNode Title="IsInterleaved Method " Url="html/e4b082cd-d6b5-f2f7-c2d2-0ff4de56b724.htm" />
+        <HelpTOCNode Title="IsRaw Method " Url="html/7acbd33e-adf5-e734-54ec-4371ee22fb52.htm" />
+        <HelpTOCNode Title="Start Method " Url="html/f41fdb24-c97c-d335-b17c-952d6744d63a.htm" />
+        <HelpTOCNode Title="Stop Method " Url="html/d00cd3ab-6854-9886-35ae-c17dffa2158d.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Title="XtStreamCallback Delegate" Url="html/ebd44fb3-4d78-09a0-3e10-018dcab4e4f4.htm" />
+    <HelpTOCNode Title="XtSystem Enumeration" Url="html/7ffff37f-804b-9679-72c3-64bd0d1b3348.htm" />
+    <HelpTOCNode Title="XtTraceCallback Delegate" Url="html/097bba76-7708-9980-6241-beefe25ebfc3.htm" />
+    <HelpTOCNode Title="XtXRunCallback Delegate" Url="html/33a61f65-25af-9d66-0e13-12d107ff2b94.htm" />
+  </HelpTOCNode>
+</HelpTOC>
