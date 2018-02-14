@@ -1,0 +1,2158 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="streaming audio, open source, low latency, directsound, wasapi, asio, alsa, jack, pulseaudio, .net, java, c#"/>
+    <title>XT-Audio - An open source low-latency audio library</title>
+    <link rel="stylesheet" type="text/css" href="css/github.css"/>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/highlight.pack.js"></script>
+  </head>
+  <body>
+    <div id="container">
+
+      <h1>XT-Audio</h1>
+      <h4>An open source streaming audio library focused on low latency, platform independence and API simplicity.</h4>
+
+      <div class="lblock">
+        <h2>Contact</h2>
+        <span class="label1">Mail:</span><a href="mailto:sjoerdvankreel@gmail.com">sjoerdvankreel@gmail.com</a><br/>
+      </div>
+      <div class="rblock">
+        <h2>Download</h2>
+        <span class="label2">Binaries:</span><a href="dist/xt-audio-1.0.5.zip">All platforms</a><br/>
+        <span class="label2">Source:</span><a href="https://github.com/sjoerdvankreel/xt-audio">XT-Audio on GitHub</a><br/>
+        <span class="label2">Screenshot:</span><a href="img/gui.png">Exclusive-mode WASAPI example</a><br/>
+      </div>
+      <p style="clear: both;"></p>
+
+      <div class="lblock">
+        <h2>Features</h2>
+        <ul>
+          <li>Aggregation: combine multiple devices into a single stream</li>
+          <li>DirectSound, WASAPI, ASIO, Pulse, ALSA and JACK backends</li>
+          <li>Channel masks, timestamps, full-duplex, (non)interleaved mode</li>
+          <li>Supports x86/x64 Windows/Linux (C/C++), JVM, .NET and Mono</li>
+        </ul>
+      </div>
+      <div class="rblock">
+        <h2>Docs</h2>
+        <a href="doc/core/html/index.html">Core</a> /
+        <a href="doc/cpp/html/index.html">C++</a> /
+        <a href="doc/java/index.html">Java</a> /
+        <a href="doc/cli/index.html">.NET</a><br/>
+        Only the core (C) API is fully documented. Code samples are provided for all languages except C. Refer to the
+        core documentation's main page for differences between the C API and other language APIs.
+      </div>
+      <p style="clear: both;"></p>
+
+      <h2 class="center">Code samples</h2>
+      <ul id="tabs" class="nav nav-tabs">
+        <li class="active"><a href="#simple-list" data-toggle="tab" onclick="$('.tab-pane[id=simple-list] .nav-tabs a:first').tab('show');">Device list</a></li>
+        <li><a href="#detailed-list" data-toggle="tab" onclick="$('.tab-pane[id=detailed-list] .nav-tabs a:first').tab('show');">Detailed list</a></li>
+        <li><a href="#simple-playback" data-toggle="tab" onclick="$('.tab-pane[id=simple-playback] .nav-tabs a:first').tab('show');">Playback</a></li>
+        <li><a href="#simple-record" data-toggle="tab" onclick="$('.tab-pane[id=simple-record] .nav-tabs a:first').tab('show');">Record</a></li>
+        <li><a href="#advanced-playback" data-toggle="tab" onclick="$('.tab-pane[id=advanced-playback] .nav-tabs a:first').tab('show');">Advanced playback</a></li>
+        <li><a href="#advanced-record" data-toggle="tab" onclick="$('.tab-pane[id=advanced-record] .nav-tabs a:first').tab('show');">Advanced record</a></li>
+        <li><a href="#full-duplex" data-toggle="tab" onclick="$('.tab-pane[id=full-duplex] .nav-tabs a:first').tab('show');">Full duplex</a></li>
+        <li><a href="#aggregate" data-toggle="tab" onclick="$('.tab-pane[id=aggregate] .nav-tabs a:first').tab('show');">Aggregation</a></li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane active" id="simple-list">
+          <ul class="nav nav-tabs">
+            <li class="active"><a href="#simple-list-java" data-toggle="tab">Java</a></li>
+            <li><a href="#simple-list-net" data-toggle="tab">.NET</a></li>
+            <li><a href="#simple-list-cpp" data-toggle="tab">C++</a></li>
+            <li><a href="#simple-list-output" data-toggle="tab">Sample output</a></li>
+          </ul>
+          <div class="usage">
+            <ul>
+              <li>Print device names to stdout.</li>
+            </ul>
+          </div>
+          <div class="tab-content">
+            <div class="tab-pane active" id="simple-list-java">
+              <pre><code class="lang-java">package com.xtaudio.xt;
+
+public class PrintSimple {
+
+    public static void main(String[] args) {
+
+        try (XtAudio audio = new XtAudio(null, null, null, null)) {
+            for (int s = 0; s &lt; XtAudio.getServiceCount(); s++) {
+                XtService service = XtAudio.getServiceByIndex(s);
+                for (int d = 0; d &lt; service.getDeviceCount(); d++)
+                    try (XtDevice device = service.openDevice(d)) {
+                        System.out.println(service.getName() + &quot;: &quot; + device.getName());
+                    }
+            }
+        }
+    }
+}</code></pre>
+            </div>
+            <div class="tab-pane" id="simple-list-net">
+              <pre><code class="lang-cs">using System;
+
+namespace Xt {
+
+    public class PrintSimple {
+
+        public static void Main(string[] args) {
+
+            using (XtAudio audio = new XtAudio(null, IntPtr.Zero, null, null)) {
+                for (int s = 0; s &lt; XtAudio.GetServiceCount(); s++) {
+                    XtService service = XtAudio.GetServiceByIndex(s);
+                    for (int d = 0; d &lt; service.GetDeviceCount(); d++)
+                        using (XtDevice device = service.OpenDevice(d))
+                            Console.WriteLine(service.GetName() + &quot;: &quot; + device.GetName());
+                }
+            }
+        }
+    }
+}</code></pre>
+            </div>
+            <div class="tab-pane" id="simple-list-cpp">
+              <pre><code class="lang-cpp">#include &lt;xt-cpp.hpp&gt;
+#include &lt;iostream&gt;
+#include &lt;memory&gt;
+
+int main(int argc, char** argv) {
+  Xt::Audio audio(&quot;&quot;, nullptr, nullptr, nullptr);
+  for(int s = 0; s &lt; Xt::Audio::GetServiceCount(); s++) {
+    std::unique_ptr&lt;Xt::Service&gt; service = Xt::Audio::GetServiceByIndex(s);
+    for(int d = 0; d &lt; service-&gt;GetDeviceCount(); d++) {
+      std::unique_ptr&lt;Xt::Device&gt; device = service-&gt;OpenDevice(d);
+      std::cout &lt;&lt; service-&gt;GetName() &lt;&lt; &quot;: &quot; &lt;&lt; device-&gt;GetName() &lt;&lt; &quot;\n&quot;;
+    }
+  }
+  return 0;
+}</code></pre>
+            </div>
+            <div class="tab-pane" id="simple-list-output">
+              <pre class="console">DirectSound: Lijningang (Realtek High Definition Audio)
+DirectSound: Microfoon (Realtek High Definition Audio)
+DirectSound: Luidsprekers (Realtek High Definition Audio)
+DirectSound: Realtek Digital Output (Realtek High Definition Audio)
+WASAPI: Microfoon (Realtek High Definition Audio) (Shared)
+WASAPI: Lijningang (Realtek High Definition Audio) (Shared)
+WASAPI: Realtek Digital Output (Realtek High Definition Audio) (Loopback)
+WASAPI: Luidsprekers (Realtek High Definition Audio) (Loopback)
+WASAPI: Microfoon (Realtek High Definition Audio) (Exclusive)
+WASAPI: Lijningang (Realtek High Definition Audio) (Exclusive)
+WASAPI: Realtek Digital Output (Realtek High Definition Audio) (Shared)
+WASAPI: Luidsprekers (Realtek High Definition Audio) (Shared)
+WASAPI: Realtek Digital Output (Realtek High Definition Audio) (Exclusive)
+WASAPI: Luidsprekers (Realtek High Definition Audio) (Exclusive)
+ASIO: ASIO4ALL v2
+ASIO: E-MU ASIO</pre>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane" id="detailed-list">
+          <ul class="nav nav-tabs">
+            <li><a href="#detailed-list-java" data-toggle="tab">Java</a></li>
+            <li><a href="#detailed-list-net" data-toggle="tab">.NET</a></li>
+            <li><a href="#detailed-list-cpp" data-toggle="tab">C++</a></li>
+            <li><a href="#detailed-list-output" data-toggle="tab">Sample output</a></li>
+          </ul>
+          <div class="usage">
+            <ul>
+              <li>Query audio setups, service capabilities and default devices.</li>
+              <li>Initialize with application name, logger and fatal error handler.</li>
+              <li>Query device mix, maximum channels and (non)interleaved access support.</li>
+            </ul>
+          </div>
+           <div class="tab-content">
+            <div class="tab-pane" id="detailed-list-java">
+              <pre><code class="lang-java">package com.xtaudio.xt;
+
+public class PrintDetailed {
+
+    static void onFatal() {
+        System.out.println(&quot;Fatal error.&quot;);
+    }
+
+    static void onTrace(XtLevel level, String message) {
+        if (level != XtLevel.INFO)
+            System.out.println(&quot;-- &quot; + level + &quot;: &quot; + message);
+    }
+
+    public static void main(String[] args) {
+
+        try (XtAudio audio = new XtAudio(&quot;Sample&quot;, null, PrintDetailed::onTrace, PrintDetailed::onFatal)) {
+
+            System.out.println(&quot;Win32: &quot; + XtAudio.isWin32());
+            System.out.println(&quot;Version: &quot; + XtAudio.getVersion());
+            System.out.println(&quot;Pro Audio: &quot; + XtAudio.getServiceBySetup(XtSetup.PRO_AUDIO).getName());
+            System.out.println(&quot;System Audio: &quot; + XtAudio.getServiceBySetup(XtSetup.SYSTEM_AUDIO).getName());
+            System.out.println(&quot;Consumer Audio: &quot; + XtAudio.getServiceBySetup(XtSetup.CONSUMER_AUDIO).getName());
+
+            for (int s = 0; s &lt; XtAudio.getServiceCount(); s++) {
+
+                XtService service = XtAudio.getServiceByIndex(s);
+                System.out.println(&quot;Service &quot; + service.getName() + &quot;:&quot;);
+                System.out.println(&quot;  System: &quot; + service.getSystem());
+                System.out.println(&quot;  Device count: &quot; + service.getDeviceCount());
+                System.out.println(&quot;  Capabilities: &quot; + XtPrint.capabilitiesToString(service.getCapabilities()));
+
+                try (XtDevice defaultInput = service.openDefaultDevice(false)) {
+                    System.out.println(&quot;  Default input: &quot; + defaultInput);
+                }
+                try (XtDevice defaultOutput = service.openDefaultDevice(true)) {
+                    System.out.println(&quot;  Default output: &quot; + defaultOutput);
+                }
+
+                for (int d = 0; d &lt; service.getDeviceCount(); d++)
+                    try (XtDevice device = service.openDevice(d)) {
+
+                        System.out.println(&quot;  Device &quot; + device.getName() + &quot;:&quot;);
+                        System.out.println(&quot;    System: &quot; + device.getSystem());
+                        System.out.println(&quot;    Current mix: &quot; + device.getMix());
+                        System.out.println(&quot;    Input channels: &quot; + device.getChannelCount(false));
+                        System.out.println(&quot;    Output channels: &quot; + device.getChannelCount(true));
+                        System.out.println(&quot;    Interleaved access: &quot; + device.supportsAccess(true));
+                        System.out.println(&quot;    Non-interleaved access: &quot; + device.supportsAccess(false));
+                    }
+            }
+        } catch (XtException e) {
+
+            System.out.printf(&quot;Error: system %s, fault %s, cause %s, text %s, message: %s.\n&quot;,
+                    XtException.getSystem(e.getError()),
+                    XtException.getFault(e.getError()),
+                    XtException.getCause(e.getError()),
+                    XtException.getText(e.getError()),
+                    e.toString());
+        }
+    }
+}</code></pre>
+            </div>
+            <div class="tab-pane" id="detailed-list-net">
+              <pre><code class="lang-cs">using System;
+
+namespace Xt {
+
+    public class PrintDetailed {
+
+        static void OnFatal() {
+            Console.WriteLine(&quot;Fatal error.&quot;);
+        }
+
+        static void OnTrace(XtLevel level, String message) {
+            if (level != XtLevel.Info)
+                Console.WriteLine(&quot;-- &quot; + level + &quot;: &quot; + message);
+        }
+
+        public static void Main(String[] args) {
+
+            using (XtAudio audio = new XtAudio(&quot;Sample&quot;, IntPtr.Zero, OnTrace, OnFatal)) {
+
+                try {
+                    Console.WriteLine(&quot;Win32: &quot; + XtAudio.IsWin32());
+                    Console.WriteLine(&quot;Version: &quot; + XtAudio.GetVersion());
+                    Console.WriteLine(&quot;Pro Audio: &quot; + XtAudio.GetServiceBySetup(XtSetup.ProAudio).GetName());
+                    Console.WriteLine(&quot;System Audio: &quot; + XtAudio.GetServiceBySetup(XtSetup.SystemAudio).GetName());
+                    Console.WriteLine(&quot;Consumer Audio: &quot; + XtAudio.GetServiceBySetup(XtSetup.ConsumerAudio).GetName());
+
+                    for (int s = 0; s &lt; XtAudio.GetServiceCount(); s++) {
+
+                        XtService service = XtAudio.GetServiceByIndex(s);
+                        Console.WriteLine(&quot;Service &quot; + service.GetName() + &quot;:&quot;);
+                        Console.WriteLine(&quot;  System: &quot; + service.GetSystem());
+                        Console.WriteLine(&quot;  Device count: &quot; + service.GetDeviceCount());
+                        Console.WriteLine(&quot;  Capabilities: &quot; + XtPrint.CapabilitiesToString(service.GetCapabilities()));
+
+                        using (XtDevice defaultInput = service.OpenDefaultDevice(false))
+                            Console.WriteLine(&quot;  Default input: &quot; + defaultInput);
+
+                        using (XtDevice defaultOutput = service.OpenDefaultDevice(true))
+                            Console.WriteLine(&quot;  Default output: &quot; + defaultOutput);
+
+
+                        for (int d = 0; d &lt; service.GetDeviceCount(); d++)
+                            using (XtDevice device = service.OpenDevice(d)) {
+
+                                Console.WriteLine(&quot;  Device &quot; + device.GetName() + &quot;:&quot;);
+                                Console.WriteLine(&quot;    System: &quot; + device.GetSystem());
+                                Console.WriteLine(&quot;    Current mix: &quot; + device.GetMix());
+                                Console.WriteLine(&quot;    Input channels: &quot; + device.GetChannelCount(false));
+                                Console.WriteLine(&quot;    Output channels: &quot; + device.GetChannelCount(true));
+                                Console.WriteLine(&quot;    Interleaved access: &quot; + device.SupportsAccess(true));
+                                Console.WriteLine(&quot;    Non-interleaved access: &quot; + device.SupportsAccess(false));
+                            }
+                    }
+                } catch (XtException e) {
+
+                    Console.WriteLine(&quot;Error: system %s, fault %s, cause %s, text %s, message: %s.\n&quot;,
+                            XtException.GetSystem(e.GetError()),
+                            XtException.GetFault(e.GetError()),
+                            XtException.GetCause(e.GetError()),
+                            XtException.GetText(e.GetError()),
+                            e.ToString());
+                }
+            }
+        }
+    }
+}</code></pre>
+            </div>
+            <div class="tab-pane" id="detailed-list-cpp">
+              <pre><code class="lang-cpp">#include &lt;xt-cpp.hpp&gt;
+#include &lt;iostream&gt;
+#include &lt;memory&gt;
+
+static void OnFatal() {
+  std::cout &lt;&lt; &quot;Fatal error.&quot;;
+}
+
+static void OnTrace(Xt::Level level, const std::string&amp; message) {
+  if(level != Xt::Level::Info)
+    std::cout &lt;&lt; &quot;-- &quot; &lt;&lt; level &lt;&lt; &quot;: &quot; &lt;&lt; message &lt;&lt; &quot;\n&quot;;
+}
+
+int main(int argc, char** argv) {
+
+  Xt::Audio audio(&quot;Sample&quot;, nullptr, OnTrace, OnFatal);
+
+  try {
+    std::cout &lt;&lt; &quot;Win32: &quot; &lt;&lt; Xt::Audio::IsWin32() &lt;&lt; &quot;\n&quot;;
+    std::cout &lt;&lt; &quot;Version: &quot; &lt;&lt; Xt::Audio::GetVersion() &lt;&lt; &quot;\n&quot;;
+    std::cout &lt;&lt; &quot;Pro Audio: &quot; &lt;&lt; Xt::Audio::GetServiceBySetup(Xt::Setup::ProAudio)-&gt;GetName() &lt;&lt; &quot;\n&quot;;
+    std::cout &lt;&lt; &quot;System Audio: &quot; &lt;&lt; Xt::Audio::GetServiceBySetup(Xt::Setup::SystemAudio)-&gt;GetName() &lt;&lt; &quot;\n&quot;;
+    std::cout &lt;&lt; &quot;Consumer Audio: &quot; &lt;&lt; Xt::Audio::GetServiceBySetup(Xt::Setup::ConsumerAudio)-&gt;GetName() &lt;&lt; &quot;\n&quot;;
+
+    for(int s = 0; s &lt; Xt::Audio::GetServiceCount(); s++) {
+
+      std::unique_ptr&lt;Xt::Service&gt; service = Xt::Audio::GetServiceByIndex(s);
+      std::cout &lt;&lt; &quot;Service &quot; &lt;&lt; service-&gt;GetName() + &quot;:\n&quot;;
+      std::cout &lt;&lt; &quot;  System: &quot; &lt;&lt; service-&gt;GetSystem() &lt;&lt; &quot;\n&quot;;
+      std::cout &lt;&lt; &quot;  Device count: &quot; &lt;&lt; service-&gt;GetDeviceCount() &lt;&lt; &quot;\n&quot;;
+      std::cout &lt;&lt; &quot;  Capabilities: &quot; &lt;&lt; Xt::Print::CapabilitiesToString(service-&gt;GetCapabilities()) &lt;&lt; &quot;\n&quot;;
+
+      std::unique_ptr&lt;Xt::Device&gt; defaultInput = service-&gt;OpenDefaultDevice(false);
+      if(defaultInput)
+        std::cout &lt;&lt; &quot;  Default input: &quot; &lt;&lt; *defaultInput &lt;&lt; &quot;\n&quot;;
+
+      std::unique_ptr&lt;Xt::Device&gt; defaultOutput = service-&gt;OpenDefaultDevice(true);
+      if(defaultOutput)
+        std::cout &lt;&lt; &quot;  Default output: &quot; &lt;&lt; *defaultOutput &lt;&lt; &quot;\n&quot;;
+
+      for(int d = 0; d &lt; service-&gt;GetDeviceCount(); d++) {
+        std::unique_ptr&lt;Xt::Device&gt; device = service-&gt;OpenDevice(d);
+        std::unique_ptr&lt;Xt::Mix&gt; mix = device-&gt;GetMix();
+        std::cout &lt;&lt; &quot;  Device &quot; &lt;&lt; device-&gt;GetName() + &quot;:&quot; &lt;&lt; &quot;\n&quot;;
+        std::cout &lt;&lt; &quot;    System: &quot; &lt;&lt; device-&gt;GetSystem() &lt;&lt; &quot;\n&quot;;
+        if(mix)
+          std::cout &lt;&lt; &quot;    Current mix: &quot; &lt;&lt; *mix &lt;&lt; &quot;\n&quot;;
+        std::cout &lt;&lt; &quot;    Input channels: &quot; &lt;&lt; device-&gt;GetChannelCount(false) &lt;&lt; &quot;\n&quot;;
+        std::cout &lt;&lt; &quot;    Output channels: &quot; &lt;&lt; device-&gt;GetChannelCount(true) &lt;&lt; &quot;\n&quot;;
+        std::cout &lt;&lt; &quot;    Interleaved access: &quot; &lt;&lt; device-&gt;SupportsAccess(true) &lt;&lt; &quot;\n&quot;;
+        std::cout &lt;&lt; &quot;    Non-interleaved access: &quot; &lt;&lt; device-&gt;SupportsAccess(false) &lt;&lt; &quot;\n&quot;;
+      }
+    }
+  }
+  catch(const Xt::Exception&amp; e) {
+    std::cout &lt;&lt; &quot;Error: &quot;
+      &lt;&lt; &quot;system &quot; &lt;&lt; Xt::Exception::GetSystem(e.GetError()) &lt;&lt; &quot;, &quot;
+      &lt;&lt; &quot;fault &quot; &lt;&lt; Xt::Exception::GetFault(e.GetError()) &lt;&lt; &quot;, &quot;
+      &lt;&lt; &quot;cause &quot; &lt;&lt; Xt::Exception::GetCause(e.GetError()) &lt;&lt; &quot;, &quot;
+      &lt;&lt; &quot;text &quot; &lt;&lt; Xt::Exception::GetText(e.GetError()) &lt;&lt; &quot;, &quot;
+      &lt;&lt; &quot;message &quot; &lt;&lt; e &lt;&lt; &quot;.\n&quot;;
+  }
+  return 0;
+}</code></pre>
+            </div>
+            <div class="tab-pane" id="detailed-list-output">
+              <pre class="console">Win32: 1
+Version: 1.0.2
+Pro Audio: ASIO
+System Audio: WASAPI
+Consumer Audio: DirectSound
+Service DirectSound:
+  System: DSound
+  Device count: 4
+  Capabilities: [ChannelMask]
+  Default input: Primair stuurprogramma voor opnemen van geluid
+  Default output: Primair geluidsstuurprogramma
+  Device Lijningang (Realtek High Definition Audio):
+    System: DSound
+    Current mix: [48000 Float32]
+    Input channels: 18
+    Output channels: 0
+    Interleaved access: 1
+    Non-interleaved access: 0
+  Device Microfoon (Realtek High Definition Audio):
+    System: DSound
+    Current mix: [48000 Float32]
+    Input channels: 18
+    Output channels: 0
+    Interleaved access: 1
+    Non-interleaved access: 0
+  Device Luidsprekers (Realtek High Definition Audio):
+    System: DSound
+    Current mix: [48000 Float32]
+    Input channels: 0
+    Output channels: 18
+    Interleaved access: 1
+    Non-interleaved access: 0
+  Device Realtek Digital Output (Realtek High Definition Audio):
+    System: DSound
+    Current mix: [48000 Float32]
+    Input channels: 0
+    Output channels: 18
+    Interleaved access: 1
+    Non-interleaved access: 0
+Service WASAPI:
+  System: Wasapi
+  Device count: 10
+  Capabilities: [Time | Latency | ChannelMask | XRunDetection]
+  Default input: Lijningang (Realtek High Definition Audio) (Shared)
+  Default output: Luidsprekers (Realtek High Definition Audio) (Shared)
+  Device Microfoon (Realtek High Definition Audio) (Shared):
+    System: Wasapi
+    Current mix: [48000 Float32]
+    Input channels: 18
+    Output channels: 0
+    Interleaved access: 1
+    Non-interleaved access: 0
+  Device Lijningang (Realtek High Definition Audio) (Shared):
+    System: Wasapi
+    Current mix: [48000 Float32]
+    Input channels: 18
+    Output channels: 0
+    Interleaved access: 1
+    Non-interleaved access: 0
+  Device Realtek Digital Output (Realtek High Definition Audio) (Loopback):
+    System: Wasapi
+    Current mix: [48000 Float32]
+    Input channels: 18
+    Output channels: 0
+    Interleaved access: 1
+    Non-interleaved access: 0
+  Device Luidsprekers (Realtek High Definition Audio) (Loopback):
+    System: Wasapi
+    Current mix: [48000 Float32]
+    Input channels: 18
+    Output channels: 0
+    Interleaved access: 1
+    Non-interleaved access: 0
+  Device Microfoon (Realtek High Definition Audio) (Exclusive):
+    System: Wasapi
+    Input channels: 18
+    Output channels: 0
+    Interleaved access: 1
+    Non-interleaved access: 0
+  Device Lijningang (Realtek High Definition Audio) (Exclusive):
+    System: Wasapi
+    Input channels: 18
+    Output channels: 0
+    Interleaved access: 1
+    Non-interleaved access: 0
+  Device Realtek Digital Output (Realtek High Definition Audio) (Shared):
+    System: Wasapi
+    Current mix: [48000 Float32]
+    Input channels: 0
+    Output channels: 18
+    Interleaved access: 1
+    Non-interleaved access: 0
+  Device Luidsprekers (Realtek High Definition Audio) (Shared):
+    System: Wasapi
+    Current mix: [48000 Float32]
+    Input channels: 0
+    Output channels: 18
+    Interleaved access: 1
+    Non-interleaved access: 0
+  Device Realtek Digital Output (Realtek High Definition Audio) (Exclusive):
+    System: Wasapi
+    Input channels: 0
+    Output channels: 18
+    Interleaved access: 1
+    Non-interleaved access: 0
+  Device Luidsprekers (Realtek High Definition Audio) (Exclusive):
+    System: Wasapi
+    Input channels: 0
+    Output channels: 18
+    Interleaved access: 1
+    Non-interleaved access: 0
+Service ASIO:
+  System: Asio
+  Device count: 2
+  Capabilities: [Time | Latency | FullDuplex | ChannelMask]
+  Default input: ASIO4ALL v2
+  Default output: ASIO4ALL v2
+  Device ASIO4ALL v2:
+    System: Asio
+    Current mix: [44100 Int32]
+    Input channels: 2
+    Output channels: 8
+    Interleaved access: 0
+    Non-interleaved access: 1
+  Device E-MU ASIO:
+    System: Asio
+    Current mix: [44100 Int32]
+    Input channels: 32
+    Output channels: 32
+    Interleaved access: 0
+    Non-interleaved access: 1</pre>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane" id="simple-playback">
+          <ul class="nav nav-tabs">
+            <li><a href="#simple-playback-java" data-toggle="tab">Java</a></li>
+            <li><a href="#simple-playback-net" data-toggle="tab">.NET</a></li>
+            <li><a href="#simple-playback-cpp" data-toggle="tab">C++</a></li>
+            <li><a href="#simple-playback-output" data-toggle="tab">Sample output</a></li>
+          </ul>
+          <div class="usage">
+            <ul>
+              <li>Render sinewave to the default output device.</li>
+            </ul>
+          </div>
+          <div class="tab-content">
+            <div class="tab-pane" id="simple-playback-java">
+              <pre><code class="lang-java">package com.xtaudio.xt;
+
+public class RenderSimple {
+
+    static double phase = 0.0;
+    static final double FREQUENCY = 660.0;
+    static final XtFormat FORMAT = new XtFormat(new XtMix(44100, XtSample.FLOAT32), 0, 0, 1, 0);
+
+    static void render(XtStream stream, Object input, Object output, int frames,
+            double time, long position, boolean timeValid, long error, Object user) {
+
+        for (int f = 0; f &lt; frames; f++) {
+            phase += FREQUENCY / FORMAT.mix.rate;
+            if (phase &gt;= 1.0)
+                phase = -1.0;
+            ((float[]) output)[f] = (float) Math.sin(phase * Math.PI);
+        }
+    }
+
+    public static void main(String[] args) throws Exception {
+
+        try (XtAudio audio = new XtAudio(null, null, null, null)) {
+            XtService service = XtAudio.getServiceBySetup(XtSetup.CONSUMER_AUDIO);
+            try (XtDevice device = service.openDefaultDevice(true)) {
+                if (device != null &amp;&amp; device.supportsFormat(FORMAT)) {
+
+                    XtBuffer buffer = device.getBuffer(FORMAT);
+                    try (XtStream stream = device.openStream(FORMAT, true, false,
+                            buffer.current, RenderSimple::render, null, null)) {
+                        stream.start();
+                        Thread.sleep(1000);
+                        stream.stop();
+                    }
+                }
+            }
+        }
+    }
+}</code></pre>
+            </div>
+            <div class="tab-pane" id="simple-playback-net">
+              <pre><code class="lang-cs">using System;
+using System.Threading;
+
+namespace Xt {
+
+    public class RenderSimple {
+
+        static double phase = 0.0;
+        const double Frequency = 660.0;
+        static readonly XtFormat Format = new XtFormat(new XtMix(44100, XtSample.Float32), 0, 0, 1, 0);
+
+        static void Render(XtStream stream, object input, object output, int frames,
+                double time, ulong position, bool timeValid, ulong error, object user) {
+
+            for (int f = 0; f &lt; frames; f++) {
+                phase += Frequency / Format.mix.rate;
+                if (phase &gt;= 1.0)
+                    phase = -1.0;
+                ((float[])output)[f] = (float)Math.Sin(phase * Math.PI);
+            }
+        }
+
+        public static void Main(string[] args) {
+
+            using (XtAudio audio = new XtAudio(null, IntPtr.Zero, null, null)) {
+                XtService service = XtAudio.GetServiceBySetup(XtSetup.ConsumerAudio);
+                using (XtDevice device = service.OpenDefaultDevice(true)) {
+                    if (device != null &amp;&amp; device.SupportsFormat(Format)) {
+
+                        XtBuffer buffer = device.GetBuffer(Format);
+                        using (XtStream stream = device.OpenStream(Format, true, false,
+                                buffer.current, Render, null, null)) {
+                            stream.Start();
+                            Thread.Sleep(1000);
+                            stream.Stop();
+                        }
+                    }
+                }
+            }
+        }
+    }
+}</code></pre>
+            </div>
+            <div class="tab-pane" id="simple-playback-cpp">
+              <pre><code class="lang-cpp">#include &lt;xt-cpp.hpp&gt;
+#ifdef _WIN32
+#include &lt;windows.h&gt;
+#else
+#include &lt;unistd.h&gt;
+#endif
+#include &lt;climits&gt;
+#include &lt;cmath&gt;
+#include &lt;iostream&gt;
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+
+static double phase = 0.0;
+static const double Frequency = 660.0;
+static const Xt::Format Format(Xt::Mix(44100, Xt::Sample::Float32), 0, 0, 1, 0);
+
+static void Render(
+  const Xt::Stream&amp; stream, const void* input, void* output, int32_t frames,
+  double time, uint64_t position, bool timeValid, uint64_t error, void* user) {
+
+  for(int f = 0; f &lt; frames; f++) {
+    phase += Frequency / Format.mix.rate;
+    if(phase &gt;= 1.0)
+      phase = -1.0;
+    ((float*)output)[f] = (float)sin(phase * M_PI);
+  }
+}
+
+int main(int argc, char** argv) {
+
+  Xt::Audio audio(&quot;&quot;, nullptr, nullptr, nullptr);
+  std::unique_ptr&lt; Xt::Service&gt; service = Xt::Audio::GetServiceBySetup(Xt::Setup::ConsumerAudio);
+  std::unique_ptr&lt;Xt::Device&gt; device = service-&gt;OpenDefaultDevice(true);
+  if(device  &amp;&amp; device-&gt;SupportsFormat(Format)) {
+
+    Xt::Buffer buffer = device-&gt;GetBuffer(Format);
+    std::unique_ptr&lt;Xt::Stream&gt; stream = device-&gt;OpenStream(Format, true, buffer.current, Render, nullptr, nullptr);
+    stream-&gt;Start();
+#if _WIN32
+    Sleep(1000);
+#else
+    usleep(1000 * 1000);
+#endif
+    stream-&gt;Stop();
+  }
+  return 0;
+}</code></pre>
+            </div>
+            <div class="tab-pane" id="simple-playback-output">
+              <pre class="console">-- Info: Initializing library (version 1.0.2, built May 30 2016 22:53:02) ...
+-- Info: Initialized library (version 1.0.2).
+-- Info: Opening default device: service DirectSound, output 1...
+-- Info: Opened default device Primair geluidsstuurprogramma: service DirectSound, output 1.
+-- Info: Opening stream: device Primair geluidsstuurprogramma, bufferSize 500.000000, format [44100 Float32 0 (0) 1 (0)], interleaved 1...
+-- Info: Opened stream: device Primair geluidsstuurprogramma, bufferSize 500.000000, format [44100 Float32 0 (0) 1 (0)], interleaved 1.
+-- Info: Starting stream on system DSound...
+-- Info: Started stream on system DSound.
+-- Info: Stopping stream on system DSound...
+-- Info: Stopped stream on system DSound.
+-- Info: Closing stream on system DSound...
+-- Info: Closed stream on system DSound.
+-- Info: Closing device Primair geluidsstuurprogramma...
+-- Info: Closed device Primair geluidsstuurprogramma.
+-- Info: Terminating library (version 1.0.2)...
+-- Info: Terminated library (version 1.0.2).</pre>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane" id="simple-record">
+          <ul class="nav nav-tabs">
+            <li><a href="#simple-record-java" data-toggle="tab">Java</a></li>
+            <li><a href="#simple-record-net" data-toggle="tab">.NET</a></li>
+            <li><a href="#simple-record-cpp" data-toggle="tab">C++</a></li>
+            <li><a href="#simple-record-output" data-toggle="tab">Sample output</a></li>
+          </ul>
+          <div class="usage">
+            <ul>
+              <li>Record from the default input device to a raw audio file.</li>
+            </ul>
+          </div>
+          <div class="tab-content">
+            <div class="tab-pane" id="simple-record-java">
+              <pre><code class="lang-java">package com.xtaudio.xt;
+
+import java.io.FileOutputStream;
+
+public class CaptureSimple {
+
+    static final int SAMPLE_SIZE = 3;
+    static final XtFormat FORMAT = new XtFormat(new XtMix(44100, XtSample.INT24), 1, 0, 0, 0);
+
+    static void capture(XtStream stream, Object input, Object output, int frames, double time,
+            long position, boolean timeValid, long error, Object user) throws Exception {
+
+        if (frames &gt; 0)
+            // Don't do this.
+            ((FileOutputStream) user).write((byte[]) input, 0, frames * SAMPLE_SIZE);
+    }
+
+    public static void main(String[] args) throws Exception {
+
+        try (XtAudio audio = new XtAudio(null, null, null, null)) {
+            XtService service = XtAudio.getServiceBySetup(XtSetup.CONSUMER_AUDIO);
+            try (XtDevice device = service.openDefaultDevice(false)) {
+                if (device != null &amp;&amp; device.supportsFormat(FORMAT)) {
+
+                    XtBuffer buffer = device.getBuffer(FORMAT);
+                    try (FileOutputStream recording = new FileOutputStream(&quot;xt-audio.raw&quot;);
+                            XtStream stream = device.openStream(FORMAT, true, false,
+                                    buffer.current, CaptureSimple::capture, null, recording)) {
+                        stream.start();
+                        Thread.sleep(1000);
+                        stream.stop();
+                    }
+                }
+            }
+        }
+    }
+}</code></pre>
+            </div>
+            <div class="tab-pane" id="simple-record-net">
+              <pre><code class="lang-cs">using System;
+using System.IO;
+using System.Threading;
+
+namespace Xt {
+
+    public class CaptureSimple {
+
+        const int SampleSize = 3;
+        static readonly XtFormat Format = new XtFormat(new XtMix(44100, XtSample.Int24), 1, 0, 0, 0);
+
+        static void Capture(XtStream stream, object input, object output, int frames,
+            double time, ulong position, bool timeValid, ulong error, object user) {
+
+            if (frames &gt; 0)
+                // Don't do this.
+                ((FileStream)user).Write((byte[])input, 0, frames * SampleSize);
+        }
+
+        public static void Main(string[] args) {
+
+            using (XtAudio audio = new XtAudio(null, IntPtr.Zero, null, null)) {
+                XtService service = XtAudio.GetServiceBySetup(XtSetup.ConsumerAudio);
+                using (XtDevice device = service.OpenDefaultDevice(false))
+                    if (device != null &amp;&amp; device.SupportsFormat(Format)) {
+
+                        XtBuffer buffer = device.GetBuffer(Format);
+                        using (FileStream recording = new FileStream(
+                            &quot;xt-audio.raw&quot;, FileMode.Create, FileAccess.Write))
+                        using (XtStream stream = device.OpenStream(Format, true, false,
+                            buffer.current, Capture, null, recording)) {
+                            stream.Start();
+                            Thread.Sleep(1000);
+                            stream.Stop();
+                        }
+                    }
+            }
+        }
+    }
+}</code></pre>
+            </div>
+            <div class="tab-pane" id="simple-record-cpp">
+              <pre><code class="lang-cpp">#include &lt;xt-cpp.hpp&gt;
+#ifdef _WIN32
+#include &lt;windows.h&gt;
+#else
+#include &lt;unistd.h&gt;
+#endif
+#include &lt;fstream&gt;
+#include &lt;iostream&gt;
+#include &lt;cmath&gt;
+
+static const int SampleSize = 3;
+static const Xt::Format Format(Xt::Mix(44100, Xt::Sample::Int24), 1, 0, 0, 0);
+
+static void Capture(
+  const Xt::Stream&amp; stream, const void* input, void* output, int32_t frames,
+  double time, uint64_t position, bool timeValid, uint64_t error, void* user) {
+
+  if(frames &gt; 0)
+    // Don't do this.
+    static_cast&lt;std::ofstream*&gt;(user)-&gt;write(static_cast&lt;const char*&gt;(input), frames * SampleSize);
+}
+
+int main(int argc, char** argv) {
+
+  Xt::Audio audio(&quot;&quot;, nullptr, nullptr, nullptr);
+  std::unique_ptr&lt; Xt::Service&gt; service = Xt::Audio::GetServiceBySetup(Xt::Setup::ConsumerAudio);
+  std::unique_ptr&lt;Xt::Device&gt; device = service-&gt;OpenDefaultDevice(false);
+  if(device  &amp;&amp; device-&gt;SupportsFormat(Format)) {
+
+    Xt::Buffer buffer = device-&gt;GetBuffer(Format);
+    std::ofstream recording(&quot;xt-audio.raw&quot;, std::ios::out | std::ios::binary);
+    std::unique_ptr&lt;Xt::Stream&gt; stream = device-&gt;OpenStream(Format, true, buffer.current, Capture, nullptr, &amp;recording);
+    stream-&gt;Start();
+#if _WIN32
+    Sleep(1000);
+#else
+    usleep(1000 * 1000);
+#endif
+    stream-&gt;Stop();
+  }
+  return 0;
+}</code></pre>
+            </div>
+            <div class="tab-pane" id="simple-record-output">
+              <pre class="console">-- Info: Initializing library (version 1.0.2, built May 30 2016 22:53:02) ...
+-- Info: Initialized library (version 1.0.2).
+-- Info: Opening default device: service DirectSound, output 0...
+-- Info: Opened default device Primair stuurprogramma voor opnemen van geluid: service DirectSound, output 0.
+-- Info: Opening stream: device Primair stuurprogramma voor opnemen van geluid, bufferSize 500.000000, format [44100 Int24 1 (0) 0 (0)], interleaved 1...
+-- Info: Opened stream: device Primair stuurprogramma voor opnemen van geluid, bufferSize 500.000000, format [44100 Int24 1 (0) 0 (0)], interleaved 1.
+-- Info: Starting stream on system DSound...
+-- Info: Started stream on system DSound.
+-- Info: Stopping stream on system DSound...
+-- Info: Stopped stream on system DSound.
+-- Info: Closing stream on system DSound...
+-- Info: Closed stream on system DSound.
+-- Info: Closing device Primair stuurprogramma voor opnemen van geluid...
+-- Info: Closed device Primair stuurprogramma voor opnemen van geluid.
+-- Info: Terminating library (version 1.0.2)...
+-- Info: Terminated library (version 1.0.2).</pre>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane" id="advanced-playback">
+          <ul class="nav nav-tabs">
+            <li><a href="#advanced-playback-java" data-toggle="tab">Java</a></li>
+            <li><a href="#advanced-playback-net" data-toggle="tab">.NET</a></li>
+            <li><a href="#advanced-playback-cpp" data-toggle="tab">C++</a></li>
+            <li><a href="#advanced-playback-output" data-toggle="tab">Sample output</a></li>
+          </ul>
+          <div class="usage">
+            <ul>
+              <li>Get notified on stream under/overflow.</li>
+              <li>Playback using interleaved and non-interleaved buffers.</li>
+              <li>Use channel masks to route a channel to a specific speaker position.</li>
+              <li>(Java and .NET): use raw streams to operate directly on native buffers.</li>
+            </ul>
+          </div>
+          <div class="tab-content">
+            <div class="tab-pane" id="advanced-playback-java">
+              <pre><code class="lang-java">package com.xtaudio.xt;
+
+import com.sun.jna.Pointer;
+
+public class RenderAdvanced {
+
+    static double phase = 0.0;
+    static final double FREQUENCY = 660.0;
+
+    static void readLine() {
+        System.out.println(&quot;Press any key to continue...&quot;);
+        System.console().readLine();
+    }
+
+    static float nextSine(double sampleRate) {
+        phase += FREQUENCY / sampleRate;
+        if (phase &gt;= 1.0)
+            phase = -1.0;
+        return (float) Math.sin(phase * Math.PI);
+    }
+
+    static void xRun(int index, Object user) {
+        // Don't do this.
+        System.out.println(&quot;XRun on device &quot; + index + &quot;, user = &quot; + user + &quot;.&quot;);
+    }
+    
+    static void renderInterleaved(XtStream stream, Object input, Object output, int frames,
+            double time, long position, boolean timeValid, long error, Object user) throws Exception {
+
+        XtFormat format = stream.getFormat();
+        for (int f = 0; f &lt; frames; f++) {
+            float sine = nextSine(format.mix.rate);
+            for (int c = 0; c &lt; format.outputs; c++)
+                ((float[]) output)[f * format.outputs + c] = sine;
+        }
+    }
+
+    static void renderInterleavedRaw(XtStream stream, Object input, Object output, int frames,
+            double time, long position, boolean timeValid, long error, Object user) throws Exception {
+
+        XtFormat format = stream.getFormat();
+        int sampleSize = XtAudio.getSampleAttributes(format.mix.sample).size;
+        for (int f = 0; f &lt; frames; f++) {
+            float sine = nextSine(format.mix.rate);
+            for (int c = 0; c &lt; format.outputs; c++)
+                ((Pointer) output).setFloat((f * format.outputs + c) * sampleSize, sine);
+        }
+    }
+
+    static void renderNonInterleaved(XtStream stream, Object input, Object output, int frames,
+            double time, long position, boolean timeValid, long error, Object user) throws Exception {
+
+        XtFormat format = stream.getFormat();
+        for (int f = 0; f &lt; frames; f++) {
+            float sine = nextSine(format.mix.rate);
+            for (int c = 0; c &lt; format.outputs; c++)
+                ((float[][]) output)[c][f] = sine;
+        }
+    }
+
+    static void renderNonInterleavedRaw(XtStream stream, Object input, Object output, int frames,
+            double time, long position, boolean timeValid, long error, Object user) throws Exception {
+
+        XtFormat format = stream.getFormat();
+        int sampleSize = XtAudio.getSampleAttributes(format.mix.sample).size;
+        for (int f = 0; f &lt; frames; f++) {
+            float sine = nextSine(format.mix.rate);
+            for (int c = 0; c &lt; format.outputs; c++)
+                ((Pointer) output).getPointer(c * Pointer.SIZE).setFloat(f * sampleSize, sine);
+        }
+    }
+
+    public static void main(String[] args) throws Exception {
+
+        try (XtAudio audio = new XtAudio(null, null, null, null)) {
+
+            XtService service = XtAudio.getServiceBySetup(XtSetup.CONSUMER_AUDIO);
+            XtFormat format = new XtFormat(new XtMix(44100, XtSample.FLOAT32), 0, 0, 2, 0);
+            try (XtDevice device = service.openDefaultDevice(true)) {
+
+                if (device == null) {
+                    System.out.println(&quot;No default device found.&quot;);
+                    return;
+                }
+
+                if (!device.supportsFormat(format)) {
+                    System.out.println(&quot;Format not supported.&quot;);
+                    return;
+                }
+
+                XtBuffer buffer = device.getBuffer(format);
+
+                try (XtStream stream = device.openStream(format, true, false, buffer.current,
+                        RenderAdvanced::renderInterleaved, RenderAdvanced::xRun, &quot;user-data&quot;)) {
+                    stream.start();
+                    System.out.println(&quot;Rendering interleaved...&quot;);
+                    readLine();
+                    stream.stop();
+                }
+
+                try (XtStream stream = device.openStream(format, true, true, buffer.current,
+                        RenderAdvanced::renderInterleavedRaw, RenderAdvanced::xRun, &quot;user-data&quot;)) {
+                    stream.start();
+                    System.out.println(&quot;Rendering interleaved, raw buffers...&quot;);
+                    readLine();
+                    stream.stop();
+                }
+
+                try (XtStream stream = device.openStream(format, false, false, buffer.current,
+                        RenderAdvanced::renderNonInterleaved, RenderAdvanced::xRun, &quot;user-data&quot;)) {
+                    stream.start();
+                    System.out.println(&quot;Rendering non-interleaved...&quot;);
+                    readLine();
+                    stream.stop();
+                }
+
+                try (XtStream stream = device.openStream(format, false, true, buffer.current,
+                        RenderAdvanced::renderNonInterleavedRaw, RenderAdvanced::xRun, &quot;user-data&quot;)) {
+                    stream.start();
+                    System.out.println(&quot;Rendering non-interleaved, raw buffers...&quot;);
+                    readLine();
+                    stream.stop();
+                }
+
+                XtFormat sendTo0 = new XtFormat(new XtMix(44100, XtSample.FLOAT32), 0, 0, 1, 1L &lt;&lt; 0);
+                try (XtStream stream = device.openStream(sendTo0, true, false, buffer.current,
+                        RenderAdvanced::renderInterleaved, RenderAdvanced::xRun, &quot;user-data&quot;)) {
+                    stream.start();
+                    System.out.println(&quot;Rendering channel mask, channel 0...&quot;);
+                    readLine();
+                    stream.stop();
+                }
+
+                XtFormat sendTo1 = new XtFormat(new XtMix(44100, XtSample.FLOAT32), 0, 0, 1, 1L &lt;&lt; 1);
+                try (XtStream stream = device.openStream(sendTo1, true, false, buffer.current,
+                        RenderAdvanced::renderInterleaved, RenderAdvanced::xRun, &quot;user-data&quot;)) {
+                    stream.start();
+                    System.out.println(&quot;Rendering channel mask, channel 1...&quot;);
+                    readLine();
+                    stream.stop();
+                }
+            }
+        }
+    }
+}</code></pre>
+            </div>
+            <div class="tab-pane" id="advanced-playback-net">
+              <pre><code class="lang-cs">using System;
+
+namespace Xt {
+
+    public class RenderAdvanced {
+
+        static double phase = 0.0;
+        const double Frequency = 660.0;
+
+        static void ReadLine() {
+            Console.WriteLine(&quot;Press any key to continue...&quot;);
+            Console.ReadLine();
+        }
+
+        static float NextSine(double sampleRate) {
+            phase += Frequency / sampleRate;
+            if (phase &gt;= 1.0)
+                phase = -1.0;
+            return (float)Math.Sin(phase * Math.PI);
+        }
+
+        static void XRun(int index, object user) {
+            // Don't do this.
+            Console.WriteLine(&quot;XRun on device &quot; + index + &quot;, user = &quot; + user + &quot;.&quot;);
+        }
+
+        static void RenderInterleaved(XtStream stream, object input, object output,
+            int frames, double time, ulong position, bool timeValid, ulong error, object user) {
+
+            XtFormat format = stream.GetFormat();
+            for (int f = 0; f &lt; frames; f++) {
+                float sine = NextSine(format.mix.rate);
+                for (int c = 0; c &lt; format.outputs; c++)
+                    ((float[])output)[f * format.outputs + c] = sine;
+            }
+        }
+
+        static unsafe void RenderInterleavedRaw(XtStream stream, object input, object output,
+            int frames, double time, ulong position, bool timeValid, ulong error, object user) {
+
+            XtFormat format = stream.GetFormat();
+            for (int f = 0; f &lt; frames; f++) {
+                float sine = NextSine(format.mix.rate);
+                for (int c = 0; c &lt; format.outputs; c++)
+                    ((float*)(IntPtr)output)[f * format.outputs + c] = sine;
+            }
+        }
+
+        static void RenderNonInterleaved(XtStream stream, object input, object output,
+            int frames, double time, ulong position, bool timeValid, ulong error, object user) {
+
+            XtFormat format = stream.GetFormat();
+            for (int f = 0; f &lt; frames; f++) {
+                float sine = NextSine(format.mix.rate);
+                for (int c = 0; c &lt; format.outputs; c++)
+                    ((float[][])output)[c][f] = sine;
+            }
+        }
+
+        static unsafe void RenderNonInterleavedRaw(XtStream stream, object input, object output,
+            int frames, double time, ulong position, bool timeValid, ulong error, object user) {
+
+            XtFormat format = stream.GetFormat();
+            for (int f = 0; f &lt; frames; f++) {
+                float sine = NextSine(format.mix.rate);
+                for (int c = 0; c &lt; format.outputs; c++)
+                    ((float**)(IntPtr)output)[c][f] = sine;
+            }
+        }
+
+        public static void Main(String[] args) {
+
+            using (XtAudio audio = new XtAudio(null, IntPtr.Zero, null, null)) {
+
+                XtService service = XtAudio.GetServiceBySetup(XtSetup.ConsumerAudio);
+                XtFormat format = new XtFormat(new XtMix(44100, XtSample.Float32), 0, 0, 2, 0);
+                using (XtDevice device = service.OpenDefaultDevice(true)) {
+
+                    if (device == null) {
+                        Console.WriteLine(&quot;No default device found.&quot;);
+                        return;
+                    }
+
+                    if (!device.SupportsFormat(format)) {
+                        Console.WriteLine(&quot;Format not supported.&quot;);
+                        return;
+                    }
+
+                    XtBuffer buffer = device.GetBuffer(format);
+
+                    using (XtStream stream = device.OpenStream(format, true, false,
+                        buffer.current, RenderInterleaved, XRun, &quot;user-data&quot;)) {
+                        stream.Start();
+                        Console.WriteLine(&quot;Rendering interleaved...&quot;);
+                        ReadLine();
+                        stream.Stop();
+                    }
+
+                    using (XtStream stream = device.OpenStream(format, true, true,
+                        buffer.current, RenderInterleavedRaw, XRun, &quot;user-data&quot;)) {
+                        stream.Start();
+                        Console.WriteLine(&quot;Rendering interleaved, raw buffers...&quot;);
+                        ReadLine();
+                        stream.Stop();
+                    }
+
+                    using (XtStream stream = device.OpenStream(format, false, false,
+                        buffer.current, RenderNonInterleaved, XRun, &quot;user-data&quot;)) {
+                        stream.Start();
+                        Console.WriteLine(&quot;Rendering non-interleaved...&quot;);
+                        ReadLine();
+                        stream.Stop();
+                    }
+
+                    using (XtStream stream = device.OpenStream(format, false, true,
+                        buffer.current, RenderNonInterleavedRaw, XRun, &quot;user-data&quot;)) {
+                        stream.Start();
+                        Console.WriteLine(&quot;Rendering non-interleaved, raw buffers...&quot;);
+                        ReadLine();
+                        stream.Stop();
+                    }
+
+                    XtFormat sendTo0 = new XtFormat(new XtMix(44100, XtSample.Float32), 0, 0, 1, 1L &lt;&lt; 0);
+                    using (XtStream stream = device.OpenStream(sendTo0, true, false,
+                        buffer.current, RenderInterleaved, XRun, &quot;user-data&quot;)) {
+                        stream.Start();
+                        Console.WriteLine(&quot;Rendering channel mask, channel 0...&quot;);
+                        ReadLine();
+                        stream.Stop();
+                    }
+
+                    XtFormat sendTo1 = new XtFormat(new XtMix(44100, XtSample.Float32), 0, 0, 1, 1L &lt;&lt; 1);
+                    using (XtStream stream = device.OpenStream(sendTo1, true, false, buffer.current,
+                            RenderInterleaved, XRun, &quot;user-data&quot;)) {
+                        stream.Start();
+                        Console.WriteLine(&quot;Rendering channel mask, channel 1...&quot;);
+                        ReadLine();
+                        stream.Stop();
+                    }
+                }
+            }
+        }
+    }
+}</code></pre>
+            </div>
+            <div class="tab-pane" id="advanced-playback-cpp">
+              <pre><code class="lang-cpp">#include &lt;xt-cpp.hpp&gt;
+#ifdef _WIN32
+#include &lt;windows.h&gt;
+#else
+#include &lt;unistd.h&gt;
+#endif
+#include &lt;climits&gt;
+#include &lt;iostream&gt;
+#include &lt;cmath&gt;
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+
+static double phase = 0.0;
+static const double Frequency = 660.0;
+
+static void ReadLine() {
+  std::string s;
+  std::cout &lt;&lt; &quot;Press any key to continue...\n&quot;;
+  std::getline(std::cin, s);
+}
+
+static float NextSine(double sampleRate) {
+  phase += Frequency / sampleRate;
+  if(phase &gt;= 1.0)
+    phase = -1.0;
+  return (float)sin(phase * M_PI);
+}
+
+static void XRun(int index, void* user) {
+  // Don't do this.
+  std::cout &lt;&lt; &quot;XRun on stream &quot; &lt;&lt; index &lt;&lt; &quot;, user = &quot; &lt;&lt; static_cast&lt;char*&gt;(user) &lt;&lt; &quot;.\n&quot;;
+}
+
+static void RenderInterleaved(
+  const Xt::Stream&amp; stream, const void* input, void* output, int32_t frames,
+  double time, uint64_t position, bool timeValid, uint64_t error, void* user) {
+
+  Xt::Format format = stream.GetFormat();
+  for(int f = 0; f &lt; frames; f++) {
+    float sine = NextSine(format.mix.rate);
+    for(int c = 0; c &lt; format.outputs; c++)
+      ((float*)output)[f * format.outputs + c] = sine;
+  }
+}
+
+static void RenderNonInterleaved(
+  const Xt::Stream&amp; stream, const void* input, void* output, int32_t frames,
+  double time, uint64_t position, bool timeValid, uint64_t error, void* user) {
+
+  Xt::Format format = stream.GetFormat();
+  for(int f = 0; f &lt; frames; f++) {
+    float sine = NextSine(format.mix.rate);
+    for(int c = 0; c &lt; format.outputs; c++)
+      ((float**)output)[c][f] = sine;
+  }
+}
+
+int main(int argc, char** argv) {
+
+  Xt::Audio audio(&quot;&quot;, nullptr, nullptr, nullptr);
+  std::unique_ptr&lt; Xt::Service&gt; service = Xt::Audio::GetServiceBySetup(Xt::Setup::ConsumerAudio);
+  Xt::Format format(Xt::Mix(44100, Xt::Sample::Float32), 0, 0, 2, 0);
+  std::unique_ptr&lt;Xt::Device&gt; device = service-&gt;OpenDefaultDevice(true);
+
+  if(!device) {
+    std::cout &lt;&lt; &quot;No default device found.\n&quot;;
+    return 0;
+  }
+
+  if(!device-&gt;SupportsFormat(format)) {
+    std::cout &lt;&lt; &quot;Format not supported.\n&quot;;
+    return 0;
+  }
+
+  std::unique_ptr&lt;Xt::Stream&gt; stream;
+  Xt::Buffer buffer = device-&gt;GetBuffer(format);
+
+  stream = device-&gt;OpenStream(format, true, buffer.current, RenderInterleaved, XRun, const_cast&lt;char*&gt;(&quot;user-data&quot;));
+  stream-&gt;Start();
+  std::cout &lt;&lt; &quot;Rendering interleaved...\n&quot;;
+  ReadLine();
+  stream-&gt;Stop();
+
+  device-&gt;OpenStream(format, false, buffer.current, RenderNonInterleaved, XRun, const_cast&lt;char*&gt;(&quot;user-data&quot;));
+  stream-&gt;Start();
+  std::cout &lt;&lt; &quot;Rendering non-interleaved...\n&quot;;
+  ReadLine();
+  stream-&gt;Stop();
+
+  Xt::Format sendTo0(Xt::Mix(44100, Xt::Sample::Float32), 0, 0, 1, 1ULL &lt;&lt; 0);
+  stream = device-&gt;OpenStream(sendTo0, true, buffer.current, RenderInterleaved, XRun, const_cast&lt;char*&gt;(&quot;user-data&quot;));
+  stream-&gt;Start();
+  std::cout &lt;&lt; &quot;Rendering channel mask, channel 0...\n&quot;;
+  ReadLine();
+  stream-&gt;Stop();
+
+  Xt::Format sendTo1(Xt::Mix(44100, Xt::Sample::Float32), 0, 0, 1, 1ULL &lt;&lt; 1);
+  stream = device-&gt;OpenStream(sendTo1, true, buffer.current, RenderInterleaved, XRun, const_cast&lt;char*&gt;(&quot;user-data&quot;));
+  stream-&gt;Start();
+  std::cout &lt;&lt; &quot;Rendering channel mask, channel 1...\n&quot;;
+  ReadLine();
+  stream-&gt;Stop();
+
+  return 0;
+}</code></pre>
+            </div>
+            <div class="tab-pane" id="advanced-playback-output">
+              <pre class="console">-- Info: Initializing library (version 1.0.2, built May 30 2016 22:53:02) ...
+-- Info: Initialized library (version 1.0.2).
+-- Info: Opening default device: service DirectSound, output 1...
+-- Info: Opened default device Primair geluidsstuurprogramma: service DirectSound, output 1.
+-- Info: Opening stream: device Primair geluidsstuurprogramma, bufferSize 500.000000, format [44100 Float32 0 (0) 2 (0)], interleaved 1...
+-- Info: Opened stream: device Primair geluidsstuurprogramma, bufferSize 500.000000, format [44100 Float32 0 (0) 2 (0)], interleaved 1.
+-- Info: Starting stream on system DSound...
+-- Info: Started stream on system DSound.
+Rendering interleaved...
+Press any key to continue...
+-- Info: Stopping stream on system DSound...
+-- Info: Stopped stream on system DSound.
+-- Info: Opening stream: device Primair geluidsstuurprogramma, bufferSize 500.000000, format [44100 Float32 0 (0) 2 (0)], interleaved 0...
+-- Info: Opened stream: device Primair geluidsstuurprogramma, bufferSize 500.000000, format [44100 Float32 0 (0) 2 (0)], interleaved 0.
+-- Info: Closing stream on system DSound...
+-- Info: Closed stream on system DSound.
+-- Info: Starting stream on system DSound...
+-- Info: Started stream on system DSound.
+Rendering non-interleaved...
+Press any key to continue...
+-- Info: Stopping stream on system DSound...
+-- Info: Stopped stream on system DSound.
+-- Info: Opening stream: device Primair geluidsstuurprogramma, bufferSize 500.000000, format [44100 Float32 0 (0) 1 (1)], interleaved 1...
+-- Info: Opened stream: device Primair geluidsstuurprogramma, bufferSize 500.000000, format [44100 Float32 0 (0) 1 (1)], interleaved 1.
+-- Info: Closing stream on system DSound...
+-- Info: Closed stream on system DSound.
+-- Info: Starting stream on system DSound...
+-- Info: Started stream on system DSound.
+Rendering channel mask, channel 0...
+Press any key to continue...
+-- Info: Stopping stream on system DSound...
+-- Info: Stopped stream on system DSound.
+-- Info: Opening stream: device Primair geluidsstuurprogramma, bufferSize 500.000000, format [44100 Float32 0 (0) 1 (2)], interleaved 1...
+-- Info: Opened stream: device Primair geluidsstuurprogramma, bufferSize 500.000000, format [44100 Float32 0 (0) 1 (2)], interleaved 1.
+-- Info: Closing stream on system DSound...
+-- Info: Closed stream on system DSound.
+-- Info: Starting stream on system DSound...
+-- Info: Started stream on system DSound.
+Rendering channel mask, channel 1...
+Press any key to continue...
+-- Info: Stopping stream on system DSound...
+-- Info: Stopped stream on system DSound.
+-- Info: Closing stream on system DSound...
+-- Info: Closed stream on system DSound.
+-- Info: Closing device Primair geluidsstuurprogramma...
+-- Info: Closed device Primair geluidsstuurprogramma.
+-- Info: Terminating library (version 1.0.2)...
+-- Info: Terminated library (version 1.0.2).</pre>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane" id="advanced-record">
+          <ul class="nav nav-tabs">
+            <li><a href="#advanced-record-java" data-toggle="tab">Java</a></li>
+            <li><a href="#advanced-record-net" data-toggle="tab">.NET</a></li>
+            <li><a href="#advanced-record-cpp" data-toggle="tab">C++</a></li>
+            <li><a href="#advanced-record-output" data-toggle="tab">Sample output</a></li>
+          </ul>
+          <div class="usage">
+            <ul>
+              <li>Get notified on stream under/overflow.</li>
+              <li>Record using interleaved and non-interleaved buffers.</li>
+              <li>(Java and .NET): use raw streams to operate directly on native buffers.</li>
+            </ul>
+          </div>
+          <div class="tab-content">
+            <div class="tab-pane" id="advanced-record-java">
+              <pre><code class="lang-java">package com.xtaudio.xt;
+
+import com.sun.jna.Pointer;
+import java.io.FileOutputStream;
+
+public class CaptureAdvanced {
+
+    static class Context {
+
+        byte[] intermediate;
+        FileOutputStream out;
+    }
+
+    static void readLine() {
+        System.out.println(&quot;Press any key to continue...&quot;);
+        System.console().readLine();
+    }
+
+    static int getBufferSize(XtStream stream, int frames) {
+        XtFormat format = stream.getFormat();
+        int sampleSize = XtAudio.getSampleAttributes(format.mix.sample).size;
+        return frames * format.inputs * sampleSize;
+    }
+    
+    static void xRun(int index, Object user) {
+        // Don't do this.
+        System.out.println(&quot;XRun on device &quot; + index + &quot;.&quot;);
+    }
+
+    static void captureInterleaved(XtStream stream, Object input, Object output, int frames,
+            double time, long position, boolean timeValid, long error, Object user) throws Exception {
+
+        if (frames &gt; 0)
+            // Don't do this.
+            ((Context) user).out.write((byte[]) input, 0, getBufferSize(stream, frames));
+    }
+
+    static void captureInterleavedRaw(XtStream stream, Object input, Object output, int frames,
+            double time, long position, boolean timeValid, long error, Object user) throws Exception {
+
+        if (frames &gt; 0) {
+            Context ctx = (Context) user;
+            ((Pointer) input).read(0, ctx.intermediate, 0, getBufferSize(stream, frames));
+            // Don't do this.
+            ctx.out.write(ctx.intermediate, 0, getBufferSize(stream, frames));
+        }
+    }
+
+    static void captureNonInterleaved(XtStream stream, Object input, Object output, int frames,
+            double time, long position, boolean timeValid, long error, Object user) throws Exception {
+
+        if (frames &gt; 0) {
+            Context ctx = (Context) user;
+            XtFormat format = stream.getFormat();
+            int channels = format.inputs;
+            int sampleSize = XtAudio.getSampleAttributes(format.mix.sample).size;
+            for (int f = 0; f &lt; frames; f++)
+                for (int c = 0; c &lt; channels; c++)
+                    // Don't do this.
+                    ctx.out.write(((byte[][]) input)[c], f * sampleSize, sampleSize);
+        }
+    }
+
+    static void captureNonInterleavedRaw(XtStream stream, Object input, Object output, int frames,
+            double time, long position, boolean timeValid, long error, Object user) throws Exception {
+
+        if (frames &gt; 0) {
+            Context ctx = (Context) user;
+            XtFormat format = stream.getFormat();
+            int channels = format.inputs;
+            int sampleSize = XtAudio.getSampleAttributes(format.mix.sample).size;
+            for (int f = 0; f &lt; frames; f++)
+                for (int c = 0; c &lt; channels; c++) {
+                    ((Pointer) input).getPointer(c * Pointer.SIZE).read(f * sampleSize, ctx.intermediate, 0, sampleSize);
+                    // Don't do this.
+                    ctx.out.write(ctx.intermediate, 0, sampleSize);
+                }
+        }
+    }
+
+    public static void main(String[] args) throws Exception {
+
+        try (XtAudio audio = new XtAudio(null, null, null, null)) {
+
+            XtService service = XtAudio.getServiceBySetup(XtSetup.CONSUMER_AUDIO);
+            XtFormat format = new XtFormat(new XtMix(44100, XtSample.INT24), 2, 0, 0, 0);
+            try (XtDevice device = service.openDefaultDevice(false)) {
+
+                if (device == null) {
+                    System.out.println(&quot;No default device found.&quot;);
+                    return;
+                }
+
+                if (!device.supportsFormat(format)) {
+                    System.out.println(&quot;Format not supported.&quot;);
+                    return;
+                }
+
+                Context context = new Context();
+                XtBuffer buffer = device.getBuffer(format);
+
+                try (FileOutputStream recording = new FileOutputStream(&quot;xt-audio-interleaved.raw&quot;);
+                        XtStream stream = device.openStream(format, true, false, buffer.current,
+                                CaptureAdvanced::captureInterleaved, CaptureAdvanced::xRun, context)) {
+                    context.out = recording;
+                    context.intermediate = new byte[getBufferSize(stream, stream.getFrames())];
+                    stream.start();
+                    System.out.println(&quot;Capturing interleaved...&quot;);
+                    readLine();
+                    stream.stop();
+                }
+
+                try (FileOutputStream recording = new FileOutputStream(&quot;xt-audio-interleaved-raw.raw&quot;);
+                        XtStream stream = device.openStream(format, true, true, buffer.current,
+                                CaptureAdvanced::captureInterleavedRaw, CaptureAdvanced::xRun, context)) {
+                    context.out = recording;
+                    context.intermediate = new byte[getBufferSize(stream, stream.getFrames())];
+                    stream.start();
+                    System.out.println(&quot;Capturing interleaved, raw buffers...&quot;);
+                    readLine();
+                    stream.stop();
+                }
+
+                try (FileOutputStream recording = new FileOutputStream(&quot;xt-audio-non-interleaved.raw&quot;);
+                        XtStream stream = device.openStream(format, false, false, buffer.current,
+                                CaptureAdvanced::captureNonInterleaved, CaptureAdvanced::xRun, context)) {
+                    context.out = recording;
+                    context.intermediate = new byte[getBufferSize(stream, stream.getFrames())];
+                    stream.start();
+                    System.out.println(&quot;Capturing non-interleaved...&quot;);
+                    readLine();
+                    stream.stop();
+                }
+
+                try (FileOutputStream recording = new FileOutputStream(&quot;xt-audio-non-interleaved-raw.raw&quot;);
+                        XtStream stream = device.openStream(format, false, true, buffer.current,
+                                CaptureAdvanced::captureNonInterleavedRaw, CaptureAdvanced::xRun, context)) {
+                    context.out = recording;
+                    context.intermediate = new byte[getBufferSize(stream, stream.getFrames())];
+                    stream.start();
+                    System.out.println(&quot;Capturing non-interleaved, raw buffers...&quot;);
+                    readLine();
+                    stream.stop();
+                }
+            }
+        }
+    }
+}</code></pre>
+            </div>
+            <div class="tab-pane" id="advanced-record-net">
+              <pre><code class="lang-cs">using System;
+using System.IO;
+using System.Runtime.InteropServices;
+
+namespace Xt {
+
+    public class CaptureAdvanced {
+
+        class Context {
+
+            internal byte[] intermediate;
+            internal FileStream recording;
+        }
+
+        static void ReadLine() {
+            Console.WriteLine(&quot;Press any key to continue...&quot;);
+            Console.ReadLine();
+        }
+
+        static int GetBufferSize(XtStream stream, int frames) {
+            XtFormat format = stream.GetFormat();
+            int sampleSize = XtAudio.GetSampleAttributes(format.mix.sample).size;
+            return frames * format.inputs * sampleSize;
+        }
+
+        static void XRun(int index, object user) {
+            // Don't do this.
+            Console.WriteLine(&quot;XRun on device &quot; + index + &quot;.&quot;);
+        }
+
+        static void CaptureInterleaved(XtStream stream, object input, object output,
+            int frames, double time, ulong position, bool timeValid, ulong error, object user) {
+
+            if (frames &gt; 0)
+                // Don't do this.
+                ((Context)user).recording.Write((byte[])input, 0, GetBufferSize(stream, frames));
+        }
+
+        static void CaptureInterleavedRaw(XtStream stream, object input, object output,
+            int frames, double time, ulong position, bool timeValid, ulong error, object user) {
+
+            if (frames &gt; 0) {
+                Context ctx = (Context)user;
+                Marshal.Copy((IntPtr)input, ctx.intermediate, 0, GetBufferSize(stream, frames));
+                // Don't do this.
+                ctx.recording.Write(ctx.intermediate, 0, GetBufferSize(stream, frames));
+            }
+        }
+
+        static void CaptureNonInterleaved(XtStream stream, object input, object output,
+            int frames, double time, ulong position, bool timeValid, ulong error, object user) {
+
+            if (frames &gt; 0) {
+                Context ctx = (Context)user;
+                XtFormat format = stream.GetFormat();
+                int channels = format.inputs;
+                int sampleSize = XtAudio.GetSampleAttributes(format.mix.sample).size;
+                for (int f = 0; f &lt; frames; f++)
+                    for (int c = 0; c &lt; channels; c++)
+                        // Don't do this.
+                        ctx.recording.Write(((byte[][])input)[c], f * sampleSize, sampleSize);
+            }
+        }
+
+        static unsafe void CaptureNonInterleavedRaw(XtStream stream, object input, object output,
+            int frames, double time, ulong position, bool timeValid, ulong error, object user) {
+
+            if (frames &gt; 0) {
+                Context ctx = (Context)user;
+                XtFormat format = stream.GetFormat();
+                int channels = format.inputs;
+                int sampleSize = XtAudio.GetSampleAttributes(format.mix.sample).size;
+                for (int f = 0; f &lt; frames; f++)
+                    for (int c = 0; c &lt; channels; c++) {
+                        IntPtr source = new IntPtr(&amp;(((byte**)(IntPtr)input)[c][f * sampleSize]));
+                        Marshal.Copy(source, ctx.intermediate, 0, sampleSize);
+                        // Don't do this.
+                        ctx.recording.Write(ctx.intermediate, 0, sampleSize);
+                    }
+            }
+        }
+
+        public static void Main(string[] args) {
+
+            using (XtAudio audio = new XtAudio(null, IntPtr.Zero, null, null)) {
+
+                XtService service = XtAudio.GetServiceBySetup(XtSetup.ConsumerAudio);
+                XtFormat format = new XtFormat(new XtMix(44100, XtSample.Int24), 2, 0, 0, 0);
+                using (XtDevice device = service.OpenDefaultDevice(false)) {
+
+                    if (device == null) {
+                        Console.WriteLine(&quot;No default device found.&quot;);
+                        return;
+                    }
+
+                    if (!device.SupportsFormat(format)) {
+                        Console.WriteLine(&quot;Format not supported.&quot;);
+                        return;
+                    }
+
+                    Context context = new Context();
+                    XtBuffer buffer = device.GetBuffer(format);
+
+                    using (FileStream recording = new FileStream(
+                        &quot;xt-audio-interleaved.raw&quot;, FileMode.Create, FileAccess.Write))
+                    using (XtStream stream = device.OpenStream(format, true, false,
+                        buffer.current, CaptureInterleaved, XRun, context)) {
+
+                        context.recording = recording;
+                        context.intermediate = new byte[GetBufferSize(stream, stream.GetFrames())];
+                        stream.Start();
+                        Console.WriteLine(&quot;Capturing interleaved...&quot;);
+                        ReadLine();
+                        stream.Stop();
+                    }
+
+                    using (FileStream recording = new FileStream(
+                        &quot;xt-audio-interleaved-raw.raw&quot;, FileMode.Create, FileAccess.Write))
+                    using (XtStream stream = device.OpenStream(format, true, true,
+                        buffer.current, CaptureInterleavedRaw, XRun, context)) {
+
+                        context.recording = recording;
+                        context.intermediate = new byte[GetBufferSize(stream, stream.GetFrames())];
+                        stream.Start();
+                        Console.WriteLine(&quot;Capturing interleaved, raw buffers...&quot;);
+                        ReadLine();
+                        stream.Stop();
+                    }
+
+                    using (FileStream recording = new FileStream(
+                        &quot;xt-audio-non-interleaved.raw&quot;, FileMode.Create, FileAccess.Write))
+                    using (XtStream stream = device.OpenStream(format, false, false,
+                        buffer.current, CaptureNonInterleaved, XRun, context)) {
+
+                        context.recording = recording;
+                        context.intermediate = new byte[GetBufferSize(stream, stream.GetFrames())];
+                        stream.Start();
+                        Console.WriteLine(&quot;Capturing non-interleaved...&quot;);
+                        ReadLine();
+                        stream.Stop();
+                    }
+
+                    using (FileStream recording = new FileStream(
+                        &quot;xt-audio-non-interleaved-raw.raw&quot;, FileMode.Create, FileAccess.Write))
+                    using (XtStream stream = device.OpenStream(format, false, true,
+                        buffer.current, CaptureNonInterleavedRaw, XRun, context)) {
+
+                        context.recording = recording;
+                        context.intermediate = new byte[GetBufferSize(stream, stream.GetFrames())];
+                        stream.Start();
+                        Console.WriteLine(&quot;Capturing non-interleaved, raw buffers...&quot;);
+                        ReadLine();
+                        stream.Stop();
+                    }
+                }
+            }
+        }
+    }
+}</code></pre>
+            </div>
+            <div class="tab-pane" id="advanced-record-cpp">
+              <pre><code class="lang-cpp">#include &lt;xt-cpp.hpp&gt;
+#ifdef _WIN32
+#include &lt;windows.h&gt;
+#else
+#include &lt;unistd.h&gt;
+#endif
+#include &lt;fstream&gt;
+#include &lt;iostream&gt;
+
+static void ReadLine() {
+  std::string s;
+  std::cout &lt;&lt; &quot;Press any key to continue...\n&quot;;
+  std::getline(std::cin, s);
+}
+
+static int GetBufferSize(const Xt::Stream&amp; stream, int frames) {
+  const Xt::Format&amp; format = stream.GetFormat();
+  int sampleSize = Xt::Audio::GetSampleAttributes(format.mix.sample).size;
+  return frames * format.inputs * sampleSize;
+}
+
+static void XRun(int index, void* user) {
+  // Don't do this.
+  std::cout &lt;&lt; &quot;XRun on stream &quot; &lt;&lt; index &lt;&lt; &quot;.\n&quot;;
+}
+
+static void CaptureInterleaved(
+  const Xt::Stream&amp; stream, const void* input, void* output, int32_t frames,
+  double time, uint64_t position, bool timeValid, uint64_t error, void* user) {
+
+  if(frames &gt; 0)
+    // Don't do this.
+    static_cast&lt;std::ofstream*&gt;(user)-&gt;write(static_cast&lt;const char*&gt;(input), GetBufferSize(stream, frames));
+}
+
+static void CaptureNonInterleaved(
+  const Xt::Stream&amp; stream, const void* input, void* output, int32_t frames,
+  double time, uint64_t position, bool timeValid, uint64_t error, void* user) {
+
+  if(frames &gt; 0) {
+    const Xt::Format&amp; format = stream.GetFormat();
+    int channels = format.inputs;
+    int sampleSize = Xt::Audio::GetSampleAttributes(format.mix.sample).size;
+    for(int f = 0; f &lt; frames; f++)
+      for(int c = 0; c &lt; channels; c++)
+        // Don't do this.
+        static_cast&lt;std::ofstream*&gt;(user)-&gt;write(&amp;static_cast&lt;char* const*&gt;(input)[c][f * sampleSize], sampleSize);
+  }
+}
+
+int main(int argc, char** argv) {
+
+  Xt::Audio audio(&quot;&quot;, nullptr, nullptr, nullptr);
+  std::unique_ptr&lt; Xt::Service&gt; service = Xt::Audio::GetServiceBySetup(Xt::Setup::ConsumerAudio);
+  Xt::Format format(Xt::Mix(44100, Xt::Sample::Int24), 2, 0, 0, 0);
+  std::unique_ptr&lt;Xt::Device&gt; device = service-&gt;OpenDefaultDevice(false);
+
+  if(!device) {
+    std::cout &lt;&lt; &quot;No default device found.\n&quot;;
+    return 0;
+  }
+
+  if(!device-&gt;SupportsFormat(format)) {
+    std::cout &lt;&lt; &quot;Format not supported.\n&quot;;
+    return 0;
+  }
+
+  std::unique_ptr&lt;Xt::Stream&gt; stream;
+  Xt::Buffer buffer = device-&gt;GetBuffer(format);
+
+  std::ofstream interleaved(&quot;xt-audio-interleaved.raw&quot;, std::ios::out | std::ios::binary);
+  stream = device-&gt;OpenStream(format, true, buffer.current, CaptureInterleaved, XRun, &amp;interleaved);
+  stream-&gt;Start();
+  std::cout &lt;&lt; &quot;Capturing interleaved...\n&quot;;
+  ReadLine();
+  stream-&gt;Stop();
+
+  std::ofstream nonInterleaved(&quot;xt-audio-non-interleaved.raw&quot;, std::ios::out | std::ios::binary);
+  stream = device-&gt;OpenStream(format, false, buffer.current, CaptureNonInterleaved, XRun, &amp;nonInterleaved);
+  stream-&gt;Start();
+  std::cout &lt;&lt; &quot;Capturing non-interleaved...\n&quot;;
+  ReadLine();
+  stream-&gt;Stop();
+
+  return 0;
+}</code></pre>
+            </div>
+            <div class="tab-pane" id="advanced-record-output">
+              <pre class="console">-- Info: Initializing library (version 1.0.2, built May 30 2016 22:53:02) ...
+-- Info: Initialized library (version 1.0.2).
+-- Info: Opening default device: service DirectSound, output 0...
+-- Info: Opened default device Primair stuurprogramma voor opnemen van geluid: service DirectSound, output 0.
+-- Info: Opening stream: device Primair stuurprogramma voor opnemen van geluid, bufferSize 500.000000, format [44100 Int24 2 (0) 0 (0)], interleaved 1...
+-- Info: Opened stream: device Primair stuurprogramma voor opnemen van geluid, bufferSize 500.000000, format [44100 Int24 2 (0) 0 (0)], interleaved 1.
+-- Info: Starting stream on system DSound...
+-- Info: Started stream on system DSound.
+Capturing interleaved...
+Press any key to continue...
+-- Info: Stopping stream on system DSound...
+-- Info: Stopped stream on system DSound.
+-- Info: Opening stream: device Primair stuurprogramma voor opnemen van geluid, bufferSize 500.000000, format [44100 Int24 2 (0) 0 (0)], interleaved 0...
+-- Info: Opened stream: device Primair stuurprogramma voor opnemen van geluid, bufferSize 500.000000, format [44100 Int24 2 (0) 0 (0)], interleaved 0.
+-- Info: Closing stream on system DSound...
+-- Info: Closed stream on system DSound.
+-- Info: Starting stream on system DSound...
+-- Info: Started stream on system DSound.
+Capturing non-interleaved...
+Press any key to continue...
+-- Info: Stopping stream on system DSound...
+-- Info: Stopped stream on system DSound.
+-- Info: Closing stream on system DSound...
+-- Info: Closed stream on system DSound.
+-- Info: Closing device Primair stuurprogramma voor opnemen van geluid...
+-- Info: Closed device Primair stuurprogramma voor opnemen van geluid.
+-- Info: Terminating library (version 1.0.2)...
+-- Info: Terminated library (version 1.0.2).</pre>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane" id="full-duplex">
+          <ul class="nav nav-tabs">
+            <li><a href="#full-duplex-java" data-toggle="tab">Java</a></li>
+            <li><a href="#full-duplex-net" data-toggle="tab">.NET</a></li>
+            <li><a href="#full-duplex-cpp" data-toggle="tab">C++</a></li>
+            <li><a href="#full-duplex-output" data-toggle="tab">Sample output</a></li>
+          </ul>
+          <div class="usage">
+            <ul>
+              <li>Use JACK or ASIO for full-duplex operation.</li>
+            </ul>
+          </div>
+          <div class="tab-content">
+            <div class="tab-pane" id="full-duplex-java">
+              <pre><code class="lang-java">package com.xtaudio.xt;
+
+public class FullDuplex {
+
+    static void callback(XtStream stream, Object input, Object output, int frames,
+            double time, long position, boolean timeValid, long error, Object user) throws Exception {
+        System.arraycopy(input, 0, output, 0, frames * 2);
+    }
+
+    public static void main(String[] args) throws Exception {
+
+        XtFormat format;
+        XtFormat int44100 = new XtFormat(new XtMix(44100, XtSample.INT32), 2, 0, 2, 0);
+        XtFormat int48000 = new XtFormat(new XtMix(48000, XtSample.INT32), 2, 0, 2, 0);
+        XtFormat float44100 = new XtFormat(new XtMix(44100, XtSample.FLOAT32), 2, 0, 2, 0);
+        XtFormat float48000 = new XtFormat(new XtMix(48000, XtSample.FLOAT32), 2, 0, 2, 0);
+
+        try (XtAudio audio = new XtAudio(null, null, null, null)) {
+            XtService service = XtAudio.getServiceBySetup(XtSetup.PRO_AUDIO);
+            try (XtDevice device = service.openDefaultDevice(true)) {
+                if (device != null) {
+
+                    if (device.supportsFormat(int44100))
+                        format = int44100;
+                    else if (device.supportsFormat(int48000))
+                        format = int48000;
+                    else if (device.supportsFormat(float44100))
+                        format = float44100;
+                    else if (device.supportsFormat(float48000))
+                        format = float48000;
+                    else
+                        return;
+
+                    XtBuffer buffer = device.getBuffer(format);
+                    try (XtStream stream = device.openStream(format, true, false,
+                            buffer.min, FullDuplex::callback, null, null)) {
+                        stream.start();
+                        System.out.println(&quot;Streaming full-duplex, press any key to continue...&quot;);
+                        System.console().readLine();
+                        stream.stop();
+                    }
+                }
+            }
+        }
+    }
+}</code></pre>
+            </div>
+            <div class="tab-pane" id="full-duplex-net">
+              <pre><code class="lang-cs">using System;
+
+namespace Xt {
+
+    public class FullDuplex {
+
+        static void Callback(XtStream stream, object input, object output,
+            int frames, double time, ulong position, bool timeValid, ulong error, object user) {
+            Buffer.BlockCopy((Array)input, 0, (Array)output, 0, frames * 2 * 4);
+        }
+
+        public static void Main(string[] args) {
+
+            XtFormat format;
+            XtFormat int44100 = new XtFormat(new XtMix(44100, XtSample.Int32), 2, 0, 2, 0);
+            XtFormat int48000 = new XtFormat(new XtMix(48000, XtSample.Int32), 2, 0, 2, 0);
+            XtFormat float44100 = new XtFormat(new XtMix(44100, XtSample.Float32), 2, 0, 2, 0);
+            XtFormat float48000 = new XtFormat(new XtMix(48000, XtSample.Float32), 2, 0, 2, 0);
+
+            using (XtAudio audio = new XtAudio(null, IntPtr.Zero, null, null)) {
+                XtService service = XtAudio.GetServiceBySetup(XtSetup.ProAudio);
+                using (XtDevice device = service.OpenDefaultDevice(true)) {
+                    if (device != null) {
+
+                        if (device.SupportsFormat(int44100))
+                            format = int44100;
+                        else if (device.SupportsFormat(int48000))
+                            format = int48000;
+                        else if (device.SupportsFormat(float44100))
+                            format = float44100;
+                        else if (device.SupportsFormat(float48000))
+                            format = float48000;
+                        else
+                            return;
+
+                        XtBuffer buffer = device.GetBuffer(format);
+                        using (XtStream stream = device.OpenStream(format, true,
+                            false, buffer.min, Callback, null, null)) {
+                            stream.Start();
+                            Console.WriteLine(&quot;Streaming full-duplex, press any key to continue...&quot;);
+                            Console.ReadLine();
+                            stream.Stop();
+                        }
+                    }
+                }
+            }
+        }
+    }
+}</code></pre>
+            </div>
+            <div class="tab-pane" id="full-duplex-cpp">
+              <pre><code class="lang-cpp">#include &lt;xt-cpp.hpp&gt;
+#include &lt;iostream&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+
+static void Callback(
+  const Xt::Stream&amp; stream, const void* input, void* output, int32_t frames,
+  double time, uint64_t position, bool timeValid, uint64_t error, void* user) {
+
+  memcpy(output, input, frames * 2 * 4);
+}
+
+int main(int argc, char** argv) {
+
+  Xt::Format format;
+  Xt::Format int44100(Xt::Mix(44100, Xt::Sample::Int32), 2, 0, 2, 0);
+  Xt::Format int48000(Xt::Mix(48000, Xt::Sample::Int32), 2, 0, 2, 0);
+  Xt::Format float44100(Xt::Mix(44100, Xt::Sample::Float32), 2, 0, 2, 0);
+  Xt::Format float48000(Xt::Mix(48000, Xt::Sample::Float32), 2, 0, 2, 0);
+
+  Xt::Audio audio(&quot;&quot;, nullptr, nullptr, nullptr);
+  std::unique_ptr&lt; Xt::Service&gt; service = Xt::Audio::GetServiceBySetup(Xt::Setup::ProAudio);
+  std::unique_ptr&lt;Xt::Device&gt; device = service-&gt;OpenDefaultDevice(true);
+  if(device) {
+
+    if(device-&gt;SupportsFormat(int44100))
+      format = int44100;
+    else if(device-&gt;SupportsFormat(int48000))
+      format = int48000;
+    else if(device-&gt;SupportsFormat(float44100))
+      format = float44100;
+    else if(device-&gt;SupportsFormat(float48000))
+      format = float48000;
+    else
+      return 0;
+
+    Xt::Buffer buffer = device-&gt;GetBuffer(format);
+    std::unique_ptr&lt;Xt::Stream&gt; stream = device-&gt;OpenStream(format, true, buffer.current, Callback, nullptr, nullptr);
+    stream-&gt;Start();
+    std::cout &lt;&lt; &quot;Streaming full-duplex, press any key to continue...\n&quot;;
+    std::string s;
+    std::getline(std::cin, s);
+    stream-&gt;Stop();
+  }
+
+  return 0;
+}</code></pre>
+            </div>
+            <div class="tab-pane" id="full-duplex-output">
+              <pre class="console">-- Info: Initializing library (version 1.0.2, built May 30 2016 22:53:02) ...
+-- Info: Initialized library (version 1.0.2).
+-- Info: Opening default device: service ASIO, output 1...
+-- Info: Opening device: service ASIO, index 0...
+-- Info: Opened device ASIO4ALL v2: service ASIO, index 0.
+-- Info: Opened default device ASIO4ALL v2: service ASIO, output 1.
+-- Info: Opening stream: device ASIO4ALL v2, bufferSize 11.609977, format [44100 Int32 2 (0) 2 (0)], interleaved 1...
+-- Info: Opened stream: device ASIO4ALL v2, bufferSize 11.609977, format [44100 Int32 2 (0) 2 (0)], interleaved 1.
+-- Info: Starting stream on system Asio...
+-- Info: Started stream on system Asio.
+Streaming full-duplex, press any key to continue...
+-- Info: Stopping stream on system Asio...
+-- Info: Stopped stream on system Asio.
+-- Info: Closing stream on system Asio...
+-- Info: Closed stream on system Asio.
+-- Info: Closing device ASIO4ALL v2...
+-- Info: Closed device ASIO4ALL v2.
+-- Info: Terminating library (version 1.0.2)...
+-- Info: Terminated library (version 1.0.2).</pre>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane" id="aggregate">
+          <ul class="nav nav-tabs">
+            <li><a href="#aggregate-java" data-toggle="tab">Java</a></li>
+            <li><a href="#aggregate-net" data-toggle="tab">.NET</a></li>
+            <li><a href="#aggregate-cpp" data-toggle="tab">C++</a></li>
+            <li><a href="#aggregate-output" data-toggle="tab">Sample output</a></li>
+          </ul>
+          <div class="usage">
+            <ul>
+              <li>Combine any number of input, output or full-duplex devices into a single stream.</li>
+            </ul>
+          </div>
+          <div class="tab-content">
+            <div class="tab-pane" id="aggregate-java">
+              <pre><code class="lang-java">package com.xtaudio.xt;
+
+public class Aggregate {
+
+    static void readLine() {
+        System.out.println(&quot;Press any key to continue...&quot;);
+        System.console().readLine();
+    }
+
+    static void xRun(int index, Object user) {
+        // Don't do this.
+        System.out.println(&quot;XRun on device &quot; + index + &quot;, user = &quot; + user + &quot;.&quot;);
+    }
+
+    static void aggregate(XtStream stream, Object input, Object output, int frames, double time,
+            long position, boolean timeValid, long error, Object user) throws Exception {
+
+        if (frames &gt; 0)
+            System.arraycopy(input, 0, output, 0, frames * stream.getFormat().inputs);
+    }
+
+    public static void main(String[] args) throws Exception {
+
+        XtMix mix = new XtMix(48000, XtSample.INT16);
+        XtFormat inputFormat = new XtFormat(mix, 2, 0, 0, 0);
+        XtChannels inputChannels = new XtChannels(2, 0, 0, 0);
+        XtFormat outputFormat = new XtFormat(mix, 0, 0, 2, 0);
+        XtChannels outputChannels = new XtChannels(0, 0, 2, 0);
+        try (XtAudio audio = new XtAudio(null, null, null, null)) {
+            XtService service = XtAudio.getServiceBySetup(XtSetup.SYSTEM_AUDIO);
+            try (XtDevice input = service.openDefaultDevice(false);
+                    XtDevice output = service.openDefaultDevice(true)) {
+                if (input != null &amp;&amp; input.supportsFormat(inputFormat)
+                        &amp;&amp; output != null &amp;&amp; output.supportsFormat(outputFormat))
+                    try (XtStream stream = service.aggregateStream(
+                            new XtDevice[]{input, output},
+                            new XtChannels[]{inputChannels, outputChannels},
+                            new double[]{30.0, 30.0},
+                            2, mix, true, false, output, Aggregate::aggregate, Aggregate::xRun, &quot;user-data&quot;)) {
+                        stream.start();
+                        System.out.println(&quot;Streaming aggregate, press any key to continue...&quot;);
+                        System.console().readLine();
+                        stream.stop();
+                    }
+            }
+        }
+    }
+}</code></pre>
+            </div>
+            <div class="tab-pane" id="aggregate-net">
+              <pre><code class="lang-cs">using System;
+
+namespace Xt {
+
+    public class Aggregate {
+
+        static void ReadLine() {
+            Console.WriteLine(&quot;Press any key to continue...&quot;);
+            Console.ReadLine();
+        }
+
+        static void XRun(int index, object user) {
+            // Don't do this.
+            Console.WriteLine(&quot;XRun on device &quot; + index + &quot;, user = &quot; + user + &quot;.&quot;);
+        }
+
+        static void OnAggregate(XtStream stream, object input, object output, int frames, double time,
+                ulong position, bool timeValid, ulong error, object user) {
+            XtFormat format = stream.GetFormat();
+            XtAttributes attrs = XtAudio.GetSampleAttributes(format.mix.sample);
+            if (frames &gt; 0)
+                Buffer.BlockCopy((Array)input, 0, (Array)output, 0, frames * format.inputs * attrs.size);
+        }
+
+        public static void Main(string[] args) {
+
+            XtMix mix = new XtMix(48000, XtSample.Int16);
+            XtFormat inputFormat = new XtFormat(mix, 2, 0, 0, 0);
+            XtChannels inputChannels = new XtChannels(2, 0, 0, 0);
+            XtFormat outputFormat = new XtFormat(mix, 0, 0, 2, 0);
+            XtChannels outputChannels = new XtChannels(0, 0, 2, 0);
+            using (XtAudio audio = new XtAudio(null, IntPtr.Zero, null, null)) {
+                XtService service = XtAudio.GetServiceBySetup(XtSetup.SystemAudio);
+                using (XtDevice input = service.OpenDefaultDevice(false))
+                using (XtDevice output = service.OpenDefaultDevice(true)) {
+                    if (input != null &amp;&amp; input.SupportsFormat(inputFormat)
+                            &amp;&amp; output != null &amp;&amp; output.SupportsFormat(outputFormat)) {
+                        using (XtStream stream = service.AggregateStream(
+                                new XtDevice[] { input, output },
+                                new XtChannels[] { inputChannels, outputChannels },
+                                new double[] { 30.0, 30.0 },
+                                2, mix, true, false, output, OnAggregate, XRun, &quot;user-data&quot;)) {
+                            stream.Start();
+                            Console.WriteLine(&quot;Streaming aggregate, press any key to continue...&quot;);
+                            Console.ReadLine();
+                            stream.Stop();
+                        }
+                    }
+                }
+            }
+        }
+    }
+}</code></pre>
+            </div>
+            <div class="tab-pane" id="aggregate-cpp">
+              <pre><code class="lang-cpp">#include &lt;xt-cpp.hpp&gt;
+#include &lt;iostream&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+
+static void ReadLine() {
+  std::string s;
+  std::cout &lt;&lt; &quot;Press any key to continue...\n&quot;;
+  std::getline(std::cin, s);
+}
+
+static void XRun(int index, void* user) {
+  // Don't do this.
+  std::cout &lt;&lt; &quot;XRun on stream &quot; &lt;&lt; index &lt;&lt; &quot;, user = &quot; &lt;&lt; static_cast&lt;char*&gt;(user) &lt;&lt; &quot;.\n&quot;;
+}
+
+static void Aggregate(
+  const Xt::Stream&amp; stream, const void* input, void* output, int32_t frames,
+  double time, uint64_t position, bool timeValid, uint64_t error, void* user) {
+
+  const Xt::Format&amp; format = stream.GetFormat();
+  Xt::Attributes attrs = Xt::Audio::GetSampleAttributes(format.mix.sample);
+  if(frames &gt; 0)
+    memcpy(output, input, frames * format.inputs * attrs.size);
+}
+
+int main(int argc, char** argv) {
+
+  double bufferSizes[2];
+  Xt::Device* devices[2];
+  Xt::Channels channels[2];
+  Xt::Mix mix(48000, Xt::Sample::Int16);
+  Xt::Format inputFormat(mix, 2, 0, 0, 0);
+  Xt::Channels inputChannels(2, 0, 0, 0);
+  Xt::Format outputFormat(mix, 0, 0, 2, 0);
+  Xt::Channels outputChannels(0, 0, 2, 0);
+
+  Xt::Audio audio(&quot;&quot;, nullptr, nullptr, nullptr);
+  std::unique_ptr&lt;Xt::Service&gt; service = Xt::Audio::GetServiceBySetup(Xt::Setup::SystemAudio);
+  std::unique_ptr&lt;Xt::Device&gt; input = service-&gt;OpenDefaultDevice(false);
+  std::unique_ptr&lt;Xt::Device&gt; output = service-&gt;OpenDefaultDevice(true);
+  if(input &amp;&amp; input-&gt;SupportsFormat(inputFormat)
+    &amp;&amp; output &amp;&amp; output-&gt;SupportsFormat(outputFormat)) {
+
+    devices[0] = input.get();
+    devices[1] = output.get();
+    channels[0] = inputChannels;
+    channels[1] = outputChannels;
+    bufferSizes[0] = 30.0;
+    bufferSizes[1] = 30.0;
+    std::unique_ptr&lt;Xt::Stream&gt; stream = service-&gt;AggregateStream(devices, channels,
+      bufferSizes, 2, mix, true, *output, Aggregate, XRun, const_cast&lt;char*&gt;(&quot;user-data&quot;));
+    stream-&gt;Start();
+    std::cout &lt;&lt; &quot;Streaming aggregate, press any key to continue...\n&quot;;
+    ReadLine();
+    stream-&gt;Stop();
+  }
+  return 0;
+}</code></pre>
+            </div>
+            <div class="tab-pane" id="aggregate-output">
+              <pre class="console">-- Info: Initializing library (version 1.0.2, built May 30 2016 22:53:02) ...
+-- Info: Initialized library (version 1.0.2).
+-- Info: Opening default device: service WASAPI, output 0...
+-- Info: Opened default device Lijningang (Realtek High Definition Audio) (Shared): service WASAPI, output 0.
+-- Info: Opening default device: service WASAPI, output 1...
+-- Info: Opened default device Luidsprekers (Realtek High Definition Audio) (Shared): service WASAPI, output 1.
+-- Info: Opening aggregate: service WASAPI, count 2...
+-- Info: Opening stream: device Lijningang (Realtek High Definition Audio) (Shared), bufferSize 30.000000, format [48000 Int16 2 (0) 0 (0)], interleaved 1...
+-- Info: Opened stream: device Lijningang (Realtek High Definition Audio) (Shared), bufferSize 30.000000, format [48000 Int16 2 (0) 0 (0)], interleaved 1.
+-- Info: Opening stream: device Luidsprekers (Realtek High Definition Audio) (Shared), bufferSize 30.000000, format [48000 Int16 0 (0) 2 (0)], interleaved 1...
+-- Info: Opened stream: device Luidsprekers (Realtek High Definition Audio) (Shared), bufferSize 30.000000, format [48000 Int16 0 (0) 2 (0)], interleaved 1.
+-- Info: Opened aggregate: service WASAPI, count 2...
+-- Info: Starting stream on system Wasapi...
+-- Info: Starting stream on system Wasapi...
+-- Info: Started stream on system Wasapi.
+-- Info: Starting stream on system Wasapi...
+-- Info: Started stream on system Wasapi.
+-- Info: Started stream on system Wasapi.
+Streaming aggregate, press any key to continue...
+Press any key to continue...
+XRun on stream -1, user = user-data.
+XRun on stream -1, user = user-data.
+XRun on stream 0, user = user-data.
+-- Info: Stopping stream on system Wasapi...
+-- Info: Stopping stream on system Wasapi...
+-- Info: Stopped stream on system Wasapi.
+-- Info: Stopping stream on system Wasapi...
+-- Info: Stopped stream on system Wasapi.
+-- Info: Stopped stream on system Wasapi.
+-- Info: Closing stream on system Wasapi...
+-- Info: Stopping stream on system Wasapi...
+-- Info: Stopped stream on system Wasapi.
+-- Info: Stopping stream on system Wasapi...
+-- Info: Stopped stream on system Wasapi.
+-- Info: Closed stream on system Wasapi.
+-- Info: Closing device Luidsprekers (Realtek High Definition Audio) (Shared)...
+-- Info: Closed device Luidsprekers (Realtek High Definition Audio) (Shared).
+-- Info: Closing device Lijningang (Realtek High Definition Audio) (Shared)...
+-- Info: Closed device Lijningang (Realtek High Definition Audio) (Shared).
+-- Info: Terminating library (version 1.0.2)...
+-- Info: Terminated library (version 1.0.2).</pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/highlight.pack.js"></script>
+    <script>$('#tabs').tab();hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
