@@ -150,7 +150,6 @@
   <HelpKINode Title="Xt.XtXRunCallback delegate" Url="html/33a61f65-25af-9d66-0e13-12d107ff2b94.htm" />
   <HelpKINode Title="XtAttributes class">
     <HelpKINode Title="XtAttributes Class" Url="html/0c6b0065-4010-899a-6ae0-962d918c197e.htm" />
-    <HelpKINode Title="about XtAttributes class" Url="html/0c6b0065-4010-899a-6ae0-962d918c197e.htm" />
     <HelpKINode Title="constructor" Url="html/c20678b2-b6b5-f02d-4d68-fc83f5b40522.htm" />
     <HelpKINode Title="fields" Url="html/6e72e519-b114-b239-ac4a-a4927676a267.htm" />
     <HelpKINode Title="methods" Url="html/8831e66d-b66d-53b7-6254-945f2260cbe5.htm" />
@@ -162,7 +161,6 @@
   <HelpKINode Title="XtAttributes.XtAttributes constructor" Url="html/c20678b2-b6b5-f02d-4d68-fc83f5b40522.htm" />
   <HelpKINode Title="XtAudio class">
     <HelpKINode Title="XtAudio Class" Url="html/08dcc60f-95d9-f198-0c92-8a1df068f432.htm" />
-    <HelpKINode Title="about XtAudio class" Url="html/08dcc60f-95d9-f198-0c92-8a1df068f432.htm" />
     <HelpKINode Title="constructor" Url="html/c4bde558-2bc8-043c-cc7a-02059a687ac7.htm" />
     <HelpKINode Title="methods" Url="html/27eeaa6b-5ff8-95f9-b6de-14df7b74b628.htm" />
   </HelpKINode>
@@ -177,7 +175,6 @@
   <HelpKINode Title="XtAudio.XtAudio constructor" Url="html/c4bde558-2bc8-043c-cc7a-02059a687ac7.htm" />
   <HelpKINode Title="XtBuffer class">
     <HelpKINode Title="XtBuffer Class" Url="html/2639342d-2732-57da-da90-2eb2b2636014.htm" />
-    <HelpKINode Title="about XtBuffer class" Url="html/2639342d-2732-57da-da90-2eb2b2636014.htm" />
     <HelpKINode Title="constructor" Url="html/1dd4e592-e4a6-bb62-e897-0996cc0247de.htm" />
     <HelpKINode Title="fields" Url="html/7585d21a-1234-230c-96f5-aa6d31c2a6a1.htm" />
     <HelpKINode Title="methods" Url="html/2e6eb819-65ec-d517-630f-879c817a6f13.htm" />
@@ -191,7 +188,6 @@
   <HelpKINode Title="XtCause enumeration" Url="html/69a4c029-2064-d290-0703-6b89de6e2dc2.htm" />
   <HelpKINode Title="XtChannels class">
     <HelpKINode Title="XtChannels Class" Url="html/d72d5195-9913-702d-2c6f-2dd95f2ec41c.htm" />
-    <HelpKINode Title="about XtChannels class" Url="html/d72d5195-9913-702d-2c6f-2dd95f2ec41c.htm" />
     <HelpKINode Title="constructor" Url="html/ef567881-b773-63c0-636f-3d4c9aa4f8a7.htm" />
     <HelpKINode Title="fields" Url="html/4fd51623-608b-bf17-f16f-0fbbaf302810.htm" />
     <HelpKINode Title="methods" Url="html/aeefd0e8-c5ed-81ea-04f7-5fa83b3bbf8e.htm" />
@@ -204,7 +200,6 @@
   <HelpKINode Title="XtChannels.XtChannels constructor" Url="html/ef567881-b773-63c0-636f-3d4c9aa4f8a7.htm" />
   <HelpKINode Title="XtDevice class">
     <HelpKINode Title="XtDevice Class" Url="html/59118034-d4f0-642b-f34f-08235851415c.htm" />
-    <HelpKINode Title="about XtDevice class" Url="html/59118034-d4f0-642b-f34f-08235851415c.htm" />
     <HelpKINode Title="methods" Url="html/7bbc0d4c-354b-8354-2a4f-7e9cc21faae2.htm" />
   </HelpKINode>
   <HelpKINode Title="XtDevice.Dispose method" Url="html/21490f0e-138b-0adf-e88e-205f193cc389.htm" />
@@ -221,7 +216,6 @@
   <HelpKINode Title="XtDevice.ToString method" Url="html/8dbf7246-fd3e-4a77-84bc-9200e0592151.htm" />
   <HelpKINode Title="XtException class">
     <HelpKINode Title="XtException Class" Url="html/6d9715c8-4e0b-b4a2-b981-bdf246d8fb2c.htm" />
-    <HelpKINode Title="about XtException class" Url="html/6d9715c8-4e0b-b4a2-b981-bdf246d8fb2c.htm" />
     <HelpKINode Title="methods" Url="html/e2b72714-0fe8-681b-b0f8-c9ab6d0b9999.htm" />
     <HelpKINode Title="properties" Url="html/b6c5509a-1d55-e032-0610-d7be23e1122f.htm" />
   </HelpKINode>
@@ -234,7 +228,6 @@
   <HelpKINode Title="XtFatalCallback delegate" Url="html/7514cbcb-542e-9b3d-2a9e-41c35ce4f5b5.htm" />
   <HelpKINode Title="XtFormat class">
     <HelpKINode Title="XtFormat Class" Url="html/0158f0b6-8cf6-0dae-54cd-8dce14a6a5b6.htm" />
-    <HelpKINode Title="about XtFormat class" Url="html/0158f0b6-8cf6-0dae-54cd-8dce14a6a5b6.htm" />
     <HelpKINode Title="constructor" Url="html/42dc2174-fe89-4e81-6946-49ea9339ed46.htm" />
     <HelpKINode Title="fields" Url="html/32946967-a953-9c78-8a56-4364a260e2c8.htm" />
     <HelpKINode Title="methods" Url="html/1432d6b8-fe75-fa66-07a4-b6f57491d871.htm" />
@@ -248,7 +241,6 @@
   <HelpKINode Title="XtFormat.XtFormat constructor" Url="html/42dc2174-fe89-4e81-6946-49ea9339ed46.htm" />
   <HelpKINode Title="XtLatency class">
     <HelpKINode Title="XtLatency Class" Url="html/0b71bee2-e9d3-f6e2-084f-72e1db2d9a2d.htm" />
-    <HelpKINode Title="about XtLatency class" Url="html/0b71bee2-e9d3-f6e2-084f-72e1db2d9a2d.htm" />
     <HelpKINode Title="constructor" Url="html/0ea3d043-d9ed-11ec-7778-09281be077b5.htm" />
     <HelpKINode Title="fields" Url="html/f2b2624f-7b87-6363-8de2-cec42d47c18c.htm" />
     <HelpKINode Title="methods" Url="html/ed1b01dd-3765-0c69-8ed7-5cf3a9fd7ec7.htm" />
@@ -260,7 +252,6 @@
   <HelpKINode Title="XtLevel enumeration" Url="html/dcf430a2-dd32-fad3-1d04-88bb67639f91.htm" />
   <HelpKINode Title="XtMix class">
     <HelpKINode Title="XtMix Class" Url="html/97a9295e-c270-98af-fd99-557e82a78e2e.htm" />
-    <HelpKINode Title="about XtMix class" Url="html/97a9295e-c270-98af-fd99-557e82a78e2e.htm" />
     <HelpKINode Title="constructor" Url="html/92630c21-f076-040c-55bb-e18d9a81123c.htm" />
     <HelpKINode Title="fields" Url="html/7c5022b2-283c-6884-dbde-463dd9063e7f.htm" />
     <HelpKINode Title="methods" Url="html/bcb146ad-287b-79ba-b70f-e67d78f70444.htm" />
@@ -271,7 +262,6 @@
   <HelpKINode Title="XtMix.XtMix constructor" Url="html/92630c21-f076-040c-55bb-e18d9a81123c.htm" />
   <HelpKINode Title="XtPrint class">
     <HelpKINode Title="XtPrint Class" Url="html/559e397a-21c5-f3a4-c49c-bb939a5a66df.htm" />
-    <HelpKINode Title="about XtPrint class" Url="html/559e397a-21c5-f3a4-c49c-bb939a5a66df.htm" />
     <HelpKINode Title="methods" Url="html/11d2e4ea-341e-2610-d78d-71eda214dfdb.htm" />
   </HelpKINode>
   <HelpKINode Title="XtPrint.AttributesToString method" Url="html/58c15742-4ef5-7efe-27d3-a552d88c3a89.htm" />
@@ -290,7 +280,6 @@
   <HelpKINode Title="XtSample enumeration" Url="html/eb8b401f-1f73-ef09-1841-991b5ed54282.htm" />
   <HelpKINode Title="XtService class">
     <HelpKINode Title="XtService Class" Url="html/007ab092-40f1-1cf0-f1d5-81075faf43f1.htm" />
-    <HelpKINode Title="about XtService class" Url="html/007ab092-40f1-1cf0-f1d5-81075faf43f1.htm" />
     <HelpKINode Title="methods" Url="html/18f35cb7-6a66-bd9a-bf9a-da94ffcae9c0.htm" />
   </HelpKINode>
   <HelpKINode Title="XtService.AggregateStream method" Url="html/c95ed7ba-9062-d9c6-baf9-d4667ee2bea2.htm" />
@@ -304,7 +293,6 @@
   <HelpKINode Title="XtSetup enumeration" Url="html/cc4a6dfc-3b77-3c50-483a-9ebcaee134c7.htm" />
   <HelpKINode Title="XtStream class">
     <HelpKINode Title="XtStream Class" Url="html/a96c08ba-c8bc-e573-34fe-4d448c282d16.htm" />
-    <HelpKINode Title="about XtStream class" Url="html/a96c08ba-c8bc-e573-34fe-4d448c282d16.htm" />
     <HelpKINode Title="methods" Url="html/62d2e4b5-2468-6ffa-a93d-67e7d3356fae.htm" />
   </HelpKINode>
   <HelpKINode Title="XtStream.Dispose method" Url="html/468995de-b798-13c2-e8cc-055a5b594a2e.htm" />

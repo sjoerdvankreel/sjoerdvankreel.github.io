@@ -233,7 +233,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><div class="memdoc">
 
 <p>Get service by setup. </p>
-<dl class="section return"><dt>Returns</dt><dd>an audio service. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>an audio service, or NULL if XT-Audio was compiled without support for the given setup. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">setup</td><td>the desired setup type.</td></tr>
@@ -259,14 +259,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><div class="memdoc">
 
 <p>Get service by system. </p>
-<dl class="section return"><dt>Returns</dt><dd>an audio service. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>an audio service, or NULL if XT-Audio was compiled without support for the given system. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">system</td><td>the desired system.</td></tr>
   </table>
   </dd>
 </dl>
-<p>It is an error to call this function with a system that does not exist on the current platform, for example, to specify XtSystemJack when running on Windows. Any attempt to do so will result in a fatal error.</p>
 <p>This function may be called from any thread. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="group__audio.html#ga345b7b7f2516195bdb0274b51b3e4b72" title="Indicates whether XT-Audio is running on Windows (true) or Linux (false). ">XtAudioIsWin32</a> </dd></dl>
 
 </div>
