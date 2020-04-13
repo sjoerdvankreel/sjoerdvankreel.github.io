@@ -350,7 +350,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">id</td><td>the application id. Used to identify against sound servers such as JACK and PulseAudio. When NULL, "XT-Audio" is used. </td></tr>
-    <tr><td class="paramname">window</td><td>application main window handle. ASIO uses this to show model control panels. When NULL, a dummy message window is used. </td></tr>
+    <tr><td class="paramname">window</td><td>application main window handle. ASIO uses this to show modal control panels. When NULL, a dummy message window is used. </td></tr>
     <tr><td class="paramname">trace</td><td>application-defined logging callback. When NULL, no logging is performed. Fatal errors are always written to stdout. </td></tr>
     <tr><td class="paramname">fatal</td><td>application-defined fatal error handler to allow cleanup, may be NULL. This function must not return.</td></tr>
   </table>
