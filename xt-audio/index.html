@@ -93,19 +93,22 @@ public class PrintSimple {
             }
         }
     }
-}</code></pre>
+}
+</code></pre>
             </div>
             <div class="tab-pane" id="simple-list-net">
               <pre><code class="lang-cs">using System;
 
-namespace Xt {
-
-    public class PrintSimple {
-
-        public static void Main(string[] args) {
-
-            using (XtAudio audio = new XtAudio(null, IntPtr.Zero, null, null)) {
-                for (int s = 0; s &lt; XtAudio.GetServiceCount(); s++) {
+namespace Xt
+{
+    public class PrintSimple
+    {
+        public static void Main(string[] args)
+        {
+            using (XtAudio audio = new XtAudio(null, IntPtr.Zero, null, null))
+            {
+                for (int s = 0; s &lt; XtAudio.GetServiceCount(); s++)
+                {
                     XtService service = XtAudio.GetServiceByIndex(s);
                     for (int d = 0; d &lt; service.GetDeviceCount(); d++)
                         using (XtDevice device = service.OpenDevice(d))
@@ -121,7 +124,7 @@ namespace Xt {
 #include &lt;iostream&gt;
 #include &lt;memory&gt;
 
-int main(int argc, char** argv) {
+int PrintSimpleMain(int argc, char** argv) {
   Xt::Audio audio(&quot;&quot;, nullptr, nullptr, nullptr);
   for(int s = 0; s &lt; Xt::Audio::GetServiceCount(); s++) {
     std::unique_ptr&lt;Xt::Service&gt; service = Xt::Audio::GetServiceByIndex(s);
@@ -188,9 +191,12 @@ public class PrintDetailed {
 
             System.out.println(&quot;Win32: &quot; + XtAudio.isWin32());
             System.out.println(&quot;Version: &quot; + XtAudio.getVersion());
-            System.out.println(&quot;Pro Audio: &quot; + XtAudio.getServiceBySetup(XtSetup.PRO_AUDIO).getName());
-            System.out.println(&quot;System Audio: &quot; + XtAudio.getServiceBySetup(XtSetup.SYSTEM_AUDIO).getName());
-            System.out.println(&quot;Consumer Audio: &quot; + XtAudio.getServiceBySetup(XtSetup.CONSUMER_AUDIO).getName());
+            XtService pro = XtAudio.getServiceBySetup(XtSetup.PRO_AUDIO);
+            System.out.println(&quot;Pro Audio: &quot; + (pro == null ? &quot;None&quot; : pro.getName()));
+            XtService system = XtAudio.getServiceBySetup(XtSetup.SYSTEM_AUDIO);
+            System.out.println(&quot;System Audio: &quot; + (system == null ? &quot;None&quot; : system.getName()));
+            XtService consumer = XtAudio.getServiceBySetup(XtSetup.CONSUMER_AUDIO);
+            System.out.println(&quot;Consumer Audio: &quot; + (consumer == null ? &quot;None&quot; : consumer.getName()));
 
             for (int s = 0; s &lt; XtAudio.getServiceCount(); s++) {
 
@@ -229,37 +235,44 @@ public class PrintDetailed {
                     e.toString());
         }
     }
-}</code></pre>
+}
+</code></pre>
             </div>
             <div class="tab-pane" id="detailed-list-net">
               <pre><code class="lang-cs">using System;
 
-namespace Xt {
-
-    public class PrintDetailed {
-
-        static void OnFatal() {
+namespace Xt
+{
+    public class PrintDetailed
+    {
+        static void OnFatal()
+        {
             Console.WriteLine(&quot;Fatal error.&quot;);
         }
 
-        static void OnTrace(XtLevel level, String message) {
+        static void OnTrace(XtLevel level, String message)
+        {
             if (level != XtLevel.Info)
                 Console.WriteLine(&quot;-- &quot; + level + &quot;: &quot; + message);
         }
 
-        public static void Main(String[] args) {
-
-            using (XtAudio audio = new XtAudio(&quot;Sample&quot;, IntPtr.Zero, OnTrace, OnFatal)) {
-
-                try {
+        public static void Main(String[] args)
+        {
+            using (XtAudio audio = new XtAudio(&quot;Sample&quot;, IntPtr.Zero, OnTrace, OnFatal))
+            {
+                try
+                {
                     Console.WriteLine(&quot;Win32: &quot; + XtAudio.IsWin32());
                     Console.WriteLine(&quot;Version: &quot; + XtAudio.GetVersion());
-                    Console.WriteLine(&quot;Pro Audio: &quot; + XtAudio.GetServiceBySetup(XtSetup.ProAudio).GetName());
-                    Console.WriteLine(&quot;System Audio: &quot; + XtAudio.GetServiceBySetup(XtSetup.SystemAudio).GetName());
-                    Console.WriteLine(&quot;Consumer Audio: &quot; + XtAudio.GetServiceBySetup(XtSetup.ConsumerAudio).GetName());
+                    XtService pro = XtAudio.GetServiceBySetup(XtSetup.ProAudio);
+                    Console.WriteLine(&quot;Pro Audio: &quot; + (pro == null ? &quot;None&quot; : pro.GetName()));
+                    XtService system = XtAudio.GetServiceBySetup(XtSetup.SystemAudio);
+                    Console.WriteLine(&quot;System Audio: &quot; + (system == null ? &quot;None&quot; : system.GetName()));
+                    XtService consumer = XtAudio.GetServiceBySetup(XtSetup.ConsumerAudio);
+                    Console.WriteLine(&quot;Consumer Audio: &quot; + (consumer == null ? &quot;None&quot; : consumer.GetName()));
 
-                    for (int s = 0; s &lt; XtAudio.GetServiceCount(); s++) {
-
+                    for (int s = 0; s &lt; XtAudio.GetServiceCount(); s++)
+                    {
                         XtService service = XtAudio.GetServiceByIndex(s);
                         Console.WriteLine(&quot;Service &quot; + service.GetName() + &quot;:&quot;);
                         Console.WriteLine(&quot;  System: &quot; + service.GetSystem());
@@ -272,10 +285,9 @@ namespace Xt {
                         using (XtDevice defaultOutput = service.OpenDefaultDevice(true))
                             Console.WriteLine(&quot;  Default output: &quot; + defaultOutput);
 
-
                         for (int d = 0; d &lt; service.GetDeviceCount(); d++)
-                            using (XtDevice device = service.OpenDevice(d)) {
-
+                            using (XtDevice device = service.OpenDevice(d))
+                            {
                                 Console.WriteLine(&quot;  Device &quot; + device.GetName() + &quot;:&quot;);
                                 Console.WriteLine(&quot;    System: &quot; + device.GetSystem());
                                 Console.WriteLine(&quot;    Current mix: &quot; + device.GetMix());
@@ -285,8 +297,8 @@ namespace Xt {
                                 Console.WriteLine(&quot;    Non-interleaved access: &quot; + device.SupportsAccess(false));
                             }
                     }
-                } catch (XtException e) {
-
+                } catch (XtException e)
+                {
                     Console.WriteLine(&quot;Error: system %s, fault %s, cause %s, text %s, message: %s.\n&quot;,
                             XtException.GetSystem(e.GetError()),
                             XtException.GetFault(e.GetError()),
@@ -313,16 +325,20 @@ static void OnTrace(Xt::Level level, const std::string&amp; message) {
     std::cout &lt;&lt; &quot;-- &quot; &lt;&lt; level &lt;&lt; &quot;: &quot; &lt;&lt; message &lt;&lt; &quot;\n&quot;;
 }
 
-int main(int argc, char** argv) {
+int PrintDetailedMain(int argc, char** argv) {
 
   Xt::Audio audio(&quot;Sample&quot;, nullptr, OnTrace, OnFatal);
 
   try {
     std::cout &lt;&lt; &quot;Win32: &quot; &lt;&lt; Xt::Audio::IsWin32() &lt;&lt; &quot;\n&quot;;
     std::cout &lt;&lt; &quot;Version: &quot; &lt;&lt; Xt::Audio::GetVersion() &lt;&lt; &quot;\n&quot;;
-    std::cout &lt;&lt; &quot;Pro Audio: &quot; &lt;&lt; Xt::Audio::GetServiceBySetup(Xt::Setup::ProAudio)-&gt;GetName() &lt;&lt; &quot;\n&quot;;
-    std::cout &lt;&lt; &quot;System Audio: &quot; &lt;&lt; Xt::Audio::GetServiceBySetup(Xt::Setup::SystemAudio)-&gt;GetName() &lt;&lt; &quot;\n&quot;;
-    std::cout &lt;&lt; &quot;Consumer Audio: &quot; &lt;&lt; Xt::Audio::GetServiceBySetup(Xt::Setup::ConsumerAudio)-&gt;GetName() &lt;&lt; &quot;\n&quot;;
+    
+    auto pro = Xt::Audio::GetServiceBySetup(Xt::Setup::ProAudio);
+    std::cout &lt;&lt; &quot;Pro Audio: &quot; &lt;&lt; (pro? pro-&gt;GetName(): &quot;None&quot;) &lt;&lt; &quot;\n&quot;;
+    auto system = Xt::Audio::GetServiceBySetup(Xt::Setup::SystemAudio);
+    std::cout &lt;&lt; &quot;System Audio: &quot; &lt;&lt; (system? system-&gt;GetName(): &quot;None&quot;) &lt;&lt; &quot;\n&quot;;
+    auto consumer = Xt::Audio::GetServiceBySetup(Xt::Setup::ConsumerAudio);
+    std::cout &lt;&lt; &quot;Consumer Audio: &quot; &lt;&lt; (consumer? consumer-&gt;GetName(): &quot;None&quot;) &lt;&lt; &quot;\n&quot;;
 
     for(int s = 0; s &lt; Xt::Audio::GetServiceCount(); s++) {
 
@@ -536,39 +552,45 @@ public class RenderSimple {
     public static void main(String[] args) throws Exception {
 
         try (XtAudio audio = new XtAudio(null, null, null, null)) {
-            XtService service = XtAudio.getServiceBySetup(XtSetup.CONSUMER_AUDIO);
-            try (XtDevice device = service.openDefaultDevice(true)) {
-                if (device != null &amp;&amp; device.supportsFormat(FORMAT)) {
 
-                    XtBuffer buffer = device.getBuffer(FORMAT);
-                    try (XtStream stream = device.openStream(FORMAT, true, false,
-                            buffer.current, RenderSimple::render, null, null)) {
-                        stream.start();
-                        Thread.sleep(1000);
-                        stream.stop();
-                    }
+            XtService service = XtAudio.getServiceBySetup(XtSetup.CONSUMER_AUDIO);
+            if (service == null)
+                return;
+
+            try (XtDevice device = service.openDefaultDevice(true)) {
+                if (device == null || !device.supportsFormat(FORMAT))
+                    return;
+
+                XtBuffer buffer = device.getBuffer(FORMAT);
+                try (XtStream stream = device.openStream(FORMAT, true, false,
+                        buffer.current, RenderSimple::render, null, null)) {
+                    stream.start();
+                    Thread.sleep(1000);
+                    stream.stop();
                 }
             }
         }
     }
-}</code></pre>
+}
+</code></pre>
             </div>
             <div class="tab-pane" id="simple-playback-net">
               <pre><code class="lang-cs">using System;
 using System.Threading;
 
-namespace Xt {
-
-    public class RenderSimple {
-
+namespace Xt
+{
+    public class RenderSimple
+    {
         static double phase = 0.0;
         const double Frequency = 660.0;
         static readonly XtFormat Format = new XtFormat(new XtMix(44100, XtSample.Float32), 0, 0, 1, 0);
 
         static void Render(XtStream stream, object input, object output, int frames,
-                double time, ulong position, bool timeValid, ulong error, object user) {
-
-            for (int f = 0; f &lt; frames; f++) {
+                double time, ulong position, bool timeValid, ulong error, object user)
+        {
+            for (int f = 0; f &lt; frames; f++)
+            {
                 phase += Frequency / Format.mix.rate;
                 if (phase &gt;= 1.0)
                     phase = -1.0;
@@ -576,20 +598,26 @@ namespace Xt {
             }
         }
 
-        public static void Main(string[] args) {
-
-            using (XtAudio audio = new XtAudio(null, IntPtr.Zero, null, null)) {
+        public static void Main(string[] args)
+        {
+            using (XtAudio audio = new XtAudio(null, IntPtr.Zero, null, null))
+            {
                 XtService service = XtAudio.GetServiceBySetup(XtSetup.ConsumerAudio);
-                using (XtDevice device = service.OpenDefaultDevice(true)) {
-                    if (device != null &amp;&amp; device.SupportsFormat(Format)) {
+                if (service == null)
+                    return;
 
-                        XtBuffer buffer = device.GetBuffer(Format);
-                        using (XtStream stream = device.OpenStream(Format, true, false,
-                                buffer.current, Render, null, null)) {
-                            stream.Start();
-                            Thread.Sleep(1000);
-                            stream.Stop();
-                        }
+                using (XtDevice device = service.OpenDefaultDevice(true))
+                {
+                    if (device == null || !device.SupportsFormat(Format))
+                        return;
+
+                    XtBuffer buffer = device.GetBuffer(Format);
+                    using (XtStream stream = device.OpenStream(Format, true, false,
+                            buffer.current, Render, null, null))
+                    {
+                        stream.Start();
+                        Thread.Sleep(1000);
+                        stream.Stop();
                     }
                 }
             }
@@ -627,23 +655,26 @@ static void Render(
   }
 }
 
-int main(int argc, char** argv) {
+int RenderSimpleMain(int argc, char** argv) {
 
   Xt::Audio audio(&quot;&quot;, nullptr, nullptr, nullptr);
-  std::unique_ptr&lt; Xt::Service&gt; service = Xt::Audio::GetServiceBySetup(Xt::Setup::ConsumerAudio);
-  std::unique_ptr&lt;Xt::Device&gt; device = service-&gt;OpenDefaultDevice(true);
-  if(device  &amp;&amp; device-&gt;SupportsFormat(Format)) {
+  std::unique_ptr&lt;Xt::Service&gt; service = Xt::Audio::GetServiceBySetup(Xt::Setup::ConsumerAudio);
+  if(!service)
+    return 0;
 
-    Xt::Buffer buffer = device-&gt;GetBuffer(Format);
-    std::unique_ptr&lt;Xt::Stream&gt; stream = device-&gt;OpenStream(Format, true, buffer.current, Render, nullptr, nullptr);
-    stream-&gt;Start();
+  std::unique_ptr&lt;Xt::Device&gt; device = service-&gt;OpenDefaultDevice(true);
+  if(!device || !device-&gt;SupportsFormat(Format)) 
+    return 0;
+
+  Xt::Buffer buffer = device-&gt;GetBuffer(Format);
+  std::unique_ptr&lt;Xt::Stream&gt; stream = device-&gt;OpenStream(Format, true, buffer.current, Render, nullptr, nullptr);
+  stream-&gt;Start();
 #if _WIN32
-    Sleep(1000);
+  Sleep(1000);
 #else
-    usleep(1000 * 1000);
+  usleep(1000 * 1000);
 #endif
-    stream-&gt;Stop();
-  }
+  stream-&gt;Stop();
   return 0;
 }</code></pre>
             </div>
@@ -692,70 +723,81 @@ public class CaptureSimple {
 
     static void capture(XtStream stream, Object input, Object output, int frames, double time,
             long position, boolean timeValid, long error, Object user) throws Exception {
-
+        // Don't do this.
         if (frames &gt; 0)
-            // Don't do this.
             ((FileOutputStream) user).write((byte[]) input, 0, frames * SAMPLE_SIZE);
     }
 
     public static void main(String[] args) throws Exception {
 
         try (XtAudio audio = new XtAudio(null, null, null, null)) {
-            XtService service = XtAudio.getServiceBySetup(XtSetup.CONSUMER_AUDIO);
-            try (XtDevice device = service.openDefaultDevice(false)) {
-                if (device != null &amp;&amp; device.supportsFormat(FORMAT)) {
 
-                    XtBuffer buffer = device.getBuffer(FORMAT);
-                    try (FileOutputStream recording = new FileOutputStream(&quot;xt-audio.raw&quot;);
-                            XtStream stream = device.openStream(FORMAT, true, false,
-                                    buffer.current, CaptureSimple::capture, null, recording)) {
-                        stream.start();
-                        Thread.sleep(1000);
-                        stream.stop();
-                    }
+            XtService service = XtAudio.getServiceBySetup(XtSetup.CONSUMER_AUDIO);
+            if (service == null)
+                return;
+
+            try (XtDevice device = service.openDefaultDevice(false)) {
+                if (device == null || !device.supportsFormat(FORMAT))
+                    return;
+
+                XtBuffer buffer = device.getBuffer(FORMAT);
+                try (FileOutputStream recording = new FileOutputStream(&quot;xt-audio.raw&quot;);
+                        XtStream stream = device.openStream(FORMAT, true, false,
+                                buffer.current, CaptureSimple::capture, null, recording)) {
+                    stream.start();
+                    Thread.sleep(1000);
+                    stream.stop();
                 }
             }
         }
     }
-}</code></pre>
+}
+</code></pre>
             </div>
             <div class="tab-pane" id="simple-record-net">
               <pre><code class="lang-cs">using System;
 using System.IO;
 using System.Threading;
 
-namespace Xt {
-
-    public class CaptureSimple {
-
+namespace Xt
+{
+    public class CaptureSimple
+    {
         const int SampleSize = 3;
         static readonly XtFormat Format = new XtFormat(new XtMix(44100, XtSample.Int24), 1, 0, 0, 0);
 
         static void Capture(XtStream stream, object input, object output, int frames,
-            double time, ulong position, bool timeValid, ulong error, object user) {
-
+            double time, ulong position, bool timeValid, ulong error, object user)
+        {
+            // Don't do this.
             if (frames &gt; 0)
-                // Don't do this.
                 ((FileStream)user).Write((byte[])input, 0, frames * SampleSize);
         }
 
-        public static void Main(string[] args) {
-
-            using (XtAudio audio = new XtAudio(null, IntPtr.Zero, null, null)) {
+        public static void Main(string[] args)
+        {
+            using (XtAudio audio = new XtAudio(null, IntPtr.Zero, null, null))
+            {
                 XtService service = XtAudio.GetServiceBySetup(XtSetup.ConsumerAudio);
-                using (XtDevice device = service.OpenDefaultDevice(false))
-                    if (device != null &amp;&amp; device.SupportsFormat(Format)) {
+                if (service == null)
+                    return;
 
-                        XtBuffer buffer = device.GetBuffer(Format);
-                        using (FileStream recording = new FileStream(
-                            &quot;xt-audio.raw&quot;, FileMode.Create, FileAccess.Write))
-                        using (XtStream stream = device.OpenStream(Format, true, false,
-                            buffer.current, Capture, null, recording)) {
-                            stream.Start();
-                            Thread.Sleep(1000);
-                            stream.Stop();
-                        }
+                using (XtDevice device = service.OpenDefaultDevice(false))
+                {
+                    if (device == null || !device.SupportsFormat(Format))
+                        return;
+
+                    XtBuffer buffer = device.GetBuffer(Format);
+                    using (FileStream recording = new FileStream(
+                        &quot;xt-audio.raw&quot;, FileMode.Create, FileAccess.Write))
+                    using (XtStream stream = device.OpenStream(Format, true, false,
+                        buffer.current, Capture, null, recording))
+                    {
+                        stream.Start();
+                        Thread.Sleep(1000);
+                        stream.Stop();
                     }
+                }
             }
         }
     }
@@ -784,24 +826,27 @@ static void Capture(
     static_cast&lt;std::ofstream*&gt;(user)-&gt;write(static_cast&lt;const char*&gt;(input), frames * SampleSize);
 }
 
-int main(int argc, char** argv) {
+int CaptureSimpleMain(int argc, char** argv) {
 
-  Xt::Audio audio(&quot;&quot;, nullptr, nullptr, nullptr);
-  std::unique_ptr&lt; Xt::Service&gt; service = Xt::Audio::GetServiceBySetup(Xt::Setup::ConsumerAudio);
+  Xt::Audio audio(&quot;&quot;, nullptr, nullptr, nullptr);  
+  std::unique_ptr&lt;Xt::Service&gt; service = Xt::Audio::GetServiceBySetup(Xt::Setup::ConsumerAudio);
+  if(!service)
+    return 0;  
+
   std::unique_ptr&lt;Xt::Device&gt; device = service-&gt;OpenDefaultDevice(false);
-  if(device  &amp;&amp; device-&gt;SupportsFormat(Format)) {
+  if(!device || !device-&gt;SupportsFormat(Format))
+    return 0;
 
-    Xt::Buffer buffer = device-&gt;GetBuffer(Format);
-    std::ofstream recording(&quot;xt-audio.raw&quot;, std::ios::out | std::ios::binary);
-    std::unique_ptr&lt;Xt::Stream&gt; stream = device-&gt;OpenStream(Format, true, buffer.current, Capture, nullptr, &amp;recording);
-    stream-&gt;Start();
+  Xt::Buffer buffer = device-&gt;GetBuffer(Format);
+  std::ofstream recording(&quot;xt-audio.raw&quot;, std::ios::out | std::ios::binary);
+  std::unique_ptr&lt;Xt::Stream&gt; stream = device-&gt;OpenStream(Format, true, buffer.current, Capture, nullptr, &amp;recording);
+  stream-&gt;Start();
 #if _WIN32
-    Sleep(1000);
+  Sleep(1000);
 #else
-    usleep(1000 * 1000);
+  usleep(1000 * 1000);
 #endif
-    stream-&gt;Stop();
-  }
+  stream-&gt;Stop();
   return 0;
 }</code></pre>
             </div>
@@ -867,7 +912,7 @@ public class RenderAdvanced {
         // Don't do this.
         System.out.println(&quot;XRun on device &quot; + index + &quot;, user = &quot; + user + &quot;.&quot;);
     }
-    
+
     static void renderInterleaved(XtStream stream, Object input, Object output, int frames,
             double time, long position, boolean timeValid, long error, Object user) throws Exception {
 
@@ -919,18 +964,13 @@ public class RenderAdvanced {
         try (XtAudio audio = new XtAudio(null, null, null, null)) {
 
             XtService service = XtAudio.getServiceBySetup(XtSetup.CONSUMER_AUDIO);
+            if (service == null)
+                return;
+
             XtFormat format = new XtFormat(new XtMix(44100, XtSample.FLOAT32), 0, 0, 2, 0);
             try (XtDevice device = service.openDefaultDevice(true)) {
-
-                if (device == null) {
-                    System.out.println(&quot;No default device found.&quot;);
+                if (device == null || !device.supportsFormat(format))
                     return;
-                }
-
-                if (!device.supportsFormat(format)) {
-                    System.out.println(&quot;Format not supported.&quot;);
-                    return;
-                }
 
                 XtBuffer buffer = device.getBuffer(format);
 
@@ -986,40 +1026,45 @@ public class RenderAdvanced {
             }
         }
     }
-}</code></pre>
+}
+</code></pre>
             </div>
             <div class="tab-pane" id="advanced-playback-net">
               <pre><code class="lang-cs">using System;
 
-namespace Xt {
-
-    public class RenderAdvanced {
-
+namespace Xt
+{
+    public class RenderAdvanced
+    {
         static double phase = 0.0;
         const double Frequency = 660.0;
 
-        static void ReadLine() {
+        static void ReadLine()
+        {
             Console.WriteLine(&quot;Press any key to continue...&quot;);
             Console.ReadLine();
         }
 
-        static float NextSine(double sampleRate) {
+        static float NextSine(double sampleRate)
+        {
             phase += Frequency / sampleRate;
             if (phase &gt;= 1.0)
                 phase = -1.0;
             return (float)Math.Sin(phase * Math.PI);
         }
 
-        static void XRun(int index, object user) {
+        static void XRun(int index, object user)
+        {
             // Don't do this.
             Console.WriteLine(&quot;XRun on device &quot; + index + &quot;, user = &quot; + user + &quot;.&quot;);
         }
 
         static void RenderInterleaved(XtStream stream, object input, object output,
-            int frames, double time, ulong position, bool timeValid, ulong error, object user) {
-
+            int frames, double time, ulong position, bool timeValid, ulong error, object user)
+        {
             XtFormat format = stream.GetFormat();
-            for (int f = 0; f &lt; frames; f++) {
+            for (int f = 0; f &lt; frames; f++)
+            {
                 float sine = NextSine(format.mix.rate);
                 for (int c = 0; c &lt; format.outputs; c++)
                     ((float[])output)[f * format.outputs + c] = sine;
@@ -1027,10 +1072,11 @@ namespace Xt {
         }
 
         static unsafe void RenderInterleavedRaw(XtStream stream, object input, object output,
-            int frames, double time, ulong position, bool timeValid, ulong error, object user) {
-
+            int frames, double time, ulong position, bool timeValid, ulong error, object user)
+        {
             XtFormat format = stream.GetFormat();
-            for (int f = 0; f &lt; frames; f++) {
+            for (int f = 0; f &lt; frames; f++)
+            {
                 float sine = NextSine(format.mix.rate);
                 for (int c = 0; c &lt; format.outputs; c++)
                     ((float*)(IntPtr)output)[f * format.outputs + c] = sine;
@@ -1038,10 +1084,11 @@ namespace Xt {
         }
 
         static void RenderNonInterleaved(XtStream stream, object input, object output,
-            int frames, double time, ulong position, bool timeValid, ulong error, object user) {
-
+            int frames, double time, ulong position, bool timeValid, ulong error, object user)
+        {
             XtFormat format = stream.GetFormat();
-            for (int f = 0; f &lt; frames; f++) {
+            for (int f = 0; f &lt; frames; f++)
+            {
                 float sine = NextSine(format.mix.rate);
                 for (int c = 0; c &lt; format.outputs; c++)
                     ((float[][])output)[c][f] = sine;
@@ -1049,38 +1096,35 @@ namespace Xt {
         }
 
         static unsafe void RenderNonInterleavedRaw(XtStream stream, object input, object output,
-            int frames, double time, ulong position, bool timeValid, ulong error, object user) {
-
+            int frames, double time, ulong position, bool timeValid, ulong error, object user)
+        {
             XtFormat format = stream.GetFormat();
-            for (int f = 0; f &lt; frames; f++) {
+            for (int f = 0; f &lt; frames; f++)
+            {
                 float sine = NextSine(format.mix.rate);
                 for (int c = 0; c &lt; format.outputs; c++)
                     ((float**)(IntPtr)output)[c][f] = sine;
             }
         }
 
-        public static void Main(String[] args) {
-
-            using (XtAudio audio = new XtAudio(null, IntPtr.Zero, null, null)) {
-
+        public static void Main(String[] args)
+        {
+            using (XtAudio audio = new XtAudio(null, IntPtr.Zero, null, null))
+            {
                 XtService service = XtAudio.GetServiceBySetup(XtSetup.ConsumerAudio);
+                if (service == null)
+                    return;
+
                 XtFormat format = new XtFormat(new XtMix(44100, XtSample.Float32), 0, 0, 2, 0);
-                using (XtDevice device = service.OpenDefaultDevice(true)) {
-
-                    if (device == null) {
-                        Console.WriteLine(&quot;No default device found.&quot;);
+                using (XtDevice device = service.OpenDefaultDevice(true))
+                {
+                    if (device == null || device.SupportsFormat(format))
                         return;
-                    }
-
-                    if (!device.SupportsFormat(format)) {
-                        Console.WriteLine(&quot;Format not supported.&quot;);
-                        return;
-                    }
 
                     XtBuffer buffer = device.GetBuffer(format);
-
                     using (XtStream stream = device.OpenStream(format, true, false,
-                        buffer.current, RenderInterleaved, XRun, &quot;user-data&quot;)) {
+                        buffer.current, RenderInterleaved, XRun, &quot;user-data&quot;))
+                    {
                         stream.Start();
                         Console.WriteLine(&quot;Rendering interleaved...&quot;);
                         ReadLine();
@@ -1088,7 +1132,8 @@ namespace Xt {
                     }
 
                     using (XtStream stream = device.OpenStream(format, true, true,
-                        buffer.current, RenderInterleavedRaw, XRun, &quot;user-data&quot;)) {
+                        buffer.current, RenderInterleavedRaw, XRun, &quot;user-data&quot;))
+                    {
                         stream.Start();
                         Console.WriteLine(&quot;Rendering interleaved, raw buffers...&quot;);
                         ReadLine();
@@ -1096,7 +1141,8 @@ namespace Xt {
                     }
 
                     using (XtStream stream = device.OpenStream(format, false, false,
-                        buffer.current, RenderNonInterleaved, XRun, &quot;user-data&quot;)) {
+                        buffer.current, RenderNonInterleaved, XRun, &quot;user-data&quot;))
+                    {
                         stream.Start();
                         Console.WriteLine(&quot;Rendering non-interleaved...&quot;);
                         ReadLine();
@@ -1104,7 +1150,8 @@ namespace Xt {
                     }
 
                     using (XtStream stream = device.OpenStream(format, false, true,
-                        buffer.current, RenderNonInterleavedRaw, XRun, &quot;user-data&quot;)) {
+                        buffer.current, RenderNonInterleavedRaw, XRun, &quot;user-data&quot;))
+                    {
                         stream.Start();
                         Console.WriteLine(&quot;Rendering non-interleaved, raw buffers...&quot;);
                         ReadLine();
@@ -1113,7 +1160,8 @@ namespace Xt {
 
                     XtFormat sendTo0 = new XtFormat(new XtMix(44100, XtSample.Float32), 0, 0, 1, 1L &lt;&lt; 0);
                     using (XtStream stream = device.OpenStream(sendTo0, true, false,
-                        buffer.current, RenderInterleaved, XRun, &quot;user-data&quot;)) {
+                        buffer.current, RenderInterleaved, XRun, &quot;user-data&quot;))
+                    {
                         stream.Start();
                         Console.WriteLine(&quot;Rendering channel mask, channel 0...&quot;);
                         ReadLine();
@@ -1122,7 +1170,8 @@ namespace Xt {
 
                     XtFormat sendTo1 = new XtFormat(new XtMix(44100, XtSample.Float32), 0, 0, 1, 1L &lt;&lt; 1);
                     using (XtStream stream = device.OpenStream(sendTo1, true, false, buffer.current,
-                            RenderInterleaved, XRun, &quot;user-data&quot;)) {
+                            RenderInterleaved, XRun, &quot;user-data&quot;))
+                    {
                         stream.Start();
                         Console.WriteLine(&quot;Rendering channel mask, channel 1...&quot;);
                         ReadLine();
@@ -1193,33 +1242,28 @@ static void RenderNonInterleaved(
   }
 }
 
-int main(int argc, char** argv) {
+int RenderAdvancedMain(int argc, char** argv) {
 
   Xt::Audio audio(&quot;&quot;, nullptr, nullptr, nullptr);
-  std::unique_ptr&lt; Xt::Service&gt; service = Xt::Audio::GetServiceBySetup(Xt::Setup::ConsumerAudio);
   Xt::Format format(Xt::Mix(44100, Xt::Sample::Float32), 0, 0, 2, 0);
+
+  std::unique_ptr&lt;Xt::Service&gt; service = Xt::Audio::GetServiceBySetup(Xt::Setup::ConsumerAudio);
+  if(!service)
+    return 0;
+
   std::unique_ptr&lt;Xt::Device&gt; device = service-&gt;OpenDefaultDevice(true);
-
-  if(!device) {
-    std::cout &lt;&lt; &quot;No default device found.\n&quot;;
+  if(!device || !device-&gt;SupportsFormat(format))
     return 0;
-  }
-
-  if(!device-&gt;SupportsFormat(format)) {
-    std::cout &lt;&lt; &quot;Format not supported.\n&quot;;
-    return 0;
-  }
 
   std::unique_ptr&lt;Xt::Stream&gt; stream;
   Xt::Buffer buffer = device-&gt;GetBuffer(format);
-
   stream = device-&gt;OpenStream(format, true, buffer.current, RenderInterleaved, XRun, const_cast&lt;char*&gt;(&quot;user-data&quot;));
   stream-&gt;Start();
   std::cout &lt;&lt; &quot;Rendering interleaved...\n&quot;;
   ReadLine();
   stream-&gt;Stop();
 
-  device-&gt;OpenStream(format, false, buffer.current, RenderNonInterleaved, XRun, const_cast&lt;char*&gt;(&quot;user-data&quot;));
+  stream = device-&gt;OpenStream(format, false, buffer.current, RenderNonInterleaved, XRun, const_cast&lt;char*&gt;(&quot;user-data&quot;));
   stream-&gt;Start();
   std::cout &lt;&lt; &quot;Rendering non-interleaved...\n&quot;;
   ReadLine();
@@ -1238,9 +1282,9 @@ int main(int argc, char** argv) {
   std::cout &lt;&lt; &quot;Rendering channel mask, channel 1...\n&quot;;
   ReadLine();
   stream-&gt;Stop();
-
   return 0;
-}</code></pre>
+}
+</code></pre>
             </div>
             <div class="tab-pane" id="advanced-playback-output">
               <pre class="console">-- Info: Initializing library (version 1.0.2, built May 30 2016 22:53:02) ...
@@ -1333,7 +1377,7 @@ public class CaptureAdvanced {
         int sampleSize = XtAudio.getSampleAttributes(format.mix.sample).size;
         return frames * format.inputs * sampleSize;
     }
-    
+
     static void xRun(int index, Object user) {
         // Don't do this.
         System.out.println(&quot;XRun on device &quot; + index + &quot;.&quot;);
@@ -1342,8 +1386,8 @@ public class CaptureAdvanced {
     static void captureInterleaved(XtStream stream, Object input, Object output, int frames,
             double time, long position, boolean timeValid, long error, Object user) throws Exception {
 
+        // Don't do this.
         if (frames &gt; 0)
-            // Don't do this.
             ((Context) user).out.write((byte[]) input, 0, getBufferSize(stream, frames));
     }
 
@@ -1395,18 +1439,13 @@ public class CaptureAdvanced {
         try (XtAudio audio = new XtAudio(null, null, null, null)) {
 
             XtService service = XtAudio.getServiceBySetup(XtSetup.CONSUMER_AUDIO);
+            if (service == null)
+                return;
+
             XtFormat format = new XtFormat(new XtMix(44100, XtSample.INT24), 2, 0, 0, 0);
             try (XtDevice device = service.openDefaultDevice(false)) {
-
-                if (device == null) {
-                    System.out.println(&quot;No default device found.&quot;);
+                if (device == null || !device.supportsFormat(format))
                     return;
-                }
-
-                if (!device.supportsFormat(format)) {
-                    System.out.println(&quot;Format not supported.&quot;);
-                    return;
-                }
 
                 Context context = new Context();
                 XtBuffer buffer = device.getBuffer(format);
@@ -1457,51 +1496,56 @@ public class CaptureAdvanced {
             }
         }
     }
-}</code></pre>
+}
+</code></pre>
             </div>
             <div class="tab-pane" id="advanced-record-net">
               <pre><code class="lang-cs">using System;
 using System.IO;
 using System.Runtime.InteropServices;
 
-namespace Xt {
-
-    public class CaptureAdvanced {
-
-        class Context {
-
+namespace Xt
+{
+    public class CaptureAdvanced
+    {
+        class Context
+        {
             internal byte[] intermediate;
             internal FileStream recording;
         }
 
-        static void ReadLine() {
+        static void ReadLine()
+        {
             Console.WriteLine(&quot;Press any key to continue...&quot;);
             Console.ReadLine();
         }
 
-        static int GetBufferSize(XtStream stream, int frames) {
+        static int GetBufferSize(XtStream stream, int frames)
+        {
             XtFormat format = stream.GetFormat();
             int sampleSize = XtAudio.GetSampleAttributes(format.mix.sample).size;
             return frames * format.inputs * sampleSize;
         }
 
-        static void XRun(int index, object user) {
+        static void XRun(int index, object user)
+        {
             // Don't do this.
             Console.WriteLine(&quot;XRun on device &quot; + index + &quot;.&quot;);
         }
 
         static void CaptureInterleaved(XtStream stream, object input, object output,
-            int frames, double time, ulong position, bool timeValid, ulong error, object user) {
-
+            int frames, double time, ulong position, bool timeValid, ulong error, object user)
+        {
+            // Don't do this.
             if (frames &gt; 0)
-                // Don't do this.
                 ((Context)user).recording.Write((byte[])input, 0, GetBufferSize(stream, frames));
         }
 
         static void CaptureInterleavedRaw(XtStream stream, object input, object output,
-            int frames, double time, ulong position, bool timeValid, ulong error, object user) {
-
-            if (frames &gt; 0) {
+            int frames, double time, ulong position, bool timeValid, ulong error, object user)
+        {
+            if (frames &gt; 0)
+            {
                 Context ctx = (Context)user;
                 Marshal.Copy((IntPtr)input, ctx.intermediate, 0, GetBufferSize(stream, frames));
                 // Don't do this.
@@ -1510,9 +1554,10 @@ namespace Xt {
         }
 
         static void CaptureNonInterleaved(XtStream stream, object input, object output,
-            int frames, double time, ulong position, bool timeValid, ulong error, object user) {
-
-            if (frames &gt; 0) {
+            int frames, double time, ulong position, bool timeValid, ulong error, object user)
+        {
+            if (frames &gt; 0)
+            {
                 Context ctx = (Context)user;
                 XtFormat format = stream.GetFormat();
                 int channels = format.inputs;
@@ -1525,15 +1570,17 @@ namespace Xt {
         }
 
         static unsafe void CaptureNonInterleavedRaw(XtStream stream, object input, object output,
-            int frames, double time, ulong position, bool timeValid, ulong error, object user) {
-
-            if (frames &gt; 0) {
+            int frames, double time, ulong position, bool timeValid, ulong error, object user)
+        {
+            if (frames &gt; 0)
+            {
                 Context ctx = (Context)user;
                 XtFormat format = stream.GetFormat();
                 int channels = format.inputs;
                 int sampleSize = XtAudio.GetSampleAttributes(format.mix.sample).size;
                 for (int f = 0; f &lt; frames; f++)
-                    for (int c = 0; c &lt; channels; c++) {
+                    for (int c = 0; c &lt; channels; c++)
+                    {
                         IntPtr source = new IntPtr(&amp;(((byte**)(IntPtr)input)[c][f * sampleSize]));
                         Marshal.Copy(source, ctx.intermediate, 0, sampleSize);
                         // Don't do this.
@@ -1542,23 +1589,19 @@ namespace Xt {
             }
         }
 
-        public static void Main(string[] args) {
-
-            using (XtAudio audio = new XtAudio(null, IntPtr.Zero, null, null)) {
-
+        public static void Main(string[] args)
+        {
+            using (XtAudio audio = new XtAudio(null, IntPtr.Zero, null, null))
+            {
                 XtService service = XtAudio.GetServiceBySetup(XtSetup.ConsumerAudio);
+                if (service == null)
+                    return;
+
                 XtFormat format = new XtFormat(new XtMix(44100, XtSample.Int24), 2, 0, 0, 0);
-                using (XtDevice device = service.OpenDefaultDevice(false)) {
-
-                    if (device == null) {
-                        Console.WriteLine(&quot;No default device found.&quot;);
+                using (XtDevice device = service.OpenDefaultDevice(false))
+                {
+                    if (device == null || !device.SupportsFormat(format))
                         return;
-                    }
-
-                    if (!device.SupportsFormat(format)) {
-                        Console.WriteLine(&quot;Format not supported.&quot;);
-                        return;
-                    }
 
                     Context context = new Context();
                     XtBuffer buffer = device.GetBuffer(format);
@@ -1566,8 +1609,8 @@ namespace Xt {
                     using (FileStream recording = new FileStream(
                         &quot;xt-audio-interleaved.raw&quot;, FileMode.Create, FileAccess.Write))
                     using (XtStream stream = device.OpenStream(format, true, false,
-                        buffer.current, CaptureInterleaved, XRun, context)) {
-
+                        buffer.current, CaptureInterleaved, XRun, context))
+                    {
                         context.recording = recording;
                         context.intermediate = new byte[GetBufferSize(stream, stream.GetFrames())];
                         stream.Start();
@@ -1579,8 +1622,8 @@ namespace Xt {
                     using (FileStream recording = new FileStream(
                         &quot;xt-audio-interleaved-raw.raw&quot;, FileMode.Create, FileAccess.Write))
                     using (XtStream stream = device.OpenStream(format, true, true,
-                        buffer.current, CaptureInterleavedRaw, XRun, context)) {
-
+                        buffer.current, CaptureInterleavedRaw, XRun, context))
+                    {
                         context.recording = recording;
                         context.intermediate = new byte[GetBufferSize(stream, stream.GetFrames())];
                         stream.Start();
@@ -1592,8 +1635,8 @@ namespace Xt {
                     using (FileStream recording = new FileStream(
                         &quot;xt-audio-non-interleaved.raw&quot;, FileMode.Create, FileAccess.Write))
                     using (XtStream stream = device.OpenStream(format, false, false,
-                        buffer.current, CaptureNonInterleaved, XRun, context)) {
-
+                        buffer.current, CaptureNonInterleaved, XRun, context))
+                    {
                         context.recording = recording;
                         context.intermediate = new byte[GetBufferSize(stream, stream.GetFrames())];
                         stream.Start();
@@ -1605,8 +1648,8 @@ namespace Xt {
                     using (FileStream recording = new FileStream(
                         &quot;xt-audio-non-interleaved-raw.raw&quot;, FileMode.Create, FileAccess.Write))
                     using (XtStream stream = device.OpenStream(format, false, true,
-                        buffer.current, CaptureNonInterleavedRaw, XRun, context)) {
-
+                        buffer.current, CaptureNonInterleavedRaw, XRun, context))
+                    {
                         context.recording = recording;
                         context.intermediate = new byte[GetBufferSize(stream, stream.GetFrames())];
                         stream.Start();
@@ -1671,26 +1714,21 @@ static void CaptureNonInterleaved(
   }
 }
 
-int main(int argc, char** argv) {
+int CaptureAdvancedMain(int argc, char** argv) {
 
   Xt::Audio audio(&quot;&quot;, nullptr, nullptr, nullptr);
-  std::unique_ptr&lt; Xt::Service&gt; service = Xt::Audio::GetServiceBySetup(Xt::Setup::ConsumerAudio);
   Xt::Format format(Xt::Mix(44100, Xt::Sample::Int24), 2, 0, 0, 0);
+
+  std::unique_ptr&lt;Xt::Service&gt; service = Xt::Audio::GetServiceBySetup(Xt::Setup::ConsumerAudio);
+  if(!service)
+    return 0;  
+
   std::unique_ptr&lt;Xt::Device&gt; device = service-&gt;OpenDefaultDevice(false);
-
-  if(!device) {
-    std::cout &lt;&lt; &quot;No default device found.\n&quot;;
+  if(!device || !device-&gt;SupportsFormat(format)) 
     return 0;
-  }
-
-  if(!device-&gt;SupportsFormat(format)) {
-    std::cout &lt;&lt; &quot;Format not supported.\n&quot;;
-    return 0;
-  }
 
   std::unique_ptr&lt;Xt::Stream&gt; stream;
   Xt::Buffer buffer = device-&gt;GetBuffer(format);
-
   std::ofstream interleaved(&quot;xt-audio-interleaved.raw&quot;, std::ios::out | std::ios::binary);
   stream = device-&gt;OpenStream(format, true, buffer.current, CaptureInterleaved, XRun, &amp;interleaved);
   stream-&gt;Start();
@@ -1706,7 +1744,8 @@ int main(int argc, char** argv) {
   stream-&gt;Stop();
 
   return 0;
-}</code></pre>
+}
+</code></pre>
             </div>
             <div class="tab-pane" id="advanced-record-output">
               <pre class="console">-- Info: Initializing library (version 1.0.2, built May 30 2016 22:53:02) ...
@@ -1772,79 +1811,91 @@ public class FullDuplex {
         XtFormat float48000 = new XtFormat(new XtMix(48000, XtSample.FLOAT32), 2, 0, 2, 0);
 
         try (XtAudio audio = new XtAudio(null, null, null, null)) {
+
             XtService service = XtAudio.getServiceBySetup(XtSetup.PRO_AUDIO);
+            if (service == null)
+                return;
+
             try (XtDevice device = service.openDefaultDevice(true)) {
-                if (device != null) {
+                if (device == null)
+                    return;
 
-                    if (device.supportsFormat(int44100))
-                        format = int44100;
-                    else if (device.supportsFormat(int48000))
-                        format = int48000;
-                    else if (device.supportsFormat(float44100))
-                        format = float44100;
-                    else if (device.supportsFormat(float48000))
-                        format = float48000;
-                    else
-                        return;
+                if (device.supportsFormat(int44100))
+                    format = int44100;
+                else if (device.supportsFormat(int48000))
+                    format = int48000;
+                else if (device.supportsFormat(float44100))
+                    format = float44100;
+                else if (device.supportsFormat(float48000))
+                    format = float48000;
+                else
+                    return;
 
-                    XtBuffer buffer = device.getBuffer(format);
-                    try (XtStream stream = device.openStream(format, true, false,
-                            buffer.min, FullDuplex::callback, null, null)) {
-                        stream.start();
-                        System.out.println(&quot;Streaming full-duplex, press any key to continue...&quot;);
-                        System.console().readLine();
-                        stream.stop();
-                    }
+                XtBuffer buffer = device.getBuffer(format);
+                try (XtStream stream = device.openStream(format, true, false,
+                        buffer.min, FullDuplex::callback, null, null)) {
+                    stream.start();
+                    System.out.println(&quot;Streaming full-duplex, press any key to continue...&quot;);
+                    System.console().readLine();
+                    stream.stop();
                 }
             }
         }
     }
-}</code></pre>
+}
+</code></pre>
             </div>
             <div class="tab-pane" id="full-duplex-net">
               <pre><code class="lang-cs">using System;
 
-namespace Xt {
-
-    public class FullDuplex {
-
+namespace Xt
+{
+    public class FullDuplex
+    {
         static void Callback(XtStream stream, object input, object output,
-            int frames, double time, ulong position, bool timeValid, ulong error, object user) {
+            int frames, double time, ulong position, bool timeValid, ulong error, object user)
+        {
             Buffer.BlockCopy((Array)input, 0, (Array)output, 0, frames * 2 * 4);
         }
 
-        public static void Main(string[] args) {
-
+        public static void Main(string[] args)
+        {
             XtFormat format;
             XtFormat int44100 = new XtFormat(new XtMix(44100, XtSample.Int32), 2, 0, 2, 0);
             XtFormat int48000 = new XtFormat(new XtMix(48000, XtSample.Int32), 2, 0, 2, 0);
             XtFormat float44100 = new XtFormat(new XtMix(44100, XtSample.Float32), 2, 0, 2, 0);
             XtFormat float48000 = new XtFormat(new XtMix(48000, XtSample.Float32), 2, 0, 2, 0);
 
-            using (XtAudio audio = new XtAudio(null, IntPtr.Zero, null, null)) {
+            using (XtAudio audio = new XtAudio(null, IntPtr.Zero, null, null))
+            {
                 XtService service = XtAudio.GetServiceBySetup(XtSetup.ProAudio);
-                using (XtDevice device = service.OpenDefaultDevice(true)) {
-                    if (device != null) {
+                if (service == null)
+                    return;
 
-                        if (device.SupportsFormat(int44100))
-                            format = int44100;
-                        else if (device.SupportsFormat(int48000))
-                            format = int48000;
-                        else if (device.SupportsFormat(float44100))
-                            format = float44100;
-                        else if (device.SupportsFormat(float48000))
-                            format = float48000;
-                        else
-                            return;
+                using (XtDevice device = service.OpenDefaultDevice(true))
+                {
+                    if (device == null)
+                        return;
 
-                        XtBuffer buffer = device.GetBuffer(format);
-                        using (XtStream stream = device.OpenStream(format, true,
-                            false, buffer.min, Callback, null, null)) {
-                            stream.Start();
-                            Console.WriteLine(&quot;Streaming full-duplex, press any key to continue...&quot;);
-                            Console.ReadLine();
-                            stream.Stop();
-                        }
+                    if (device.SupportsFormat(int44100))
+                        format = int44100;
+                    else if (device.SupportsFormat(int48000))
+                        format = int48000;
+                    else if (device.SupportsFormat(float44100))
+                        format = float44100;
+                    else if (device.SupportsFormat(float48000))
+                        format = float48000;
+                    else
+                        return;
+
+                    XtBuffer buffer = device.GetBuffer(format);
+                    using (XtStream stream = device.OpenStream(format, true,
+                        false, buffer.min, Callback, null, null))
+                    {
+                        stream.Start();
+                        Console.WriteLine(&quot;Streaming full-duplex, press any key to continue...&quot;);
+                        Console.ReadLine();
+                        stream.Stop();
                     }
                 }
             }
@@ -1865,7 +1916,7 @@ static void Callback(
   memcpy(output, input, frames * 2 * 4);
 }
 
-int main(int argc, char** argv) {
+int FullDuplexMain(int argc, char** argv) {
 
   Xt::Format format;
   Xt::Format int44100(Xt::Mix(44100, Xt::Sample::Int32), 2, 0, 2, 0);
@@ -1874,30 +1925,32 @@ int main(int argc, char** argv) {
   Xt::Format float48000(Xt::Mix(48000, Xt::Sample::Float32), 2, 0, 2, 0);
 
   Xt::Audio audio(&quot;&quot;, nullptr, nullptr, nullptr);
-  std::unique_ptr&lt; Xt::Service&gt; service = Xt::Audio::GetServiceBySetup(Xt::Setup::ProAudio);
+  std::unique_ptr&lt;Xt::Service&gt; service = Xt::Audio::GetServiceBySetup(Xt::Setup::ProAudio);
+  if(!service)
+    return 0;
+
   std::unique_ptr&lt;Xt::Device&gt; device = service-&gt;OpenDefaultDevice(true);
-  if(device) {
+  if(!device)
+    return 0;
 
-    if(device-&gt;SupportsFormat(int44100))
-      format = int44100;
-    else if(device-&gt;SupportsFormat(int48000))
-      format = int48000;
-    else if(device-&gt;SupportsFormat(float44100))
-      format = float44100;
-    else if(device-&gt;SupportsFormat(float48000))
-      format = float48000;
-    else
-      return 0;
+  if(device-&gt;SupportsFormat(int44100))
+    format = int44100;
+  else if(device-&gt;SupportsFormat(int48000))
+    format = int48000;
+  else if(device-&gt;SupportsFormat(float44100))
+    format = float44100;
+  else if(device-&gt;SupportsFormat(float48000))
+    format = float48000;
+  else
+    return 0;
 
-    Xt::Buffer buffer = device-&gt;GetBuffer(format);
-    std::unique_ptr&lt;Xt::Stream&gt; stream = device-&gt;OpenStream(format, true, buffer.current, Callback, nullptr, nullptr);
-    stream-&gt;Start();
-    std::cout &lt;&lt; &quot;Streaming full-duplex, press any key to continue...\n&quot;;
-    std::string s;
-    std::getline(std::cin, s);
-    stream-&gt;Stop();
-  }
-
+  Xt::Buffer buffer = device-&gt;GetBuffer(format);
+  std::unique_ptr&lt;Xt::Stream&gt; stream = device-&gt;OpenStream(format, true, buffer.current, Callback, nullptr, nullptr);
+  stream-&gt;Start();
+  std::cout &lt;&lt; &quot;Streaming full-duplex, press any key to continue...\n&quot;;
+  std::string s;
+  std::getline(std::cin, s);
+  stream-&gt;Stop();
   return 0;
 }</code></pre>
             </div>
@@ -1966,75 +2019,95 @@ public class Aggregate {
         XtChannels inputChannels = new XtChannels(2, 0, 0, 0);
         XtFormat outputFormat = new XtFormat(mix, 0, 0, 2, 0);
         XtChannels outputChannels = new XtChannels(0, 0, 2, 0);
+
         try (XtAudio audio = new XtAudio(null, null, null, null)) {
+
             XtService service = XtAudio.getServiceBySetup(XtSetup.SYSTEM_AUDIO);
+            if (service == null)
+                return;
+
             try (XtDevice input = service.openDefaultDevice(false);
                     XtDevice output = service.openDefaultDevice(true)) {
-                if (input != null &amp;&amp; input.supportsFormat(inputFormat)
-                        &amp;&amp; output != null &amp;&amp; output.supportsFormat(outputFormat))
-                    try (XtStream stream = service.aggregateStream(
-                            new XtDevice[]{input, output},
-                            new XtChannels[]{inputChannels, outputChannels},
-                            new double[]{30.0, 30.0},
-                            2, mix, true, false, output, Aggregate::aggregate, Aggregate::xRun, &quot;user-data&quot;)) {
-                        stream.start();
-                        System.out.println(&quot;Streaming aggregate, press any key to continue...&quot;);
-                        System.console().readLine();
-                        stream.stop();
-                    }
+                if (input == null || !input.supportsFormat(inputFormat))
+                    return;
+                if (output == null || !output.supportsFormat(outputFormat))
+                    return;
+
+                try (XtStream stream = service.aggregateStream(
+                        new XtDevice[]{input, output},
+                        new XtChannels[]{inputChannels, outputChannels},
+                        new double[]{30.0, 30.0},
+                        2, mix, true, false, output, Aggregate::aggregate, Aggregate::xRun, &quot;user-data&quot;)) {
+                    stream.start();
+                    System.out.println(&quot;Streaming aggregate, press any key to continue...&quot;);
+                    System.console().readLine();
+                    stream.stop();
+                }
             }
         }
     }
-}</code></pre>
+}
+</code></pre>
             </div>
             <div class="tab-pane" id="aggregate-net">
               <pre><code class="lang-cs">using System;
 
-namespace Xt {
-
-    public class Aggregate {
-
-        static void ReadLine() {
+namespace Xt
+{
+    public class Aggregate
+    {
+        static void ReadLine()
+        {
             Console.WriteLine(&quot;Press any key to continue...&quot;);
             Console.ReadLine();
         }
 
-        static void XRun(int index, object user) {
+        static void XRun(int index, object user)
+        {
             // Don't do this.
             Console.WriteLine(&quot;XRun on device &quot; + index + &quot;, user = &quot; + user + &quot;.&quot;);
         }
 
         static void OnAggregate(XtStream stream, object input, object output, int frames, double time,
-                ulong position, bool timeValid, ulong error, object user) {
+                ulong position, bool timeValid, ulong error, object user)
+        {
             XtFormat format = stream.GetFormat();
             XtAttributes attrs = XtAudio.GetSampleAttributes(format.mix.sample);
             if (frames &gt; 0)
                 Buffer.BlockCopy((Array)input, 0, (Array)output, 0, frames * format.inputs * attrs.size);
         }
 
-        public static void Main(string[] args) {
-
+        public static void Main(string[] args)
+        {
             XtMix mix = new XtMix(48000, XtSample.Int16);
             XtFormat inputFormat = new XtFormat(mix, 2, 0, 0, 0);
             XtChannels inputChannels = new XtChannels(2, 0, 0, 0);
             XtFormat outputFormat = new XtFormat(mix, 0, 0, 2, 0);
             XtChannels outputChannels = new XtChannels(0, 0, 2, 0);
-            using (XtAudio audio = new XtAudio(null, IntPtr.Zero, null, null)) {
+            using (XtAudio audio = new XtAudio(null, IntPtr.Zero, null, null))
+            {
                 XtService service = XtAudio.GetServiceBySetup(XtSetup.SystemAudio);
+                if (service == null)
+                    return;
+
                 using (XtDevice input = service.OpenDefaultDevice(false))
-                using (XtDevice output = service.OpenDefaultDevice(true)) {
-                    if (input != null &amp;&amp; input.SupportsFormat(inputFormat)
-                            &amp;&amp; output != null &amp;&amp; output.SupportsFormat(outputFormat)) {
-                        using (XtStream stream = service.AggregateStream(
-                                new XtDevice[] { input, output },
-                                new XtChannels[] { inputChannels, outputChannels },
-                                new double[] { 30.0, 30.0 },
-                                2, mix, true, false, output, OnAggregate, XRun, &quot;user-data&quot;)) {
-                            stream.Start();
-                            Console.WriteLine(&quot;Streaming aggregate, press any key to continue...&quot;);
-                            Console.ReadLine();
-                            stream.Stop();
-                        }
+                using (XtDevice output = service.OpenDefaultDevice(true))
+                {
+                    if (input == null || !input.SupportsFormat(inputFormat))
+                        return;
+                    if (output == null || !output.SupportsFormat(outputFormat))
+                        return;
+
+                    using (XtStream stream = service.AggregateStream(
+                            new XtDevice[] { input, output },
+                            new XtChannels[] { inputChannels, outputChannels },
+                            new double[] { 30.0, 30.0 },
+                            2, mix, true, false, output, OnAggregate, XRun, &quot;user-data&quot;))
+                    {
+                        stream.Start();
+                        Console.WriteLine(&quot;Streaming aggregate, press any key to continue...&quot;);
+                        Console.ReadLine();
+                        stream.Stop();
                     }
                 }
             }
@@ -2069,7 +2142,7 @@ static void Aggregate(
     memcpy(output, input, frames * format.inputs * attrs.size);
 }
 
-int main(int argc, char** argv) {
+int AggregateMain(int argc, char** argv) {
 
   double bufferSizes[2];
   Xt::Device* devices[2];
@@ -2082,24 +2155,29 @@ int main(int argc, char** argv) {
 
   Xt::Audio audio(&quot;&quot;, nullptr, nullptr, nullptr);
   std::unique_ptr&lt;Xt::Service&gt; service = Xt::Audio::GetServiceBySetup(Xt::Setup::SystemAudio);
-  std::unique_ptr&lt;Xt::Device&gt; input = service-&gt;OpenDefaultDevice(false);
-  std::unique_ptr&lt;Xt::Device&gt; output = service-&gt;OpenDefaultDevice(true);
-  if(input &amp;&amp; input-&gt;SupportsFormat(inputFormat)
-    &amp;&amp; output &amp;&amp; output-&gt;SupportsFormat(outputFormat)) {
+  if(!service)
+    return 0;
 
-    devices[0] = input.get();
-    devices[1] = output.get();
-    channels[0] = inputChannels;
-    channels[1] = outputChannels;
-    bufferSizes[0] = 30.0;
-    bufferSizes[1] = 30.0;
-    std::unique_ptr&lt;Xt::Stream&gt; stream = service-&gt;AggregateStream(devices, channels,
-      bufferSizes, 2, mix, true, *output, Aggregate, XRun, const_cast&lt;char*&gt;(&quot;user-data&quot;));
-    stream-&gt;Start();
-    std::cout &lt;&lt; &quot;Streaming aggregate, press any key to continue...\n&quot;;
-    ReadLine();
-    stream-&gt;Stop();
-  }
+  std::unique_ptr&lt;Xt::Device&gt; input = service-&gt;OpenDefaultDevice(false);
+  if(!input || !input-&gt;SupportsFormat(inputFormat))
+    return 0;
+
+  std::unique_ptr&lt;Xt::Device&gt; output = service-&gt;OpenDefaultDevice(true);
+  if(!output || !output-&gt;SupportsFormat(outputFormat))
+    return 0;
+
+  devices[0] = input.get();
+  devices[1] = output.get();
+  channels[0] = inputChannels;
+  channels[1] = outputChannels;
+  bufferSizes[0] = 30.0;
+  bufferSizes[1] = 30.0;
+  std::unique_ptr&lt;Xt::Stream&gt; stream = service-&gt;AggregateStream(devices, channels,
+    bufferSizes, 2, mix, true, *output, Aggregate, XRun, const_cast&lt;char*&gt;(&quot;user-data&quot;));
+  stream-&gt;Start();
+  std::cout &lt;&lt; &quot;Streaming aggregate, press any key to continue...\n&quot;;
+  ReadLine();
+  stream-&gt;Stop();
   return 0;
 }</code></pre>
             </div>
