@@ -69,7 +69,11 @@
           </div>
           <div class="tab-content">
             <div class="tab-pane active" id="simple-list-java">
-              <pre><code class="lang-java">package com.xtaudio.xt;
+              <pre><code class="lang-java">package com.xtaudio.xt.sample;
+
+import com.xtaudio.xt.XtAudio;
+import com.xtaudio.xt.XtDevice;
+import com.xtaudio.xt.XtService;
 
 public class PrintSimple {
 
@@ -126,7 +130,9 @@ int PrintSimpleMain(int argc, char** argv) {
     }
   }
   return 0;
-}</code></pre>
+}
+
+</code></pre>
             </div>
             <div class="tab-pane" id="simple-list-output">
               <pre><code>DirectSound: Lijningang (Realtek High Definition Audio)
@@ -163,7 +169,15 @@ ASIO: E-MU ASIO</code></pre>
           </div>
            <div class="tab-content">
             <div class="tab-pane" id="detailed-list-java">
-              <pre><code class="lang-java">package com.xtaudio.xt;
+              <pre><code class="lang-java">package com.xtaudio.xt.sample;
+
+import com.xtaudio.xt.XtAudio;
+import com.xtaudio.xt.XtDevice;
+import com.xtaudio.xt.XtException;
+import com.xtaudio.xt.XtLevel;
+import com.xtaudio.xt.XtPrint;
+import com.xtaudio.xt.XtService;
+import com.xtaudio.xt.XtSetup;
 
 public class PrintDetailed {
 
@@ -520,7 +534,17 @@ Service ASIO:
           </div>
           <div class="tab-content">
             <div class="tab-pane" id="simple-playback-java">
-              <pre><code class="lang-java">package com.xtaudio.xt;
+              <pre><code class="lang-java">package com.xtaudio.xt.sample;
+
+import com.xtaudio.xt.XtAudio;
+import com.xtaudio.xt.XtBuffer;
+import com.xtaudio.xt.XtDevice;
+import com.xtaudio.xt.XtFormat;
+import com.xtaudio.xt.XtMix;
+import com.xtaudio.xt.XtSample;
+import com.xtaudio.xt.XtService;
+import com.xtaudio.xt.XtSetup;
+import com.xtaudio.xt.XtStream;
 
 public class RenderSimple {
 
@@ -704,8 +728,17 @@ int RenderSimpleMain(int argc, char** argv) {
           </div>
           <div class="tab-content">
             <div class="tab-pane" id="simple-record-java">
-              <pre><code class="lang-java">package com.xtaudio.xt;
+              <pre><code class="lang-java">package com.xtaudio.xt.sample;
 
+import com.xtaudio.xt.XtAudio;
+import com.xtaudio.xt.XtBuffer;
+import com.xtaudio.xt.XtDevice;
+import com.xtaudio.xt.XtFormat;
+import com.xtaudio.xt.XtMix;
+import com.xtaudio.xt.XtSample;
+import com.xtaudio.xt.XtService;
+import com.xtaudio.xt.XtSetup;
+import com.xtaudio.xt.XtStream;
 import java.io.FileOutputStream;
 
 public class CaptureSimple {
@@ -715,7 +748,7 @@ public class CaptureSimple {
 
     static void capture(XtStream stream, Object input, Object output, int frames, double time,
             long position, boolean timeValid, long error, Object user) throws Exception {
-        // Don't do this.
+        // Don&#39;t do this.
         if (frames &gt; 0)
             ((FileOutputStream) user).write((byte[]) input, 0, frames * SAMPLE_SIZE);
     }
@@ -761,7 +794,7 @@ namespace Xt
         static void Capture(XtStream stream, object input, object output, int frames,
             double time, ulong position, bool timeValid, ulong error, object user)
         {
-            // Don't do this.
+            // Don&#39;t do this.
             if (frames &gt; 0)
                 ((FileStream)user).Write((byte[])input, 0, frames * SampleSize);
         }
@@ -814,7 +847,7 @@ static void Capture(
   double time, uint64_t position, bool timeValid, uint64_t error, void* user) {
 
   if(frames &gt; 0)
-    // Don't do this.
+    // Don&#39;t do this.
     static_cast&lt;std::ofstream*&gt;(user)-&gt;write(static_cast&lt;const char*&gt;(input), frames * SampleSize);
 }
 
@@ -881,9 +914,19 @@ int CaptureSimpleMain(int argc, char** argv) {
           </div>
           <div class="tab-content">
             <div class="tab-pane" id="advanced-playback-java">
-              <pre><code class="lang-java">package com.xtaudio.xt;
+              <pre><code class="lang-java">package com.xtaudio.xt.sample;
 
+import com.sun.jna.Native;
 import com.sun.jna.Pointer;
+import com.xtaudio.xt.XtAudio;
+import com.xtaudio.xt.XtBuffer;
+import com.xtaudio.xt.XtDevice;
+import com.xtaudio.xt.XtFormat;
+import com.xtaudio.xt.XtMix;
+import com.xtaudio.xt.XtSample;
+import com.xtaudio.xt.XtService;
+import com.xtaudio.xt.XtSetup;
+import com.xtaudio.xt.XtStream;
 
 public class RenderAdvanced {
 
@@ -903,7 +946,7 @@ public class RenderAdvanced {
     }
 
     static void xRun(int index, Object user) {
-        // Don't do this.
+        // Don&#39;t do this.
         System.out.println(&quot;XRun on device &quot; + index + &quot;, user = &quot; + user + &quot;.&quot;);
     }
 
@@ -949,7 +992,7 @@ public class RenderAdvanced {
         for (int f = 0; f &lt; frames; f++) {
             float sine = nextSine(format.mix.rate);
             for (int c = 0; c &lt; format.outputs; c++)
-                ((Pointer) output).getPointer(c * Pointer.SIZE).setFloat(f * sampleSize, sine);
+                ((Pointer) output).getPointer(c * Native.POINTER_SIZE).setFloat(f * sampleSize, sine);
         }
     }
 
@@ -1049,7 +1092,7 @@ namespace Xt
 
         static void XRun(int index, object user)
         {
-            // Don't do this.
+            // Don&#39;t do this.
             Console.WriteLine(&quot;XRun on device &quot; + index + &quot;, user = &quot; + user + &quot;.&quot;);
         }
 
@@ -1112,7 +1155,7 @@ namespace Xt
                 XtFormat format = new XtFormat(new XtMix(44100, XtSample.Float32), 0, 0, 2, 0);
                 using (XtDevice device = service.OpenDefaultDevice(true))
                 {
-                    if (device == null || device.SupportsFormat(format))
+                    if (device == null || !device.SupportsFormat(format))
                         return;
 
                     XtBuffer buffer = device.GetBuffer(format);
@@ -1208,7 +1251,7 @@ static float NextSine(double sampleRate) {
 }
 
 static void XRun(int index, void* user) {
-  // Don't do this.
+  // Don&#39;t do this.
   std::cout &lt;&lt; &quot;XRun on stream &quot; &lt;&lt; index &lt;&lt; &quot;, user = &quot; &lt;&lt; static_cast&lt;char*&gt;(user) &lt;&lt; &quot;.\n&quot;;
 }
 
@@ -1350,9 +1393,19 @@ Press any key to continue...
           </div>
           <div class="tab-content">
             <div class="tab-pane" id="advanced-record-java">
-              <pre><code class="lang-java">package com.xtaudio.xt;
+              <pre><code class="lang-java">package com.xtaudio.xt.sample;
 
+import com.sun.jna.Native;
 import com.sun.jna.Pointer;
+import com.xtaudio.xt.XtAudio;
+import com.xtaudio.xt.XtBuffer;
+import com.xtaudio.xt.XtDevice;
+import com.xtaudio.xt.XtFormat;
+import com.xtaudio.xt.XtMix;
+import com.xtaudio.xt.XtSample;
+import com.xtaudio.xt.XtService;
+import com.xtaudio.xt.XtSetup;
+import com.xtaudio.xt.XtStream;
 import java.io.FileOutputStream;
 
 public class CaptureAdvanced {
@@ -1375,14 +1428,14 @@ public class CaptureAdvanced {
     }
 
     static void xRun(int index, Object user) {
-        // Don't do this.
+        // Don&#39;t do this.
         System.out.println(&quot;XRun on device &quot; + index + &quot;.&quot;);
     }
 
     static void captureInterleaved(XtStream stream, Object input, Object output, int frames,
             double time, long position, boolean timeValid, long error, Object user) throws Exception {
 
-        // Don't do this.
+        // Don&#39;t do this.
         if (frames &gt; 0)
             ((Context) user).out.write((byte[]) input, 0, getBufferSize(stream, frames));
     }
@@ -1393,7 +1446,7 @@ public class CaptureAdvanced {
         if (frames &gt; 0) {
             Context ctx = (Context) user;
             ((Pointer) input).read(0, ctx.intermediate, 0, getBufferSize(stream, frames));
-            // Don't do this.
+            // Don&#39;t do this.
             ctx.out.write(ctx.intermediate, 0, getBufferSize(stream, frames));
         }
     }
@@ -1408,7 +1461,7 @@ public class CaptureAdvanced {
             int sampleSize = XtAudio.getSampleAttributes(format.mix.sample).size;
             for (int f = 0; f &lt; frames; f++)
                 for (int c = 0; c &lt; channels; c++)
-                    // Don't do this.
+                    // Don&#39;t do this.
                     ctx.out.write(((byte[][]) input)[c], f * sampleSize, sampleSize);
         }
     }
@@ -1423,8 +1476,8 @@ public class CaptureAdvanced {
             int sampleSize = XtAudio.getSampleAttributes(format.mix.sample).size;
             for (int f = 0; f &lt; frames; f++)
                 for (int c = 0; c &lt; channels; c++) {
-                    ((Pointer) input).getPointer(c * Pointer.SIZE).read(f * sampleSize, ctx.intermediate, 0, sampleSize);
-                    // Don't do this.
+                    ((Pointer) input).getPointer(c * Native.POINTER_SIZE).read(f * sampleSize, ctx.intermediate, 0, sampleSize);
+                    // Don&#39;t do this.
                     ctx.out.write(ctx.intermediate, 0, sampleSize);
                 }
         }
@@ -1525,14 +1578,14 @@ namespace Xt
 
         static void XRun(int index, object user)
         {
-            // Don't do this.
+            // Don&#39;t do this.
             Console.WriteLine(&quot;XRun on device &quot; + index + &quot;.&quot;);
         }
 
         static void CaptureInterleaved(XtStream stream, object input, object output,
             int frames, double time, ulong position, bool timeValid, ulong error, object user)
         {
-            // Don't do this.
+            // Don&#39;t do this.
             if (frames &gt; 0)
                 ((Context)user).recording.Write((byte[])input, 0, GetBufferSize(stream, frames));
         }
@@ -1544,7 +1597,7 @@ namespace Xt
             {
                 Context ctx = (Context)user;
                 Marshal.Copy((IntPtr)input, ctx.intermediate, 0, GetBufferSize(stream, frames));
-                // Don't do this.
+                // Don&#39;t do this.
                 ctx.recording.Write(ctx.intermediate, 0, GetBufferSize(stream, frames));
             }
         }
@@ -1560,7 +1613,7 @@ namespace Xt
                 int sampleSize = XtAudio.GetSampleAttributes(format.mix.sample).size;
                 for (int f = 0; f &lt; frames; f++)
                     for (int c = 0; c &lt; channels; c++)
-                        // Don't do this.
+                        // Don&#39;t do this.
                         ctx.recording.Write(((byte[][])input)[c], f * sampleSize, sampleSize);
             }
         }
@@ -1579,7 +1632,7 @@ namespace Xt
                     {
                         IntPtr source = new IntPtr(&amp;(((byte**)(IntPtr)input)[c][f * sampleSize]));
                         Marshal.Copy(source, ctx.intermediate, 0, sampleSize);
-                        // Don't do this.
+                        // Don&#39;t do this.
                         ctx.recording.Write(ctx.intermediate, 0, sampleSize);
                     }
             }
@@ -1682,7 +1735,7 @@ static int GetBufferSize(const Xt::Stream&amp; stream, int frames) {
 }
 
 static void XRun(int index, void* user) {
-  // Don't do this.
+  // Don&#39;t do this.
   std::cout &lt;&lt; &quot;XRun on stream &quot; &lt;&lt; index &lt;&lt; &quot;.\n&quot;;
 }
 
@@ -1691,7 +1744,7 @@ static void CaptureInterleaved(
   double time, uint64_t position, bool timeValid, uint64_t error, void* user) {
 
   if(frames &gt; 0)
-    // Don't do this.
+    // Don&#39;t do this.
     static_cast&lt;std::ofstream*&gt;(user)-&gt;write(static_cast&lt;const char*&gt;(input), GetBufferSize(stream, frames));
 }
 
@@ -1705,7 +1758,7 @@ static void CaptureNonInterleaved(
     int sampleSize = Xt::Audio::GetSampleAttributes(format.mix.sample).size;
     for(int f = 0; f &lt; frames; f++)
       for(int c = 0; c &lt; channels; c++)
-        // Don't do this.
+        // Don&#39;t do this.
         static_cast&lt;std::ofstream*&gt;(user)-&gt;write(&amp;static_cast&lt;char* const*&gt;(input)[c][f * sampleSize], sampleSize);
   }
 }
@@ -1791,7 +1844,17 @@ Press any key to continue...
           </div>
           <div class="tab-content">
             <div class="tab-pane" id="full-duplex-java">
-              <pre><code class="lang-java">package com.xtaudio.xt;
+              <pre><code class="lang-java">package com.xtaudio.xt.sample;
+
+import com.xtaudio.xt.XtAudio;
+import com.xtaudio.xt.XtBuffer;
+import com.xtaudio.xt.XtDevice;
+import com.xtaudio.xt.XtFormat;
+import com.xtaudio.xt.XtMix;
+import com.xtaudio.xt.XtSample;
+import com.xtaudio.xt.XtService;
+import com.xtaudio.xt.XtSetup;
+import com.xtaudio.xt.XtStream;
 
 public class FullDuplex {
 
@@ -1991,7 +2054,17 @@ Streaming full-duplex, press any key to continue...
           </div>
           <div class="tab-content">
             <div class="tab-pane" id="aggregate-java">
-              <pre><code class="lang-java">package com.xtaudio.xt;
+              <pre><code class="lang-java">package com.xtaudio.xt.sample;
+
+import com.xtaudio.xt.XtAudio;
+import com.xtaudio.xt.XtChannels;
+import com.xtaudio.xt.XtDevice;
+import com.xtaudio.xt.XtFormat;
+import com.xtaudio.xt.XtMix;
+import com.xtaudio.xt.XtSample;
+import com.xtaudio.xt.XtService;
+import com.xtaudio.xt.XtSetup;
+import com.xtaudio.xt.XtStream;
 
 public class Aggregate {
 
@@ -2001,7 +2074,7 @@ public class Aggregate {
     }
 
     static void xRun(int index, Object user) {
-        // Don't do this.
+        // Don&#39;t do this.
         System.out.println(&quot;XRun on device &quot; + index + &quot;, user = &quot; + user + &quot;.&quot;);
     }
 
@@ -2064,7 +2137,7 @@ namespace Xt
 
         static void XRun(int index, object user)
         {
-            // Don't do this.
+            // Don&#39;t do this.
             Console.WriteLine(&quot;XRun on device &quot; + index + &quot;, user = &quot; + user + &quot;.&quot;);
         }
 
@@ -2128,7 +2201,7 @@ static void ReadLine() {
 }
 
 static void XRun(int index, void* user) {
-  // Don't do this.
+  // Don&#39;t do this.
   std::cout &lt;&lt; &quot;XRun on stream &quot; &lt;&lt; index &lt;&lt; &quot;, user = &quot; &lt;&lt; static_cast&lt;char*&gt;(user) &lt;&lt; &quot;.\n&quot;;
 }
 

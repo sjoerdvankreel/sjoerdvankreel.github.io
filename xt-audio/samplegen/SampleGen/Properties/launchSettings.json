@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "SampleGen": {
+      "commandName": "Project",
+      "commandLineArgs": "\"D:\\temp\\sjoerdvankreel.github.io\\xt-audio\\index.html\" \"D:\\temp\\sjoerdvankreel.github.io\\xt-audio\\index.html.template\" \"D:\\temp\\xt-audio\\src\""
+    }
+  }
+}
