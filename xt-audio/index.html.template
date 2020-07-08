@@ -38,7 +38,7 @@
       <h2>Docs</h2>
         <a href="doc/core/html/index.html">Core</a> /
         <a href="doc/cpp/html/index.html">C++</a> /
-        <a href="doc/java/index.html">Java</a> /
+        <a href="doc/java/apidocs/index.html">Java</a> /
         <a href="doc/cli/index.html">.NET</a><br/>
         Only the core (C) API is fully documented. Code samples are provided for all languages except C. Refer to the
         core documentation's main page for differences between the C API and other language APIs.
