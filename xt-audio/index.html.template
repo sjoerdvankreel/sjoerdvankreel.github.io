@@ -61,7 +61,6 @@
             <li class="active"><a href="#simple-list-java" data-toggle="tab">Java</a></li>
             <li><a href="#simple-list-net" data-toggle="tab">.NET</a></li>
             <li><a href="#simple-list-cpp" data-toggle="tab">C++</a></li>
-            <li><a href="#simple-list-output" data-toggle="tab">Sample output</a></li>
           </ul>
           <div class="usage">
             <br/>
@@ -77,24 +76,6 @@
             <div class="tab-pane" id="simple-list-cpp">
               <pre><code class="lang-cpp">$$$simple-list-cpp$$$</code></pre>
             </div>
-            <div class="tab-pane" id="simple-list-output">
-              <pre><code>DirectSound: Lijningang (Realtek High Definition Audio)
-DirectSound: Microfoon (Realtek High Definition Audio)
-DirectSound: Luidsprekers (Realtek High Definition Audio)
-DirectSound: Realtek Digital Output (Realtek High Definition Audio)
-WASAPI: Microfoon (Realtek High Definition Audio) (Shared)
-WASAPI: Lijningang (Realtek High Definition Audio) (Shared)
-WASAPI: Realtek Digital Output (Realtek High Definition Audio) (Loopback)
-WASAPI: Luidsprekers (Realtek High Definition Audio) (Loopback)
-WASAPI: Microfoon (Realtek High Definition Audio) (Exclusive)
-WASAPI: Lijningang (Realtek High Definition Audio) (Exclusive)
-WASAPI: Realtek Digital Output (Realtek High Definition Audio) (Shared)
-WASAPI: Luidsprekers (Realtek High Definition Audio) (Shared)
-WASAPI: Realtek Digital Output (Realtek High Definition Audio) (Exclusive)
-WASAPI: Luidsprekers (Realtek High Definition Audio) (Exclusive)
-ASIO: ASIO4ALL v2
-ASIO: E-MU ASIO</code></pre>
-            </div>
           </div>
         </div>
         <div class="tab-pane" id="detailed-list">
@@ -102,7 +83,6 @@ ASIO: E-MU ASIO</code></pre>
             <li><a href="#detailed-list-java" data-toggle="tab">Java</a></li>
             <li><a href="#detailed-list-net" data-toggle="tab">.NET</a></li>
             <li><a href="#detailed-list-cpp" data-toggle="tab">C++</a></li>
-            <li><a href="#detailed-list-output" data-toggle="tab">Sample output</a></li>
           </ul>
           <div class="usage">
             <br/>
@@ -120,139 +100,6 @@ ASIO: E-MU ASIO</code></pre>
             <div class="tab-pane" id="detailed-list-cpp">
               <pre><code class="lang-cpp">$$$detailed-list-cpp$$$</code></pre>
             </div>
-            <div class="tab-pane" id="detailed-list-output">
-              <pre><code>Win32: 1
-Version: 1.0.6
-Pro Audio: ASIO
-System Audio: WASAPI
-Consumer Audio: DirectSound
-Service DirectSound:
-  System: DSound
-  Device count: 4
-  Capabilities: [ChannelMask]
-  Default input: Primair stuurprogramma voor opnemen van geluid
-  Default output: Primair geluidsstuurprogramma
-  Device Lijningang (Realtek High Definition Audio):
-    System: DSound
-    Current mix: [48000 Float32]
-    Input channels: 18
-    Output channels: 0
-    Interleaved access: 1
-    Non-interleaved access: 0
-  Device Microfoon (Realtek High Definition Audio):
-    System: DSound
-    Current mix: [48000 Float32]
-    Input channels: 18
-    Output channels: 0
-    Interleaved access: 1
-    Non-interleaved access: 0
-  Device Luidsprekers (Realtek High Definition Audio):
-    System: DSound
-    Current mix: [48000 Float32]
-    Input channels: 0
-    Output channels: 18
-    Interleaved access: 1
-    Non-interleaved access: 0
-  Device Realtek Digital Output (Realtek High Definition Audio):
-    System: DSound
-    Current mix: [48000 Float32]
-    Input channels: 0
-    Output channels: 18
-    Interleaved access: 1
-    Non-interleaved access: 0
-Service WASAPI:
-  System: Wasapi
-  Device count: 10
-  Capabilities: [Time | Latency | ChannelMask | XRunDetection]
-  Default input: Lijningang (Realtek High Definition Audio) (Shared)
-  Default output: Luidsprekers (Realtek High Definition Audio) (Shared)
-  Device Microfoon (Realtek High Definition Audio) (Shared):
-    System: Wasapi
-    Current mix: [48000 Float32]
-    Input channels: 18
-    Output channels: 0
-    Interleaved access: 1
-    Non-interleaved access: 0
-  Device Lijningang (Realtek High Definition Audio) (Shared):
-    System: Wasapi
-    Current mix: [48000 Float32]
-    Input channels: 18
-    Output channels: 0
-    Interleaved access: 1
-    Non-interleaved access: 0
-  Device Realtek Digital Output (Realtek High Definition Audio) (Loopback):
-    System: Wasapi
-    Current mix: [48000 Float32]
-    Input channels: 18
-    Output channels: 0
-    Interleaved access: 1
-    Non-interleaved access: 0
-  Device Luidsprekers (Realtek High Definition Audio) (Loopback):
-    System: Wasapi
-    Current mix: [48000 Float32]
-    Input channels: 18
-    Output channels: 0
-    Interleaved access: 1
-    Non-interleaved access: 0
-  Device Microfoon (Realtek High Definition Audio) (Exclusive):
-    System: Wasapi
-    Input channels: 18
-    Output channels: 0
-    Interleaved access: 1
-    Non-interleaved access: 0
-  Device Lijningang (Realtek High Definition Audio) (Exclusive):
-    System: Wasapi
-    Input channels: 18
-    Output channels: 0
-    Interleaved access: 1
-    Non-interleaved access: 0
-  Device Realtek Digital Output (Realtek High Definition Audio) (Shared):
-    System: Wasapi
-    Current mix: [48000 Float32]
-    Input channels: 0
-    Output channels: 18
-    Interleaved access: 1
-    Non-interleaved access: 0
-  Device Luidsprekers (Realtek High Definition Audio) (Shared):
-    System: Wasapi
-    Current mix: [48000 Float32]
-    Input channels: 0
-    Output channels: 18
-    Interleaved access: 1
-    Non-interleaved access: 0
-  Device Realtek Digital Output (Realtek High Definition Audio) (Exclusive):
-    System: Wasapi
-    Input channels: 0
-    Output channels: 18
-    Interleaved access: 1
-    Non-interleaved access: 0
-  Device Luidsprekers (Realtek High Definition Audio) (Exclusive):
-    System: Wasapi
-    Input channels: 0
-    Output channels: 18
-    Interleaved access: 1
-    Non-interleaved access: 0
-Service ASIO:
-  System: Asio
-  Device count: 2
-  Capabilities: [Time | Latency | FullDuplex | ChannelMask]
-  Default input: ASIO4ALL v2
-  Default output: ASIO4ALL v2
-  Device ASIO4ALL v2:
-    System: Asio
-    Current mix: [44100 Int32]
-    Input channels: 2
-    Output channels: 8
-    Interleaved access: 0
-    Non-interleaved access: 1
-  Device E-MU ASIO:
-    System: Asio
-    Current mix: [44100 Int32]
-    Input channels: 32
-    Output channels: 32
-    Interleaved access: 0
-    Non-interleaved access: 1</code></pre>
-            </div>
           </div>
         </div>
         <div class="tab-pane" id="simple-playback">
@@ -260,7 +107,6 @@ Service ASIO:
             <li><a href="#simple-playback-java" data-toggle="tab">Java</a></li>
             <li><a href="#simple-playback-net" data-toggle="tab">.NET</a></li>
             <li><a href="#simple-playback-cpp" data-toggle="tab">C++</a></li>
-            <li><a href="#simple-playback-output" data-toggle="tab">Sample output</a></li>
           </ul>
           <div class="usage">
             <br/>
@@ -276,27 +122,6 @@ Service ASIO:
             <div class="tab-pane" id="simple-playback-cpp">
               <pre><code class="lang-cpp">$$$simple-playback-cpp$$$</code></pre>
             </div>
-            <div class="tab-pane" id="simple-playback-output">
-              <pre><code>-- Info: Initializing library (version 1.0.6, built Apr 13 2020 20:41:25) ...
--- Info: Built with ASIO: 1.
--- Info: Built with WASAPI: 1.
--- Info: Built with DirectSound: 1.
--- Info: Initialized library (version 1.0.6).
--- Info: Opening default device: service DirectSound, output 1...
--- Info: Opened default device Primair geluidsstuurprogramma: service DirectSound, output 1.
--- Info: Opening stream: device Primair geluidsstuurprogramma, bufferSize 500.000000, format [44100 Float32 0 (0) 1 (0)], interleaved 1...
--- Info: Opened stream: device Primair geluidsstuurprogramma, bufferSize 500.000000, format [44100 Float32 0 (0) 1 (0)], interleaved 1.
--- Info: Starting stream on system DSound...
--- Info: Started stream on system DSound.
--- Info: Stopping stream on system DSound...
--- Info: Stopped stream on system DSound.
--- Info: Closing stream on system DSound...
--- Info: Closed stream on system DSound.
--- Info: Closing device Primair geluidsstuurprogramma...
--- Info: Closed device Primair geluidsstuurprogramma.
--- Info: Terminating library (version 1.0.6)...
--- Info: Terminated library (version 1.0.6).</code></pre>
-            </div>
           </div>
         </div>
         <div class="tab-pane" id="simple-record">
@@ -304,7 +129,6 @@ Service ASIO:
             <li><a href="#simple-record-java" data-toggle="tab">Java</a></li>
             <li><a href="#simple-record-net" data-toggle="tab">.NET</a></li>
             <li><a href="#simple-record-cpp" data-toggle="tab">C++</a></li>
-            <li><a href="#simple-record-output" data-toggle="tab">Sample output</a></li>
           </ul>
           <div class="usage">
             <br/>
@@ -320,27 +144,6 @@ Service ASIO:
             <div class="tab-pane" id="simple-record-cpp">
               <pre><code class="lang-cpp">$$$simple-record-cpp$$$</code></pre>
             </div>
-            <div class="tab-pane" id="simple-record-output">
-              <pre><code>-- Info: Initializing library (version 1.0.6, built Apr 13 2020 20:41:25) ...
--- Info: Built with ASIO: 1.
--- Info: Built with WASAPI: 1.
--- Info: Built with DirectSound: 1.
--- Info: Initialized library (version 1.0.6).
--- Info: Opening default device: service DirectSound, output 0...
--- Info: Opened default device Primair stuurprogramma voor opnemen van geluid: service DirectSound, output 0.
--- Info: Opening stream: device Primair stuurprogramma voor opnemen van geluid, bufferSize 500.000000, format [44100 Int24 1 (0) 0 (0)], interleaved 1...
--- Info: Opened stream: device Primair stuurprogramma voor opnemen van geluid, bufferSize 500.000000, format [44100 Int24 1 (0) 0 (0)], interleaved 1.
--- Info: Starting stream on system DSound...
--- Info: Started stream on system DSound.
--- Info: Stopping stream on system DSound...
--- Info: Stopped stream on system DSound.
--- Info: Closing stream on system DSound...
--- Info: Closed stream on system DSound.
--- Info: Closing device Primair stuurprogramma voor opnemen van geluid...
--- Info: Closed device Primair stuurprogramma voor opnemen van geluid.
--- Info: Terminating library (version 1.0.6)...
--- Info: Terminated library (version 1.0.6).</code></pre>
-            </div>
           </div>
         </div>
         <div class="tab-pane" id="advanced-playback">
@@ -348,7 +151,6 @@ Service ASIO:
             <li><a href="#advanced-playback-java" data-toggle="tab">Java</a></li>
             <li><a href="#advanced-playback-net" data-toggle="tab">.NET</a></li>
             <li><a href="#advanced-playback-cpp" data-toggle="tab">C++</a></li>
-            <li><a href="#advanced-playback-output" data-toggle="tab">Sample output</a></li>
           </ul>
           <div class="usage">
             <br/>
@@ -367,59 +169,6 @@ Service ASIO:
             <div class="tab-pane" id="advanced-playback-cpp">
               <pre><code class="lang-cpp">$$$advanced-playback-cpp$$$</code></pre>
             </div>
-            <div class="tab-pane" id="advanced-playback-output">
-              <pre><code>-- Info: Initializing library (version 1.0.6, built Apr 13 2020 20:41:25) ...
--- Info: Built with ASIO: 1.
--- Info: Built with WASAPI: 1.
--- Info: Built with DirectSound: 1.
--- Info: Initialized library (version 1.0.6).
--- Info: Opening default device: service DirectSound, output 1...
--- Info: Opened default device Primair geluidsstuurprogramma: service DirectSound, output 1.
--- Info: Opening stream: device Primair geluidsstuurprogramma, bufferSize 500.000000, format [44100 Float32 0 (0) 2 (0)], interleaved 1...
--- Info: Opened stream: device Primair geluidsstuurprogramma, bufferSize 500.000000, format [44100 Float32 0 (0) 2 (0)], interleaved 1.
--- Info: Starting stream on system DSound...
--- Info: Started stream on system DSound.
-Rendering interleaved...
-Press any key to continue...
--- Info: Stopping stream on system DSound...
--- Info: Stopped stream on system DSound.
--- Info: Opening stream: device Primair geluidsstuurprogramma, bufferSize 500.000000, format [44100 Float32 0 (0) 2 (0)], interleaved 0...
--- Info: Opened stream: device Primair geluidsstuurprogramma, bufferSize 500.000000, format [44100 Float32 0 (0) 2 (0)], interleaved 0.
--- Info: Closing stream on system DSound...
--- Info: Closed stream on system DSound.
--- Info: Starting stream on system DSound...
--- Info: Started stream on system DSound.
-Rendering non-interleaved...
-Press any key to continue...
--- Info: Stopping stream on system DSound...
--- Info: Stopped stream on system DSound.
--- Info: Opening stream: device Primair geluidsstuurprogramma, bufferSize 500.000000, format [44100 Float32 0 (0) 1 (1)], interleaved 1...
--- Info: Opened stream: device Primair geluidsstuurprogramma, bufferSize 500.000000, format [44100 Float32 0 (0) 1 (1)], interleaved 1.
--- Info: Closing stream on system DSound...
--- Info: Closed stream on system DSound.
--- Info: Starting stream on system DSound...
--- Info: Started stream on system DSound.
-Rendering channel mask, channel 0...
-Press any key to continue...
--- Info: Stopping stream on system DSound...
--- Info: Stopped stream on system DSound.
--- Info: Opening stream: device Primair geluidsstuurprogramma, bufferSize 500.000000, format [44100 Float32 0 (0) 1 (2)], interleaved 1...
--- Info: Opened stream: device Primair geluidsstuurprogramma, bufferSize 500.000000, format [44100 Float32 0 (0) 1 (2)], interleaved 1.
--- Info: Closing stream on system DSound...
--- Info: Closed stream on system DSound.
--- Info: Starting stream on system DSound...
--- Info: Started stream on system DSound.
-Rendering channel mask, channel 1...
-Press any key to continue...
--- Info: Stopping stream on system DSound...
--- Info: Stopped stream on system DSound.
--- Info: Closing stream on system DSound...
--- Info: Closed stream on system DSound.
--- Info: Closing device Primair geluidsstuurprogramma...
--- Info: Closed device Primair geluidsstuurprogramma.
--- Info: Terminating library (version 1.0.6)...
--- Info: Terminated library (version 1.0.6).</code></pre>
-            </div>
           </div>
         </div>
         <div class="tab-pane" id="advanced-record">
@@ -427,7 +176,6 @@ Press any key to continue...
             <li><a href="#advanced-record-java" data-toggle="tab">Java</a></li>
             <li><a href="#advanced-record-net" data-toggle="tab">.NET</a></li>
             <li><a href="#advanced-record-cpp" data-toggle="tab">C++</a></li>
-            <li><a href="#advanced-record-output" data-toggle="tab">Sample output</a></li>
           </ul>
           <div class="usage">
             <br/>
@@ -445,39 +193,6 @@ Press any key to continue...
             <div class="tab-pane" id="advanced-record-cpp">
               <pre><code class="lang-cpp">$$$advanced-record-cpp$$$</code></pre>
             </div>
-            <div class="tab-pane" id="advanced-record-output">
-              <pre><code>-- Info: Initializing library (version 1.0.6, built Apr 13 2020 20:41:25) ...
--- Info: Built with ASIO: 1.
--- Info: Built with WASAPI: 1.
--- Info: Built with DirectSound: 1.
--- Info: Initialized library (version 1.0.6).
--- Info: Opening default device: service DirectSound, output 0...
--- Info: Opened default device Primair stuurprogramma voor opnemen van geluid: service DirectSound, output 0.
--- Info: Opening stream: device Primair stuurprogramma voor opnemen van geluid, bufferSize 500.000000, format [44100 Int24 2 (0) 0 (0)], interleaved 1...
--- Info: Opened stream: device Primair stuurprogramma voor opnemen van geluid, bufferSize 500.000000, format [44100 Int24 2 (0) 0 (0)], interleaved 1.
--- Info: Starting stream on system DSound...
--- Info: Started stream on system DSound.
-Capturing interleaved...
-Press any key to continue...
--- Info: Stopping stream on system DSound...
--- Info: Stopped stream on system DSound.
--- Info: Opening stream: device Primair stuurprogramma voor opnemen van geluid, bufferSize 500.000000, format [44100 Int24 2 (0) 0 (0)], interleaved 0...
--- Info: Opened stream: device Primair stuurprogramma voor opnemen van geluid, bufferSize 500.000000, format [44100 Int24 2 (0) 0 (0)], interleaved 0.
--- Info: Closing stream on system DSound...
--- Info: Closed stream on system DSound.
--- Info: Starting stream on system DSound...
--- Info: Started stream on system DSound.
-Capturing non-interleaved...
-Press any key to continue...
--- Info: Stopping stream on system DSound...
--- Info: Stopped stream on system DSound.
--- Info: Closing stream on system DSound...
--- Info: Closed stream on system DSound.
--- Info: Closing device Primair stuurprogramma voor opnemen van geluid...
--- Info: Closed device Primair stuurprogramma voor opnemen van geluid.
--- Info: Terminating library (version 1.0.6)...
--- Info: Terminated library (version 1.0.6).</code></pre>
-            </div>
           </div>
         </div>
         <div class="tab-pane" id="full-duplex">
@@ -485,7 +200,6 @@ Press any key to continue...
             <li><a href="#full-duplex-java" data-toggle="tab">Java</a></li>
             <li><a href="#full-duplex-net" data-toggle="tab">.NET</a></li>
             <li><a href="#full-duplex-cpp" data-toggle="tab">C++</a></li>
-            <li><a href="#full-duplex-output" data-toggle="tab">Sample output</a></li>
           </ul>
           <div class="usage">
             <br/>
@@ -501,30 +215,6 @@ Press any key to continue...
             <div class="tab-pane" id="full-duplex-cpp">
               <pre><code class="lang-cpp">$$$full-duplex-cpp$$$</code></pre>
             </div>
-            <div class="tab-pane" id="full-duplex-output">
-              <pre><code>-- Info: Initializing library (version 1.0.6, built Apr 13 2020 20:41:25) ...
--- Info: Built with ASIO: 1.
--- Info: Built with WASAPI: 1.
--- Info: Built with DirectSound: 1.
--- Info: Initialized library (version 1.0.6).
--- Info: Opening default device: service ASIO, output 1...
--- Info: Opening device: service ASIO, index 0...
--- Info: Opened device ASIO4ALL v2: service ASIO, index 0.
--- Info: Opened default device ASIO4ALL v2: service ASIO, output 1.
--- Info: Opening stream: device ASIO4ALL v2, bufferSize 11.609977, format [44100 Int32 2 (0) 2 (0)], interleaved 1...
--- Info: Opened stream: device ASIO4ALL v2, bufferSize 11.609977, format [44100 Int32 2 (0) 2 (0)], interleaved 1.
--- Info: Starting stream on system Asio...
--- Info: Started stream on system Asio.
-Streaming full-duplex, press any key to continue...
--- Info: Stopping stream on system Asio...
--- Info: Stopped stream on system Asio.
--- Info: Closing stream on system Asio...
--- Info: Closed stream on system Asio.
--- Info: Closing device ASIO4ALL v2...
--- Info: Closed device ASIO4ALL v2.
--- Info: Terminating library (version 1.0.6)...
--- Info: Terminated library (version 1.0.6).</code></pre>
-            </div>
           </div>
         </div>
         <div class="tab-pane" id="aggregate">
@@ -532,7 +222,6 @@ Streaming full-duplex, press any key to continue...
             <li><a href="#aggregate-java" data-toggle="tab">Java</a></li>
             <li><a href="#aggregate-net" data-toggle="tab">.NET</a></li>
             <li><a href="#aggregate-cpp" data-toggle="tab">C++</a></li>
-            <li><a href="#aggregate-output" data-toggle="tab">Sample output</a></li>
           </ul>
           <div class="usage">
             <br/>
@@ -547,52 +236,6 @@ Streaming full-duplex, press any key to continue...
             </div>
             <div class="tab-pane" id="aggregate-cpp">
               <pre><code class="lang-cpp">$$$aggregate-cpp$$$</code></pre>
-            </div>
-            <div class="tab-pane" id="aggregate-output">
-              <pre><code>-- Info: Initializing library (version 1.0.6, built Apr 13 2020 20:41:25) ...
--- Info: Built with ASIO: 1.
--- Info: Built with WASAPI: 1.
--- Info: Built with DirectSound: 1.
--- Info: Initialized library (version 1.0.6).
--- Info: Opening default device: service WASAPI, output 0...
--- Info: Opened default device Lijningang (Realtek High Definition Audio) (Shared): service WASAPI, output 0.
--- Info: Opening default device: service WASAPI, output 1...
--- Info: Opened default device Luidsprekers (Realtek High Definition Audio) (Shared): service WASAPI, output 1.
--- Info: Opening aggregate: service WASAPI, count 2...
--- Info: Opening stream: device Lijningang (Realtek High Definition Audio) (Shared), bufferSize 30.000000, format [48000 Int16 2 (0) 0 (0)], interleaved 1...
--- Info: Opened stream: device Lijningang (Realtek High Definition Audio) (Shared), bufferSize 30.000000, format [48000 Int16 2 (0) 0 (0)], interleaved 1.
--- Info: Opening stream: device Luidsprekers (Realtek High Definition Audio) (Shared), bufferSize 30.000000, format [48000 Int16 0 (0) 2 (0)], interleaved 1...
--- Info: Opened stream: device Luidsprekers (Realtek High Definition Audio) (Shared), bufferSize 30.000000, format [48000 Int16 0 (0) 2 (0)], interleaved 1.
--- Info: Opened aggregate: service WASAPI, count 2...
--- Info: Starting stream on system Wasapi...
--- Info: Starting stream on system Wasapi...
--- Info: Started stream on system Wasapi.
--- Info: Starting stream on system Wasapi...
--- Info: Started stream on system Wasapi.
--- Info: Started stream on system Wasapi.
-Streaming aggregate, press any key to continue...
-Press any key to continue...
-XRun on stream -1, user = user-data.
-XRun on stream -1, user = user-data.
-XRun on stream 0, user = user-data.
--- Info: Stopping stream on system Wasapi...
--- Info: Stopping stream on system Wasapi...
--- Info: Stopped stream on system Wasapi.
--- Info: Stopping stream on system Wasapi...
--- Info: Stopped stream on system Wasapi.
--- Info: Stopped stream on system Wasapi.
--- Info: Closing stream on system Wasapi...
--- Info: Stopping stream on system Wasapi...
--- Info: Stopped stream on system Wasapi.
--- Info: Stopping stream on system Wasapi...
--- Info: Stopped stream on system Wasapi.
--- Info: Closed stream on system Wasapi.
--- Info: Closing device Luidsprekers (Realtek High Definition Audio) (Shared)...
--- Info: Closed device Luidsprekers (Realtek High Definition Audio) (Shared).
--- Info: Closing device Lijningang (Realtek High Definition Audio) (Shared)...
--- Info: Closed device Lijningang (Realtek High Definition Audio) (Shared).
--- Info: Terminating library (version 1.0.6)...
--- Info: Terminated library (version 1.0.6).</code></pre>
             </div>
           </div>
         </div>
