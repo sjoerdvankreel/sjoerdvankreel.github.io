@@ -86,9 +86,9 @@
           </ul>
           <div class="usage">
             <br/>
+            &bull; Initialize with application name and error logging callback.<br/>
             &bull; Query audio setups, service capabilities and default devices.<br/>
-            &bull; Initialize with application name, logger and fatal error handler.<br/>
-            &bull; Query device mix, maximum channels and (non)interleaved access support.
+            &bull; Query device capabilities, mix, maximum channels and (non)interleaved access support.
           </div>
            <div class="tab-content">
             <div class="tab-pane" id="detailed-list-java">
@@ -156,8 +156,9 @@
             <br/>
             &bull; Get notified on stream under/overflow.<br/>
             &bull; Playback using interleaved and non-interleaved buffers.<br/>
+            &bull; Get notified when the stream stops outside of application's control.<br/>
             &bull; Use channel masks to route a channel to a specific speaker position.<br/>
-            &bull; (Java and .NET): use raw streams to operate directly on native buffers.
+            &bull; (Java and .NET): use native buffers to prevent data copying or safe buffers to work with .NET/JVM arrays instead of raw pointers.
           </div>
           <div class="tab-content">
             <div class="tab-pane" id="advanced-playback-java">
@@ -181,7 +182,8 @@
             <br/>
             &bull; Get notified on stream under/overflow.<br/>
             &bull; Record using interleaved and non-interleaved buffers.<br/>
-            &bull; (Java and .NET): use raw streams to operate directly on native buffers.
+            &bull; Get notified when the stream stops outside of application's control.<br/>
+            &bull; (Java and .NET): use native buffers to prevent data copying or safe buffers to work with .NET/JVM arrays instead of raw pointers.
           </div>
           <div class="tab-content">
             <div class="tab-pane" id="advanced-record-java">
@@ -225,7 +227,7 @@
           </ul>
           <div class="usage">
             <br/>
-            &bull; Combine any number of input, output or full-duplex devices into a single stream.
+            &bull; Combine any number of input and output devices into a single stream.
           </div>
           <div class="tab-content">
             <div class="tab-pane" id="aggregate-java">
