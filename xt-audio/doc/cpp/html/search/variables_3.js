@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['outmask',['outMask',['../struct_xt_1_1_format.html#a47d2150f9df070987513bdf146edcd58',1,'Xt::Format::outMask()'],['../struct_xt_1_1_channels.html#a89de31084e08396df735db1d74f481f6',1,'Xt::Channels::outMask()']]],
-  ['output',['output',['../struct_xt_1_1_latency.html#ac7b6c5c69b4f4f52a43d5f948797a5f5',1,'Xt::Latency']]],
-  ['outputs',['outputs',['../struct_xt_1_1_format.html#ad3cbcc05e5fc1977b680e1a1d8deb909',1,'Xt::Format::outputs()'],['../struct_xt_1_1_channels.html#acf6073415bb347e80adaf1bc6d78bf36',1,'Xt::Channels::outputs()']]]
+  ['fault',['fault',['../struct_xt_1_1_error_info.html#ae98c89c00fdebcbb9a95efffc49d097d',1,'Xt::ErrorInfo']]],
+  ['file',['file',['../struct_xt_1_1_location.html#a02caf8210a8d409509ba67829e6ef6cd',1,'Xt::Location']]],
+  ['format',['format',['../struct_xt_1_1_device_stream_params.html#a2557b0ea9197088485671b1ab5079653',1,'Xt::DeviceStreamParams']]],
+  ['frames',['frames',['../struct_xt_1_1_buffer.html#a8cef92b4a326bbb562fdae1b3b714dc3',1,'Xt::Buffer']]],
+  ['func',['func',['../struct_xt_1_1_location.html#aae60dd34b3729a7f92b5d8579c749b01',1,'Xt::Location']]]
 ];

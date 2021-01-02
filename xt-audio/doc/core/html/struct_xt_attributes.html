@@ -38,7 +38,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="modules.html"><span>Modules</span></a></li>
       <li class="current"><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -85,39 +84,54 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="summary">
 <a href="#pub-attribs">Data Fields</a>  </div>
   <div class="headertitle">
-<div class="title">XtAttributes Struct Reference<div class="ingroups"><a class="el" href="group__library.html">Generic interface</a></div></div>  </div>
+<div class="title">XtAttributes Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
 <p>Sample type attributes.  
  <a href="struct_xt_attributes.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="xt-audio_8h_source.html">xt-audio.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="_structs_8h_source.html">Structs.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
-<tr class="memitem:a00a500264af79bd769f046ead1aff4d8"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_xt_attributes.html#a00a500264af79bd769f046ead1aff4d8">size</a></td></tr>
-<tr class="memdesc:a00a500264af79bd769f046ead1aff4d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sample size in bytes.  <a href="#a00a500264af79bd769f046ead1aff4d8">More...</a><br /></td></tr>
-<tr class="separator:a00a500264af79bd769f046ead1aff4d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1f9558da37cb69787df364fb79bf72b9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__library.html#ga5ed28f2b663eb8722ae2dd4b7d8739b6">XtBool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_xt_attributes.html#a1f9558da37cb69787df364fb79bf72b9">isFloat</a></td></tr>
-<tr class="memdesc:a1f9558da37cb69787df364fb79bf72b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates whether samples are integer or floating point.  <a href="#a1f9558da37cb69787df364fb79bf72b9">More...</a><br /></td></tr>
-<tr class="separator:a1f9558da37cb69787df364fb79bf72b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac6f5376b5a68d38f37c69c7c1d1411d6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__library.html#ga5ed28f2b663eb8722ae2dd4b7d8739b6">XtBool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_xt_attributes.html#ac6f5376b5a68d38f37c69c7c1d1411d6">isSigned</a></td></tr>
-<tr class="memdesc:ac6f5376b5a68d38f37c69c7c1d1411d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates whether samples are signed or unsigned.  <a href="#ac6f5376b5a68d38f37c69c7c1d1411d6">More...</a><br /></td></tr>
-<tr class="separator:ac6f5376b5a68d38f37c69c7c1d1411d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abff07e577882fe750e5b5441cb3b64b1"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_xt_attributes.html#abff07e577882fe750e5b5441cb3b64b1">size</a></td></tr>
+<tr class="memdesc:abff07e577882fe750e5b5441cb3b64b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sample size in bytes.  <a href="#abff07e577882fe750e5b5441cb3b64b1">More...</a><br /></td></tr>
+<tr class="separator:abff07e577882fe750e5b5441cb3b64b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2868d787fdc2ae73202fedcb69a595e"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_xt_attributes.html#ae2868d787fdc2ae73202fedcb69a595e">count</a></td></tr>
+<tr class="memdesc:ae2868d787fdc2ae73202fedcb69a595e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of elements used to represent this sample in a buffer. 3 for 24-bit float, 1 for other types.  <a href="#ae2868d787fdc2ae73202fedcb69a595e">More...</a><br /></td></tr>
+<tr class="separator:ae2868d787fdc2ae73202fedcb69a595e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91d6e963a10c86f5c581c3ccc9b7ed2e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_shared_8h.html#a5ed28f2b663eb8722ae2dd4b7d8739b6">XtBool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_xt_attributes.html#a91d6e963a10c86f5c581c3ccc9b7ed2e">isFloat</a></td></tr>
+<tr class="memdesc:a91d6e963a10c86f5c581c3ccc9b7ed2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates whether samples are integer or floating point.  <a href="#a91d6e963a10c86f5c581c3ccc9b7ed2e">More...</a><br /></td></tr>
+<tr class="separator:a91d6e963a10c86f5c581c3ccc9b7ed2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a4179eacd31862420e5693218931c3d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_shared_8h.html#a5ed28f2b663eb8722ae2dd4b7d8739b6">XtBool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_xt_attributes.html#a6a4179eacd31862420e5693218931c3d">isSigned</a></td></tr>
+<tr class="memdesc:a6a4179eacd31862420e5693218931c3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates whether samples are signed or unsigned.  <a href="#a6a4179eacd31862420e5693218931c3d">More...</a><br /></td></tr>
+<tr class="separator:a6a4179eacd31862420e5693218931c3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Sample type attributes. </p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__audio.html#gad3ed411465f5566d8980b875bc781ad1" title="Get sample attributes for a specific sample type. ">XtAudioGetSampleAttributes</a> </dd>
-<dd>
-<a class="el" href="group__print.html#ga6d7a39248cfa6eeb79858ce3f213f7fc" title="Convert sample attributes to a human-readable string. ">XtPrintAttributesToString</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="_xt_audio_8h.html#aad260482ef66612b5e694ca1325021e2" title="Get sample attributes for a specific sample type. ">XtAudioGetSampleAttributes</a> </dd></dl>
 </div><h2 class="groupheader">Field Documentation</h2>
-<a class="anchor" id="a1f9558da37cb69787df364fb79bf72b9"></a>
+<a class="anchor" id="ae2868d787fdc2ae73202fedcb69a595e"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="group__library.html#ga5ed28f2b663eb8722ae2dd4b7d8739b6">XtBool</a> XtAttributes::isFloat</td>
+          <td class="memname">XtAttributes::count</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Number of elements used to represent this sample in a buffer. 3 for 24-bit float, 1 for other types. </p>
+
+</div>
+</div>
+<a class="anchor" id="a91d6e963a10c86f5c581c3ccc9b7ed2e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">XtAttributes::isFloat</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -126,12 +140,12 @@ Data Fields</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ac6f5376b5a68d38f37c69c7c1d1411d6"></a>
+<a class="anchor" id="a6a4179eacd31862420e5693218931c3d"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="group__library.html#ga5ed28f2b663eb8722ae2dd4b7d8739b6">XtBool</a> XtAttributes::isSigned</td>
+          <td class="memname">XtAttributes::isSigned</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -140,12 +154,12 @@ Data Fields</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a00a500264af79bd769f046ead1aff4d8"></a>
+<a class="anchor" id="abff07e577882fe750e5b5441cb3b64b1"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int32_t XtAttributes::size</td>
+          <td class="memname">XtAttributes::size</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -154,8 +168,9 @@ Data Fields</h2></td></tr>
 
 </div>
 </div>
-<hr/>The documentation for this struct was generated from the following file:<ul>
-<li><a class="el" href="xt-audio_8h_source.html">xt-audio.h</a></li>
+<hr/>The documentation for this struct was generated from the following files:<ul>
+<li><a class="el" href="_structs_8h_source.html">Structs.h</a></li>
+<li><a class="el" href="_structs_8dox.html">Structs.dox</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

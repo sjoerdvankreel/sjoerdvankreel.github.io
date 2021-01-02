@@ -1,6 +1,12 @@
 var searchData=
 [
-  ['_7eaudio',['~Audio',['../class_xt_1_1_audio.html#af1a0af18abcb42e854f9b3c021d4067a',1,'Xt::Audio']]],
-  ['_7edevice',['~Device',['../class_xt_1_1_device.html#a0f914a16629273ffefdb818dd2f84bb2',1,'Xt::Device']]],
-  ['_7estream',['~Stream',['../class_xt_1_1_stream.html#a78088b62aa193566b01dfa6d9d52d78d',1,'Xt::Stream']]]
+  ['xt',['Xt',['../namespace_xt.html',1,'']]],
+  ['xtaudio_2ehpp',['XtAudio.hpp',['../_xt_audio_8hpp.html',1,'']]],
+  ['xtdevice_2ehpp',['XtDevice.hpp',['../_xt_device_8hpp.html',1,'']]],
+  ['xtdevicelist_2ehpp',['XtDeviceList.hpp',['../_xt_device_list_8hpp.html',1,'']]],
+  ['xtexception_2ehpp',['XtException.hpp',['../_xt_exception_8hpp.html',1,'']]],
+  ['xtplatform_2ehpp',['XtPlatform.hpp',['../_xt_platform_8hpp.html',1,'']]],
+  ['xtprint_2ehpp',['XtPrint.hpp',['../_xt_print_8hpp.html',1,'']]],
+  ['xtservice_2ehpp',['XtService.hpp',['../_xt_service_8hpp.html',1,'']]],
+  ['xtstream_2ehpp',['XtStream.hpp',['../_xt_stream_8hpp.html',1,'']]]
 ];

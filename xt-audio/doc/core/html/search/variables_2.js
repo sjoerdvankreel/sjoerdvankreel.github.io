@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['max',['max',['../struct_xt_buffer.html#a49021ae3f92c299f3b5b3d6e3985daa0',1,'XtBuffer']]],
-  ['min',['min',['../struct_xt_buffer.html#af998d0c2755b85333562023af9dde3df',1,'XtBuffer']]],
-  ['mix',['mix',['../struct_xt_format.html#aacd6535f397069e2cd8c69ba6f69aea3',1,'XtFormat']]]
+  ['device',['device',['../struct_xt_aggregate_device_params.html#aba92cae1d23aec6c8373c6cee02e10b8',1,'XtAggregateDeviceParams']]],
+  ['devices',['devices',['../struct_xt_aggregate_stream_params.html#acdcf3d29fc7f7fdb690b14f848055e43',1,'XtAggregateStreamParams']]]
 ];

@@ -38,7 +38,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="modules.html"><span>Modules</span></a></li>
       <li class="current"><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -85,60 +84,61 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="summary">
 <a href="#pub-attribs">Data Fields</a>  </div>
   <div class="headertitle">
-<div class="title">XtLatency Struct Reference<div class="ingroups"><a class="el" href="group__library.html">Generic interface</a></div></div>  </div>
+<div class="title">XtLatency Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
 <p>Stream latency.  
  <a href="struct_xt_latency.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="xt-audio_8h_source.html">xt-audio.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="_structs_8h_source.html">Structs.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
-<tr class="memitem:a7d7e8043827cc69419fbd675cad1034a"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_xt_latency.html#a7d7e8043827cc69419fbd675cad1034a">input</a></td></tr>
-<tr class="memdesc:a7d7e8043827cc69419fbd675cad1034a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Input latency in milliseconds, or 0 when no inputs are present.  <a href="#a7d7e8043827cc69419fbd675cad1034a">More...</a><br /></td></tr>
-<tr class="separator:a7d7e8043827cc69419fbd675cad1034a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8bd05eb90f47570b9f800f52c90cfc20"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_xt_latency.html#a8bd05eb90f47570b9f800f52c90cfc20">output</a></td></tr>
-<tr class="memdesc:a8bd05eb90f47570b9f800f52c90cfc20"><td class="mdescLeft">&#160;</td><td class="mdescRight">Output latency in milliseconds, or 0 when no outputs are present.  <a href="#a8bd05eb90f47570b9f800f52c90cfc20">More...</a><br /></td></tr>
-<tr class="separator:a8bd05eb90f47570b9f800f52c90cfc20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee3e928388c432d30ea84d4538c1d2dc"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_xt_latency.html#aee3e928388c432d30ea84d4538c1d2dc">input</a></td></tr>
+<tr class="memdesc:aee3e928388c432d30ea84d4538c1d2dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Input latency in milliseconds, or 0 when no inputs are present or latency is unknown.  <a href="#aee3e928388c432d30ea84d4538c1d2dc">More...</a><br /></td></tr>
+<tr class="separator:aee3e928388c432d30ea84d4538c1d2dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ff5daf2c641302f6e65c10c3e4e8b3c"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_xt_latency.html#a0ff5daf2c641302f6e65c10c3e4e8b3c">output</a></td></tr>
+<tr class="memdesc:a0ff5daf2c641302f6e65c10c3e4e8b3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Output latency in milliseconds, or 0 when no outputs are present or latency is unknown.  <a href="#a0ff5daf2c641302f6e65c10c3e4e8b3c">More...</a><br /></td></tr>
+<tr class="separator:a0ff5daf2c641302f6e65c10c3e4e8b3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Stream latency. </p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__stream.html#ga64f61cce41812c370e90793d2d81f6b4" title="Get the end-to-end latency, if supported by the system. ">XtStreamGetLatency</a> </dd>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="_enums_8h.html#a9637ddf83522f5f1441358542d34e8de" title="Audio service capabilities. ">XtServiceCaps</a> </dd>
 <dd>
-<a class="el" href="group__print.html#gad92ce08a8d42adb80ed0118fec024f10" title="Convert latencies to a human-readable string. ">XtPrintLatencyToString</a> </dd></dl>
+<a class="el" href="_xt_stream_8h.html#ab414c61e5ec87a8b5487d5a000b76d42" title="Get the end-to-end latency, if supported by the system. ">XtStreamGetLatency</a> </dd></dl>
 </div><h2 class="groupheader">Field Documentation</h2>
-<a class="anchor" id="a7d7e8043827cc69419fbd675cad1034a"></a>
+<a class="anchor" id="aee3e928388c432d30ea84d4538c1d2dc"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">double XtLatency::input</td>
+          <td class="memname">XtLatency::input</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Input latency in milliseconds, or 0 when no inputs are present. </p>
+<p>Input latency in milliseconds, or 0 when no inputs are present or latency is unknown. </p>
 
 </div>
 </div>
-<a class="anchor" id="a8bd05eb90f47570b9f800f52c90cfc20"></a>
+<a class="anchor" id="a0ff5daf2c641302f6e65c10c3e4e8b3c"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">double XtLatency::output</td>
+          <td class="memname">XtLatency::output</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Output latency in milliseconds, or 0 when no outputs are present. </p>
+<p>Output latency in milliseconds, or 0 when no outputs are present or latency is unknown. </p>
 
 </div>
 </div>
-<hr/>The documentation for this struct was generated from the following file:<ul>
-<li><a class="el" href="xt-audio_8h_source.html">xt-audio.h</a></li>
+<hr/>The documentation for this struct was generated from the following files:<ul>
+<li><a class="el" href="_structs_8h_source.html">Structs.h</a></li>
+<li><a class="el" href="_structs_8dox.html">Structs.dox</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

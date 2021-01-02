@@ -38,7 +38,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li class="current"><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="modules.html"><span>Modules</span></a></li>
       <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -79,42 +78,252 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">XT-Audio </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="abstractions"></a>
+<div class="toc"><h3>Table of Contents</h3>
+<ul><li class="level1"><a href="#about">About</a></li>
+<li class="level1"><a href="#abstractions">Core abstractions</a><ul><li class="level2"><a href="#platform">Platform, setup and system</a></li>
+<li class="level2"><a href="#service">Service and device list</a></li>
+<li class="level2"><a href="#devices">Devices</a></li>
+<li class="level2"><a href="#streams">Streams</a></li>
+</ul>
+</li>
+<li class="level1"><a href="#usage">Basic usage</a></li>
+<li class="level1"><a href="#buffers">Audio buffers</a></li>
+<li class="level1"><a href="#aggregation">Stream aggregation</a></li>
+<li class="level1"><a href="#handles">Backend handles</a></li>
+<li class="level1"><a href="#langdiffs">API differences between languages</a><ul><li class="level2"><a href="#errhandling">Error handling</a></li>
+<li class="level2"><a href="#strhandling">String handling and printing/ToString()</a></li>
+<li class="level2"><a href="#reshandling">Resource handling</a></li>
+<li class="level2"><a href="#safebuffer">Safe buffers (Java and .NET)</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="textblock"><h1><a class="anchor" id="about"></a>
+About</h1>
+<p>XT-Audio is a platform-independent audio I/O library aiming to achieve low-latency streaming audio with a simple, unified API. It is designed to map directly to underlying audio backends as much as possible, without introducing significant overhead in stream processing. Backends may be compiled-in selectively if you build from source (use -DXT_ENABLE_XYZ or the build scripts). The provided binaries are compiled with all supported backends for the platform (Win32/Linux).</p>
+<p>Supported backends are:<br />
+ASIO, DirectSound, WASAPI (Windows)<br />
+ALSA, PulseAudio, JACK (Linux)</p>
+<p>Supported platforms are:<br />
+x86/x64 linux (native)<br />
+x86/x64 windows (native)<br />
+x64 JVM (windows/linux)<br />
+x64 .NET Core (linux)<br />
+x86/x64 .NET Core (windows)<br />
+x86/x64 .NET framework (windows/linux)</p>
+<p>Features (availability depends on the backend):</p>
+<p>Channel masking<br />
+Stream time-stamping<br />
+Buffer under/overrun detection<br />
+Support both interleaved and non-interleaved operation<br />
+Full-duplex operation (JACK, ASIO) or stream aggregation (all others)</p>
+<h1><a class="anchor" id="abstractions"></a>
 Core abstractions</h1>
-<p><b>Systems and services</b></p>
-<p>An audio service is an implementation of the XtService API on a specific backend. Supported backends include DirectSound, WASAPI and ASIO on windows, and PulseAudio, ALSA and JACK on linux. Services are used primarily to query and open available audio devices.</p>
-<p><b>Devices</b></p>
+<h2><a class="anchor" id="platform"></a>
+Platform, setup and system</h2>
+<p>The audio platform (XtPlatform) is the entry point to the XT-Audio library. Applications obtain a platform handle using XtAudioInit, and cleanup the library using XtPlatformDestroy. The audio platform translates audio setups (XtSetup, consumer, system and pro-audio) to platform-specific backend identifiers (XtSystem) identifying the supported backends (DirectSound, WASAPI and ASIO on windows, and PulseAudio, ALSA and JACK on linux). XT-Audio may be compiled with support for specific backends enabled. Therefore not all systems which are supported on a given platform may actually be available in the compiled binary. Use XtPlatformGetSystems to determine which systems are available. Use XtPlatformSetupToSystem to translate a platform-independent audio setup (consumer, system and pro-audio) to a platform-specific system identifier. From there, use XtPlatformGetService to start working with a specific audio service.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="_enums_8h.html#a09607d36319744a5afa7b8e2160949f0" title="Platform-independent service setup. ">XtSetup</a> </dd>
+<dd>
+<a class="el" href="_enums_8h.html#a5257d3cb4b707967984c3890e3ea2cde" title="Platform-specific service identifier. ">XtSystem</a> </dd>
+<dd>
+<a class="el" href="_shared_8h.html#afd54a988691b5f82276707d9808bac6c" title="opaque platform handle ">XtPlatform</a> </dd>
+<dd>
+<a class="el" href="_xt_audio_8h.html#adab45541fd1b7a3080d4471cf52a0dbb" title="Initialize the XT-Audio library. ">XtAudioInit</a> </dd>
+<dd>
+<a class="el" href="_xt_platform_8h.html#ace4123f88369b50c4e713037fdf7a5b0" title="Terminates the XT-Audio library. ">XtPlatformDestroy</a> </dd>
+<dd>
+<a class="el" href="_xt_platform_8h.html#ac9503b810514a6b6b0019b45138390fe" title="Get available systems for the current platform. ">XtPlatformGetSystems</a> </dd>
+<dd>
+<a class="el" href="_xt_platform_8h.html#a71d7d0170124c62276f81a0d9a6c3296" title="Get audio service corresponding to the given system. ">XtPlatformGetService</a> </dd>
+<dd>
+<a class="el" href="_xt_platform_8h.html#a4b79c218435103364d798167d9aedd08" title="Translate audio setup to corresponding system on the current platform. ">XtPlatformSetupToSystem</a></dd></dl>
+<h2><a class="anchor" id="service"></a>
+Service and device list</h2>
+<p>An audio service (XtService) is an implementation of the XtService API on a specific backend. Services are used to query and open available audio devices and to query service-specific capabilities. The device list (XtDeviceList) represents metadata about the available audio devices within a given service. The device list allows retrieving device names and identifiers for all audio devices in a service without actually opening the device. Querying other metadata such as device capabilities may have to open the device (depending on the backend). XtService also allows retrieving a default device-id, for backends which support the notion of a default device. In addition, the XtService API provides a stream-aggregation feature which allows the application to combine multiple devices into a single audio stream. This is primarily intended to emulate full-duplex on backends which do not natively support this, but may be used to combine any number of input and output devices into a single audio stream.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="_shared_8h.html#a962e129106ce22904d9763e3829609fe" title="opaque audio service handle ">XtService</a> </dd>
+<dd>
+<a class="el" href="_shared_8h.html#a81250c3a9f2c55bd71e73d732c6a69e2" title="opaque device list handle ">XtDeviceList</a> </dd>
+<dd>
+<a class="el" href="_xt_device_list_8h.html#ad7acbebb66d0e6f6743582314b280b88" title="Gets a device&#39;s id. ">XtDeviceListGetId</a> </dd>
+<dd>
+<a class="el" href="_xt_device_list_8h.html#a9f87a47fb66a02cccc0af62ab99ffa54" title="Gets a device&#39;s name. ">XtDeviceListGetName</a> </dd>
+<dd>
+<a class="el" href="_xt_service_8h.html#aaccd399b41ca52c7e3ee1534f8146ad6" title="Enumerate available devices. ">XtServiceOpenDeviceList</a> </dd>
+<dd>
+<a class="el" href="_xt_service_8h.html#aedd08d8a0fb148fc3a5a70c78c1e05e9" title="Get default device id. ">XtServiceGetDefaultDeviceId</a> </dd>
+<dd>
+<a class="el" href="_xt_device_list_8h.html#ad78c3c5f6ec41ed07d8e7707e23b158f" title="Gets a device&#39;s capabilities. ">XtDeviceListGetCapabilities</a> </dd>
+<dd>
+<a class="el" href="_xt_service_8h.html#aeeb2d542cccd4c6185ed0a2ab518dd84" title="Get service capabilities. ">XtServiceGetCapabilities</a> </dd>
+<dd>
+<a class="el" href="_xt_service_8h.html#a0c01c9e99c5ad18509133f6ce3776b5b" title="Combines multiple audio devices into a single stream. ">XtServiceAggregateStream</a></dd></dl>
+<h2><a class="anchor" id="devices"></a>
+Devices</h2>
 <p>An audio device is an implementation of the XtDevice API on a specific backend. Depending on the backend type, devices may directly correspond to physical audio cards (ASIO, ALSA hw, WASAPI exclusive), system mixers on top of such cards (ALSA plughw, WASAPI shared, DirectSound), or sound services which allow user- defined routing from application input/output to physical or virtual devices (JACK and PulseAudio). The device API may be used to query format support and buffer sizes, and to create audio streams.</p>
-<p><b>Streams</b></p>
-<p>An audio stream is an implementation of the XtStream API on a specific backend. Each stream is tied to an application-defined callback function (XtStreamCallback) which is called whenever the stream is ready to deliver or receive more data. The XtStream API can be used to control (start/stop) audio streams and to query latencies and buffer sizes.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="_xt_service_8h.html#a4917ec90aa3af5aee3d2d6a0393ed7c9" title="Open an audio device. ">XtServiceOpenDevice</a> </dd>
+<dd>
+<a class="el" href="_xt_device_8h.html#adf8b5cfe0caf59d9cbf6536f051e9c0f" title="Indicates whether an audio format is supported by the device. ">XtDeviceSupportsFormat</a> </dd>
+<dd>
+<a class="el" href="_xt_device_8h.html#a0c81441f06596c2f9de66b8d4dc22749" title="Gets the buffer size limits supported by the device. ">XtDeviceGetBufferSize</a> </dd>
+<dd>
+<a class="el" href="_xt_device_8h.html#ae1e25aabd778b6a3e3572188072bcd4f" title="Opens an audio stream on the given device. ">XtDeviceOpenStream</a></dd></dl>
+<h2><a class="anchor" id="streams"></a>
+Streams</h2>
+<p>An audio stream is an implementation of the XtStream API on a specific backend. Each stream is tied to an application-defined callback function (XtOnBuffer) which is called whenever the stream is ready to deliver or receive more data. The XtStream API can be used to control (start/stop) audio streams and to query latencies and buffer sizes. In addition, applications may optionally supply a buffer under/overrun callback (XtOnXRun) and stream state changed callback (XtOnRunning).</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="_xt_device_8h.html#ae1e25aabd778b6a3e3572188072bcd4f" title="Opens an audio stream on the given device. ">XtDeviceOpenStream</a> </dd>
+<dd>
+<a class="el" href="_xt_service_8h.html#a0c01c9e99c5ad18509133f6ce3776b5b" title="Combines multiple audio devices into a single stream. ">XtServiceAggregateStream</a> </dd>
+<dd>
+<a class="el" href="_callbacks_8h.html#a5812fb7a07d222587f2f51fa32ce2e07" title="Audio stream processing callback. ">XtOnBuffer</a> </dd>
+<dd>
+<a class="el" href="_callbacks_8h.html#abf92c83061232782c96cb174cc6d371d" title="Audio xrun (underrun/overrun) callback. ">XtOnXRun</a> </dd>
+<dd>
+<a class="el" href="_callbacks_8h.html#af5ce06062300b5254c3d6960088a8f0d" title="Audio stream state changed callback. ">XtOnRunning</a> </dd>
+<dd>
+<a class="el" href="_xt_stream_8h.html#a09a8d14f60b8cefea2356bf9e1ae4f9d" title="Starts an audio stream. ">XtStreamStart</a> </dd>
+<dd>
+<a class="el" href="_xt_stream_8h.html#a64bf478144d0a3c489afafb81666f840" title="Stops an audio stream. ">XtStreamStop</a> </dd>
+<dd>
+<a class="el" href="_xt_stream_8h.html#a9bb8d8d7fef1adf1964b77afb62bc082" title="Query stream state. ">XtStreamIsRunning</a></dd></dl>
 <h1><a class="anchor" id="usage"></a>
 Basic usage</h1>
-<p>An application must first initialize the library using XtAudioInit. From there, it can select an audio service, query for available devices, and open streams on those devices. The choice of backend (system) greatly affects the way audio is streamed in terms of latency, supported formats and whether the application takes system-wide exclusive control of a device. If you know exactly what your application needs, use XtAudioGetServiceBySetup or XtAudioGetServiceBySystem to select a backend with specific characteristics. Otherwise it's probably best to let the end-user pick the system and device to use.</p>
+<p>Include &lt;xt/XtAudio.h&gt; for C, &lt;xt/XtAudio.hpp&gt; for C++ and link xt-core.dll/libxt-core.so. Reference Xt.Cli.dll for .NET, xt.audio-(version).jar for java.</p>
+<p>An application must first initialize the library using XtAudioInit. From there, using the returned platform handle it can select an audio service, query for available devices, and open streams on those devices. The choice of backend (system) greatly affects the way audio is streamed in terms of latency, supported formats and whether the application takes system-wide exclusive control of a device. If you know exactly what your application needs, use XtPlatformSetupToSystem to select a backend with specific characteristics. Otherwise it's probably best to let the end-user pick the system (XtPlatformGetSystems) and device to use.</p>
 <p>Streaming audio with XT-Audio involves at least these steps:</p><ol type="1">
 <li>Initialize (XtAudioInit)</li>
-<li>Select service (XtAudioGetServiceByIndex/XtAudioGetServiceBySetup/XtAudioGetServiceBySystem)</li>
-<li>Select device (XtServiceOpenDevice/XtServiceOpenDefaultDevice)</li>
-<li>Test format and buffer size support (XtDeviceSupportsFormat/XtDeviceGetBuffer)</li>
+<li>Select service (XtPlatformGetService)</li>
+<li>Get device id (XtServiceGetDefaultDeviceId/XtServiceOpenDeviceList and XtDeviceListGetId)</li>
+<li>Select device (XtServiceOpenDevice)</li>
+<li>Test format and buffer size support (XtDeviceSupportsFormat/XtDeviceGetBufferSize)</li>
 <li>Open a stream (XtDeviceOpenStream/XtServiceAggregateStream)</li>
 <li>Start running (XtStreamStart)</li>
 <li>Stop running (XtStreamStop)</li>
 <li>Cleanup stream (XtStreamDestroy)</li>
 <li>Cleanup device (XtDeviceDestroy)</li>
-<li>Cleanup library (XtAudioTerminate)</li>
+<li>Cleanup device list (XtDeviceListDestroy)</li>
+<li>Cleanup library (XtPlatformDestroy)</li>
 </ol>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="_xt_audio_8h.html#adab45541fd1b7a3080d4471cf52a0dbb" title="Initialize the XT-Audio library. ">XtAudioInit</a> </dd>
+<dd>
+<a class="el" href="_xt_platform_8h.html#a71d7d0170124c62276f81a0d9a6c3296" title="Get audio service corresponding to the given system. ">XtPlatformGetService</a> </dd>
+<dd>
+<a class="el" href="_xt_platform_8h.html#ac9503b810514a6b6b0019b45138390fe" title="Get available systems for the current platform. ">XtPlatformGetSystems</a> </dd>
+<dd>
+<a class="el" href="_xt_platform_8h.html#a4b79c218435103364d798167d9aedd08" title="Translate audio setup to corresponding system on the current platform. ">XtPlatformSetupToSystem</a> </dd>
+<dd>
+<a class="el" href="_xt_service_8h.html#aedd08d8a0fb148fc3a5a70c78c1e05e9" title="Get default device id. ">XtServiceGetDefaultDeviceId</a> </dd>
+<dd>
+<a class="el" href="_xt_service_8h.html#aaccd399b41ca52c7e3ee1534f8146ad6" title="Enumerate available devices. ">XtServiceOpenDeviceList</a> </dd>
+<dd>
+<a class="el" href="_xt_device_list_8h.html#ad7acbebb66d0e6f6743582314b280b88" title="Gets a device&#39;s id. ">XtDeviceListGetId</a> </dd>
+<dd>
+<a class="el" href="_xt_service_8h.html#a4917ec90aa3af5aee3d2d6a0393ed7c9" title="Open an audio device. ">XtServiceOpenDevice</a> </dd>
+<dd>
+<a class="el" href="_xt_device_8h.html#adf8b5cfe0caf59d9cbf6536f051e9c0f" title="Indicates whether an audio format is supported by the device. ">XtDeviceSupportsFormat</a> </dd>
+<dd>
+<a class="el" href="_xt_device_8h.html#a0c81441f06596c2f9de66b8d4dc22749" title="Gets the buffer size limits supported by the device. ">XtDeviceGetBufferSize</a> </dd>
+<dd>
+<a class="el" href="_xt_device_8h.html#ae1e25aabd778b6a3e3572188072bcd4f" title="Opens an audio stream on the given device. ">XtDeviceOpenStream</a> </dd>
+<dd>
+<a class="el" href="_xt_service_8h.html#a0c01c9e99c5ad18509133f6ce3776b5b" title="Combines multiple audio devices into a single stream. ">XtServiceAggregateStream</a> </dd>
+<dd>
+<a class="el" href="_xt_stream_8h.html#a09a8d14f60b8cefea2356bf9e1ae4f9d" title="Starts an audio stream. ">XtStreamStart</a> </dd>
+<dd>
+<a class="el" href="_xt_stream_8h.html#a64bf478144d0a3c489afafb81666f840" title="Stops an audio stream. ">XtStreamStop</a> </dd>
+<dd>
+<a class="el" href="_xt_stream_8h.html#a5e5a2ce92c230d2aa736085495bde34e" title="Destroys an audio stream. ">XtStreamDestroy</a> </dd>
+<dd>
+<a class="el" href="_xt_device_8h.html#aa63402a111e1de8107479058ebd6dfa9" title="Destroys an audio device. ">XtDeviceDestroy</a> </dd>
+<dd>
+<a class="el" href="_xt_device_list_8h.html#a9f78240d30616f0542193b3d92e2f6ec" title="Destroys a device list. ">XtDeviceListDestroy</a> </dd>
+<dd>
+<a class="el" href="_xt_platform_8h.html#ace4123f88369b50c4e713037fdf7a5b0" title="Terminates the XT-Audio library. ">XtPlatformDestroy</a></dd></dl>
+<h1><a class="anchor" id="buffers"></a>
+Audio buffers</h1>
+<p>When using interleaved access, the data passed to the callback (XtOnBuffer) is a pointer to a single array of samples, and the audio buffer contains alternating samples for each channel, e.g. [LRLRLR] for a stereo stream. When using non-interleaved access, there is one audio buffer for each channel, and the data passed to the callback is a pointer to an array of pointers each pointing to the audio buffer for a single channel, e.g. [LLL][RRR] for a stereo stream.</p>
+<p>The input/output buffers passed to XtOnBuffer should be cast to the appropriate type before usage. This means unsigned char* (UInt8, Int24), short* (Int16), int* (Int32) or float* (Float32) for interleaved buffers, or unsigned char** (UInt8, Int24), short** (Int16), int** (Int32) or float** (Float32) for non-interleaved buffers.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="_callbacks_8h.html#a5812fb7a07d222587f2f51fa32ce2e07" title="Audio stream processing callback. ">XtOnBuffer</a> </dd>
+<dd>
+<a class="el" href="struct_xt_buffer.html" title="Streaming audio buffer. ">XtBuffer</a> </dd>
+<dd>
+<a class="el" href="struct_xt_stream_params.html" title="Shared parameters for regular and aggregate audio streams. ">XtStreamParams</a> </dd>
+<dd>
+<a class="el" href="_enums_8h.html#a28a698100a6b04cd1ed14d38782bd988" title="Audio sample format. ">XtSample</a></dd></dl>
+<h1><a class="anchor" id="aggregation"></a>
+Stream aggregation</h1>
+<p>XT-Audio allows an application to open an audio stream on more than one device. This is primarily intended to emulate full-duplex operation on systems which don't natively support it, but may be used to aggregate any number of input and/or output streams. The resulting stream's channel count will be equal to the total number of channels requested for each of the underlying streams. Aggregate streams introduce an intermediate buffer to keep underlying streams in sync, and as such (and unlike anything else in XT-Audio) they actually add latency to a running stream. Aggregate streams are created using XtServiceAggregateStream instead of XtDeviceOpenStream. Other than that, the stream interface (including callback functions) is exactly the same as for regular audio streams. Stream aggregation is not supported for backends which natively support full-duplex.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="_enums_8h.html#a9637ddf83522f5f1441358542d34e8dea00ed752fd566ec036f63fdd3c575917b" title="Audio stream aggregation. ">XtServiceCapsAggregation</a> </dd>
+<dd>
+<a class="el" href="struct_xt_aggregate_stream_params.html" title="Stream parameters specific to aggregated audio streams. ">XtAggregateStreamParams</a> </dd>
+<dd>
+<a class="el" href="_xt_service_8h.html#a0c01c9e99c5ad18509133f6ce3776b5b" title="Combines multiple audio devices into a single stream. ">XtServiceAggregateStream</a></dd></dl>
+<h1><a class="anchor" id="handles"></a>
+Backend handles</h1>
+<p>Applications that wish to extend XT-Audio's feature set can do so by using backend-specific functionality through XtDeviceGetHandle and XtStreamGetHandle. This allows direct access to IASIO, IDirectSound, IMMDevice/IAudioClient, snd_pcm_t, pa_simple, jack_client_t etc depending on the backend.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="_xt_device_8h.html#afbdee27f686c74b12041ee26cc7983e5" title="Implementation-defined handle to the backend device. ">XtDeviceGetHandle</a> </dd>
+<dd>
+<a class="el" href="_xt_stream_8h.html#aaca768e708109bb0ebea5ecdfebf1625" title="Implementation-defined handle to the backend stream. ">XtStreamGetHandle</a></dd></dl>
 <h1><a class="anchor" id="langdiffs"></a>
 API differences between languages</h1>
-<p><b>Error handling</b></p>
+<h2><a class="anchor" id="errhandling"></a>
+Error handling</h2>
 <p>The core API uses error codes exclusively. C++, Java and C# API's use only exceptions.</p>
-<p><b>String handling</b></p>
-<p>In the C and C++ API's, all strings are encoded as UTF-8. In the C# and Java API's strings use the built-in string type.</p>
-<p><b>Resource handling</b></p>
-<p>In all language API's there are 3 resources that must be explicitly managed: devices, streams, and the library itself. For C, this means XtDeviceDestroy/XtStreamDestroy/XtAudioTerminate. For C++ everything is handled using RAII, the XtAudio constructor calls XtAudioInit and destructor calls XtAudioTerminate. Devices and streams are handled using std::unique_ptrs. For Java each resource implements Closeable, for C# IDisposable. Except for the C API these are the only resources the application needs to be concerned about. For C, it is documented whether return values and output parameters should be explicitly cleaned up using <a class="el" href="group__audio.html#ga5db3bd8679e143d799494cdb1e77a11f" title="Standard free() wrapper. ">XtAudioFree()</a>.</p>
-<p><b>Audio buffers</b></p>
-<p>When using interleaved access, the data passed to the callback is a pointer to a single array of samples, and the audio buffer contains alternating samples for each channel, e.g. [LRLRLR] for a stereo stream. When using non-interleaved access, there is one audio buffer for each channel, and the data passed to the callback is a pointer to an array of pointers each pointing to the audio buffer for a single channel, e.g. [LLL][RRR] for a stereo stream.</p>
-<p>The input/output buffers passed to XtStreamCallback should be cast to the appropriate type before usage. For C and C++ (and Java and C# in raw mode) this means unsigned char*, short*, int* or float* for interleaved buffers, or unsigned char**, short**, int** or float** for non-interleaved buffers. For Java and C# this means byte[], short[], int[] or float[] for interleaved buffers or byte[][], short[][], int[][] or float[][] for non-interleaved buffers. Applications should never write to the input buffer.</p>
-<p><b>Stream aggregation</b></p>
-<p>XT-Audio allows an application to open an audio stream on more than one device. This is primarily intended to emulate full-duplex operation on systems which don't natively support it, but may be used to aggregate any number of input, output and/or full-duplex streams. The resulting stream's channel count will be equal to the total number of channels requested for each of the underlying streams. Aggregate streams introduce an intermediate buffer to keep underlying streams in sync, and as such (and unlike anything else in XT-Audio) they actually add latency to a running stream. Aggregate streams are created using XtServiceAggregateStream instead of XtDeviceOpenStream. Other than that, the stream interface (including callback functions) is exactly the same as for regular audio streams. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="_shared_8h.html#a4ae237bc463dfed7b5148dd0e9fa4c3c" title="Error type. ">XtError</a> </dd>
+<dd>
+<a class="el" href="struct_xt_error_info.html" title="Useful error details derived from XtError opaque error code. ">XtErrorInfo</a> </dd>
+<dd>
+<a class="el" href="_xt_audio_8h.html#a42322996096aeede4b377a8fa90c76c1" title="Translate opaque error code to error details. ">XtAudioGetErrorInfo</a> </dd>
+<dd>
+<a class="el" href="_xt_print_8h.html#a16ee6fc5243fd05df2240560f32bca11" title="Convert error information to a human-readable string. ">XtPrintErrorInfo</a></dd></dl>
+<h2><a class="anchor" id="strhandling"></a>
+String handling and printing/ToString()</h2>
+<p>In the C and C++ API's, all strings are encoded as UTF-8. In the C# and Java API's strings use the built-in string type. XT-Audio provides ToString()-like functionality for basic data types (all enums, source location and error info) using the XtPrint* interfaces for C or operator &lt;&lt; (std::ostream&amp;) for C++. For .NET and Java, use the built-in ToString() functions. In particular, services and devices do NOT provide ToString()-like functionality. Applications should use XtPrintSystem/XtDeviceListGetName instead.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="_xt_print_8h.html#a5e656fe8d0e2559ea4d476b12b5d718f" title="Convert a cause to a human-readable string. ">XtPrintCause</a> </dd>
+<dd>
+<a class="el" href="_xt_print_8h.html#a33933eb8e28a1945a708e941a7aedfa0" title="Convert a setup to a human-readable string. ">XtPrintSetup</a> </dd>
+<dd>
+<a class="el" href="_xt_print_8h.html#a60f3e8f79a1b989d44660394f5dbc414" title="Convert a system to a human-readable string. ">XtPrintSystem</a> </dd>
+<dd>
+<a class="el" href="_xt_print_8h.html#af1ef94f6528d324a88ed6aa11ed34058" title="Convert a sample to a human-readable string. ">XtPrintSample</a> </dd>
+<dd>
+<a class="el" href="_xt_print_8h.html#abb0788af9801a6b4b2fc20549fa881eb" title="Convert device enumeration flags to a human-readable string. ">XtPrintEnumFlags</a> </dd>
+<dd>
+<a class="el" href="_xt_print_8h.html#a16ee6fc5243fd05df2240560f32bca11" title="Convert error information to a human-readable string. ">XtPrintErrorInfo</a> </dd>
+<dd>
+<a class="el" href="_xt_print_8h.html#a8c4e50504bd1e01f146519d9b3ce10cc" title="Convert device capabilities to a human-readable string. ">XtPrintDeviceCaps</a> </dd>
+<dd>
+<a class="el" href="_xt_print_8h.html#a5df61216bda3fa6e855637f014a3cf9f" title="Convert service capabilities to a human-readable string. ">XtPrintServiceCaps</a> </dd>
+<dd>
+<a class="el" href="_xt_device_list_8h.html#a9f87a47fb66a02cccc0af62ab99ffa54" title="Gets a device&#39;s name. ">XtDeviceListGetName</a></dd></dl>
+<h2><a class="anchor" id="reshandling"></a>
+Resource handling</h2>
+<p>In all language API's there are 4 resources that must be explicitly managed: device lists, devices, streams, and the library itself. For C, this means XtDeviceListDestroy/XtDeviceDestroy/XtStreamDestroy/XtPlatformDestroy. For C++ everything is handled using unique_ptrs. For Java each resource implements Closeable, for C# IDisposable. No other resources are returned to the application that must be cleaned up by the caller. Strings and collections are handled by the language's respective data types (eg std::string, System.String, java.lang.String and std::vector or built-in array types). For C, string and array-like API's either return statically-allocated data or accept caller-allocated buffers.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="_xt_audio_8h.html#adab45541fd1b7a3080d4471cf52a0dbb" title="Initialize the XT-Audio library. ">XtAudioInit</a> </dd>
+<dd>
+<a class="el" href="_xt_platform_8h.html#ace4123f88369b50c4e713037fdf7a5b0" title="Terminates the XT-Audio library. ">XtPlatformDestroy</a> </dd>
+<dd>
+<a class="el" href="_xt_service_8h.html#a4917ec90aa3af5aee3d2d6a0393ed7c9" title="Open an audio device. ">XtServiceOpenDevice</a> </dd>
+<dd>
+<a class="el" href="_xt_device_8h.html#aa63402a111e1de8107479058ebd6dfa9" title="Destroys an audio device. ">XtDeviceDestroy</a> </dd>
+<dd>
+<a class="el" href="_xt_service_8h.html#aaccd399b41ca52c7e3ee1534f8146ad6" title="Enumerate available devices. ">XtServiceOpenDeviceList</a> </dd>
+<dd>
+<a class="el" href="_xt_device_list_8h.html#a9f78240d30616f0542193b3d92e2f6ec" title="Destroys a device list. ">XtDeviceListDestroy</a> </dd>
+<dd>
+<a class="el" href="_xt_device_8h.html#ae1e25aabd778b6a3e3572188072bcd4f" title="Opens an audio stream on the given device. ">XtDeviceOpenStream</a> </dd>
+<dd>
+<a class="el" href="_xt_service_8h.html#a0c01c9e99c5ad18509133f6ce3776b5b" title="Combines multiple audio devices into a single stream. ">XtServiceAggregateStream</a> </dd>
+<dd>
+<a class="el" href="_xt_stream_8h.html#a5e5a2ce92c230d2aa736085495bde34e" title="Destroys an audio stream. ">XtStreamDestroy</a></dd></dl>
+<h2><a class="anchor" id="safebuffer"></a>
+Safe buffers (Java and .NET)</h2>
+<p>The XtOnBuffer callback receives a pointer to the <a class="el" href="struct_xt_buffer.html" title="Streaming audio buffer. ">XtBuffer</a> structure which in turn contains pointers to the native (unmanaged) audio data. Java and .NET applications may operate directly on these native buffers (using System.IntPtr or com.sun.jna.Pointer, respectively), or may choose to have audio data represented to them using managed arrays (e.g. byte[], short[] etc). Managed ("safe") buffering copies the audio data into/out of the CLR/JVM, but does not introduce additional latency. Applications can use safe buffers using the XtSafeBuffer API. After opening a stream, use XtSafeBuffer.Register to set up a safe buffer for that stream. Then inside the XtOnBuffer callback, use XtSafeBuffer.Lock before working with the audio data (copies in the captured data) and XtSafeBuffer.Unlock after working with the audio data (copies out the rendered data). In between the calls to Lock()/Unlock(), use the GetInput()/GetOutput() methods to retrieve the managed input/output audio buffers. Before closing the audio stream, use XtSafeBuffer.Dispose()/close() to clean up.</p>
+<p>The input/output buffers retrieved from XtSafeBuffer should be cast to the appropriate type before usage. This means byte[] (UInt8, Int24), short[] (Int16), int[] (Int32) or float[] (Float32) for interleaved buffers, or byte[][] (UInt8, Int24), short[][] (Int16), int[][] (Int32) or float[][] (Float32) for non-interleaved buffers.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="_callbacks_8h.html#a5812fb7a07d222587f2f51fa32ce2e07" title="Audio stream processing callback. ">XtOnBuffer</a> </dd>
+<dd>
+<a class="el" href="struct_xt_buffer.html" title="Streaming audio buffer. ">XtBuffer</a> </dd>
+<dd>
+<a class="el" href="_enums_8h.html#a28a698100a6b04cd1ed14d38782bd988" title="Audio sample format. ">XtSample</a> </dd></dl>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

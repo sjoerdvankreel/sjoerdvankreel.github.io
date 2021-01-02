@@ -1,8 +1,7 @@
 var searchData=
 [
-  ['inmask',['inMask',['../struct_xt_1_1_format.html#ad827f5985fe294b26c56658d674e39ea',1,'Xt::Format::inMask()'],['../struct_xt_1_1_channels.html#ad791ef947d2ac4cac27f099bb755b052',1,'Xt::Channels::inMask()']]],
-  ['input',['input',['../struct_xt_1_1_latency.html#a9c986aee9c936b898147de4ce07e56ec',1,'Xt::Latency']]],
-  ['inputs',['inputs',['../struct_xt_1_1_format.html#ac56bb9ef85607abd97de44c6e50de357',1,'Xt::Format::inputs()'],['../struct_xt_1_1_channels.html#a666c6b5975919fef75792fb9dc275fe1',1,'Xt::Channels::inputs()']]],
-  ['isfloat',['isFloat',['../struct_xt_1_1_attributes.html#aa886079c505d35f7ab965768cc3a23f8',1,'Xt::Attributes']]],
-  ['issigned',['isSigned',['../struct_xt_1_1_attributes.html#a87607cc82618336e8d39db7672012737',1,'Xt::Attributes']]]
+  ['cause',['cause',['../struct_xt_1_1_service_error.html#ad238312e21f299cd4f0aabd9e9e19116',1,'Xt::ServiceError']]],
+  ['channels',['channels',['../struct_xt_1_1_format.html#a3c6d4d797ea612f28e764f4d97e96eaa',1,'Xt::Format::channels()'],['../struct_xt_1_1_aggregate_device_params.html#ae10129cd036b9ff807bd6a38f038534e',1,'Xt::AggregateDeviceParams::channels()']]],
+  ['count',['count',['../struct_xt_1_1_attributes.html#af33c789d112251007d7282d1bae4b832',1,'Xt::Attributes::count()'],['../struct_xt_1_1_aggregate_stream_params.html#ad85289104cb40ba4ecc36f55f46fe035',1,'Xt::AggregateStreamParams::count()']]],
+  ['current',['current',['../struct_xt_1_1_buffer_size.html#af155653ff17b097eb2551152e32f4a5a',1,'Xt::BufferSize']]]
 ];

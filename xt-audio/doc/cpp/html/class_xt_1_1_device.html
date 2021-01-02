@@ -89,14 +89,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#friends">Friends</a> &#124;
 <a href="class_xt_1_1_device-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Xt::Device Class Reference<span class="mlabels"><span class="mlabel">final</span></span></div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="xt-cpp_8hpp_source.html">xt-cpp.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="_xt_device_8hpp_source.html">XtDevice.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -104,34 +103,30 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a0f914a16629273ffefdb818dd2f84bb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae6593614e85228ef270117f2fbb4916f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_xt_1_1_device.html#ae6593614e85228ef270117f2fbb4916f">ShowControlPanel</a> ()</td></tr>
 <tr class="separator:ae6593614e85228ef270117f2fbb4916f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4955bea2ecb6e3905fb21d0dc812a4f7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_xt.html#a9cdc6635130ea35e68230bafb00ad6f3">System</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_xt_1_1_device.html#a4955bea2ecb6e3905fb21d0dc812a4f7">GetSystem</a> () const </td></tr>
-<tr class="separator:a4955bea2ecb6e3905fb21d0dc812a4f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adff82ee64ea2d5e5c12c2a4507a16f97"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_xt_1_1_device.html#adff82ee64ea2d5e5c12c2a4507a16f97">GetName</a> () const </td></tr>
-<tr class="separator:adff82ee64ea2d5e5c12c2a4507a16f97"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a83814427c706685b325cca9941a34c60"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="struct_xt_1_1_mix.html">Mix</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_xt_1_1_device.html#a83814427c706685b325cca9941a34c60">GetMix</a> () const </td></tr>
-<tr class="separator:a83814427c706685b325cca9941a34c60"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeed5eeab7647eb896869a7a6e3d06598"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_xt_1_1_device.html#aeed5eeab7647eb896869a7a6e3d06598">GetHandle</a> () const </td></tr>
+<tr class="separator:aeed5eeab7647eb896869a7a6e3d06598"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a886b723996c54abbe737aa5bd40f1b45"><td class="memItemLeft" align="right" valign="top">std::optional&lt; <a class="el" href="struct_xt_1_1_mix.html">Mix</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_xt_1_1_device.html#a886b723996c54abbe737aa5bd40f1b45">GetMix</a> () const </td></tr>
+<tr class="separator:a886b723996c54abbe737aa5bd40f1b45"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aae6c6a43fa8840e605d13a43ebf395b0"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_xt_1_1_device.html#aae6c6a43fa8840e605d13a43ebf395b0">GetChannelCount</a> (bool output) const </td></tr>
 <tr class="separator:aae6c6a43fa8840e605d13a43ebf395b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afddc61f110fd3b4a0966364acb68f6c0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_xt_1_1_device.html#afddc61f110fd3b4a0966364acb68f6c0">SupportsAccess</a> (bool interleaved) const </td></tr>
 <tr class="separator:afddc61f110fd3b4a0966364acb68f6c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a463fea2e0d81f2b37868b87187e5ffda"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_xt_1_1_buffer.html">Buffer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_xt_1_1_device.html#a463fea2e0d81f2b37868b87187e5ffda">GetBuffer</a> (const <a class="el" href="struct_xt_1_1_format.html">Format</a> &amp;format) const </td></tr>
-<tr class="separator:a463fea2e0d81f2b37868b87187e5ffda"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7c4a296821bc9f19c8b3cff1e57fa000"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_xt_1_1_device.html#a7c4a296821bc9f19c8b3cff1e57fa000">SupportsFormat</a> (const <a class="el" href="struct_xt_1_1_format.html">Format</a> &amp;format) const </td></tr>
-<tr class="separator:a7c4a296821bc9f19c8b3cff1e57fa000"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7416e82839c75ddc2045815f68738268"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_xt_1_1_device.html#a7416e82839c75ddc2045815f68738268">SupportsFormat</a> (<a class="el" href="struct_xt_1_1_format.html">Format</a> const &amp;format) const </td></tr>
+<tr class="separator:a7416e82839c75ddc2045815f68738268"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae147e382cf7667a8653218d7361b7d6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_xt_1_1_buffer_size.html">BufferSize</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_xt_1_1_device.html#aae147e382cf7667a8653218d7361b7d6">GetBufferSize</a> (<a class="el" href="struct_xt_1_1_format.html">Format</a> const &amp;format) const </td></tr>
+<tr class="separator:aae147e382cf7667a8653218d7361b7d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a388863a226ad1e885c42e82e7b5b38bf"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_xt_1_1_device.html#a388863a226ad1e885c42e82e7b5b38bf">GetChannelName</a> (bool output, int32_t index) const </td></tr>
 <tr class="separator:a388863a226ad1e885c42e82e7b5b38bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6795abc03bf17172b5425ed930a8977f"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="class_xt_1_1_stream.html">Stream</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_xt_1_1_device.html#a6795abc03bf17172b5425ed930a8977f">OpenStream</a> (const <a class="el" href="struct_xt_1_1_format.html">Format</a> &amp;format, bool interleaved, double bufferSize, <a class="el" href="namespace_xt.html#afd4d33185ec096aa8536f50dee6f0040">StreamCallback</a> streamCallback, <a class="el" href="namespace_xt.html#aa42f9a2481d8f04ba464456a68e04b7a">XRunCallback</a> xRunCallback, void *user)</td></tr>
-<tr class="separator:a6795abc03bf17172b5425ed930a8977f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
-Friends</h2></td></tr>
-<tr class="memitem:a6474ceb8669761e879329b39c3afb899"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_xt_1_1_device.html#a6474ceb8669761e879329b39c3afb899">Service</a></td></tr>
-<tr class="separator:a6474ceb8669761e879329b39c3afb899"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83b2e19914688cd76d776d28d15da839"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="class_xt_1_1_stream.html">Stream</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_xt_1_1_device.html#a83b2e19914688cd76d776d28d15da839">OpenStream</a> (<a class="el" href="struct_xt_1_1_device_stream_params.html">DeviceStreamParams</a> const &amp;params, void *user)</td></tr>
+<tr class="separator:a83b2e19914688cd76d776d28d15da839"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a0f914a16629273ffefdb818dd2f84bb2"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">Xt::Device::~Device </td>
@@ -140,23 +135,36 @@ Friends</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a463fea2e0d81f2b37868b87187e5ffda"></a>
+<a class="anchor" id="aae147e382cf7667a8653218d7361b7d6"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="struct_xt_1_1_buffer.html">Buffer</a> Xt::Device::GetBuffer </td>
+          <td class="memname"><a class="el" href="struct_xt_1_1_buffer_size.html">BufferSize</a> Xt::Device::GetBufferSize </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="struct_xt_1_1_format.html">Format</a> &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="struct_xt_1_1_format.html">Format</a> const &amp;&#160;</td>
           <td class="paramname"><em>format</em></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>
@@ -164,6 +172,9 @@ Friends</h2></td></tr>
 <a class="anchor" id="aae6c6a43fa8840e605d13a43ebf395b0"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">int32_t Xt::Device::GetChannelCount </td>
@@ -173,6 +184,11 @@ Friends</h2></td></tr>
           <td> const</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>
@@ -180,6 +196,9 @@ Friends</h2></td></tr>
 <a class="anchor" id="a388863a226ad1e885c42e82e7b5b38bf"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">std::string Xt::Device::GetChannelName </td>
@@ -199,88 +218,73 @@ Friends</h2></td></tr>
           <td></td><td> const</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a class="anchor" id="a83814427c706685b325cca9941a34c60"></a>
+<a class="anchor" id="aeed5eeab7647eb896869a7a6e3d06598"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::unique_ptr&lt;<a class="el" href="struct_xt_1_1_mix.html">Mix</a>&gt; Xt::Device::GetMix </td>
+          <td class="memname">void * Xt::Device::GetHandle </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a class="anchor" id="adff82ee64ea2d5e5c12c2a4507a16f97"></a>
+<a class="anchor" id="a886b723996c54abbe737aa5bd40f1b45"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::string Xt::Device::GetName </td>
+          <td class="memname">std::optional&lt; <a class="el" href="struct_xt_1_1_mix.html">Mix</a> &gt; Xt::Device::GetMix </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a class="anchor" id="a4955bea2ecb6e3905fb21d0dc812a4f7"></a>
+<a class="anchor" id="a83b2e19914688cd76d776d28d15da839"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="namespace_xt.html#a9cdc6635130ea35e68230bafb00ad6f3">System</a> Xt::Device::GetSystem </td>
+          <td class="memname">std::unique_ptr&lt; <a class="el" href="class_xt_1_1_stream.html">Stream</a> &gt; Xt::Device::OpenStream </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a6795abc03bf17172b5425ed930a8977f"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::unique_ptr&lt;<a class="el" href="class_xt_1_1_stream.html">Stream</a>&gt; Xt::Device::OpenStream </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="struct_xt_1_1_format.html">Format</a> &amp;&#160;</td>
-          <td class="paramname"><em>format</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>interleaved</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>bufferSize</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="namespace_xt.html#afd4d33185ec096aa8536f50dee6f0040">StreamCallback</a>&#160;</td>
-          <td class="paramname"><em>streamCallback</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="namespace_xt.html#aa42f9a2481d8f04ba464456a68e04b7a">XRunCallback</a>&#160;</td>
-          <td class="paramname"><em>xRunCallback</em>, </td>
+          <td class="paramtype"><a class="el" href="struct_xt_1_1_device_stream_params.html">DeviceStreamParams</a> const &amp;&#160;</td>
+          <td class="paramname"><em>params</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -294,6 +298,11 @@ Friends</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>
@@ -301,6 +310,9 @@ Friends</h2></td></tr>
 <a class="anchor" id="ae6593614e85228ef270117f2fbb4916f"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void Xt::Device::ShowControlPanel </td>
@@ -309,6 +321,11 @@ Friends</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>
@@ -316,6 +333,9 @@ Friends</h2></td></tr>
 <a class="anchor" id="afddc61f110fd3b4a0966364acb68f6c0"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">bool Xt::Device::SupportsAccess </td>
@@ -325,28 +345,16 @@ Friends</h2></td></tr>
           <td> const</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a class="anchor" id="a7c4a296821bc9f19c8b3cff1e57fa000"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool Xt::Device::SupportsFormat </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="struct_xt_1_1_format.html">Format</a> &amp;&#160;</td>
-          <td class="paramname"><em>format</em></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<h2 class="groupheader">Friends And Related Function Documentation</h2>
-<a class="anchor" id="a6474ceb8669761e879329b39c3afb899"></a>
+<a class="anchor" id="a7416e82839c75ddc2045815f68738268"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -354,12 +362,16 @@ Friends</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">friend class <a class="el" href="class_xt_1_1_service.html">Service</a></td>
+          <td class="memname">bool Xt::Device::SupportsFormat </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_xt_1_1_format.html">Format</a> const &amp;&#160;</td>
+          <td class="paramname"><em>format</em></td><td>)</td>
+          <td> const</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -367,7 +379,7 @@ Friends</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li><a class="el" href="xt-cpp_8hpp_source.html">xt-cpp.hpp</a></li>
+<li><a class="el" href="_xt_device_8hpp_source.html">XtDevice.hpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

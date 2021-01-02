@@ -38,7 +38,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="modules.html"><span>Modules</span></a></li>
       <li class="current"><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -85,81 +84,133 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="summary">
 <a href="#pub-attribs">Data Fields</a>  </div>
   <div class="headertitle">
-<div class="title">XtBuffer Struct Reference<div class="ingroups"><a class="el" href="group__library.html">Generic interface</a></div></div>  </div>
+<div class="title">XtBuffer Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Device buffer size limits.  
+<p>Streaming audio buffer.  
  <a href="struct_xt_buffer.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="xt-audio_8h_source.html">xt-audio.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="_structs_8h_source.html">Structs.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
-<tr class="memitem:af998d0c2755b85333562023af9dde3df"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_xt_buffer.html#af998d0c2755b85333562023af9dde3df">min</a></td></tr>
-<tr class="memdesc:af998d0c2755b85333562023af9dde3df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Minimum size in milliseconds.  <a href="#af998d0c2755b85333562023af9dde3df">More...</a><br /></td></tr>
-<tr class="separator:af998d0c2755b85333562023af9dde3df"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a49021ae3f92c299f3b5b3d6e3985daa0"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_xt_buffer.html#a49021ae3f92c299f3b5b3d6e3985daa0">max</a></td></tr>
-<tr class="memdesc:a49021ae3f92c299f3b5b3d6e3985daa0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum size in milliseconds.  <a href="#a49021ae3f92c299f3b5b3d6e3985daa0">More...</a><br /></td></tr>
-<tr class="separator:a49021ae3f92c299f3b5b3d6e3985daa0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7e4ee117e40297f21075c0feb9117a71"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_xt_buffer.html#a7e4ee117e40297f21075c0feb9117a71">current</a></td></tr>
-<tr class="memdesc:a7e4ee117e40297f21075c0feb9117a71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Current or default size in milliseconds.  <a href="#a7e4ee117e40297f21075c0feb9117a71">More...</a><br /></td></tr>
-<tr class="separator:a7e4ee117e40297f21075c0feb9117a71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7865eb73c9955cef24ec3f204ac51bd"><td class="memItemLeft" align="right" valign="top">void const *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_xt_buffer.html#af7865eb73c9955cef24ec3f204ac51bd">input</a></td></tr>
+<tr class="memdesc:af7865eb73c9955cef24ec3f204ac51bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">The buffer containing data captured from the device, if any.  <a href="#af7865eb73c9955cef24ec3f204ac51bd">More...</a><br /></td></tr>
+<tr class="separator:af7865eb73c9955cef24ec3f204ac51bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23c3e8f938b2ff00d97719a664d0d1e2"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_xt_buffer.html#a23c3e8f938b2ff00d97719a664d0d1e2">output</a></td></tr>
+<tr class="memdesc:a23c3e8f938b2ff00d97719a664d0d1e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">The buffer where the application writes it's output, if any.  <a href="#a23c3e8f938b2ff00d97719a664d0d1e2">More...</a><br /></td></tr>
+<tr class="separator:a23c3e8f938b2ff00d97719a664d0d1e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac28799614e177bec70e08b6c182dcc96"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_xt_buffer.html#ac28799614e177bec70e08b6c182dcc96">time</a></td></tr>
+<tr class="memdesc:ac28799614e177bec70e08b6c182dcc96"><td class="mdescLeft">&#160;</td><td class="mdescRight">The stream timestamp.  <a href="#ac28799614e177bec70e08b6c182dcc96">More...</a><br /></td></tr>
+<tr class="separator:ac28799614e177bec70e08b6c182dcc96"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55c9b89a464df437a3f9ba8373fa3ce0"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_xt_buffer.html#a55c9b89a464df437a3f9ba8373fa3ce0">position</a></td></tr>
+<tr class="memdesc:a55c9b89a464df437a3f9ba8373fa3ce0"><td class="mdescLeft">&#160;</td><td class="mdescRight">The stream position.  <a href="#a55c9b89a464df437a3f9ba8373fa3ce0">More...</a><br /></td></tr>
+<tr class="separator:a55c9b89a464df437a3f9ba8373fa3ce0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23db5e4594c376f7d7dc55efa6b50cd5"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_xt_buffer.html#a23db5e4594c376f7d7dc55efa6b50cd5">frames</a></td></tr>
+<tr class="memdesc:a23db5e4594c376f7d7dc55efa6b50cd5"><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of frames in the input and/or output buffer.  <a href="#a23db5e4594c376f7d7dc55efa6b50cd5">More...</a><br /></td></tr>
+<tr class="separator:a23db5e4594c376f7d7dc55efa6b50cd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48e48338f98e55a5a54284d46ff8627f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_shared_8h.html#a5ed28f2b663eb8722ae2dd4b7d8739b6">XtBool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_xt_buffer.html#a48e48338f98e55a5a54284d46ff8627f">timeValid</a></td></tr>
+<tr class="memdesc:a48e48338f98e55a5a54284d46ff8627f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates whether the time and position fields are valid.  <a href="#a48e48338f98e55a5a54284d46ff8627f">More...</a><br /></td></tr>
+<tr class="separator:a48e48338f98e55a5a54284d46ff8627f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Device buffer size limits. </p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__device.html#ga456718c9ec613efbc114b62d4a27cc9f" title="Gets the buffer size limits supported by the device. ">XtDeviceGetBuffer</a> </dd>
-<dd>
-<a class="el" href="group__device.html#ga60f4cba4122214f8359d8880a19908b3" title="Opens an audio stream on the given device. ">XtDeviceOpenStream</a> </dd>
-<dd>
-<a class="el" href="group__print.html#ga19f3c0fa2218ef6ddac2612364d12e46" title="Convert buffer sizes to a human-readable string. ">XtPrintBufferToString</a> </dd>
-<dd>
-<a class="el" href="group__service.html#ga5a40f5f36092159f2b58a7615f966578" title="Opens an aggregate audio stream. ">XtServiceAggregateStream</a> </dd></dl>
+<div class="textblock"><p>Streaming audio buffer. </p>
+<p>Contains the input and output audio data and timestamp information for the audio callback (XtOnBuffer). </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="_callbacks_8h.html#a5812fb7a07d222587f2f51fa32ce2e07" title="Audio stream processing callback. ">XtOnBuffer</a> </dd></dl>
 </div><h2 class="groupheader">Field Documentation</h2>
-<a class="anchor" id="a7e4ee117e40297f21075c0feb9117a71"></a>
+<a class="anchor" id="a23db5e4594c376f7d7dc55efa6b50cd5"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">double XtBuffer::current</td>
+          <td class="memname">XtBuffer::frames</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Current or default size in milliseconds. </p>
+<p>The number of frames in the input and/or output buffer. </p>
+<p>Will never exceed XtStreamGetFrames. </p>
 
 </div>
 </div>
-<a class="anchor" id="a49021ae3f92c299f3b5b3d6e3985daa0"></a>
+<a class="anchor" id="af7865eb73c9955cef24ec3f204ac51bd"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">double XtBuffer::max</td>
+          <td class="memname">XtBuffer::input</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Maximum size in milliseconds. </p>
+<p>The buffer containing data captured from the device, if any. </p>
+<p>May be NULL if frames == 0 or when no input channels are present. </p>
 
 </div>
 </div>
-<a class="anchor" id="af998d0c2755b85333562023af9dde3df"></a>
+<a class="anchor" id="a23c3e8f938b2ff00d97719a664d0d1e2"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">double XtBuffer::min</td>
+          <td class="memname">XtBuffer::output</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Minimum size in milliseconds. </p>
+<p>The buffer where the application writes it's output, if any. </p>
+<p>May be NULL if frames == 0 or when no output channels are present. </p>
 
 </div>
 </div>
-<hr/>The documentation for this struct was generated from the following file:<ul>
-<li><a class="el" href="xt-audio_8h_source.html">xt-audio.h</a></li>
+<a class="anchor" id="a55c9b89a464df437a3f9ba8373fa3ce0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">XtBuffer::position</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The stream position. </p>
+<p>Only available on services which have the Time capability (see XtServiceCaps), otherwise 0. </p>
+
+</div>
+</div>
+<a class="anchor" id="ac28799614e177bec70e08b6c182dcc96"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">XtBuffer::time</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The stream timestamp. </p>
+<p>Only available on services which have the Time capability (see XtServiceCaps), otherwise 0. </p>
+
+</div>
+</div>
+<a class="anchor" id="a48e48338f98e55a5a54284d46ff8627f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">XtBuffer::timeValid</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Indicates whether the time and position fields are valid. </p>
+<p>Only available on services which have the Time capability (see XtServiceCaps), otherwise false. Even on services which support time and position info this parameter may be false sometimes, for example during stream startup/shutdown or when a glitch occurred. </p>
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following files:<ul>
+<li><a class="el" href="_structs_8h_source.html">Structs.h</a></li>
+<li><a class="el" href="_structs_8dox.html">Structs.dox</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

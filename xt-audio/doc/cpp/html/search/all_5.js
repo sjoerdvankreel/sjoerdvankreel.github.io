@@ -1,9 +1,10 @@
 var searchData=
 [
-  ['fatal',['Fatal',['../namespace_xt.html#a9a57c9b56917d1dc62d1a845c4ad4599a882384ec38ce8d9582b57e70861730e4',1,'Xt']]],
-  ['fatalcallback',['FatalCallback',['../namespace_xt.html#a46d6d2b36b5da7f5de1804481f9ce834',1,'Xt']]],
+  ['fault',['fault',['../struct_xt_1_1_error_info.html#ae98c89c00fdebcbb9a95efffc49d097d',1,'Xt::ErrorInfo']]],
+  ['file',['file',['../struct_xt_1_1_location.html#a02caf8210a8d409509ba67829e6ef6cd',1,'Xt::Location']]],
   ['float32',['Float32',['../namespace_xt.html#a426d1959db0f41f3a026d6c2cabf6cc5a166495adc0d0f53bee6baecc577f5204',1,'Xt']]],
-  ['format',['Format',['../struct_xt_1_1_format.html#aff064429a7e823b928ee1bcc08dec27d',1,'Xt::Format::Format()=default'],['../struct_xt_1_1_format.html#a20588fcdae534b392c1fd9215ae375ba',1,'Xt::Format::Format(const Mix &amp;mix, int32_t inputs, uint64_t inMask, int32_t outputs, uint64_t outMask)'],['../namespace_xt.html#a7f2325b43891508770e6029d5dd3e705a520d0db389f362bf79ef56ca0af3dcab',1,'Xt::Format()']]],
   ['format',['Format',['../struct_xt_1_1_format.html',1,'Xt']]],
-  ['formattostring',['FormatToString',['../class_xt_1_1_print.html#a82033c50262e83498fbca07fcdde8c9f',1,'Xt::Print']]]
+  ['format',['format',['../struct_xt_1_1_device_stream_params.html#a2557b0ea9197088485671b1ab5079653',1,'Xt::DeviceStreamParams::format()'],['../struct_xt_1_1_format.html#aff064429a7e823b928ee1bcc08dec27d',1,'Xt::Format::Format()=default'],['../struct_xt_1_1_format.html#ad3264910b939a34f3970c4f0369b7451',1,'Xt::Format::Format(Mix const &amp;mix, Channels const &amp;channels)'],['../namespace_xt.html#a7f2325b43891508770e6029d5dd3e705a520d0db389f362bf79ef56ca0af3dcab',1,'Xt::Format()']]],
+  ['frames',['frames',['../struct_xt_1_1_buffer.html#a8cef92b4a326bbb562fdae1b3b714dc3',1,'Xt::Buffer']]],
+  ['func',['func',['../struct_xt_1_1_location.html#aae60dd34b3729a7f92b5d8579c749b01',1,'Xt::Location']]]
 ];

@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['errortostring',['ErrorToString',['../class_xt_1_1_print.html#a32e491a69ac60f99b02eeff011138fca',1,'Xt::Print']]],
-  ['exception',['Exception',['../class_xt_1_1_exception.html#aaef734761309e61041fb7b43c594d498',1,'Xt::Exception']]]
+  ['exception',['Exception',['../class_xt_1_1_exception.html#a3e05af29d32a1e6c1fc9f4f08cd26f81',1,'Xt::Exception']]]
 ];

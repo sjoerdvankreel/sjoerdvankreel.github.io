@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['level',['Level',['../namespace_xt.html#a9a57c9b56917d1dc62d1a845c4ad4599',1,'Xt']]]
+  ['devicecaps',['DeviceCaps',['../namespace_xt.html#ae7a0dac6a1cff8a3fc277fed436f2be6',1,'Xt']]]
 ];

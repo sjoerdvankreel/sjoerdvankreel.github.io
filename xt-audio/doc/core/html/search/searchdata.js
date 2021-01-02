@@ -1,14 +1,14 @@
 var indexSectionsWithContent =
 {
-  0: "bcdgimoprsx",
+  0: "bcdefilmoprstx",
   1: "x",
-  2: "cx",
+  2: "celsx",
   3: "x",
-  4: "cimorsx",
+  4: "bcdfilmoprstx",
   5: "x",
   6: "x",
   7: "x",
-  8: "bdgps",
+  8: "x",
   9: "x"
 };
 
@@ -22,7 +22,7 @@ var indexSectionNames =
   5: "typedefs",
   6: "enums",
   7: "enumvalues",
-  8: "groups",
+  8: "defines",
   9: "pages"
 };
 
@@ -36,7 +36,7 @@ var indexSectionLabels =
   5: "Typedefs",
   6: "Enumerations",
   7: "Enumerator",
-  8: "Modules",
+  8: "Macros",
   9: "Pages"
 };
 
