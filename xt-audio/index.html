@@ -107,13 +107,14 @@ namespace Xt
 {
     public static class PrintSimple
     {
+        [STAThread]
         public static void Main()
         {
             using XtPlatform platform = XtAudio.Init(null, IntPtr.Zero, null);
             foreach (XtSystem system in platform.GetSystems())
             {
                 XtService service = platform.GetService(system);
-                XtDeviceList list = service.OpenDeviceList(XtEnumFlags.All);
+                using XtDeviceList list = service.OpenDeviceList(XtEnumFlags.All);
                 for (int d = 0; d &lt; list.GetCount(); d++)
                 {
                     string id = list.GetId(d);
@@ -187,7 +188,7 @@ public class PrintDetailed {
         System.out.println(location + &quot;: &quot; + message);
     }
 
-    static void PrintDevices(XtService service, XtDeviceList list) {
+    static void printDevices(XtService service, XtDeviceList list) {
         for(int d = 0; d &lt; list.getCount(); d++) {
             String id = list.getId(d);
             try(XtDevice device = service.openDevice(id)) {
@@ -236,11 +237,11 @@ public class PrintDetailed {
                 }
                 try(XtDeviceList inputs = service.openDeviceList(EnumSet.of(XtEnumFlags.INPUT))) {
                     System.out.println(&quot;  Input device count: &quot; + inputs.getCount());
-                    PrintDevices(service, inputs);
+                    printDevices(service, inputs);
                 }
                 try(XtDeviceList outputs = service.openDeviceList(EnumSet.of(XtEnumFlags.OUTPUT))) {
                     System.out.println(&quot;  Output device count: &quot; + outputs.getCount());
-                    PrintDevices(service, outputs);
+                    printDevices(service, outputs);
                 }
             }
         } catch(XtException e) {
@@ -281,6 +282,7 @@ namespace Xt
             }
         }
 
+        [STAThread]
         public static void Main()
         {
             using XtPlatform platform = XtAudio.Init(&quot;Sample&quot;, IntPtr.Zero, OnError);
@@ -524,6 +526,7 @@ namespace Xt
             return 0;
         }
 
+        [STAThread]
         public static void Main()
         {
             XtStreamParams streamParams;
@@ -713,6 +716,7 @@ namespace Xt
             return 0;
         }
 
+        [STAThread]
         public static void Main()
         {
             XtStreamParams streamParams;
@@ -1061,6 +1065,7 @@ namespace Xt
             return 0;
         }
 
+        [STAThread]
         public static void Main()
         {
             XtStreamParams streamParams;
@@ -1518,6 +1523,7 @@ namespace Xt
             return 0;
         }
 
+        [STAThread]
         public static void Main()
         {
             XtStreamParams streamParams;
@@ -1796,6 +1802,7 @@ namespace Xt
             return 0;
         }
 
+        [STAThread]
         public static void Main()
         {
             XtFormat format;
@@ -2020,6 +2027,7 @@ namespace Xt
             return 0;
         }
 
+        [STAThread]
         public static void Main()
         {
             XtAggregateStreamParams aggregateParams;
