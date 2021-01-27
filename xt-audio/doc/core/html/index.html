@@ -187,7 +187,7 @@ Streams</h2>
 <a class="el" href="_xt_stream_8h.html#a9bb8d8d7fef1adf1964b77afb62bc082" title="Query stream state. ">XtStreamIsRunning</a></dd></dl>
 <h1><a class="anchor" id="usage"></a>
 Basic usage</h1>
-<p>Include &lt;xt/XtAudio.h&gt; for C, &lt;xt/XtAudio.hpp&gt; for C++ and link xt-core.dll/libxt-core.so. Reference Xt.Cli.dll for .NET, xt.audio-(version).jar for java.</p>
+<p>Include &lt;xt/XtAudio.h&gt; for C, &lt;xt/XtAudio.hpp&gt; for C++ and link xt-core.dll/libxt-core.so. Reference Xt.Audio.dll for .NET, xt.audio-(version).jar for java.</p>
 <p>An application must first initialize the library using XtAudioInit. From there, using the returned platform handle it can select an audio service, query for available devices, and open streams on those devices. The choice of backend (system) greatly affects the way audio is streamed in terms of latency, supported formats and whether the application takes system-wide exclusive control of a device. If you know exactly what your application needs, use XtPlatformSetupToSystem to select a backend with specific characteristics. Otherwise it's probably best to let the end-user pick the system (XtPlatformGetSystems) and device to use.</p>
 <p>Streaming audio with XT-Audio involves at least these steps:</p><ol type="1">
 <li>Initialize (XtAudioInit)</li>
