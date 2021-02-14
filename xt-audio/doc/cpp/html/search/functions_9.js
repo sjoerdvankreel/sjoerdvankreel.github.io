@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['setonerror',['SetOnError',['../class_xt_1_1_audio.html#a4e164d82eb266c37d0e21e384814f1ef',1,'Xt::Audio']]],
   ['setuptosystem',['SetupToSystem',['../class_xt_1_1_platform.html#af9d6d382640d3ceb1ce92319ff22b2cc',1,'Xt::Platform']]],
   ['showcontrolpanel',['ShowControlPanel',['../class_xt_1_1_device.html#ae6593614e85228ef270117f2fbb4916f',1,'Xt::Device']]],
   ['start',['Start',['../class_xt_1_1_stream.html#a8bb0f31c8995ae74a23c4f5d3057cec4',1,'Xt::Stream']]],

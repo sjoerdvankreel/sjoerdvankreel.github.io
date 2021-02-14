@@ -101,12 +101,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:af33fe37458dbd8951bb0f6cd59df604c"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="struct_xt_1_1_version.html">Version</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_xt_1_1_audio.html#af33fe37458dbd8951bb0f6cd59df604c">GetVersion</a> ()</td></tr>
 <tr class="separator:af33fe37458dbd8951bb0f6cd59df604c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e164d82eb266c37d0e21e384814f1ef"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_xt_1_1_audio.html#a4e164d82eb266c37d0e21e384814f1ef">SetOnError</a> (<a class="el" href="namespace_xt.html#ae60219ca2022d82d6d78ada7b9d84e15">OnError</a> onError)</td></tr>
+<tr class="separator:a4e164d82eb266c37d0e21e384814f1ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a479d441f56d909d053888683bb2bf183"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="struct_xt_1_1_error_info.html">ErrorInfo</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_xt_1_1_audio.html#a479d441f56d909d053888683bb2bf183">GetErrorInfo</a> (uint64_t error)</td></tr>
 <tr class="separator:a479d441f56d909d053888683bb2bf183"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adc27cd790367f0ea5d690c3b1fe38f9d"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="struct_xt_1_1_attributes.html">Attributes</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_xt_1_1_audio.html#adc27cd790367f0ea5d690c3b1fe38f9d">GetSampleAttributes</a> (<a class="el" href="namespace_xt.html#a426d1959db0f41f3a026d6c2cabf6cc5">Sample</a> sample)</td></tr>
 <tr class="separator:adc27cd790367f0ea5d690c3b1fe38f9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aad173a207a3271977ea9a2a8dbc5dd7f"><td class="memItemLeft" align="right" valign="top">static std::unique_ptr&lt; <a class="el" href="class_xt_1_1_platform.html">Platform</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_xt_1_1_audio.html#aad173a207a3271977ea9a2a8dbc5dd7f">Init</a> (std::string const &amp;id, void *window, <a class="el" href="namespace_xt.html#a20ba77eacb77c1e67a44a5ac9d453ad3">OnError</a> onError)</td></tr>
-<tr class="separator:aad173a207a3271977ea9a2a8dbc5dd7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3971e118d8d561437f177e8e3ced3916"><td class="memItemLeft" align="right" valign="top">static std::unique_ptr&lt; <a class="el" href="class_xt_1_1_platform.html">Platform</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_xt_1_1_audio.html#a3971e118d8d561437f177e8e3ced3916">Init</a> (std::string const &amp;id, void *window)</td></tr>
+<tr class="separator:a3971e118d8d561437f177e8e3ced3916"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="a479d441f56d909d053888683bb2bf183"></a>
@@ -180,7 +182,7 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="aad173a207a3271977ea9a2a8dbc5dd7f"></a>
+<a class="anchor" id="a3971e118d8d561437f177e8e3ced3916"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -197,18 +199,36 @@ Static Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>window</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="namespace_xt.html#a20ba77eacb77c1e67a44a5ac9d453ad3">OnError</a>&#160;</td>
-          <td class="paramname"><em>onError</em>&#160;</td>
+          <td class="paramname"><em>window</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
           <td>)</td>
           <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a4e164d82eb266c37d0e21e384814f1ef"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Xt::Audio::SetOnError </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespace_xt.html#ae60219ca2022d82d6d78ada7b9d84e15">OnError</a>&#160;</td>
+          <td class="paramname"><em>onError</em></td><td>)</td>
+          <td></td>
         </tr>
       </table>
   </td>

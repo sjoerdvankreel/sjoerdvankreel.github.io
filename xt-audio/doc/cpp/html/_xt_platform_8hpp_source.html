@@ -92,74 +92,75 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define XT_API_PLATFORM_HPP</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;xt/cpp/Core.hpp&gt;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="_enums_8hpp.html">xt/api/Enums.hpp</a>&gt;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="_xt_service_8hpp.html">xt/api/XtService.hpp</a>&gt;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_xt.html">Xt</a> {</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespace_detail.html">Detail</a>;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
-<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="class_xt_1_1_platform.html">   18</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_xt_1_1_platform.html">Platform</a> final</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;{</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="class_xt_1_1_audio.html">Audio</a>;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  XtPlatform* <span class="keyword">const</span> _p;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  <a class="code" href="class_xt_1_1_platform.html">Platform</a>(XtPlatform* p): _p(p) { }</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  ~<a class="code" href="class_xt_1_1_platform.html">Platform</a>();</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  std::vector&lt;System&gt; GetSystems();</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  <a class="code" href="namespace_xt.html#a9cdc6635130ea35e68230bafb00ad6f3">System</a> SetupToSystem(<a class="code" href="namespace_xt.html#ab9933484782935ad9201e8de8dc115e2">Setup</a> setup) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  std::unique_ptr&lt;Service&gt; GetService(<a class="code" href="namespace_xt.html#a9cdc6635130ea35e68230bafb00ad6f3">System</a> system);</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;};</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">inline</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="class_xt_1_1_platform.html#a617b8386436b9143142facac4ece84ef">   33</a></span>&#160;<a class="code" href="class_xt_1_1_platform.html#a617b8386436b9143142facac4ece84ef">Platform::~Platform</a>()</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;{ XtPlatformDestroy(_p); }</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">inline</span> <a class="code" href="namespace_xt.html#a9cdc6635130ea35e68230bafb00ad6f3">System</a></div>
-<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="class_xt_1_1_platform.html#af9d6d382640d3ceb1ce92319ff22b2cc">   37</a></span>&#160;<a class="code" href="class_xt_1_1_platform.html#af9d6d382640d3ceb1ce92319ff22b2cc">Platform::SetupToSystem</a>(<a class="code" href="namespace_xt.html#ab9933484782935ad9201e8de8dc115e2">Setup</a> setup)<span class="keyword"> const</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword"></span>{ </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <span class="keyword">auto</span> coreSetup = <span class="keyword">static_cast&lt;</span>XtSetup<span class="keyword">&gt;</span>(setup);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <span class="keyword">auto</span> result = XtPlatformSetupToSystem(_p, coreSetup);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><a class="code" href="namespace_xt.html#a9cdc6635130ea35e68230bafb00ad6f3">System</a><span class="keyword">&gt;</span>(result); </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;}</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keyword">inline</span> std::vector&lt;System&gt; </div>
-<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="class_xt_1_1_platform.html#a96eae08b13412c5e8a2977a64a6859f1">   45</a></span>&#160;<a class="code" href="class_xt_1_1_platform.html#a96eae08b13412c5e8a2977a64a6859f1">Platform::GetSystems</a>() </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;{</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  int32_t size = 0;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  XtPlatformGetSystems(_p, <span class="keyword">nullptr</span>, &amp;size);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  std::vector&lt;System&gt; result(static_cast&lt;size_t&gt;(size));</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <span class="keyword">auto</span> coreSystems = <span class="keyword">reinterpret_cast&lt;</span>XtSystem*<span class="keyword">&gt;</span>(result.data());</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  XtPlatformGetSystems(_p, coreSystems, &amp;size);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <span class="keywordflow">return</span> result;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;}</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keyword">inline</span> std::unique_ptr&lt;Service&gt; </div>
-<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="class_xt_1_1_platform.html#aecb66b3b29d5eac883772f514fd359c4">   56</a></span>&#160;<a class="code" href="class_xt_1_1_platform.html#aecb66b3b29d5eac883772f514fd359c4">Platform::GetService</a>(<a class="code" href="namespace_xt.html#a9cdc6635130ea35e68230bafb00ad6f3">System</a> system) </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;{</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <span class="keyword">auto</span> coreSystem = <span class="keyword">static_cast&lt;</span>XtSystem<span class="keyword">&gt;</span>(system);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  XtService <span class="keyword">const</span>* service = XtPlatformGetService(_p, coreSystem);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <span class="keywordflow">if</span>(!service) <span class="keywordflow">return</span> std::unique_ptr&lt;Service&gt;();</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <span class="keywordflow">return</span> std::unique_ptr&lt;Service&gt;(<span class="keyword">new</span> <a class="code" href="namespace_xt.html#a7f2325b43891508770e6029d5dd3e705ac2ba7e785c49050f48da9aacc45c2b85">Service</a>(service));</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;}</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;} <span class="comment">// namespace Xt</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="preprocessor">#endif // XT_API_PLATFORM_HPP</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;xt/cpp/Error.hpp&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="_enums_8hpp.html">xt/api/Enums.hpp</a>&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="_xt_service_8hpp.html">xt/api/XtService.hpp</a>&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_xt.html">Xt</a> {</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespace_detail.html">Detail</a>;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="class_xt_1_1_platform.html">   19</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_xt_1_1_platform.html">Platform</a> final</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;{</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="class_xt_1_1_audio.html">Audio</a>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  XtPlatform* <span class="keyword">const</span> _p;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  <a class="code" href="class_xt_1_1_platform.html">Platform</a>(XtPlatform* p): _p(p) { }</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  ~<a class="code" href="class_xt_1_1_platform.html">Platform</a>();</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  std::vector&lt;System&gt; GetSystems();</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  <a class="code" href="namespace_xt.html#a9cdc6635130ea35e68230bafb00ad6f3">System</a> SetupToSystem(<a class="code" href="namespace_xt.html#ab9933484782935ad9201e8de8dc115e2">Setup</a> setup) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  std::unique_ptr&lt;Service&gt; GetService(<a class="code" href="namespace_xt.html#a9cdc6635130ea35e68230bafb00ad6f3">System</a> system);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;};</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">inline</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="class_xt_1_1_platform.html#a617b8386436b9143142facac4ece84ef">   34</a></span>&#160;<a class="code" href="class_xt_1_1_platform.html#a617b8386436b9143142facac4ece84ef">Platform::~Platform</a>()</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;{ Detail::HandleDestroy(XtPlatformDestroy, _p); }</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">inline</span> std::vector&lt;System&gt; </div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="class_xt_1_1_platform.html#a96eae08b13412c5e8a2977a64a6859f1">   38</a></span>&#160;<a class="code" href="class_xt_1_1_platform.html#a96eae08b13412c5e8a2977a64a6859f1">Platform::GetSystems</a>() </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;{</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  int32_t size = 0;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  Detail::HandleAssert(XtPlatformGetSystems, _p, <span class="keyword">nullptr</span>, &amp;size);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  std::vector&lt;System&gt; result(static_cast&lt;size_t&gt;(size));</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  <span class="keyword">auto</span> coreSystems = <span class="keyword">reinterpret_cast&lt;</span>XtSystem*<span class="keyword">&gt;</span>(result.data());</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  Detail::HandleAssert(XtPlatformGetSystems, _p, coreSystems, &amp;size);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <span class="keywordflow">return</span> result;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;}</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keyword">inline</span> <a class="code" href="namespace_xt.html#a9cdc6635130ea35e68230bafb00ad6f3">System</a></div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="class_xt_1_1_platform.html#af9d6d382640d3ceb1ce92319ff22b2cc">   49</a></span>&#160;<a class="code" href="class_xt_1_1_platform.html#af9d6d382640d3ceb1ce92319ff22b2cc">Platform::SetupToSystem</a>(<a class="code" href="namespace_xt.html#ab9933484782935ad9201e8de8dc115e2">Setup</a> setup)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keyword"></span>{ </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  <span class="keyword">auto</span> coreSetup = <span class="keyword">static_cast&lt;</span>XtSetup<span class="keyword">&gt;</span>(setup);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <span class="keyword">auto</span> result = Detail::HandleAssert(XtPlatformSetupToSystem(_p, coreSetup));</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><a class="code" href="namespace_xt.html#a9cdc6635130ea35e68230bafb00ad6f3">System</a><span class="keyword">&gt;</span>(result); </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;}</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keyword">inline</span> std::unique_ptr&lt;Service&gt; </div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="class_xt_1_1_platform.html#aecb66b3b29d5eac883772f514fd359c4">   57</a></span>&#160;<a class="code" href="class_xt_1_1_platform.html#aecb66b3b29d5eac883772f514fd359c4">Platform::GetService</a>(<a class="code" href="namespace_xt.html#a9cdc6635130ea35e68230bafb00ad6f3">System</a> system) </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;{</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <span class="keyword">auto</span> coreSystem = <span class="keyword">static_cast&lt;</span>XtSystem<span class="keyword">&gt;</span>(system);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  XtService <span class="keyword">const</span>* service = Detail::HandleAssert(XtPlatformGetService(_p, coreSystem));</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <span class="keywordflow">if</span>(!service) <span class="keywordflow">return</span> std::unique_ptr&lt;Service&gt;();</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <span class="keywordflow">return</span> std::unique_ptr&lt;Service&gt;(<span class="keyword">new</span> <a class="code" href="namespace_xt.html#a7f2325b43891508770e6029d5dd3e705ac2ba7e785c49050f48da9aacc45c2b85">Service</a>(service));</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;}</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;} <span class="comment">// namespace Xt</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor">#endif // XT_API_PLATFORM_HPP</span></div>
 <div class="ttc" id="namespace_detail_html"><div class="ttname"><a href="namespace_detail.html">Detail</a></div></div>
-<div class="ttc" id="class_xt_1_1_platform_html_a96eae08b13412c5e8a2977a64a6859f1"><div class="ttname"><a href="class_xt_1_1_platform.html#a96eae08b13412c5e8a2977a64a6859f1">Xt::Platform::GetSystems</a></div><div class="ttdeci">std::vector&lt; System &gt; GetSystems()</div><div class="ttdef"><b>Definition:</b> XtPlatform.hpp:45</div></div>
-<div class="ttc" id="class_xt_1_1_platform_html_af9d6d382640d3ceb1ce92319ff22b2cc"><div class="ttname"><a href="class_xt_1_1_platform.html#af9d6d382640d3ceb1ce92319ff22b2cc">Xt::Platform::SetupToSystem</a></div><div class="ttdeci">System SetupToSystem(Setup setup) const </div><div class="ttdef"><b>Definition:</b> XtPlatform.hpp:37</div></div>
+<div class="ttc" id="class_xt_1_1_platform_html_a96eae08b13412c5e8a2977a64a6859f1"><div class="ttname"><a href="class_xt_1_1_platform.html#a96eae08b13412c5e8a2977a64a6859f1">Xt::Platform::GetSystems</a></div><div class="ttdeci">std::vector&lt; System &gt; GetSystems()</div><div class="ttdef"><b>Definition:</b> XtPlatform.hpp:38</div></div>
+<div class="ttc" id="class_xt_1_1_platform_html_af9d6d382640d3ceb1ce92319ff22b2cc"><div class="ttname"><a href="class_xt_1_1_platform.html#af9d6d382640d3ceb1ce92319ff22b2cc">Xt::Platform::SetupToSystem</a></div><div class="ttdeci">System SetupToSystem(Setup setup) const </div><div class="ttdef"><b>Definition:</b> XtPlatform.hpp:49</div></div>
 <div class="ttc" id="namespace_xt_html_a7f2325b43891508770e6029d5dd3e705ac2ba7e785c49050f48da9aacc45c2b85"><div class="ttname"><a href="namespace_xt.html#a7f2325b43891508770e6029d5dd3e705ac2ba7e785c49050f48da9aacc45c2b85">Xt::Cause::Service</a></div></div>
-<div class="ttc" id="class_xt_1_1_audio_html"><div class="ttname"><a href="class_xt_1_1_audio.html">Xt::Audio</a></div><div class="ttdef"><b>Definition:</b> XtAudio.hpp:20</div></div>
+<div class="ttc" id="class_xt_1_1_audio_html"><div class="ttname"><a href="class_xt_1_1_audio.html">Xt::Audio</a></div><div class="ttdef"><b>Definition:</b> XtAudio.hpp:21</div></div>
 <div class="ttc" id="_xt_service_8hpp_html"><div class="ttname"><a href="_xt_service_8hpp.html">XtService.hpp</a></div></div>
-<div class="ttc" id="class_xt_1_1_platform_html_aecb66b3b29d5eac883772f514fd359c4"><div class="ttname"><a href="class_xt_1_1_platform.html#aecb66b3b29d5eac883772f514fd359c4">Xt::Platform::GetService</a></div><div class="ttdeci">std::unique_ptr&lt; Service &gt; GetService(System system)</div><div class="ttdef"><b>Definition:</b> XtPlatform.hpp:56</div></div>
+<div class="ttc" id="class_xt_1_1_platform_html_aecb66b3b29d5eac883772f514fd359c4"><div class="ttname"><a href="class_xt_1_1_platform.html#aecb66b3b29d5eac883772f514fd359c4">Xt::Platform::GetService</a></div><div class="ttdeci">std::unique_ptr&lt; Service &gt; GetService(System system)</div><div class="ttdef"><b>Definition:</b> XtPlatform.hpp:57</div></div>
 <div class="ttc" id="_enums_8hpp_html"><div class="ttname"><a href="_enums_8hpp.html">Enums.hpp</a></div></div>
-<div class="ttc" id="class_xt_1_1_platform_html"><div class="ttname"><a href="class_xt_1_1_platform.html">Xt::Platform</a></div><div class="ttdef"><b>Definition:</b> XtPlatform.hpp:18</div></div>
+<div class="ttc" id="class_xt_1_1_platform_html"><div class="ttname"><a href="class_xt_1_1_platform.html">Xt::Platform</a></div><div class="ttdef"><b>Definition:</b> XtPlatform.hpp:19</div></div>
 <div class="ttc" id="namespace_xt_html"><div class="ttname"><a href="namespace_xt.html">Xt</a></div><div class="ttdef"><b>Definition:</b> Callbacks.hpp:10</div></div>
 <div class="ttc" id="namespace_xt_html_ab9933484782935ad9201e8de8dc115e2"><div class="ttname"><a href="namespace_xt.html#ab9933484782935ad9201e8de8dc115e2">Xt::Setup</a></div><div class="ttdeci">Setup</div><div class="ttdef"><b>Definition:</b> Enums.hpp:8</div></div>
 <div class="ttc" id="namespace_xt_html_a9cdc6635130ea35e68230bafb00ad6f3"><div class="ttname"><a href="namespace_xt.html#a9cdc6635130ea35e68230bafb00ad6f3">Xt::System</a></div><div class="ttdeci">System</div><div class="ttdef"><b>Definition:</b> Enums.hpp:11</div></div>
-<div class="ttc" id="class_xt_1_1_platform_html_a617b8386436b9143142facac4ece84ef"><div class="ttname"><a href="class_xt_1_1_platform.html#a617b8386436b9143142facac4ece84ef">Xt::Platform::~Platform</a></div><div class="ttdeci">~Platform()</div><div class="ttdef"><b>Definition:</b> XtPlatform.hpp:33</div></div>
+<div class="ttc" id="class_xt_1_1_platform_html_a617b8386436b9143142facac4ece84ef"><div class="ttname"><a href="class_xt_1_1_platform.html#a617b8386436b9143142facac4ece84ef">Xt::Platform::~Platform</a></div><div class="ttdeci">~Platform()</div><div class="ttdef"><b>Definition:</b> XtPlatform.hpp:34</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

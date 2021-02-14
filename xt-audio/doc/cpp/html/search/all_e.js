@@ -13,6 +13,7 @@ var searchData=
   ['servicecapstime',['ServiceCapsTime',['../namespace_xt.html#ab227b0e2b855d2f9159cb043c9d3b302a450e2c91075ef53611d9a6e18ea5aa47',1,'Xt']]],
   ['servicecapsxrundetection',['ServiceCapsXRunDetection',['../namespace_xt.html#ab227b0e2b855d2f9159cb043c9d3b302a1c03c9b1cc5f249b937351ca4ac27412',1,'Xt']]],
   ['serviceerror',['ServiceError',['../struct_xt_1_1_service_error.html',1,'Xt']]],
+  ['setonerror',['SetOnError',['../class_xt_1_1_audio.html#a4e164d82eb266c37d0e21e384814f1ef',1,'Xt::Audio']]],
   ['setup',['Setup',['../namespace_xt.html#ab9933484782935ad9201e8de8dc115e2',1,'Xt']]],
   ['setuptosystem',['SetupToSystem',['../class_xt_1_1_platform.html#af9d6d382640d3ceb1ce92319ff22b2cc',1,'Xt::Platform']]],
   ['showcontrolpanel',['ShowControlPanel',['../class_xt_1_1_device.html#ae6593614e85228ef270117f2fbb4916f',1,'Xt::Device']]],

@@ -1,8 +1,6 @@
 var searchData=
 [
-  ['sample',['sample',['../struct_xt_1_1_mix.html#a1b7e870f53d61e5a4bde476d9a0ba8fd',1,'Xt::Mix']]],
-  ['service',['service',['../struct_xt_1_1_error_info.html#a8cc412286c297065e9594b4d943ab0c4',1,'Xt::ErrorInfo']]],
-  ['size',['size',['../struct_xt_1_1_attributes.html#ab8a6bc46518ba650cdf87739767fce3f',1,'Xt::Attributes']]],
-  ['stream',['stream',['../struct_xt_1_1_device_stream_params.html#a6113cdbf2beb95d52096ab53a88dfb2c',1,'Xt::DeviceStreamParams::stream()'],['../struct_xt_1_1_aggregate_stream_params.html#a565d92459d359ff79898768a3e95bdbb',1,'Xt::AggregateStreamParams::stream()']]],
-  ['system',['system',['../struct_xt_1_1_error_info.html#abc27e820cc728957010c810e5f7cad8f',1,'Xt::ErrorInfo']]]
+  ['text',['text',['../struct_xt_1_1_service_error.html#aab9d43073045b8ce5407ccb16ddbf149',1,'Xt::ServiceError']]],
+  ['time',['time',['../struct_xt_1_1_buffer.html#a163268058fc2bf3898f81965e67d3ba7',1,'Xt::Buffer']]],
+  ['timevalid',['timeValid',['../struct_xt_1_1_buffer.html#a9e4ee5f5109d2c4f3fa25c4f3aa669a6',1,'Xt::Buffer']]]
 ];

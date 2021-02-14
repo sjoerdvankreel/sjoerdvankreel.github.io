@@ -1,9 +1,9 @@
 var searchData=
 [
-  ['major',['major',['../struct_xt_1_1_version.html#a37816218fa763e559a161df780d7cae9',1,'Xt::Version']]],
-  ['master',['master',['../struct_xt_1_1_aggregate_stream_params.html#a808c2dc534e6c3ada7a43c79f647cf33',1,'Xt::AggregateStreamParams']]],
-  ['max',['max',['../struct_xt_1_1_buffer_size.html#ad9924d2a483fc53179e419758c24d368',1,'Xt::BufferSize']]],
-  ['min',['min',['../struct_xt_1_1_buffer_size.html#a3c9dca5704c4b3588d1daa0fa751d8fc',1,'Xt::BufferSize']]],
-  ['minor',['minor',['../struct_xt_1_1_version.html#a3a7332e76c08b2c24368b876a798dd2c',1,'Xt::Version']]],
-  ['mix',['mix',['../struct_xt_1_1_format.html#a45c70617fa8590cf54a7bc99072b023c',1,'Xt::Format::mix()'],['../struct_xt_1_1_aggregate_stream_params.html#a1ceadb62b6e7d4fbd09fc97457b3a50d',1,'Xt::AggregateStreamParams::mix()']]]
+  ['onbuffer',['onBuffer',['../struct_xt_1_1_stream_params.html#a5924a6ccc6b9643d12565c9804995533',1,'Xt::StreamParams']]],
+  ['onrunning',['onRunning',['../struct_xt_1_1_stream_params.html#a40c7d588879d741f6e9153921ddc7b09',1,'Xt::StreamParams']]],
+  ['onxrun',['onXRun',['../struct_xt_1_1_stream_params.html#a309af8cac2cf7c90b9cb260f5f08198d',1,'Xt::StreamParams']]],
+  ['outmask',['outMask',['../struct_xt_1_1_channels.html#a89de31084e08396df735db1d74f481f6',1,'Xt::Channels']]],
+  ['output',['output',['../struct_xt_1_1_buffer.html#a4af3270314d20eb201513277bfc0c49c',1,'Xt::Buffer::output()'],['../struct_xt_1_1_latency.html#ac7b6c5c69b4f4f52a43d5f948797a5f5',1,'Xt::Latency::output()']]],
+  ['outputs',['outputs',['../struct_xt_1_1_channels.html#acf6073415bb347e80adaf1bc6d78bf36',1,'Xt::Channels']]]
 ];

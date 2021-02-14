@@ -121,8 +121,6 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_xt_1_1_latency.html">Latency</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_xt_1_1_location.html">Location</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_xt_1_1_mix.html">Mix</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_xt_1_1_platform.html">Platform</a></td></tr>
@@ -140,10 +138,10 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
+<tr class="memitem:ae60219ca2022d82d6d78ada7b9d84e15"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_xt.html#ae60219ca2022d82d6d78ada7b9d84e15">OnError</a>) (std::string const &amp;message)</td></tr>
+<tr class="separator:ae60219ca2022d82d6d78ada7b9d84e15"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a898a9068641a09bb27ecdd866072b487"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_xt.html#a898a9068641a09bb27ecdd866072b487">OnXRun</a>) (class <a class="el" href="class_xt_1_1_stream.html">Stream</a> const &amp;stream, int32_t index, void *user)</td></tr>
 <tr class="separator:a898a9068641a09bb27ecdd866072b487"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a20ba77eacb77c1e67a44a5ac9d453ad3"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_xt.html#a20ba77eacb77c1e67a44a5ac9d453ad3">OnError</a>) (struct <a class="el" href="struct_xt_1_1_location.html">Location</a> const &amp;location, std::string const &amp;message)</td></tr>
-<tr class="separator:a20ba77eacb77c1e67a44a5ac9d453ad3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac0eb62e789ce7a209e573e8980bdfc57"><td class="memItemLeft" align="right" valign="top">typedef uint32_t(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_xt.html#ac0eb62e789ce7a209e573e8980bdfc57">OnBuffer</a>) (class <a class="el" href="class_xt_1_1_stream.html">Stream</a> const &amp;stream, struct <a class="el" href="struct_xt_1_1_buffer.html">Buffer</a> const &amp;buffer, void *user)</td></tr>
 <tr class="separator:ac0eb62e789ce7a209e573e8980bdfc57"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af9424d1726859ba2abb0087f0a85bddf"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_xt.html#af9424d1726859ba2abb0087f0a85bddf">OnRunning</a>) (class <a class="el" href="class_xt_1_1_stream.html">Stream</a> const &amp;stream, bool running, uint64_t error, void *user)</td></tr>
@@ -232,8 +230,6 @@ Functions</h2></td></tr>
 <tr class="separator:af42384b65edc926a1bb385ac9b498863"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4edd3cc62bf75d0029ca70883eac60cf"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_xt.html#a4edd3cc62bf75d0029ca70883eac60cf">operator&lt;&lt;</a> (std::ostream &amp;os, <a class="el" href="namespace_xt.html#ab227b0e2b855d2f9159cb043c9d3b302">ServiceCaps</a> capabilities)</td></tr>
 <tr class="separator:a4edd3cc62bf75d0029ca70883eac60cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a21259c70e74e748490e10ce1741bb16b"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_xt.html#a21259c70e74e748490e10ce1741bb16b">operator&lt;&lt;</a> (std::ostream &amp;os, <a class="el" href="struct_xt_1_1_location.html">Location</a> const &amp;location)</td></tr>
-<tr class="separator:a21259c70e74e748490e10ce1741bb16b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3910c9033dddcf71bf3d2d34af07cc34"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_xt.html#a3910c9033dddcf71bf3d2d34af07cc34">operator&lt;&lt;</a> (std::ostream &amp;os, <a class="el" href="struct_xt_1_1_error_info.html">ErrorInfo</a> const &amp;info)</td></tr>
 <tr class="separator:a3910c9033dddcf71bf3d2d34af07cc34"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -250,12 +246,12 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a20ba77eacb77c1e67a44a5ac9d453ad3"></a>
+<a class="anchor" id="ae60219ca2022d82d6d78ada7b9d84e15"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef void(*  Xt::OnError) (struct <a class="el" href="struct_xt_1_1_location.html">Location</a> const &amp;location, std::string const &amp;message)</td>
+          <td class="memname">typedef void(*  Xt::OnError) (std::string const &amp;message)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -710,40 +706,6 @@ Functions</h2></td></tr>
           <td></td>
           <td class="paramtype"><a class="el" href="namespace_xt.html#ab227b0e2b855d2f9159cb043c9d3b302">ServiceCaps</a>&#160;</td>
           <td class="paramname"><em>capabilities</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a21259c70e74e748490e10ce1741bb16b"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::ostream&amp; Xt::operator&lt;&lt; </td>
-          <td>(</td>
-          <td class="paramtype">std::ostream &amp;&#160;</td>
-          <td class="paramname"><em>os</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="struct_xt_1_1_location.html">Location</a> const &amp;&#160;</td>
-          <td class="paramname"><em>location</em>&#160;</td>
         </tr>
         <tr>
           <td></td>

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['init',['Init',['../class_xt_1_1_audio.html#aad173a207a3271977ea9a2a8dbc5dd7f',1,'Xt::Audio']]],
+  ['init',['Init',['../class_xt_1_1_audio.html#a3971e118d8d561437f177e8e3ced3916',1,'Xt::Audio']]],
   ['inmask',['inMask',['../struct_xt_1_1_channels.html#ad791ef947d2ac4cac27f099bb755b052',1,'Xt::Channels']]],
   ['input',['input',['../struct_xt_1_1_buffer.html#aa69a2ecb0b4fe4a601ef58f78a111724',1,'Xt::Buffer::input()'],['../struct_xt_1_1_latency.html#a9c986aee9c936b898147de4ce07e56ec',1,'Xt::Latency::input()']]],
   ['inputs',['inputs',['../struct_xt_1_1_channels.html#a666c6b5975919fef75792fb9dc275fe1',1,'Xt::Channels']]],
