@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['position',['position',['../struct_xt_buffer.html#a55c9b89a464df437a3f9ba8373fa3ce0',1,'XtBuffer']]]
+  ['rate',['rate',['../struct_xt_mix.html#a07b204fe63f80854c79d3463758ce041',1,'XtMix']]]
 ];

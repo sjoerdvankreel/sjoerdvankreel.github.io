@@ -98,9 +98,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:ab188cfab212afad9e11e73d0e0556783"><td class="memItemLeft" align="right" valign="top">typedef void(<a class="el" href="_shared_8h.html#acbfdf8f1ec3780bdd662ebbbb213998e">XT_CALLBACK</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_callbacks_8h.html#ab188cfab212afad9e11e73d0e0556783">XtOnError</a>) (<a class="el" href="struct_xt_location.html">XtLocation</a> const *location, char const *message)</td></tr>
-<tr class="memdesc:ab188cfab212afad9e11e73d0e0556783"><td class="mdescLeft">&#160;</td><td class="mdescRight">Error logging callback.  <a href="#ab188cfab212afad9e11e73d0e0556783">More...</a><br /></td></tr>
-<tr class="separator:ab188cfab212afad9e11e73d0e0556783"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42be5027944d8cafe4dfa81ef804f8c6"><td class="memItemLeft" align="right" valign="top">typedef void(<a class="el" href="_shared_8h.html#acbfdf8f1ec3780bdd662ebbbb213998e">XT_CALLBACK</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_callbacks_8h.html#a42be5027944d8cafe4dfa81ef804f8c6">XtOnError</a>) (char const *message)</td></tr>
+<tr class="memdesc:a42be5027944d8cafe4dfa81ef804f8c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Error logging callback.  <a href="#a42be5027944d8cafe4dfa81ef804f8c6">More...</a><br /></td></tr>
+<tr class="separator:a42be5027944d8cafe4dfa81ef804f8c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abf92c83061232782c96cb174cc6d371d"><td class="memItemLeft" align="right" valign="top">typedef void(<a class="el" href="_shared_8h.html#acbfdf8f1ec3780bdd662ebbbb213998e">XT_CALLBACK</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_callbacks_8h.html#abf92c83061232782c96cb174cc6d371d">XtOnXRun</a>) (<a class="el" href="_shared_8h.html#a97e22e376753e79f83b1762628476d06">XtStream</a> const *stream, int32_t index, void *user)</td></tr>
 <tr class="memdesc:abf92c83061232782c96cb174cc6d371d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Audio xrun (underrun/overrun) callback.  <a href="#abf92c83061232782c96cb174cc6d371d">More...</a><br /></td></tr>
 <tr class="separator:abf92c83061232782c96cb174cc6d371d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -151,12 +151,12 @@ Typedefs</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ab188cfab212afad9e11e73d0e0556783"></a>
+<a class="anchor" id="a42be5027944d8cafe4dfa81ef804f8c6"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void(* XtOnError)(<a class="el" href="struct_xt_location.html">XtLocation</a> const *location, char const *message)</td>
+          <td class="memname">void(* XtOnError)(char const *message)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -164,14 +164,13 @@ Typedefs</h2></td></tr>
 <p>Error logging callback. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">location</td><td>Location in the source code where the error occurred. </td></tr>
     <tr><td class="paramname">message</td><td>The log message.</td></tr>
   </table>
   </dd>
 </dl>
 <p>XT-Audio will call the application-defined logging callback (if one was supplied to XtAudioInit) on each error, whether fatal or not. This function may be called on any thread, implementations must ensure thread-safety.</p>
 <p>Note for languages that support exceptions: the error callback should NEVER throw. It is considered a fatal error if an exception propagates through the callback.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="_xt_audio_8h.html#adab45541fd1b7a3080d4471cf52a0dbb" title="Initialize the XT-Audio library. ">XtAudioInit</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="_xt_audio_8h.html#ac8761157a24a9aac8f76e6e1f58b487e" title="Set error logging callback. ">XtAudioSetOnError</a> </dd></dl>
 
 </div>
 </div>

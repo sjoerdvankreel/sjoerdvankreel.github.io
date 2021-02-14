@@ -101,15 +101,24 @@ Functions</h2></td></tr>
 <tr class="memitem:aa0f72d689cccc97449421778f4836414"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_xt_version.html">XtVersion</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_xt_audio_8h.html#aa0f72d689cccc97449421778f4836414">XtAudioGetVersion</a> (void)</td></tr>
 <tr class="memdesc:aa0f72d689cccc97449421778f4836414"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get XT-Audio library version.  <a href="#aa0f72d689cccc97449421778f4836414">More...</a><br /></td></tr>
 <tr class="separator:aa0f72d689cccc97449421778f4836414"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a623a1a368a72709e71442bd451ee28ad"><td class="memItemLeft" align="right" valign="top">char const *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_xt_audio_8h.html#a623a1a368a72709e71442bd451ee28ad">XtAudioGetLastAssert</a> (void)</td></tr>
+<tr class="memdesc:a623a1a368a72709e71442bd451ee28ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates last internal assertion failure, if any.  <a href="#a623a1a368a72709e71442bd451ee28ad">More...</a><br /></td></tr>
+<tr class="separator:a623a1a368a72709e71442bd451ee28ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a42322996096aeede4b377a8fa90c76c1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_xt_error_info.html">XtErrorInfo</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_xt_audio_8h.html#a42322996096aeede4b377a8fa90c76c1">XtAudioGetErrorInfo</a> (<a class="el" href="_shared_8h.html#a4ae237bc463dfed7b5148dd0e9fa4c3c">XtError</a> error)</td></tr>
 <tr class="memdesc:a42322996096aeede4b377a8fa90c76c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Translate opaque error code to error details.  <a href="#a42322996096aeede4b377a8fa90c76c1">More...</a><br /></td></tr>
 <tr class="separator:a42322996096aeede4b377a8fa90c76c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8761157a24a9aac8f76e6e1f58b487e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_xt_audio_8h.html#ac8761157a24a9aac8f76e6e1f58b487e">XtAudioSetOnError</a> (<a class="el" href="_callbacks_8h.html#a42be5027944d8cafe4dfa81ef804f8c6">XtOnError</a> onError)</td></tr>
+<tr class="memdesc:ac8761157a24a9aac8f76e6e1f58b487e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set error logging callback.  <a href="#ac8761157a24a9aac8f76e6e1f58b487e">More...</a><br /></td></tr>
+<tr class="separator:ac8761157a24a9aac8f76e6e1f58b487e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa69764e9238712c19caf3603fb6121f0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_shared_8h.html#afd54a988691b5f82276707d9808bac6c">XtPlatform</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_xt_audio_8h.html#aa69764e9238712c19caf3603fb6121f0">XtAudioInit</a> (char const *id, void *window)</td></tr>
+<tr class="memdesc:aa69764e9238712c19caf3603fb6121f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the XT-Audio library.  <a href="#aa69764e9238712c19caf3603fb6121f0">More...</a><br /></td></tr>
+<tr class="separator:aa69764e9238712c19caf3603fb6121f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aad260482ef66612b5e694ca1325021e2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_xt_attributes.html">XtAttributes</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_xt_audio_8h.html#aad260482ef66612b5e694ca1325021e2">XtAudioGetSampleAttributes</a> (<a class="el" href="_enums_8h.html#a28a698100a6b04cd1ed14d38782bd988">XtSample</a> sample)</td></tr>
 <tr class="memdesc:aad260482ef66612b5e694ca1325021e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get sample attributes for a specific sample type.  <a href="#aad260482ef66612b5e694ca1325021e2">More...</a><br /></td></tr>
 <tr class="separator:aad260482ef66612b5e694ca1325021e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adab45541fd1b7a3080d4471cf52a0dbb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_shared_8h.html#afd54a988691b5f82276707d9808bac6c">XtPlatform</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_xt_audio_8h.html#adab45541fd1b7a3080d4471cf52a0dbb">XtAudioInit</a> (char const *id, void *window, <a class="el" href="_callbacks_8h.html#ab188cfab212afad9e11e73d0e0556783">XtOnError</a> onError)</td></tr>
-<tr class="memdesc:adab45541fd1b7a3080d4471cf52a0dbb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the XT-Audio library.  <a href="#adab45541fd1b7a3080d4471cf52a0dbb">More...</a><br /></td></tr>
-<tr class="separator:adab45541fd1b7a3080d4471cf52a0dbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d693a58c720c67e3352244a4b3d950a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_xt_audio_8h.html#a2d693a58c720c67e3352244a4b3d950a">XtAudioSetAssertTerminates</a> (<a class="el" href="_shared_8h.html#a5ed28f2b663eb8722ae2dd4b7d8739b6">XtBool</a> terminates)</td></tr>
+<tr class="memdesc:a2d693a58c720c67e3352244a4b3d950a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates whether internal assertion failures should result in std::terminate (true) or be handled by client code (false).  <a href="#a2d693a58c720c67e3352244a4b3d950a">More...</a><br /></td></tr>
+<tr class="separator:a2d693a58c720c67e3352244a4b3d950a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Helper functions and bootstrapping. </p>
@@ -137,6 +146,28 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <p>This function may be called from any thread. </p>
+
+</div>
+</div>
+<a class="anchor" id="a623a1a368a72709e71442bd451ee28ad"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char const * XtAudioGetLastAssert </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Indicates last internal assertion failure, if any. </p>
+<dl class="section return"><dt>Returns</dt><dd>a pointer to a statically allocated string containing the last assertion failure.</dd></dl>
+<p>Note: this function is only applicable to the C API. .NET, Java and C++ language bindings use it to translate assertion failures to exceptions, but do not expose this function. By default, in the C API, any assertion failures result in std::terminate().</p>
+<p>A C language application must check the result of <a class="el" href="_xt_audio_8h.html#a623a1a368a72709e71442bd451ee28ad" title="Indicates last internal assertion failure, if any. ">XtAudioGetLastAssert()</a> after each call into the XT-Audio library only if it disabled the default behaviour of calling std::terminate() on assertion failures using XtAudioSetAssertTerminates(XtFalse).</p>
+<p>This function may be called from any thread. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="_xt_audio_8h.html#a2d693a58c720c67e3352244a4b3d950a" title="Indicates whether internal assertion failures should result in std::terminate (true) or be handled by...">XtAudioSetAssertTerminates</a> </dd></dl>
 
 </div>
 </div>
@@ -186,7 +217,7 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="adab45541fd1b7a3080d4471cf52a0dbb"></a>
+<a class="anchor" id="aa69764e9238712c19caf3603fb6121f0"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -200,13 +231,7 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>window</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="_callbacks_8h.html#ab188cfab212afad9e11e73d0e0556783">XtOnError</a>&#160;</td>
-          <td class="paramname"><em>onError</em>&#160;</td>
+          <td class="paramname"><em>window</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -221,13 +246,68 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">id</td><td>the application id. Used to identify against sound servers such as JACK and PulseAudio. When NULL, "XT-Audio" is used. </td></tr>
-    <tr><td class="paramname">window</td><td>application main window handle. ASIO uses this to show modal control panels. DSound uses this for SetCooperativeLevel. When NULL, a dummy message window is used. </td></tr>
+    <tr><td class="paramname">window</td><td>application main window handle. ASIO uses this to show modal control panels. DSound uses this for SetCooperativeLevel. When NULL, a dummy message window is used.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>This function may be called from any thread. The thread on which it is called becomes the main thread, many other functions may only be called from the main thread. On Windows, COM is initialized in STA mode by this call. If desired, use <a class="el" href="_xt_audio_8h.html#ac8761157a24a9aac8f76e6e1f58b487e" title="Set error logging callback. ">XtAudioSetOnError()</a> to enable error logging before calling this function.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="_xt_platform_8h.html#ace4123f88369b50c4e713037fdf7a5b0" title="Terminates the XT-Audio library. ">XtPlatformDestroy</a> </dd>
+<dd>
+<a class="el" href="_xt_audio_8h.html#ac8761157a24a9aac8f76e6e1f58b487e" title="Set error logging callback. ">XtAudioSetOnError</a> </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a2d693a58c720c67e3352244a4b3d950a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void XtAudioSetAssertTerminates </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_shared_8h.html#a5ed28f2b663eb8722ae2dd4b7d8739b6">XtBool</a>&#160;</td>
+          <td class="paramname"><em>terminates</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Indicates whether internal assertion failures should result in std::terminate (true) or be handled by client code (false). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">terminates</td><td>If true, assertion failures call std::terminate(). If false, client code should check <a class="el" href="_xt_audio_8h.html#a623a1a368a72709e71442bd451ee28ad" title="Indicates last internal assertion failure, if any. ">XtAudioGetLastAssert()</a>.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Note: this function is only applicable to the C API. .NET, Java and C++ language bindings use it to translate assertion failures to exceptions, but do not expose this function. By default, in the C API, any assertion failures result in std::terminate(). In all languages, assertion failures pass through XtOnError.</p>
+<p>C language applications may call XtAudioSetAssertTerminates(XtFalse) to enable their own fatal error handling. To do so, any call into the XT-Audio library should be followed by a call to <a class="el" href="_xt_audio_8h.html#a623a1a368a72709e71442bd451ee28ad" title="Indicates last internal assertion failure, if any. ">XtAudioGetLastAssert()</a>, and if that returns non-null, invoke an application -defined fatal error handler. Note that if <a class="el" href="_xt_audio_8h.html#a623a1a368a72709e71442bd451ee28ad" title="Indicates last internal assertion failure, if any. ">XtAudioGetLastAssert()</a> returns non-null, the application should be considered in a non-recoverable error state.</p>
+<p>This function may be called from any thread. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="_xt_audio_8h.html#ac8761157a24a9aac8f76e6e1f58b487e" title="Set error logging callback. ">XtAudioSetOnError</a> </dd>
+<dd>
+<a class="el" href="_xt_audio_8h.html#a623a1a368a72709e71442bd451ee28ad" title="Indicates last internal assertion failure, if any. ">XtAudioGetLastAssert</a> </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ac8761157a24a9aac8f76e6e1f58b487e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void XtAudioSetOnError </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_callbacks_8h.html#a42be5027944d8cafe4dfa81ef804f8c6">XtOnError</a>&#160;</td>
+          <td class="paramname"><em>onError</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set error logging callback. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
     <tr><td class="paramname">onError</td><td>application-defined error logging callback. When NULL, no logging is performed.</td></tr>
   </table>
   </dd>
 </dl>
-<p>This function may be called from any thread. The thread on which it is called becomes the main thread, many other functions may only be called from the main thread. On Windows, COM is initialized in STA mode by this call.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="_xt_platform_8h.html#ace4123f88369b50c4e713037fdf7a5b0" title="Terminates the XT-Audio library. ">XtPlatformDestroy</a> </dd></dl>
+<p>This function may be called from any thread. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="_callbacks_8h.html#a42be5027944d8cafe4dfa81ef804f8c6" title="Error logging callback. ">XtOnError</a> </dd></dl>
 
 </div>
 </div>

@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['text',['text',['../struct_xt_service_error.html#ad143331cfdb59ba558dd7c4978df8265',1,'XtServiceError']]],
-  ['time',['time',['../struct_xt_buffer.html#ac28799614e177bec70e08b6c182dcc96',1,'XtBuffer']]],
-  ['timevalid',['timeValid',['../struct_xt_buffer.html#a48e48338f98e55a5a54284d46ff8627f',1,'XtBuffer']]]
+  ['xtfalse',['XtFalse',['../_shared_8h.html#a3e7928e19b69d5de4e72d9db16c0356e',1,'Shared.h']]],
+  ['xttrue',['XtTrue',['../_shared_8h.html#ac1d343c72c21839031abd3281176b9ed',1,'Shared.h']]]
 ];

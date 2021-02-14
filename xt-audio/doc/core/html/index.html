@@ -128,7 +128,7 @@ Platform, setup and system</h2>
 <dd>
 <a class="el" href="_shared_8h.html#afd54a988691b5f82276707d9808bac6c" title="opaque platform handle ">XtPlatform</a> </dd>
 <dd>
-<a class="el" href="_xt_audio_8h.html#adab45541fd1b7a3080d4471cf52a0dbb" title="Initialize the XT-Audio library. ">XtAudioInit</a> </dd>
+<a class="el" href="_xt_audio_8h.html#aa69764e9238712c19caf3603fb6121f0" title="Initialize the XT-Audio library. ">XtAudioInit</a> </dd>
 <dd>
 <a class="el" href="_xt_platform_8h.html#ace4123f88369b50c4e713037fdf7a5b0" title="Terminates the XT-Audio library. ">XtPlatformDestroy</a> </dd>
 <dd>
@@ -187,7 +187,7 @@ Streams</h2>
 <a class="el" href="_xt_stream_8h.html#a9bb8d8d7fef1adf1964b77afb62bc082" title="Query stream state. ">XtStreamIsRunning</a></dd></dl>
 <h1><a class="anchor" id="usage"></a>
 Basic usage</h1>
-<p>Include &lt;xt/XtAudio.h&gt; for C, &lt;xt/XtAudio.hpp&gt; for C++ and link xt-core.dll/libxt-core.so. Reference Xt.Audio.dll for .NET, xt.audio-(version).jar for java.</p>
+<p>Include &lt;xt/XtAudio.h&gt; for C, &lt;xt/XtAudio.hpp&gt; for C++ and link xt-audio.dll/libxt-audio.so. Reference Xt.Audio.dll for .NET, xt.audio-(version).jar for java.</p>
 <p>An application must first initialize the library using XtAudioInit. From there, using the returned platform handle it can select an audio service, query for available devices, and open streams on those devices. The choice of backend (system) greatly affects the way audio is streamed in terms of latency, supported formats and whether the application takes system-wide exclusive control of a device. If you know exactly what your application needs, use XtPlatformSetupToSystem to select a backend with specific characteristics. Otherwise it's probably best to let the end-user pick the system (XtPlatformGetSystems) and device to use.</p>
 <p>Streaming audio with XT-Audio involves at least these steps:</p><ol type="1">
 <li>Initialize (XtAudioInit)</li>
@@ -203,7 +203,7 @@ Basic usage</h1>
 <li>Cleanup device list (XtDeviceListDestroy)</li>
 <li>Cleanup library (XtPlatformDestroy)</li>
 </ol>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="_xt_audio_8h.html#adab45541fd1b7a3080d4471cf52a0dbb" title="Initialize the XT-Audio library. ">XtAudioInit</a> </dd>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="_xt_audio_8h.html#aa69764e9238712c19caf3603fb6121f0" title="Initialize the XT-Audio library. ">XtAudioInit</a> </dd>
 <dd>
 <a class="el" href="_xt_platform_8h.html#a71d7d0170124c62276f81a0d9a6c3296" title="Get audio service corresponding to the given system. ">XtPlatformGetService</a> </dd>
 <dd>
@@ -267,14 +267,21 @@ Backend handles</h1>
 API differences between languages</h1>
 <h2><a class="anchor" id="errhandling"></a>
 Error handling</h2>
-<p>The core API uses error codes exclusively. C++, Java and C# API's use only exceptions.</p>
+<p>The core API uses error codes, while C++, Java and C# API's use exceptions.</p>
+<p>Errors returned from backend API's typically (but not exclusively) correspond to expected error conditions (such as device unavailable) and are handled by returning XtError in the C API and by throwing XtException in language bindings. Errors caused by faulty application usage (such as invalid argument) are handled (by default, see XtAudioAssertTerminates()) by std::terminate() in the C API and by throwing some language-default exception type in language bindings. Internal failures which can not be communicated back to the application always result in std::terminate(). All errors, whether fatal or not, pass through XtOnError.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="_shared_8h.html#a4ae237bc463dfed7b5148dd0e9fa4c3c" title="Error type. ">XtError</a> </dd>
 <dd>
 <a class="el" href="struct_xt_error_info.html" title="Useful error details derived from XtError opaque error code. ">XtErrorInfo</a> </dd>
 <dd>
 <a class="el" href="_xt_audio_8h.html#a42322996096aeede4b377a8fa90c76c1" title="Translate opaque error code to error details. ">XtAudioGetErrorInfo</a> </dd>
 <dd>
-<a class="el" href="_xt_print_8h.html#a16ee6fc5243fd05df2240560f32bca11" title="Convert error information to a human-readable string. ">XtPrintErrorInfo</a></dd></dl>
+<a class="el" href="_xt_print_8h.html#a16ee6fc5243fd05df2240560f32bca11" title="Convert error information to a human-readable string. ">XtPrintErrorInfo</a> </dd>
+<dd>
+<a class="el" href="_xt_audio_8h.html#ac8761157a24a9aac8f76e6e1f58b487e" title="Set error logging callback. ">XtAudioSetOnError</a> </dd>
+<dd>
+<a class="el" href="_xt_audio_8h.html#a623a1a368a72709e71442bd451ee28ad" title="Indicates last internal assertion failure, if any. ">XtAudioGetLastAssert</a> </dd>
+<dd>
+<a class="el" href="_xt_audio_8h.html#a2d693a58c720c67e3352244a4b3d950a" title="Indicates whether internal assertion failures should result in std::terminate (true) or be handled by...">XtAudioSetAssertTerminates</a></dd></dl>
 <h2><a class="anchor" id="strhandling"></a>
 String handling and printing/ToString()</h2>
 <p>In the C and C++ API's, all strings are encoded as UTF-8. In the C# and Java API's strings use the built-in string type. XT-Audio provides ToString()-like functionality for basic data types (all enums, source location and error info) using the XtPrint* interfaces for C or operator &lt;&lt; (std::ostream&amp;) for C++. For .NET and Java, use the built-in ToString() functions. In particular, services and devices do NOT provide ToString()-like functionality. Applications should use XtPrintSystem/XtDeviceListGetName instead.</p>
@@ -298,7 +305,7 @@ String handling and printing/ToString()</h2>
 <h2><a class="anchor" id="reshandling"></a>
 Resource handling</h2>
 <p>In all language API's there are 4 resources that must be explicitly managed: device lists, devices, streams, and the library itself. For C, this means XtDeviceListDestroy/XtDeviceDestroy/XtStreamDestroy/XtPlatformDestroy. For C++ everything is handled using unique_ptrs. For Java each resource implements Closeable, for C# IDisposable. No other resources are returned to the application that must be cleaned up by the caller. Strings and collections are handled by the language's respective data types (eg std::string, System.String, java.lang.String and std::vector or built-in array types). For C, string and array-like API's either return statically-allocated data or accept caller-allocated buffers.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="_xt_audio_8h.html#adab45541fd1b7a3080d4471cf52a0dbb" title="Initialize the XT-Audio library. ">XtAudioInit</a> </dd>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="_xt_audio_8h.html#aa69764e9238712c19caf3603fb6121f0" title="Initialize the XT-Audio library. ">XtAudioInit</a> </dd>
 <dd>
 <a class="el" href="_xt_platform_8h.html#ace4123f88369b50c4e713037fdf7a5b0" title="Terminates the XT-Audio library. ">XtPlatformDestroy</a> </dd>
 <dd>

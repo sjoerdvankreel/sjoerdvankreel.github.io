@@ -1,9 +1,12 @@
 var searchData=
 [
   ['xtaudiogeterrorinfo',['XtAudioGetErrorInfo',['../_xt_audio_8h.html#a42322996096aeede4b377a8fa90c76c1',1,'XtAudio.h']]],
+  ['xtaudiogetlastassert',['XtAudioGetLastAssert',['../_xt_audio_8h.html#a623a1a368a72709e71442bd451ee28ad',1,'XtAudio.h']]],
   ['xtaudiogetsampleattributes',['XtAudioGetSampleAttributes',['../_xt_audio_8h.html#aad260482ef66612b5e694ca1325021e2',1,'XtAudio.h']]],
   ['xtaudiogetversion',['XtAudioGetVersion',['../_xt_audio_8h.html#aa0f72d689cccc97449421778f4836414',1,'XtAudio.h']]],
-  ['xtaudioinit',['XtAudioInit',['../_xt_audio_8h.html#adab45541fd1b7a3080d4471cf52a0dbb',1,'XtAudio.h']]],
+  ['xtaudioinit',['XtAudioInit',['../_xt_audio_8h.html#aa69764e9238712c19caf3603fb6121f0',1,'XtAudio.h']]],
+  ['xtaudiosetassertterminates',['XtAudioSetAssertTerminates',['../_xt_audio_8h.html#a2d693a58c720c67e3352244a4b3d950a',1,'XtAudio.h']]],
+  ['xtaudiosetonerror',['XtAudioSetOnError',['../_xt_audio_8h.html#ac8761157a24a9aac8f76e6e1f58b487e',1,'XtAudio.h']]],
   ['xtdevicedestroy',['XtDeviceDestroy',['../_xt_device_8h.html#aa63402a111e1de8107479058ebd6dfa9',1,'XtDevice.h']]],
   ['xtdevicegetbuffersize',['XtDeviceGetBufferSize',['../_xt_device_8h.html#a0c81441f06596c2f9de66b8d4dc22749',1,'XtDevice.h']]],
   ['xtdevicegetchannelcount',['XtDeviceGetChannelCount',['../_xt_device_8h.html#aae1edbcf737b6f7c450871bdf612fced',1,'XtDevice.h']]],
@@ -27,7 +30,6 @@ var searchData=
   ['xtprintdevicecaps',['XtPrintDeviceCaps',['../_xt_print_8h.html#a8c4e50504bd1e01f146519d9b3ce10cc',1,'XtPrint.h']]],
   ['xtprintenumflags',['XtPrintEnumFlags',['../_xt_print_8h.html#abb0788af9801a6b4b2fc20549fa881eb',1,'XtPrint.h']]],
   ['xtprinterrorinfo',['XtPrintErrorInfo',['../_xt_print_8h.html#a16ee6fc5243fd05df2240560f32bca11',1,'XtPrint.h']]],
-  ['xtprintlocation',['XtPrintLocation',['../_xt_print_8h.html#af253ba52cc7d56b7891c400c69ea9b3c',1,'XtPrint.h']]],
   ['xtprintsample',['XtPrintSample',['../_xt_print_8h.html#af1ef94f6528d324a88ed6aa11ed34058',1,'XtPrint.h']]],
   ['xtprintservicecaps',['XtPrintServiceCaps',['../_xt_print_8h.html#a5df61216bda3fa6e855637f014a3cf9f',1,'XtPrint.h']]],
   ['xtprintsetup',['XtPrintSetup',['../_xt_print_8h.html#a33933eb8e28a1945a708e941a7aedfa0',1,'XtPrint.h']]],

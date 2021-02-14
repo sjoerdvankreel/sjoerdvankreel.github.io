@@ -1,8 +1,6 @@
 var searchData=
 [
-  ['sample',['sample',['../struct_xt_mix.html#a4b8432e99b497358c1ba048f5ffa8d02',1,'XtMix']]],
-  ['service',['service',['../struct_xt_error_info.html#a80e2bf72b210b3adae70eac7deec846f',1,'XtErrorInfo']]],
-  ['size',['size',['../struct_xt_attributes.html#abff07e577882fe750e5b5441cb3b64b1',1,'XtAttributes']]],
-  ['stream',['stream',['../struct_xt_device_stream_params.html#acc2540e82034687c0ed352c100f1f032',1,'XtDeviceStreamParams::stream()'],['../struct_xt_aggregate_stream_params.html#aa99283909d62a4df651b6551e58df549',1,'XtAggregateStreamParams::stream()']]],
-  ['system',['system',['../struct_xt_error_info.html#a3583142adae573e62b650385986f1d59',1,'XtErrorInfo']]]
+  ['text',['text',['../struct_xt_service_error.html#ad143331cfdb59ba558dd7c4978df8265',1,'XtServiceError']]],
+  ['time',['time',['../struct_xt_buffer.html#ac28799614e177bec70e08b6c182dcc96',1,'XtBuffer']]],
+  ['timevalid',['timeValid',['../struct_xt_buffer.html#a48e48338f98e55a5a54284d46ff8627f',1,'XtBuffer']]]
 ];
