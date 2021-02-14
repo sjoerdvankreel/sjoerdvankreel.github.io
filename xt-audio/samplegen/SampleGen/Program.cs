@@ -24,7 +24,7 @@ namespace SampleGen
 
         static string EmbedAllSamples(this string templateText, string path)
         => templateText.EmbedLanguageSamples($"{path}/java/sample/xt/sample", "java", "java")
-            .EmbedLanguageSamples($"{path}/cli/sample", "net", "cs")
+            .EmbedLanguageSamples($"{path}/net/sample", "net", "cs")
             .EmbedLanguageSamples($"{path}/cpp/sample", "cpp", "cpp");
 
         static void Main(string[] args)

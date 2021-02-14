@@ -19,6 +19,7 @@
         <h1>XT-Audio</h1>
         <p/>
         Releases (<a href="https://github.com/sjoerdvankreel/xt-audio/blob/master/history.txt">changelog</a>):<br/>
+        1.9: February 14, 2021: improve error handling<br/>
         1.8: January 21, 2021: nuget/mvn central support<br/>
         1.7: January 2, 2021<br/>
         1.0.6: July 8, 2020<br/>
@@ -29,7 +30,7 @@
         <p/>
         Screenshot: <a href="img/gui.png">WASAPI example</a><br/>
         Get the source: <a href="https://github.com/sjoerdvankreel/xt-audio">XT-Audio on GitHub</a><br/>
-        Precompiled binaries: <a href="dist/xt-audio-1.8.zip">Download latest</a><br/>
+        Precompiled binaries: <a href="dist/xt-audio-1.9.zip">Download latest</a><br/>
       </div>
       <p style="clear: both;"></p>
 
@@ -45,7 +46,7 @@
         <a href="doc/core/html/index.html">Core</a> /
         <a href="doc/cpp/html/index.html">C++</a> /
         <a href="doc/java/apidocs/index.html">Java</a> /
-        <a href="doc/cli/index.html">.NET</a><br/>
+        <a href="doc/net/index.html">.NET</a><br/>
         Only the core (C) API is fully documented. Code samples are provided for all languages except C. Refer to the
         core documentation's main page for differences between the C API and other language APIs.
       </div>
@@ -87,7 +88,7 @@ import xt.audio.XtService;
 public class PrintSimple {
 
     public static void main() throws Exception {
-        try(XtPlatform platform = XtAudio.init(null, null, null)) {
+        try(XtPlatform platform = XtAudio.init(null, null)) {
             for(XtSystem system: platform.getSystems()) {
                 XtService service = platform.getService(system);
                 try(XtDeviceList list = service.openDeviceList(EnumSet.of(XtEnumFlags.ALL))) {
@@ -111,7 +112,7 @@ namespace Xt
         [STAThread]
         public static void Main()
         {
-            using XtPlatform platform = XtAudio.Init(null, IntPtr.Zero, null);
+            using XtPlatform platform = XtAudio.Init(null, IntPtr.Zero);
             foreach (XtSystem system in platform.GetSystems())
             {
                 XtService service = platform.GetService(system);
@@ -136,7 +137,7 @@ namespace Xt
 int 
 PrintSimpleMain() 
 {
-  std::unique_ptr&lt;Xt::Platform&gt; platform = Xt::Audio::Init(&quot;&quot;, nullptr, nullptr);
+  std::unique_ptr&lt;Xt::Platform&gt; platform = Xt::Audio::Init(&quot;&quot;, nullptr);
   for(Xt::System system: platform-&gt;GetSystems()) 
   {
     std::unique_ptr&lt;Xt::Service&gt; service = platform-&gt;GetService(system);
@@ -172,7 +173,6 @@ import java.util.EnumSet;
 import xt.audio.Enums.XtEnumFlags;
 import xt.audio.Enums.XtSetup;
 import xt.audio.Enums.XtSystem;
-import xt.audio.Structs.XtLocation;
 import xt.audio.Structs.XtMix;
 import xt.audio.Structs.XtVersion;
 import xt.audio.XtAudio;
@@ -185,8 +185,8 @@ import java.util.Optional;
 
 public class PrintDetailed {
 
-    static void onError(XtLocation location, String message) {
-        System.out.println(location + &quot;: &quot; + message);
+    static void onError(String message) {
+        System.out.println(message);
     }
 
     static void printDevices(XtService service, XtDeviceList list) {
@@ -210,7 +210,8 @@ public class PrintDetailed {
     }
 
     public static void main() throws Exception {
-        try(XtPlatform platform = XtAudio.init(&quot;Sample&quot;, null, PrintDetailed::onError)) {
+        XtAudio.setOnError(PrintDetailed::onError);
+        try(XtPlatform platform = XtAudio.init(&quot;Sample&quot;, null)) {
             XtVersion version = XtAudio.getVersion();
             System.out.println(&quot;Version: &quot; + version.major + &quot;.&quot; + version.minor);
             XtSystem pro = platform.setupToSystem(XtSetup.PRO_AUDIO);
@@ -247,6 +248,8 @@ public class PrintDetailed {
             }
         } catch(XtException e) {
             System.out.println(XtAudio.getErrorInfo(e.getError()));
+        } catch(Throwable t) {
+            System.out.println(t.getMessage());
         }
     }
 }</code></pre>
@@ -258,8 +261,8 @@ namespace Xt
 {
     public static class PrintDetailed
     {
-        static void OnError(in XtLocation location, string message)
-        =&gt; Console.WriteLine($&quot;{location}: {message}&quot;);
+        static void OnError(string message)
+        =&gt; Console.WriteLine(message);
 
         static void PrintDevices(XtService service, XtDeviceList list)
         {
@@ -286,7 +289,8 @@ namespace Xt
         [STAThread]
         public static void Main()
         {
-            using XtPlatform platform = XtAudio.Init(&quot;Sample&quot;, IntPtr.Zero, OnError);
+            XtAudio.SetOnError(OnError);
+            using XtPlatform platform = XtAudio.Init(&quot;Sample&quot;, IntPtr.Zero);
             try
             {
                 XtVersion version = XtAudio.GetVersion();
@@ -324,7 +328,9 @@ namespace Xt
                     PrintDevices(service, outputs);
                 }
             } catch (XtException e)
-            { Console.WriteLine(XtAudio.GetErrorInfo(e.GetError())); }
+            { Console.WriteLine(XtAudio.GetErrorInfo(e.GetError()));
+            } catch (Exception e)
+            { Console.WriteLine(e.Message); }
         }
     }
 }</code></pre>
@@ -338,8 +344,8 @@ namespace Xt
 #include &lt;iostream&gt;
 
 static void 
-OnError(Xt::Location const&amp; location, std::string const&amp; message)
-{ std::cout &lt;&lt; location &lt;&lt; &quot;: &quot; &lt;&lt; message &lt;&lt; std::endl; }
+OnError(std::string const&amp; message)
+{ std::cout &lt;&lt; message &lt;&lt; std::endl; }
 
 void
 PrintDevices(Xt::Service const* service, Xt::DeviceList const* list)
@@ -367,7 +373,8 @@ PrintDevices(Xt::Service const* service, Xt::DeviceList const* list)
 int 
 PrintDetailedMain()
 {
-  std::unique_ptr&lt;Xt::Platform&gt; platform = Xt::Audio::Init(&quot;&quot;, nullptr, OnError);
+  Xt::Audio::SetOnError(OnError);
+  std::unique_ptr&lt;Xt::Platform&gt; platform = Xt::Audio::Init(&quot;&quot;, nullptr);
   try 
   {
     Xt::Version version = Xt::Audio::GetVersion();
@@ -408,6 +415,10 @@ PrintDetailedMain()
   } catch(Xt::Exception const&amp; e) 
   { 
     std::cout &lt;&lt; Xt::Audio::GetErrorInfo(e.GetError()) &lt;&lt; &quot;\n&quot;; 
+    return EXIT_FAILURE;
+  } catch(std::exception const&amp; e)
+  {
+    std::cout &lt;&lt; e.what() &lt;&lt; &quot;\n&quot;; 
     return EXIT_FAILURE;
   }
 }</code></pre>
@@ -472,7 +483,7 @@ public class RenderSimple {
         XtStreamParams streamParams;
         XtDeviceStreamParams deviceParams;
 
-        try(XtPlatform platform = XtAudio.init(null, null, null)) {
+        try(XtPlatform platform = XtAudio.init(null, null)) {
             XtSystem system = platform.setupToSystem(XtSetup.CONSUMER_AUDIO);
             XtService service = platform.getService(system);
             if(service == null) return;
@@ -533,7 +544,7 @@ namespace Xt
             XtStreamParams streamParams;
             XtDeviceStreamParams deviceParams;
 
-            using XtPlatform platform = XtAudio.Init(null, IntPtr.Zero, null);
+            using XtPlatform platform = XtAudio.Init(null, IntPtr.Zero);
             XtSystem system = platform.SetupToSystem(XtSetup.ConsumerAudio);
             XtService service = platform.GetService(system);
             if (service == null) return;
@@ -589,7 +600,7 @@ OnBuffer(Xt::Stream const&amp; stream, Xt::Buffer const&amp; buffer, void* user)
 int 
 RenderSimpleMain()
 {
-  std::unique_ptr&lt;Xt::Platform&gt; platform = Xt::Audio::Init(&quot;&quot;, nullptr, nullptr);
+  std::unique_ptr&lt;Xt::Platform&gt; platform = Xt::Audio::Init(&quot;&quot;, nullptr);
   Xt::System system = platform-&gt;SetupToSystem(Xt::Setup::ConsumerAudio);
   std::unique_ptr&lt;Xt::Service&gt; service = platform-&gt;GetService(system);
   if (!service) return 0;
@@ -666,7 +677,7 @@ public class CaptureSimple {
         XtStreamParams streamParams;
         XtDeviceStreamParams deviceParams;
 
-        try(XtPlatform platform = XtAudio.init(null, null, null)) {
+        try(XtPlatform platform = XtAudio.init(null, null)) {
             XtSystem system = platform.setupToSystem(XtSetup.CONSUMER_AUDIO);
             XtService service = platform.getService(system);
             if(service == null) return;
@@ -723,7 +734,7 @@ namespace Xt
             XtStreamParams streamParams;
             XtDeviceStreamParams deviceParams;
 
-            using XtPlatform platform = XtAudio.Init(null, IntPtr.Zero, null);
+            using XtPlatform platform = XtAudio.Init(null, IntPtr.Zero);
             XtSystem system = platform.SetupToSystem(XtSetup.ConsumerAudio);
             XtService service = platform.GetService(system);
             if (service == null) return;
@@ -771,7 +782,7 @@ OnBuffer(Xt::Stream const&amp; stream, Xt::Buffer const&amp; buffer, void* user)
 int 
 CaptureSimpleMain() 
 {
-  std::unique_ptr&lt;Xt::Platform&gt; platform = Xt::Audio::Init(&quot;&quot;, nullptr, nullptr);
+  std::unique_ptr&lt;Xt::Platform&gt; platform = Xt::Audio::Init(&quot;&quot;, nullptr);
   Xt::System system = platform-&gt;SetupToSystem(Xt::Setup::ConsumerAudio);
   std::unique_ptr&lt;Xt::Service&gt; service = platform-&gt;GetService(system);
   if(!service) return 0;  
@@ -912,7 +923,7 @@ public class RenderAdvanced {
         XtStreamParams streamParams;
         XtDeviceStreamParams deviceParams;
 
-        try(XtPlatform platform = XtAudio.init(null, null, null)) {
+        try(XtPlatform platform = XtAudio.init(null, null)) {
             XtSystem system = platform.setupToSystem(XtSetup.CONSUMER_AUDIO);
             XtService service = platform.getService(system);
             if(service == null) return;
@@ -1072,7 +1083,7 @@ namespace Xt
             XtStreamParams streamParams;
             XtDeviceStreamParams deviceParams;
 
-            using XtPlatform platform = XtAudio.Init(null, IntPtr.Zero, null);
+            using XtPlatform platform = XtAudio.Init(null, IntPtr.Zero);
             XtSystem system = platform.SetupToSystem(XtSetup.ConsumerAudio);
             XtService service = platform.GetService(system);
             if (service == null) return;
@@ -1202,7 +1213,7 @@ OnNonInterleavedBuffer(Xt::Stream const&amp; stream, Xt::Buffer const&amp; buffe
 int 
 RenderAdvancedMain() 
 {
-  std::unique_ptr&lt;Xt::Platform&gt; platform = Xt::Audio::Init(&quot;&quot;, nullptr, nullptr);
+  std::unique_ptr&lt;Xt::Platform&gt; platform = Xt::Audio::Init(&quot;&quot;, nullptr);
   Xt::Format format(Mix, Xt::Channels(0, 0, 2, 0));
   Xt::System system = platform-&gt;SetupToSystem(Xt::Setup::ConsumerAudio);
   std::unique_ptr&lt;Xt::Service&gt; service = platform-&gt;GetService(system);
@@ -1374,7 +1385,7 @@ public class CaptureAdvanced {
         XtStreamParams streamParams;
         XtDeviceStreamParams deviceParams;
 
-        try(XtPlatform platform = XtAudio.init(null, null, null)) {
+        try(XtPlatform platform = XtAudio.init(null, null)) {
             XtSystem system = platform.setupToSystem(XtSetup.CONSUMER_AUDIO);
             XtService service = platform.getService(system);
             if(service == null) return;
@@ -1530,7 +1541,7 @@ namespace Xt
             XtStreamParams streamParams;
             XtDeviceStreamParams deviceParams;
 
-            using XtPlatform platform = XtAudio.Init(null, IntPtr.Zero, null);
+            using XtPlatform platform = XtAudio.Init(null, IntPtr.Zero);
             XtSystem system = platform.SetupToSystem(XtSetup.ConsumerAudio);
             XtService service = platform.GetService(system);
             if (service == null) return;
@@ -1651,7 +1662,7 @@ OnNonInterleavedBuffer(Xt::Stream const&amp; stream, Xt::Buffer const&amp; buffe
 int 
 CaptureAdvancedMain() 
 {
-  std::unique_ptr&lt;Xt::Platform&gt; platform = Xt::Audio::Init(&quot;&quot;, nullptr, nullptr);
+  std::unique_ptr&lt;Xt::Platform&gt; platform = Xt::Audio::Init(&quot;&quot;, nullptr);
   Xt::System system = platform-&gt;SetupToSystem(Xt::Setup::ConsumerAudio);
   std::unique_ptr&lt;Xt::Service&gt; service = platform-&gt;GetService(system);
   if(!service) return 0; 
@@ -1747,7 +1758,7 @@ public class FullDuplex {
         XtFormat float44100 = new XtFormat(new XtMix(44100, XtSample.FLOAT32), new XtChannels(2, 0, 2, 0));
         XtFormat float48000 = new XtFormat(new XtMix(48000, XtSample.FLOAT32), new XtChannels(2, 0, 2, 0));
 
-        try(XtPlatform platform = XtAudio.init(null, null, null)) {
+        try(XtPlatform platform = XtAudio.init(null, null)) {
             XtSystem system = platform.setupToSystem(XtSetup.PRO_AUDIO);
             XtService service = platform.getService(system);
             if(service == null || !service.getCapabilities().contains(XtServiceCaps.FULL_DUPLEX)) return;
@@ -1814,7 +1825,7 @@ namespace Xt
             XtFormat float44100 = new XtFormat(new XtMix(44100, XtSample.Float32), new XtChannels(2, 0, 2, 0));
             XtFormat float48000 = new XtFormat(new XtMix(48000, XtSample.Float32), new XtChannels(2, 0, 2, 0));
 
-            using XtPlatform platform = XtAudio.Init(null, IntPtr.Zero, null);
+            using XtPlatform platform = XtAudio.Init(null, IntPtr.Zero);
             XtSystem system = platform.SetupToSystem(XtSetup.ProAudio);
             XtService service = platform.GetService(system);
             if (service == null || (service.GetCapabilities() &amp; XtServiceCaps.FullDuplex) == 0) return;
@@ -1878,7 +1889,7 @@ FullDuplexMain()
   Xt::Format float44100(Xt::Mix(44100, Xt::Sample::Float32), Xt::Channels(2, 0, 2, 0));
   Xt::Format float48000(Xt::Mix(48000, Xt::Sample::Float32), Xt::Channels(2, 0, 2, 0));
 
-  std::unique_ptr&lt;Xt::Platform&gt; platform = Xt::Audio::Init(&quot;&quot;, nullptr, nullptr);
+  std::unique_ptr&lt;Xt::Platform&gt; platform = Xt::Audio::Init(&quot;&quot;, nullptr);
   Xt::System system = platform-&gt;SetupToSystem(Xt::Setup::ProAudio);
   std::unique_ptr&lt;Xt::Service&gt; service = platform-&gt;GetService(system);
   if(!service || (service-&gt;GetCapabilities() &amp; Xt::ServiceCapsFullDuplex) == 0) return 0;
@@ -1967,7 +1978,7 @@ public class Aggregate {
         XtFormat inputFormat = new XtFormat(mix, new XtChannels(2, 0, 0, 0));
         XtFormat outputFormat = new XtFormat(mix, new XtChannels(0, 0, 2, 0));
 
-        try(XtPlatform platform = XtAudio.init(null, null, null)) {
+        try(XtPlatform platform = XtAudio.init(null, null)) {
             XtSystem system = platform.setupToSystem(XtSetup.SYSTEM_AUDIO);
             XtService service = platform.getService(system);
             if(service == null || !service.getCapabilities().contains(XtServiceCaps.AGGREGATION)) return;
@@ -2036,7 +2047,7 @@ namespace Xt
             XtFormat inputFormat = new XtFormat(mix, new XtChannels(2, 0, 0, 0));
             XtFormat outputFormat = new XtFormat(mix, new XtChannels(0, 0, 2, 0));
 
-            using XtPlatform platform = XtAudio.Init(null, IntPtr.Zero, null);
+            using XtPlatform platform = XtAudio.Init(null, IntPtr.Zero);
             XtSystem system = platform.SetupToSystem(XtSetup.SystemAudio);
             XtService service = platform.GetService(system);
             if (service == null || (service.GetCapabilities() &amp; XtServiceCaps.Aggregation) == 0) return;
@@ -2104,7 +2115,7 @@ AggregateMain()
   Xt::Format inputFormat(mix, Xt::Channels(2, 0, 0, 0));
   Xt::Format outputFormat(mix, Xt::Channels(0, 0, 2, 0));
   
-  std::unique_ptr&lt;Xt::Platform&gt; platform = Xt::Audio::Init(&quot;&quot;, nullptr, nullptr);
+  std::unique_ptr&lt;Xt::Platform&gt; platform = Xt::Audio::Init(&quot;&quot;, nullptr);
   Xt::System system = platform-&gt;SetupToSystem(Xt::Setup::SystemAudio);
   std::unique_ptr&lt;Xt::Service&gt; service = platform-&gt;GetService(system);
   if(!service || (service-&gt;GetCapabilities() &amp; Xt::ServiceCapsAggregation) == 0) return 0;
