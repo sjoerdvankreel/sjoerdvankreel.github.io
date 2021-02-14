@@ -34,13 +34,11 @@
   </HelpKINode>
   <HelpKINode Title="Endpoint enumeration member" Url="html/69a4c029-2064-d290-0703-6b89de6e2dc2.htm" />
   <HelpKINode Title="fault field" Url="html/633646c8-bd77-5cf8-94f1-4955b01c0604.htm" />
-  <HelpKINode Title="file property" Url="html/91963eb7-78f6-763c-c2cf-62756ff9a9d3.htm" />
   <HelpKINode Title="Float32 enumeration member" Url="html/eb8b401f-1f73-ef09-1841-991b5ed54282.htm" />
   <HelpKINode Title="Format enumeration member" Url="html/69a4c029-2064-d290-0703-6b89de6e2dc2.htm" />
   <HelpKINode Title="format field" Url="html/be951a8e-f065-776b-83fe-4d6da05bac55.htm" />
   <HelpKINode Title="frames field" Url="html/2487477c-4397-aa23-0a20-0d475cadd2df.htm" />
   <HelpKINode Title="FullDuplex enumeration member" Url="html/a481664d-f7c7-ab2f-0269-0ff661d137be.htm" />
-  <HelpKINode Title="func property" Url="html/5fba10db-9f94-72d4-3c28-af57ff7c1579.htm" />
   <HelpKINode Title="Generic enumeration member" Url="html/69a4c029-2064-d290-0703-6b89de6e2dc2.htm" />
   <HelpKINode Title="Get method" Url="html/fcd58bba-fcc2-f543-c3a2-97374ace6e85.htm" />
   <HelpKINode Title="GetBufferSize method" Url="html/d074cbaa-ccef-83b7-faec-fe42b30e3ca0.htm" />
@@ -71,7 +69,7 @@
   <HelpKINode Title="GetSystems method" Url="html/cb8485ae-9612-cd38-7fbb-67d59f6c37e8.htm" />
   <HelpKINode Title="GetVersion method" Url="html/a7ec1b62-f505-3fe1-e9fe-ba8bc4c47a67.htm" />
   <HelpKINode Title="HwDirect enumeration member" Url="html/24868451-c032-d7e1-e627-1c56cf6bcac1.htm" />
-  <HelpKINode Title="Init method" Url="html/1deada16-3a92-cbfd-3c57-5de01d9c6824.htm" />
+  <HelpKINode Title="Init method" Url="html/b77a5b53-b60b-6e77-dc2d-41aed0346557.htm" />
   <HelpKINode Title="inMask field" Url="html/1cf2611c-2ff6-9146-8930-587ab532c170.htm" />
   <HelpKINode Title="Input enumeration member">
     <HelpKINode Title="XtDeviceCaps Enumeration" Url="html/24868451-c032-d7e1-e627-1c56cf6bcac1.htm" />
@@ -91,7 +89,6 @@
   <HelpKINode Title="isSigned property" Url="html/6fa72531-537d-a9b8-4cd9-b1b196845060.htm" />
   <HelpKINode Title="JACK enumeration member" Url="html/7ffff37f-804b-9679-72c3-64bd0d1b3348.htm" />
   <HelpKINode Title="Latency enumeration member" Url="html/a481664d-f7c7-ab2f-0269-0ff661d137be.htm" />
-  <HelpKINode Title="line field" Url="html/acb89f1a-5b3d-90bd-c906-6f33c014bdf7.htm" />
   <HelpKINode Title="Lock method" Url="html/d0d1349b-b99a-2312-5bfd-20e7f7110418.htm" />
   <HelpKINode Title="Loopback enumeration member" Url="html/24868451-c032-d7e1-e627-1c56cf6bcac1.htm" />
   <HelpKINode Title="major field" Url="html/d6d397dc-9fca-20fa-2ca1-802e08da1fa3.htm" />
@@ -131,6 +128,7 @@
   <HelpKINode Title="sample field" Url="html/8e181e4b-8dbd-dce2-19c0-9c4d3bf7fb97.htm" />
   <HelpKINode Title="Service enumeration member" Url="html/69a4c029-2064-d290-0703-6b89de6e2dc2.htm" />
   <HelpKINode Title="service field" Url="html/528d1fc6-c304-3243-ebcd-5ab127acbc8a.htm" />
+  <HelpKINode Title="SetOnError method" Url="html/6fceb9e9-c891-cfbf-9252-3e43dd4ccbde.htm" />
   <HelpKINode Title="SetupToSystem method" Url="html/334f57d8-8f5e-840a-5d5c-5bf262e49517.htm" />
   <HelpKINode Title="ShowControlPanel method" Url="html/724b2ad6-672b-35d3-969d-95ae43294537.htm" />
   <HelpKINode Title="size field" Url="html/e670caf0-eda3-bf2a-7561-84bf41f653d5.htm" />
@@ -148,10 +146,7 @@
   <HelpKINode Title="Time enumeration member" Url="html/a481664d-f7c7-ab2f-0269-0ff661d137be.htm" />
   <HelpKINode Title="time field" Url="html/0dc29cb8-845d-93ab-f8ae-6b9e8583f0bb.htm" />
   <HelpKINode Title="timeValid property" Url="html/45beb18d-2605-cd84-186f-dd2de52b2531.htm" />
-  <HelpKINode Title="ToString method">
-    <HelpKINode Title="XtErrorInfo.ToString Method " Url="html/5eb18679-7ade-87f2-1820-92235bdc72c5.htm" />
-    <HelpKINode Title="XtLocation.ToString Method " Url="html/6887b5a7-c44e-5e96-1348-353749536549.htm" />
-  </HelpKINode>
+  <HelpKINode Title="ToString method" Url="html/5eb18679-7ade-87f2-1820-92235bdc72c5.htm" />
   <HelpKINode Title="UInt8 enumeration member" Url="html/eb8b401f-1f73-ef09-1841-991b5ed54282.htm" />
   <HelpKINode Title="Unknown enumeration member" Url="html/69a4c029-2064-d290-0703-6b89de6e2dc2.htm" />
   <HelpKINode Title="Unlock method" Url="html/e11a94ba-fdd7-8715-bd38-be7c85743afd.htm" />
@@ -175,7 +170,6 @@
   <HelpKINode Title="Xt.XtException class" Url="html/6d9715c8-4e0b-b4a2-b981-bdf246d8fb2c.htm" />
   <HelpKINode Title="Xt.XtFormat structure" Url="html/0158f0b6-8cf6-0dae-54cd-8dce14a6a5b6.htm" />
   <HelpKINode Title="Xt.XtLatency structure" Url="html/0b71bee2-e9d3-f6e2-084f-72e1db2d9a2d.htm" />
-  <HelpKINode Title="Xt.XtLocation structure" Url="html/fbf1ec03-fe6d-a488-bfd4-2a5deb779e7c.htm" />
   <HelpKINode Title="Xt.XtMix structure" Url="html/97a9295e-c270-98af-fd99-557e82a78e2e.htm" />
   <HelpKINode Title="Xt.XtOnBuffer delegate" Url="html/3a61087c-26a1-1f52-da27-ff9ca16f39b5.htm" />
   <HelpKINode Title="Xt.XtOnError delegate" Url="html/5e577cbe-d4be-8fba-1357-4afdea2c0124.htm" />
@@ -231,7 +225,8 @@
   <HelpKINode Title="XtAudio.GetErrorInfo method" Url="html/fd226ad1-ffa6-3ea8-c73f-d46b936ad8c4.htm" />
   <HelpKINode Title="XtAudio.GetSampleAttributes method" Url="html/3bad07e9-0ef8-5992-2087-dcacc54fc174.htm" />
   <HelpKINode Title="XtAudio.GetVersion method" Url="html/a7ec1b62-f505-3fe1-e9fe-ba8bc4c47a67.htm" />
-  <HelpKINode Title="XtAudio.Init method" Url="html/1deada16-3a92-cbfd-3c57-5de01d9c6824.htm" />
+  <HelpKINode Title="XtAudio.Init method" Url="html/b77a5b53-b60b-6e77-dc2d-41aed0346557.htm" />
+  <HelpKINode Title="XtAudio.SetOnError method" Url="html/6fceb9e9-c891-cfbf-9252-3e43dd4ccbde.htm" />
   <HelpKINode Title="XtBuffer structure">
     <HelpKINode Title="XtBuffer Structure" Url="html/2639342d-2732-57da-da90-2eb2b2636014.htm" />
     <HelpKINode Title="fields" Url="html/7585d21a-1234-230c-96f5-aa6d31c2a6a1.htm" />
@@ -330,16 +325,6 @@
   </HelpKINode>
   <HelpKINode Title="XtLatency.input field" Url="html/9a2ee3a2-5aa8-ac28-f78a-3203123f06f1.htm" />
   <HelpKINode Title="XtLatency.output field" Url="html/d8896ebb-d3b6-1a9e-f5df-521bd2b80a03.htm" />
-  <HelpKINode Title="XtLocation structure">
-    <HelpKINode Title="XtLocation Structure" Url="html/fbf1ec03-fe6d-a488-bfd4-2a5deb779e7c.htm" />
-    <HelpKINode Title="fields" Url="html/2b0b4ee9-d4b7-57b9-b0d9-abac9b16b66d.htm" />
-    <HelpKINode Title="methods" Url="html/634215b8-c4df-7176-ce82-4144cc3c5404.htm" />
-    <HelpKINode Title="properties" Url="html/35ec100d-fa59-8749-eff7-60813fdac4ed.htm" />
-  </HelpKINode>
-  <HelpKINode Title="XtLocation.file property" Url="html/91963eb7-78f6-763c-c2cf-62756ff9a9d3.htm" />
-  <HelpKINode Title="XtLocation.func property" Url="html/5fba10db-9f94-72d4-3c28-af57ff7c1579.htm" />
-  <HelpKINode Title="XtLocation.line field" Url="html/acb89f1a-5b3d-90bd-c906-6f33c014bdf7.htm" />
-  <HelpKINode Title="XtLocation.ToString method" Url="html/6887b5a7-c44e-5e96-1348-353749536549.htm" />
   <HelpKINode Title="XtMix structure">
     <HelpKINode Title="XtMix Structure" Url="html/97a9295e-c270-98af-fd99-557e82a78e2e.htm" />
     <HelpKINode Title="constructor" Url="html/342ce579-8c71-2088-fff0-b469c3285830.htm" />
