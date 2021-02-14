@@ -19,6 +19,7 @@
         <h1>XT-Audio</h1>
         <p/>
         Releases (<a href="https://github.com/sjoerdvankreel/xt-audio/blob/master/history.txt">changelog</a>):<br/>
+        1.9: February 14, 2021: improve error handling<br/>
         1.8: January 21, 2021: nuget/mvn central support<br/>
         1.7: January 2, 2021<br/>
         1.0.6: July 8, 2020<br/>
@@ -29,7 +30,7 @@
         <p/>
         Screenshot: <a href="img/gui.png">WASAPI example</a><br/>
         Get the source: <a href="https://github.com/sjoerdvankreel/xt-audio">XT-Audio on GitHub</a><br/>
-        Precompiled binaries: <a href="dist/xt-audio-1.8.zip">Download latest</a><br/>
+        Precompiled binaries: <a href="dist/xt-audio-1.9.zip">Download latest</a><br/>
       </div>
       <p style="clear: both;"></p>
 
