@@ -80,7 +80,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_8761e6a4afc837b7184c41fc8991da85.html">src</a></li><li class="navelem"><a class="el" href="dir_99409675ec8415d3582c66cbcf16a95c.html">cpp</a></li><li class="navelem"><a class="el" href="dir_047594fbb13f096dce7c36c177a93e25.html">xt</a></li><li class="navelem"><a class="el" href="dir_c2d11970ad2981a8dc100d5637f85d6a.html">xt</a></li><li class="navelem"><a class="el" href="dir_c9978da0fd34cd63bd26adb4bf3b6d65.html">api</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_8cd6fdf25da9fd0b4af649d126796ee4.html">src</a></li><li class="navelem"><a class="el" href="dir_e46dcbcf8900d1aba97249cc3a297990.html">cpp</a></li><li class="navelem"><a class="el" href="dir_c6c3fa5c7b8e23d5660a4b89b7895f04.html">xt</a></li><li class="navelem"><a class="el" href="dir_27f7c1689ad6380d590339d8d274448a.html">xt</a></li><li class="navelem"><a class="el" href="dir_6f29e5f3d6029bd9c73a4fc40ce3b389.html">api</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -117,75 +117,84 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  <span class="keywordtype">bool</span> IsRunning() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  <span class="keywordtype">void</span>* GetHandle() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  int32_t GetFrames() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <a class="code" href="struct_xt_1_1_latency.html">Latency</a> GetLatency() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <a class="code" href="struct_xt_1_1_format.html">Format</a> <span class="keyword">const</span>&amp; GetFormat() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="class_xt_1_1_device.html">Device</a>;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="class_xt_1_1_service.html">Service</a>;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <span class="keyword">friend</span> <span class="keywordtype">void</span> XT_CALLBACK </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  Detail::ForwardOnXRun(XtStream <span class="keyword">const</span>* coreStream, int32_t index, <span class="keywordtype">void</span>* user);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  <span class="keyword">friend</span> uint32_t XT_CALLBACK </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  Detail::ForwardOnBuffer(XtStream <span class="keyword">const</span>* coreStream, XtBuffer <span class="keyword">const</span>* coreBuffer, <span class="keywordtype">void</span>* user);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <span class="keyword">friend</span> <span class="keywordtype">void</span> XT_CALLBACK </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  Detail::ForwardOnRunning(XtStream <span class="keyword">const</span>* coreStream, XtBool running, uint64_t error, <span class="keywordtype">void</span>* user);</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;};</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="class_xt_1_1_stream.html#a8bb0f31c8995ae74a23c4f5d3057cec4">   50</a></span>&#160;<a class="code" href="class_xt_1_1_stream.html#a8bb0f31c8995ae74a23c4f5d3057cec4">Stream::Start</a>() </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;{ Detail::HandleError(XtStreamStart(_s)); }</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="class_xt_1_1_stream.html#a4948c046996c6e5762f427cdb7b6eb3d">   53</a></span>&#160;<a class="code" href="class_xt_1_1_stream.html#a4948c046996c6e5762f427cdb7b6eb3d">Stream::Stop</a>() </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;{ Detail::HandleAssert(XtStreamStop, _s); }</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keyword">inline</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="class_xt_1_1_stream.html#a78088b62aa193566b01dfa6d9d52d78d">   56</a></span>&#160;<a class="code" href="class_xt_1_1_stream.html#a78088b62aa193566b01dfa6d9d52d78d">Stream::~Stream</a>() </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;{ Detail::HandleDestroy(XtStreamDestroy, _s); }</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span>*</div>
-<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="class_xt_1_1_stream.html#a042f49a3b6dc22bdbfb6894ed8ad08bf">   59</a></span>&#160;<a class="code" href="class_xt_1_1_stream.html#a042f49a3b6dc22bdbfb6894ed8ad08bf">Stream::GetHandle</a>()<span class="keyword"> const</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="keyword"></span>{ <span class="keywordflow">return</span> Detail::HandleAssert(XtStreamGetHandle(_s)); }</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">bool</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="class_xt_1_1_stream.html#a76a57213725ca9f12f92ef337114942e">   62</a></span>&#160;<a class="code" href="class_xt_1_1_stream.html#a76a57213725ca9f12f92ef337114942e">Stream::IsRunning</a>()<span class="keyword"> const</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="keyword"></span>{ <span class="keywordflow">return</span> Detail::HandleAssert(XtStreamIsRunning(_s)); }</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="keyword">inline</span> int32_t</div>
-<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="class_xt_1_1_stream.html#a64989fb247ac49f17884043ca6517c35">   66</a></span>&#160;<a class="code" href="class_xt_1_1_stream.html#a64989fb247ac49f17884043ca6517c35">Stream::GetFrames</a>()<span class="keyword"> const </span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="keyword"></span>{</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  int32_t frames;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  Detail::HandleError(XtStreamGetFrames(_s, &amp;frames));</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <span class="keywordflow">return</span> frames;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;}</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="keyword">inline</span> <a class="code" href="struct_xt_1_1_latency.html">Latency</a></div>
-<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="class_xt_1_1_stream.html#a037f37ed44d35194c978e0179e6327e5">   74</a></span>&#160;<a class="code" href="class_xt_1_1_stream.html#a037f37ed44d35194c978e0179e6327e5">Stream::GetLatency</a>()<span class="keyword"> const</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="keyword"></span>{</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <a class="code" href="struct_xt_1_1_latency.html">Latency</a> latency;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <span class="keyword">auto</span> coreLatency = <span class="keyword">reinterpret_cast&lt;</span>XtLatency*<span class="keyword">&gt;</span>(&amp;latency);</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  Detail::HandleError(XtStreamGetLatency(_s, coreLatency));</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  <span class="keywordflow">return</span> latency;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;}</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="keyword">inline</span> <a class="code" href="struct_xt_1_1_format.html">Format</a> <span class="keyword">const</span>&amp; </div>
-<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="class_xt_1_1_stream.html#acb9519021f7bbd4d230e4817a6d8d985">   83</a></span>&#160;<a class="code" href="class_xt_1_1_stream.html#acb9519021f7bbd4d230e4817a6d8d985">Stream::GetFormat</a>()<span class="keyword"> const</span></div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="keyword"></span>{</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  <span class="keyword">auto</span> coreFormat = Detail::HandleAssert(XtStreamGetFormat(_s));</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  <span class="keywordflow">return</span> *<span class="keyword">reinterpret_cast&lt;</span><a class="code" href="struct_xt_1_1_format.html">Format</a> const*<span class="keyword">&gt;</span>(coreFormat);</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;}</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;} <span class="comment">// namespace Xt</span></div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="preprocessor">#endif // XT_API_STREAM_HPP</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <span class="keywordtype">bool</span> IsInterleaved() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <a class="code" href="struct_xt_1_1_latency.html">Latency</a> GetLatency() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  <a class="code" href="struct_xt_1_1_format.html">Format</a> <span class="keyword">const</span>&amp; GetFormat() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="class_xt_1_1_device.html">Device</a>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="class_xt_1_1_service.html">Service</a>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <span class="keyword">friend</span> <span class="keywordtype">void</span> XT_CALLBACK </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  Detail::ForwardOnXRun(XtStream <span class="keyword">const</span>* coreStream, int32_t index, <span class="keywordtype">void</span>* user);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  <span class="keyword">friend</span> uint32_t XT_CALLBACK </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  Detail::ForwardOnBuffer(XtStream <span class="keyword">const</span>* coreStream, XtBuffer <span class="keyword">const</span>* coreBuffer, <span class="keywordtype">void</span>* user);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <span class="keyword">friend</span> <span class="keywordtype">void</span> XT_CALLBACK </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  Detail::ForwardOnRunning(XtStream <span class="keyword">const</span>* coreStream, XtBool running, uint64_t error, <span class="keywordtype">void</span>* user);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;};</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="class_xt_1_1_stream.html#a8bb0f31c8995ae74a23c4f5d3057cec4">   51</a></span>&#160;<a class="code" href="class_xt_1_1_stream.html#a8bb0f31c8995ae74a23c4f5d3057cec4">Stream::Start</a>() </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;{ Detail::HandleError(XtStreamStart(_s)); }</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="class_xt_1_1_stream.html#a4948c046996c6e5762f427cdb7b6eb3d">   54</a></span>&#160;<a class="code" href="class_xt_1_1_stream.html#a4948c046996c6e5762f427cdb7b6eb3d">Stream::Stop</a>() </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;{ Detail::HandleAssert(XtStreamStop, _s); }</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keyword">inline</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="class_xt_1_1_stream.html#a78088b62aa193566b01dfa6d9d52d78d">   57</a></span>&#160;<a class="code" href="class_xt_1_1_stream.html#a78088b62aa193566b01dfa6d9d52d78d">Stream::~Stream</a>() </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;{ Detail::HandleDestroy(XtStreamDestroy, _s); }</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span>*</div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="class_xt_1_1_stream.html#a042f49a3b6dc22bdbfb6894ed8ad08bf">   60</a></span>&#160;<a class="code" href="class_xt_1_1_stream.html#a042f49a3b6dc22bdbfb6894ed8ad08bf">Stream::GetHandle</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keyword"></span>{ <span class="keywordflow">return</span> Detail::HandleAssert(XtStreamGetHandle(_s)); }</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">bool</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="class_xt_1_1_stream.html#a76a57213725ca9f12f92ef337114942e">   63</a></span>&#160;<a class="code" href="class_xt_1_1_stream.html#a76a57213725ca9f12f92ef337114942e">Stream::IsRunning</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keyword"></span>{ <span class="keywordflow">return</span> Detail::HandleAssert(XtStreamIsRunning(_s)); }</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="keyword">inline</span> int32_t</div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="class_xt_1_1_stream.html#a64989fb247ac49f17884043ca6517c35">   67</a></span>&#160;<a class="code" href="class_xt_1_1_stream.html#a64989fb247ac49f17884043ca6517c35">Stream::GetFrames</a>()<span class="keyword"> const </span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  int32_t frames;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  Detail::HandleError(XtStreamGetFrames(_s, &amp;frames));</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <span class="keywordflow">return</span> frames;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;}</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="keyword">inline</span> <a class="code" href="struct_xt_1_1_latency.html">Latency</a></div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="class_xt_1_1_stream.html#a037f37ed44d35194c978e0179e6327e5">   75</a></span>&#160;<a class="code" href="class_xt_1_1_stream.html#a037f37ed44d35194c978e0179e6327e5">Stream::GetLatency</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <a class="code" href="struct_xt_1_1_latency.html">Latency</a> latency;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  <span class="keyword">auto</span> coreLatency = <span class="keyword">reinterpret_cast&lt;</span>XtLatency*<span class="keyword">&gt;</span>(&amp;latency);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  Detail::HandleError(XtStreamGetLatency(_s, coreLatency));</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  <span class="keywordflow">return</span> latency;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;}</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="keyword">inline</span> <a class="code" href="struct_xt_1_1_format.html">Format</a> <span class="keyword">const</span>&amp; </div>
+<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="class_xt_1_1_stream.html#acb9519021f7bbd4d230e4817a6d8d985">   84</a></span>&#160;<a class="code" href="class_xt_1_1_stream.html#acb9519021f7bbd4d230e4817a6d8d985">Stream::GetFormat</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  <span class="keyword">auto</span> coreFormat = Detail::HandleAssert(XtStreamGetFormat(_s));</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  <span class="keywordflow">return</span> *<span class="keyword">reinterpret_cast&lt;</span><a class="code" href="struct_xt_1_1_format.html">Format</a> const*<span class="keyword">&gt;</span>(coreFormat);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;}</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">bool</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="class_xt_1_1_stream.html#ad15740c0fe69630ff66f42b6baf9239c">   91</a></span>&#160;<a class="code" href="class_xt_1_1_stream.html#ad15740c0fe69630ff66f42b6baf9239c">Stream::IsInterleaved</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  <span class="keyword">auto</span> coreInterleaved = Detail::HandleAssert(XtStreamIsInterleaved(_s));</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  <span class="keywordflow">return</span> coreInterleaved != XtFalse;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;}</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;} <span class="comment">// namespace Xt</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="preprocessor">#endif // XT_API_STREAM_HPP</span></div>
 <div class="ttc" id="namespace_detail_html"><div class="ttname"><a href="namespace_detail.html">Detail</a></div></div>
 <div class="ttc" id="struct_xt_1_1_format_html"><div class="ttname"><a href="struct_xt_1_1_format.html">Xt::Format</a></div><div class="ttdef"><b>Definition:</b> Structs.hpp:85</div></div>
-<div class="ttc" id="class_xt_1_1_stream_html_acb9519021f7bbd4d230e4817a6d8d985"><div class="ttname"><a href="class_xt_1_1_stream.html#acb9519021f7bbd4d230e4817a6d8d985">Xt::Stream::GetFormat</a></div><div class="ttdeci">Format const &amp; GetFormat() const </div><div class="ttdef"><b>Definition:</b> XtStream.hpp:83</div></div>
-<div class="ttc" id="class_xt_1_1_stream_html_a042f49a3b6dc22bdbfb6894ed8ad08bf"><div class="ttname"><a href="class_xt_1_1_stream.html#a042f49a3b6dc22bdbfb6894ed8ad08bf">Xt::Stream::GetHandle</a></div><div class="ttdeci">void * GetHandle() const </div><div class="ttdef"><b>Definition:</b> XtStream.hpp:59</div></div>
+<div class="ttc" id="class_xt_1_1_stream_html_acb9519021f7bbd4d230e4817a6d8d985"><div class="ttname"><a href="class_xt_1_1_stream.html#acb9519021f7bbd4d230e4817a6d8d985">Xt::Stream::GetFormat</a></div><div class="ttdeci">Format const &amp; GetFormat() const </div><div class="ttdef"><b>Definition:</b> XtStream.hpp:84</div></div>
+<div class="ttc" id="class_xt_1_1_stream_html_ad15740c0fe69630ff66f42b6baf9239c"><div class="ttname"><a href="class_xt_1_1_stream.html#ad15740c0fe69630ff66f42b6baf9239c">Xt::Stream::IsInterleaved</a></div><div class="ttdeci">bool IsInterleaved() const </div><div class="ttdef"><b>Definition:</b> XtStream.hpp:91</div></div>
+<div class="ttc" id="class_xt_1_1_stream_html_a042f49a3b6dc22bdbfb6894ed8ad08bf"><div class="ttname"><a href="class_xt_1_1_stream.html#a042f49a3b6dc22bdbfb6894ed8ad08bf">Xt::Stream::GetHandle</a></div><div class="ttdeci">void * GetHandle() const </div><div class="ttdef"><b>Definition:</b> XtStream.hpp:60</div></div>
 <div class="ttc" id="_structs_8hpp_html"><div class="ttname"><a href="_structs_8hpp.html">Structs.hpp</a></div></div>
 <div class="ttc" id="struct_xt_1_1_latency_html"><div class="ttname"><a href="struct_xt_1_1_latency.html">Xt::Latency</a></div><div class="ttdef"><b>Definition:</b> Structs.hpp:25</div></div>
 <div class="ttc" id="_callbacks_8hpp_html"><div class="ttname"><a href="_callbacks_8hpp.html">Callbacks.hpp</a></div></div>
-<div class="ttc" id="class_xt_1_1_stream_html_a4948c046996c6e5762f427cdb7b6eb3d"><div class="ttname"><a href="class_xt_1_1_stream.html#a4948c046996c6e5762f427cdb7b6eb3d">Xt::Stream::Stop</a></div><div class="ttdeci">void Stop()</div><div class="ttdef"><b>Definition:</b> XtStream.hpp:53</div></div>
-<div class="ttc" id="class_xt_1_1_stream_html_a76a57213725ca9f12f92ef337114942e"><div class="ttname"><a href="class_xt_1_1_stream.html#a76a57213725ca9f12f92ef337114942e">Xt::Stream::IsRunning</a></div><div class="ttdeci">bool IsRunning() const </div><div class="ttdef"><b>Definition:</b> XtStream.hpp:62</div></div>
-<div class="ttc" id="class_xt_1_1_stream_html_a78088b62aa193566b01dfa6d9d52d78d"><div class="ttname"><a href="class_xt_1_1_stream.html#a78088b62aa193566b01dfa6d9d52d78d">Xt::Stream::~Stream</a></div><div class="ttdeci">~Stream()</div><div class="ttdef"><b>Definition:</b> XtStream.hpp:56</div></div>
-<div class="ttc" id="class_xt_1_1_stream_html_a64989fb247ac49f17884043ca6517c35"><div class="ttname"><a href="class_xt_1_1_stream.html#a64989fb247ac49f17884043ca6517c35">Xt::Stream::GetFrames</a></div><div class="ttdeci">int32_t GetFrames() const </div><div class="ttdef"><b>Definition:</b> XtStream.hpp:66</div></div>
+<div class="ttc" id="class_xt_1_1_stream_html_a4948c046996c6e5762f427cdb7b6eb3d"><div class="ttname"><a href="class_xt_1_1_stream.html#a4948c046996c6e5762f427cdb7b6eb3d">Xt::Stream::Stop</a></div><div class="ttdeci">void Stop()</div><div class="ttdef"><b>Definition:</b> XtStream.hpp:54</div></div>
+<div class="ttc" id="class_xt_1_1_stream_html_a76a57213725ca9f12f92ef337114942e"><div class="ttname"><a href="class_xt_1_1_stream.html#a76a57213725ca9f12f92ef337114942e">Xt::Stream::IsRunning</a></div><div class="ttdeci">bool IsRunning() const </div><div class="ttdef"><b>Definition:</b> XtStream.hpp:63</div></div>
+<div class="ttc" id="class_xt_1_1_stream_html_a78088b62aa193566b01dfa6d9d52d78d"><div class="ttname"><a href="class_xt_1_1_stream.html#a78088b62aa193566b01dfa6d9d52d78d">Xt::Stream::~Stream</a></div><div class="ttdeci">~Stream()</div><div class="ttdef"><b>Definition:</b> XtStream.hpp:57</div></div>
+<div class="ttc" id="class_xt_1_1_stream_html_a64989fb247ac49f17884043ca6517c35"><div class="ttname"><a href="class_xt_1_1_stream.html#a64989fb247ac49f17884043ca6517c35">Xt::Stream::GetFrames</a></div><div class="ttdeci">int32_t GetFrames() const </div><div class="ttdef"><b>Definition:</b> XtStream.hpp:67</div></div>
 <div class="ttc" id="class_xt_1_1_service_html"><div class="ttname"><a href="class_xt_1_1_service.html">Xt::Service</a></div><div class="ttdef"><b>Definition:</b> XtService.hpp:23</div></div>
-<div class="ttc" id="class_xt_1_1_stream_html_a8bb0f31c8995ae74a23c4f5d3057cec4"><div class="ttname"><a href="class_xt_1_1_stream.html#a8bb0f31c8995ae74a23c4f5d3057cec4">Xt::Stream::Start</a></div><div class="ttdeci">void Start()</div><div class="ttdef"><b>Definition:</b> XtStream.hpp:50</div></div>
-<div class="ttc" id="class_xt_1_1_stream_html_a037f37ed44d35194c978e0179e6327e5"><div class="ttname"><a href="class_xt_1_1_stream.html#a037f37ed44d35194c978e0179e6327e5">Xt::Stream::GetLatency</a></div><div class="ttdeci">Latency GetLatency() const </div><div class="ttdef"><b>Definition:</b> XtStream.hpp:74</div></div>
+<div class="ttc" id="class_xt_1_1_stream_html_a8bb0f31c8995ae74a23c4f5d3057cec4"><div class="ttname"><a href="class_xt_1_1_stream.html#a8bb0f31c8995ae74a23c4f5d3057cec4">Xt::Stream::Start</a></div><div class="ttdeci">void Start()</div><div class="ttdef"><b>Definition:</b> XtStream.hpp:51</div></div>
+<div class="ttc" id="class_xt_1_1_stream_html_a037f37ed44d35194c978e0179e6327e5"><div class="ttname"><a href="class_xt_1_1_stream.html#a037f37ed44d35194c978e0179e6327e5">Xt::Stream::GetLatency</a></div><div class="ttdeci">Latency GetLatency() const </div><div class="ttdef"><b>Definition:</b> XtStream.hpp:75</div></div>
 <div class="ttc" id="namespace_xt_html"><div class="ttname"><a href="namespace_xt.html">Xt</a></div><div class="ttdef"><b>Definition:</b> Callbacks.hpp:10</div></div>
 <div class="ttc" id="class_xt_1_1_stream_html"><div class="ttname"><a href="class_xt_1_1_stream.html">Xt::Stream</a></div><div class="ttdef"><b>Definition:</b> XtStream.hpp:18</div></div>
 <div class="ttc" id="class_xt_1_1_device_html"><div class="ttname"><a href="class_xt_1_1_device.html">Xt::Device</a></div><div class="ttdef"><b>Definition:</b> XtDevice.hpp:20</div></div>

@@ -80,7 +80,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_8761e6a4afc837b7184c41fc8991da85.html">src</a></li><li class="navelem"><a class="el" href="dir_33ff96880980ef220b09a2859f8fe151.html">core</a></li><li class="navelem"><a class="el" href="dir_ceb7c59586bc426c6dd46b3c37df74ee.html">xt</a></li><li class="navelem"><a class="el" href="dir_c26f9859f11680b42bb1ba987306b016.html">xt</a></li><li class="navelem"><a class="el" href="dir_574f6209c43011edd126b67dd3b7a401.html">api</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_8cd6fdf25da9fd0b4af649d126796ee4.html">src</a></li><li class="navelem"><a class="el" href="dir_76eff0fd782112579d6390a3416d131b.html">core</a></li><li class="navelem"><a class="el" href="dir_0172c19cb5accaf91b64f3947f709470.html">xt</a></li><li class="navelem"><a class="el" href="dir_fcacb0b2fbd3af3e65affcd4fcea1f9b.html">xt</a></li><li class="navelem"><a class="el" href="dir_584522209cbefc56a0d3676aa757bffa.html">api</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -116,6 +116,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a0afa98faf465ceed847b0615e6e2d1f0"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="struct_xt_format.html">XtFormat</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_xt_stream_8h.html#a0afa98faf465ceed847b0615e6e2d1f0">XtStreamGetFormat</a> (<a class="el" href="_shared_8h.html#a97e22e376753e79f83b1762628476d06">XtStream</a> const *s)</td></tr>
 <tr class="memdesc:a0afa98faf465ceed847b0615e6e2d1f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get stream format.  <a href="#a0afa98faf465ceed847b0615e6e2d1f0">More...</a><br /></td></tr>
 <tr class="separator:a0afa98faf465ceed847b0615e6e2d1f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a164d489f15581aea30eda9ea9acc4e41"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_shared_8h.html#a5ed28f2b663eb8722ae2dd4b7d8739b6">XtBool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_xt_stream_8h.html#a164d489f15581aea30eda9ea9acc4e41">XtStreamIsInterleaved</a> (<a class="el" href="_shared_8h.html#a97e22e376753e79f83b1762628476d06">XtStream</a> const *s)</td></tr>
+<tr class="memdesc:a164d489f15581aea30eda9ea9acc4e41"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get stream interleaved mode.  <a href="#a164d489f15581aea30eda9ea9acc4e41">More...</a><br /></td></tr>
+<tr class="separator:a164d489f15581aea30eda9ea9acc4e41"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ace357f0b69ca0c312d2d337cbedf1ce1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_shared_8h.html#a4ae237bc463dfed7b5148dd0e9fa4c3c">XtError</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_xt_stream_8h.html#ace357f0b69ca0c312d2d337cbedf1ce1">XtStreamGetFrames</a> (<a class="el" href="_shared_8h.html#a97e22e376753e79f83b1762628476d06">XtStream</a> const *s, int32_t *frames)</td></tr>
 <tr class="memdesc:ace357f0b69ca0c312d2d337cbedf1ce1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get maximum stream buffer size.  <a href="#ace357f0b69ca0c312d2d337cbedf1ce1">More...</a><br /></td></tr>
 <tr class="separator:ace357f0b69ca0c312d2d337cbedf1ce1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -282,6 +285,27 @@ DirectSound: IDirectSoundBuffer* / IDirectSoundCaptureBuffer*</p>
 <p>This value may change during the lifetime of the stream. For aggregate streams, the maximum input and output latencies of any underlying stream, plus the latency of the aggregation buffer is reported. When any of the underlying streams does not support latency info, the latency of the entire aggregated stream is reported as unknown.</p>
 <p>This function may be called from any thread (to allow invocation from the stream callback).</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="_xt_service_8h.html#aeeb2d542cccd4c6185ed0a2ab518dd84" title="Get service capabilities. ">XtServiceGetCapabilities</a> </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a164d489f15581aea30eda9ea9acc4e41"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_shared_8h.html#a5ed28f2b663eb8722ae2dd4b7d8739b6">XtBool</a> XtStreamIsInterleaved </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_shared_8h.html#a97e22e376753e79f83b1762628476d06">XtStream</a> const *&#160;</td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get stream interleaved mode. </p>
+<p>This function may be called from any thread. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="_xt_device_8h.html#ae1e25aabd778b6a3e3572188072bcd4f" title="Opens an audio stream on the given device. ">XtDeviceOpenStream</a> </dd>
+<dd>
+<a class="el" href="_xt_service_8h.html#a0c01c9e99c5ad18509133f6ce3776b5b" title="Combines multiple audio devices into a single stream. ">XtServiceAggregateStream</a> </dd></dl>
 
 </div>
 </div>

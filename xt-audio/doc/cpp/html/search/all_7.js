@@ -9,6 +9,7 @@ var searchData=
   ['int32',['Int32',['../namespace_xt.html#a426d1959db0f41f3a026d6c2cabf6cc5ac06129f6e6e15c09328365e553f1dc31',1,'Xt']]],
   ['interleaved',['interleaved',['../struct_xt_1_1_stream_params.html#ae3cf125952699cdd3e0aa91555f6360f',1,'Xt::StreamParams']]],
   ['isfloat',['isFloat',['../struct_xt_1_1_attributes.html#aa886079c505d35f7ab965768cc3a23f8',1,'Xt::Attributes']]],
+  ['isinterleaved',['IsInterleaved',['../class_xt_1_1_stream.html#ad15740c0fe69630ff66f42b6baf9239c',1,'Xt::Stream']]],
   ['isrunning',['IsRunning',['../class_xt_1_1_stream.html#a76a57213725ca9f12f92ef337114942e',1,'Xt::Stream']]],
   ['issigned',['isSigned',['../struct_xt_1_1_attributes.html#a87607cc82618336e8d39db7672012737',1,'Xt::Attributes']]]
 ];

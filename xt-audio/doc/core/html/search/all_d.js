@@ -120,6 +120,7 @@ var searchData=
   ['xtstreamgetframes',['XtStreamGetFrames',['../_xt_stream_8h.html#ace357f0b69ca0c312d2d337cbedf1ce1',1,'XtStream.h']]],
   ['xtstreamgethandle',['XtStreamGetHandle',['../_xt_stream_8h.html#aaca768e708109bb0ebea5ecdfebf1625',1,'XtStream.h']]],
   ['xtstreamgetlatency',['XtStreamGetLatency',['../_xt_stream_8h.html#ab414c61e5ec87a8b5487d5a000b76d42',1,'XtStream.h']]],
+  ['xtstreamisinterleaved',['XtStreamIsInterleaved',['../_xt_stream_8h.html#a164d489f15581aea30eda9ea9acc4e41',1,'XtStream.h']]],
   ['xtstreamisrunning',['XtStreamIsRunning',['../_xt_stream_8h.html#a9bb8d8d7fef1adf1964b77afb62bc082',1,'XtStream.h']]],
   ['xtstreamparams',['XtStreamParams',['../struct_xt_stream_params.html',1,'']]],
   ['xtstreamstart',['XtStreamStart',['../_xt_stream_8h.html#a09a8d14f60b8cefea2356bf9e1ae4f9d',1,'XtStream.h']]],

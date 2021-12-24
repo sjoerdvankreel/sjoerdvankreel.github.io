@@ -85,6 +85,7 @@
   <HelpKINode Title="Int32 enumeration member" Url="html/eb8b401f-1f73-ef09-1841-991b5ed54282.htm" />
   <HelpKINode Title="interleaved field" Url="html/61cb2630-4abb-fb6e-d090-f217255af400.htm" />
   <HelpKINode Title="isFloat property" Url="html/3272ad3d-8f63-6f08-7de7-f6455d5c07c9.htm" />
+  <HelpKINode Title="IsInterleaved method" Url="html/e4b082cd-d6b5-f2f7-c2d2-0ff4de56b724.htm" />
   <HelpKINode Title="IsRunning method" Url="html/1e42716b-5f08-e503-c6e3-4fc529938300.htm" />
   <HelpKINode Title="isSigned property" Url="html/6fa72531-537d-a9b8-4cd9-b1b196845060.htm" />
   <HelpKINode Title="JACK enumeration member" Url="html/7ffff37f-804b-9679-72c3-64bd0d1b3348.htm" />
@@ -94,6 +95,7 @@
   <HelpKINode Title="major field" Url="html/d6d397dc-9fca-20fa-2ca1-802e08da1fa3.htm" />
   <HelpKINode Title="master field" Url="html/eec41543-04e6-ace6-0133-db8aaedc3e0b.htm" />
   <HelpKINode Title="max field" Url="html/0b27aa58-ce09-fed2-a37a-5ba5f1cdc903.htm" />
+  <HelpKINode Title="Message property" Url="html/b1b37e21-1c10-1b20-f9a0-d3290b040868.htm" />
   <HelpKINode Title="min field" Url="html/4ff4e054-016a-6ced-2d89-69104bfce6a0.htm" />
   <HelpKINode Title="minor field" Url="html/ac37b21e-b853-c6cc-a880-158596ad6ba5.htm" />
   <HelpKINode Title="mix field">
@@ -124,7 +126,7 @@
   <HelpKINode Title="ProAudio enumeration member" Url="html/cc4a6dfc-3b77-3c50-483a-9ebcaee134c7.htm" />
   <HelpKINode Title="PulseAudio enumeration member" Url="html/7ffff37f-804b-9679-72c3-64bd0d1b3348.htm" />
   <HelpKINode Title="rate field" Url="html/7e463073-4264-a520-2c2a-f46446d068ce.htm" />
-  <HelpKINode Title="Register method" Url="html/8b81eec3-6015-a20a-7c28-ad7549d0c99f.htm" />
+  <HelpKINode Title="Register method" Url="html/4ece55fa-2e1d-92a3-d990-fc93b86766f2.htm" />
   <HelpKINode Title="sample field" Url="html/8e181e4b-8dbd-dce2-19c0-9c4d3bf7fb97.htm" />
   <HelpKINode Title="Service enumeration member" Url="html/69a4c029-2064-d290-0703-6b89de6e2dc2.htm" />
   <HelpKINode Title="service field" Url="html/528d1fc6-c304-3243-ebcd-5ab127acbc8a.htm" />
@@ -309,6 +311,7 @@
     <HelpKINode Title="properties" Url="html/b6c5509a-1d55-e032-0610-d7be23e1122f.htm" />
   </HelpKINode>
   <HelpKINode Title="XtException.GetError method" Url="html/00bc8b37-58fc-12da-34a1-2b782d54c33f.htm" />
+  <HelpKINode Title="XtException.Message property" Url="html/b1b37e21-1c10-1b20-f9a0-d3290b040868.htm" />
   <HelpKINode Title="XtFormat structure">
     <HelpKINode Title="XtFormat Structure" Url="html/0158f0b6-8cf6-0dae-54cd-8dce14a6a5b6.htm" />
     <HelpKINode Title="constructor" Url="html/0ef4c3af-8ea5-a170-013e-1ac695b98512.htm" />
@@ -355,7 +358,7 @@
   <HelpKINode Title="XtSafeBuffer.GetInput method" Url="html/1053256d-cab6-c192-dce2-ae1e2054d801.htm" />
   <HelpKINode Title="XtSafeBuffer.GetOutput method" Url="html/73421263-cc3c-6b19-1245-5958ca18ac0b.htm" />
   <HelpKINode Title="XtSafeBuffer.Lock method" Url="html/d0d1349b-b99a-2312-5bfd-20e7f7110418.htm" />
-  <HelpKINode Title="XtSafeBuffer.Register method" Url="html/8b81eec3-6015-a20a-7c28-ad7549d0c99f.htm" />
+  <HelpKINode Title="XtSafeBuffer.Register method" Url="html/4ece55fa-2e1d-92a3-d990-fc93b86766f2.htm" />
   <HelpKINode Title="XtSafeBuffer.Unlock method" Url="html/e11a94ba-fdd7-8715-bd38-be7c85743afd.htm" />
   <HelpKINode Title="XtSample enumeration" Url="html/eb8b401f-1f73-ef09-1841-991b5ed54282.htm" />
   <HelpKINode Title="XtService class">
@@ -386,6 +389,7 @@
   <HelpKINode Title="XtStream.GetFrames method" Url="html/7df7ad8f-cd17-c563-3de8-4302810b5e18.htm" />
   <HelpKINode Title="XtStream.GetHandle method" Url="html/6674ded3-47e7-9309-8a38-6fe23d1a2c0c.htm" />
   <HelpKINode Title="XtStream.GetLatency method" Url="html/73dd3872-0a83-f08f-5882-50b4edfadfdc.htm" />
+  <HelpKINode Title="XtStream.IsInterleaved method" Url="html/e4b082cd-d6b5-f2f7-c2d2-0ff4de56b724.htm" />
   <HelpKINode Title="XtStream.IsRunning method" Url="html/1e42716b-5f08-e503-c6e3-4fc529938300.htm" />
   <HelpKINode Title="XtStream.Start method" Url="html/f41fdb24-c97c-d335-b17c-952d6744d63a.htm" />
   <HelpKINode Title="XtStream.Stop method" Url="html/d00cd3ab-6854-9886-35ae-c17dffa2158d.htm" />
