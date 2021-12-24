@@ -19,6 +19,7 @@
         <h1>XT-Audio</h1>
         <p/>
         Releases (<a href="https://github.com/sjoerdvankreel/xt-audio/blob/master/history.txt">changelog</a>):<br/>
+        2.0: December 24, 2021: bugfix release<br/>
         1.9: February 14, 2021: improve error handling<br/>
         1.8: January 21, 2021: nuget/mvn central support<br/>
         1.7: January 2, 2021<br/>
@@ -28,9 +29,10 @@
       <div class="rblock topblock">
         <h2>Streaming audio focused on low latency, platform independence and API simplicity.</h2>
         <p/>
+        Binaries: <a href="dist/xt-audio-2.0.zip">Download latest</a><br/>
+        Previous releases: <a href="dist">Browse</a><br/>
         Screenshot: <a href="img/gui.png">WASAPI example</a><br/>
         Get the source: <a href="https://github.com/sjoerdvankreel/xt-audio">XT-Audio on GitHub</a><br/>
-        Precompiled binaries: <a href="dist/xt-audio-1.9.zip">Download latest</a><br/>
       </div>
       <p style="clear: both;"></p>
 
@@ -39,7 +41,7 @@
         &bull; Aggregation: combine multiple devices into a single stream<br/>
         &bull; DirectSound, WASAPI, ASIO, Pulse, ALSA and JACK backends<br/>
         &bull; Channel masks, timestamps, full-duplex, (non)interleaved mode<br/>
-        &bull; Supports x86/x64 Windows/Linux (C/C++), JVM, .NET and Mono<br/><br/>
+        &bull; x86/x64 Windows/Linux (C/C++), JVM, .NET Framework/Core, Mono<br/><br/>
       </div>
       <div class="rblock">
       <h2>Docs</h2>

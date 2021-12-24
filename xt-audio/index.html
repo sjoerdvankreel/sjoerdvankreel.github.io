@@ -19,6 +19,7 @@
         <h1>XT-Audio</h1>
         <p/>
         Releases (<a href="https://github.com/sjoerdvankreel/xt-audio/blob/master/history.txt">changelog</a>):<br/>
+        2.0: December 24, 2021: bugfix release<br/>
         1.9: February 14, 2021: improve error handling<br/>
         1.8: January 21, 2021: nuget/mvn central support<br/>
         1.7: January 2, 2021<br/>
@@ -28,9 +29,10 @@
       <div class="rblock topblock">
         <h2>Streaming audio focused on low latency, platform independence and API simplicity.</h2>
         <p/>
+        Binaries: <a href="dist/xt-audio-2.0.zip">Download latest</a><br/>
+        Previous releases: <a href="dist">Browse</a><br/>
         Screenshot: <a href="img/gui.png">WASAPI example</a><br/>
         Get the source: <a href="https://github.com/sjoerdvankreel/xt-audio">XT-Audio on GitHub</a><br/>
-        Precompiled binaries: <a href="dist/xt-audio-1.9.zip">Download latest</a><br/>
       </div>
       <p style="clear: both;"></p>
 
@@ -39,7 +41,7 @@
         &bull; Aggregation: combine multiple devices into a single stream<br/>
         &bull; DirectSound, WASAPI, ASIO, Pulse, ALSA and JACK backends<br/>
         &bull; Channel masks, timestamps, full-duplex, (non)interleaved mode<br/>
-        &bull; Supports x86/x64 Windows/Linux (C/C++), JVM, .NET and Mono<br/><br/>
+        &bull; x86/x64 Windows/Linux (C/C++), JVM, .NET Framework/Core, Mono<br/><br/>
       </div>
       <div class="rblock">
       <h2>Docs</h2>
@@ -203,8 +205,8 @@ public class PrintDetailed {
                 System.out.println(&quot;      Non-interleaved access: &quot; + device.supportsAccess(false));
                 if(mix.isPresent())
                     System.out.println(&quot;      Current mix: &quot; + mix.get().rate + &quot; &quot; + mix.get().sample);
-            } catch(XtException e) {
-                System.out.println(XtAudio.getErrorInfo(e.getError()));
+            } catch(Throwable t) {
+                t.printStackTrace();
             }
         }
     }
@@ -246,10 +248,8 @@ public class PrintDetailed {
                     printDevices(service, outputs);
                 }
             }
-        } catch(XtException e) {
-            System.out.println(XtAudio.getErrorInfo(e.getError()));
         } catch(Throwable t) {
-            System.out.println(t.getMessage());
+            t.printStackTrace();
         }
     }
 }</code></pre>
@@ -281,8 +281,8 @@ namespace Xt
                     Console.WriteLine(&quot;      Interleaved access: &quot; + device.SupportsAccess(true));
                     Console.WriteLine(&quot;      Non-interleaved access: &quot; + device.SupportsAccess(false));
                     if (mix != null) Console.WriteLine(&quot;      Current mix: &quot; + mix.Value.rate + &quot; &quot; + mix.Value.sample);
-                } catch (XtException e)
-                { Console.WriteLine(XtAudio.GetErrorInfo(e.GetError())); }
+                } catch (Exception e)
+                { Console.WriteLine(e); }
             }
         }
 
@@ -327,10 +327,8 @@ namespace Xt
                     Console.WriteLine(&quot;  Output device count: &quot; + outputs.GetCount());
                     PrintDevices(service, outputs);
                 }
-            } catch (XtException e)
-            { Console.WriteLine(XtAudio.GetErrorInfo(e.GetError()));
             } catch (Exception e)
-            { Console.WriteLine(e.Message); }
+            { Console.WriteLine(e); }
         }
     }
 }</code></pre>
@@ -365,8 +363,8 @@ PrintDevices(Xt::Service const* service, Xt::DeviceList const* list)
       std::cout &lt;&lt; &quot;      Interleaved access: &quot; &lt;&lt; device-&gt;SupportsAccess(true) &lt;&lt; &quot;\n&quot;;
       std::cout &lt;&lt; &quot;      Non-interleaved access: &quot; &lt;&lt; device-&gt;SupportsAccess(false) &lt;&lt; &quot;\n&quot;;
       if(mix) std::cout &lt;&lt; &quot;      Current mix: &quot; &lt;&lt; mix-&gt;rate &lt;&lt; &quot; &quot; &lt;&lt; mix-&gt;sample &lt;&lt; &quot;\n&quot;;
-    } catch(Xt::Exception const&amp; e)
-    { std::cout &lt;&lt; Xt::Audio::GetErrorInfo(e.GetError()) &lt;&lt; &quot;\n&quot;; }
+    } catch(std::exception const&amp; e)
+    { std::cout &lt;&lt; e.what() &lt;&lt; &quot;\n&quot;; }
   }
 }
 
@@ -412,10 +410,6 @@ PrintDetailedMain()
       PrintDevices(service.get(), outputs.get());
     }
     return EXIT_SUCCESS;
-  } catch(Xt::Exception const&amp; e) 
-  { 
-    std::cout &lt;&lt; Xt::Audio::GetErrorInfo(e.GetError()) &lt;&lt; &quot;\n&quot;; 
-    return EXIT_FAILURE;
   } catch(std::exception const&amp; e)
   {
     std::cout &lt;&lt; e.what() &lt;&lt; &quot;\n&quot;; 
@@ -497,7 +491,7 @@ public class RenderSimple {
                 streamParams = new XtStreamParams(true, RenderSimple::onBuffer, null, null);
                 deviceParams = new XtDeviceStreamParams(streamParams, FORMAT, size.current);
                 try(XtStream stream = device.openStream(deviceParams, null);
-                    XtSafeBuffer safe = XtSafeBuffer.register(stream, true)) {
+                    XtSafeBuffer safe = XtSafeBuffer.register(stream)) {
                     stream.start();
                     Thread.sleep(2000);
                     stream.stop();
@@ -558,7 +552,7 @@ namespace Xt
             streamParams = new XtStreamParams(true, OnBuffer, null, null);
             deviceParams = new XtDeviceStreamParams(in streamParams, in Format, size.current);
             using XtStream stream = device.OpenStream(in deviceParams, null);
-            using XtSafeBuffer safe = XtSafeBuffer.Register(stream, true);
+            using XtSafeBuffer safe = XtSafeBuffer.Register(stream);
             stream.Start();
             Thread.Sleep(2000);
             stream.Stop();
@@ -692,7 +686,7 @@ public class CaptureSimple {
                 deviceParams = new XtDeviceStreamParams(streamParams, FORMAT, size.current);
                 try(FileOutputStream recording = new FileOutputStream(&quot;xt-audio.raw&quot;);
                     XtStream stream = device.openStream(deviceParams, recording);
-                    XtSafeBuffer safe = XtSafeBuffer.register(stream, true)) {
+                    XtSafeBuffer safe = XtSafeBuffer.register(stream)) {
                     stream.start();
                     Thread.sleep(2000);
                     stream.stop();
@@ -749,7 +743,7 @@ namespace Xt
             deviceParams = new XtDeviceStreamParams(in streamParams, in Format, size.current);
             using var recording = new FileStream(&quot;xt-audio.raw&quot;, FileMode.Create, FileAccess.Write);
             using XtStream stream = device.OpenStream(in deviceParams, recording);
-            using XtSafeBuffer safe = XtSafeBuffer.Register(stream, true);
+            using XtSafeBuffer safe = XtSafeBuffer.Register(stream);
             stream.Start();
             Thread.Sleep(2000);
             stream.Stop();
@@ -939,7 +933,7 @@ public class RenderAdvanced {
                 streamParams = new XtStreamParams(true, RenderAdvanced::onInterleavedSafeBuffer, RenderAdvanced::onXRun, RenderAdvanced::onRunning);
                 deviceParams = new XtDeviceStreamParams(streamParams, format, size.current);
                 try(XtStream stream = device.openStream(deviceParams, null);
-                    XtSafeBuffer safe = XtSafeBuffer.register(stream, true)) {
+                    XtSafeBuffer safe = XtSafeBuffer.register(stream)) {
                     runStream(stream);
                 }
 
@@ -954,7 +948,7 @@ public class RenderAdvanced {
                 streamParams = new XtStreamParams(false, RenderAdvanced::onNonInterleavedSafeBuffer, RenderAdvanced::onXRun, RenderAdvanced::onRunning);
                 deviceParams = new XtDeviceStreamParams(streamParams, format, size.current);
                 try(XtStream stream = device.openStream(deviceParams, null);
-                    XtSafeBuffer safe = XtSafeBuffer.register(stream, false)) {
+                    XtSafeBuffer safe = XtSafeBuffer.register(stream)) {
                     runStream(stream);
                 }
 
@@ -970,7 +964,7 @@ public class RenderAdvanced {
                 streamParams = new XtStreamParams(true, RenderAdvanced::onInterleavedSafeBuffer, RenderAdvanced::onXRun, RenderAdvanced::onRunning);
                 deviceParams = new XtDeviceStreamParams(streamParams, sendTo0, size.current);
                 try(XtStream stream = device.openStream(deviceParams, null);
-                    XtSafeBuffer safe = XtSafeBuffer.register(stream, true)) {
+                    XtSafeBuffer safe = XtSafeBuffer.register(stream)) {
                     runStream(stream);
                 }
 
@@ -1099,7 +1093,7 @@ namespace Xt
             streamParams = new XtStreamParams(true, OnInterleavedSafeBuffer, OnXRun, OnRunning);
             deviceParams = new XtDeviceStreamParams(in streamParams, in format, size.current);
             using (XtStream stream = device.OpenStream(in deviceParams, null))
-            using (XtSafeBuffer safe = XtSafeBuffer.Register(stream, true))
+            using (XtSafeBuffer safe = XtSafeBuffer.Register(stream))
                 RunStream(stream);
 
             Console.WriteLine(&quot;Render interleaved, native buffers...&quot;);
@@ -1112,7 +1106,7 @@ namespace Xt
             streamParams = new XtStreamParams(false, OnNonInterleavedSafeBuffer, OnXRun, OnRunning);
             deviceParams = new XtDeviceStreamParams(in streamParams, in format, size.current);
             using (XtStream stream = device.OpenStream(in deviceParams, null))
-            using (XtSafeBuffer safe = XtSafeBuffer.Register(stream, false))
+            using (XtSafeBuffer safe = XtSafeBuffer.Register(stream))
                 RunStream(stream);
 
             Console.WriteLine(&quot;Render non-interleaved, native buffers...&quot;);
@@ -1126,7 +1120,7 @@ namespace Xt
             streamParams = new XtStreamParams(true, OnInterleavedSafeBuffer, OnXRun, OnRunning);
             deviceParams = new XtDeviceStreamParams(in streamParams, in sendTo0, size.current);
             using (XtStream stream = device.OpenStream(in deviceParams, null))
-            using (XtSafeBuffer safe = XtSafeBuffer.Register(stream, true))
+            using (XtSafeBuffer safe = XtSafeBuffer.Register(stream))
                 RunStream(stream);
 
             Console.WriteLine(&quot;Render non-interleaved, native buffers (channel 1)...&quot;);
@@ -1401,7 +1395,7 @@ public class CaptureAdvanced {
                 deviceParams = new XtDeviceStreamParams(streamParams, FORMAT, size.current);
                 try(FileOutputStream recording = new FileOutputStream(&quot;xt-audio-interleaved-safe.raw&quot;);
                     XtStream stream = device.openStream(deviceParams, recording);
-                    XtSafeBuffer safe = XtSafeBuffer.register(stream, true)) {
+                    XtSafeBuffer safe = XtSafeBuffer.register(stream)) {
                     runStream(stream);
                 }
 
@@ -1421,7 +1415,7 @@ public class CaptureAdvanced {
                 deviceParams = new XtDeviceStreamParams(streamParams, FORMAT, size.current);
                 try(FileOutputStream recording = new FileOutputStream(&quot;xt-audio-non-interleaved-safe.raw&quot;);
                     XtStream stream = device.openStream(deviceParams, recording);
-                    XtSafeBuffer safe = XtSafeBuffer.register(stream, false)) {
+                    XtSafeBuffer safe = XtSafeBuffer.register(stream)) {
                     runStream(stream);
                 }
 
@@ -1557,7 +1551,7 @@ namespace Xt
             deviceParams = new XtDeviceStreamParams(in streamParams, in Format, size.current);
             using (FileStream recording = new FileStream(&quot;xt-audio-interleaved-safe.raw&quot;, FileMode.Create, FileAccess.Write))
             using (XtStream stream = device.OpenStream(in deviceParams, recording))
-            using (XtSafeBuffer safe = XtSafeBuffer.Register(stream, true))
+            using (XtSafeBuffer safe = XtSafeBuffer.Register(stream))
                 RunStream(stream);
 
             Console.WriteLine(&quot;Capture interleaved, native buffers...&quot;);
@@ -1577,7 +1571,7 @@ namespace Xt
             deviceParams = new XtDeviceStreamParams(in streamParams, in Format, size.current);
             using (FileStream recording = new FileStream(&quot;xt-audio-non-interleaved-safe.raw&quot;, FileMode.Create, FileAccess.Write))
             using (XtStream stream = device.OpenStream(in deviceParams, recording))
-            using (XtSafeBuffer safe = XtSafeBuffer.Register(stream, false))
+            using (XtSafeBuffer safe = XtSafeBuffer.Register(stream))
                 RunStream(stream);
 
             Console.WriteLine(&quot;Capture non-interleaved, native buffers...&quot;);
@@ -1776,7 +1770,7 @@ public class FullDuplex {
                 streamParams = new XtStreamParams(true, FullDuplex::onBuffer, FullDuplex::onXRun, FullDuplex::onRunning);
                 deviceParams = new XtDeviceStreamParams(streamParams, format, size.current);
                 try(XtStream stream = device.openStream(deviceParams, null);
-                    XtSafeBuffer safe = XtSafeBuffer.register(stream, true)) {
+                    XtSafeBuffer safe = XtSafeBuffer.register(stream)) {
                     stream.start();
                     Thread.sleep(2000);
                     stream.stop();
@@ -1843,7 +1837,7 @@ namespace Xt
             streamParams = new XtStreamParams(true, OnBuffer, OnXRun, OnRunning);
             deviceParams = new XtDeviceStreamParams(in streamParams, in format, size.current);
             using XtStream stream = device.OpenStream(in deviceParams, null);
-            using XtSafeBuffer safe = XtSafeBuffer.Register(stream, true);
+            using XtSafeBuffer safe = XtSafeBuffer.Register(stream);
             stream.Start();
             Thread.Sleep(2000);
             stream.Stop();
@@ -1998,7 +1992,7 @@ public class Aggregate {
                 XtStreamParams streamParams = new XtStreamParams(true, Aggregate::onBuffer, Aggregate::onXRun, Aggregate::onRunning);
                 aggregateParams = new XtAggregateStreamParams(streamParams, deviceParams, 2, mix, output);
                 try(XtStream stream = service.aggregateStream(aggregateParams, null);
-                    XtSafeBuffer safe = XtSafeBuffer.register(stream, true)) {
+                    XtSafeBuffer safe = XtSafeBuffer.register(stream)) {
                     stream.start();
                     Thread.sleep(2000);
                     stream.stop();
@@ -2068,7 +2062,7 @@ namespace Xt
             XtStreamParams streamParams = new XtStreamParams(true, OnBuffer, OnXRun, OnRunning);
             aggregateParams = new XtAggregateStreamParams(in streamParams, deviceParams, 2, mix, output);
             using XtStream stream = service.AggregateStream(in aggregateParams, null);
-            using XtSafeBuffer safe = XtSafeBuffer.Register(stream, true);
+            using XtSafeBuffer safe = XtSafeBuffer.Register(stream);
             stream.Start();
             Thread.Sleep(2000);
             stream.Stop();
