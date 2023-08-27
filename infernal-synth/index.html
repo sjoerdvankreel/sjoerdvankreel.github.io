@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="keywords" content="software synthesizer, vst, vst3, plugin, open source"/>
-    <title>InfernalSynth - An open source VST3 synthesizer and effect plugin</title>
+    <meta name="keywords" content="software synthesizer, vst, vst3, clap, plugin, open source"/>
+    <title>InfernalSynth - An open source VST3 and CLAP synthesizer and effect plugin</title>
     <link rel="stylesheet" type="text/css" href="css/github.css"/>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
@@ -14,14 +14,22 @@
     <div id="container">
       <div>
         <h1>InfernalSynth</h1>
-        An open source semi-modular VST3 synthesizer and effect plugin.
+        An open source semi-modular VST3 and CLAP synthesizer and effect plugin.
         <h3>Requirements</h3>
         64-bit Windows 7+ and a CPU with AVX support.<br/>
-        Tested in Renoise, REAPER, Bitwig Studio and FL Studio.<br/>
-        Distributed as VST3, no other plugin formats supported.<p/>
+        VST3 tested in REAPER, Bitwig Studio, Renoise, Cakewalk and FL Studio.<br/>
+        CLAP tested in REAPER and Bitwig Studio.<br/>
         <h3>Download</h3>
         When in doubt, you want the release version.
         <table>
+          <tr>
+            <td>V1.4 - preview1</td>
+            <td>| <a href="dist/infernal-synth-1.4-preview1-release.zip"/>release</a></td>
+            <td>| <a href="dist/infernal-synth-1.4-preview1-debug.zip"/>debug</a></td>
+            <td>| <a href="dist/infernal-synth-1.4-preview1-demo.zip"/>demos</a></td>
+            <td>| August 27, 2023</td>
+            <td>| Added CLAP support. See changelog for breaking changes.</td>
+          </tr>
           <tr>
             <td>V1.3</td>
             <td>| <a href="dist/infernal-synth-1.3-release.zip"/>release</a></td>
@@ -56,10 +64,11 @@
         <h3>Contact</h3>
         For questions, feedback or constructive criticism use the github project or contact me directly at sjoerdvankreel at gmail.com.
         <h3>Install</h3>
-        Delete any previous installations first. Extract the zip archive and copy the InfernalSynth folder(s) to C:\Program Files\Common Files\VST3.
+        Extract the zip archive and copy the InfernalSynth folder(s) to C:\Program Files\Common Files\(VST3/CLAP).
+        See the changelog for which versions can run side-by-side and which versions should replace a previous release.
         For windows 7 and 8, you'll also need Microsoft's VC++ redistributable package, see the X64 download over here:
         <a href="https://learn.microsoft.com/en-US/cpp/windows/latest-supported-vc-redist?view=msvc-170">https://learn.microsoft.com/en-US/cpp/windows/latest-supported-vc-redist?view=msvc-170</a>.<p/>
-        Note: you have to keep the folder structure intact, including binaries, presets and themes. VST3's are bundles, not files.
+        Note: you have to keep the folder structures intact, including binaries, presets and themes. InfernalSynth ships as a folder, not a single file.
         <h3 style="margin-bottom: 2pt">Demos</h3>
         <table>
           <tr>
